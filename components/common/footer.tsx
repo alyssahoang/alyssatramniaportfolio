@@ -146,8 +146,6 @@ const Footer = () => {
 					href="https://wa.me/48453238913?text=Hi%20Alyssa%2C%20I%20found%20your%20portfolio%20and%20would%20love%20to%20chat."
 					target="_blank"
 					rel="noreferrer"
-					target="_blank"
-					rel="noreferrer"
 					className={FOOTER_LINK}
 					onClick={() => { trackEvent("coffee_chat_click"); upgradeSession("coffee_chat_click"); }}
 				>

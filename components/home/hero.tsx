@@ -328,8 +328,6 @@ const HeroSection = React.memo(() => {
 					href="https://wa.me/48453238913?text=Hi%20Alyssa%2C%20I%20found%20your%20portfolio%20and%20would%20love%20to%20chat."
 					target="_blank"
 					rel="noreferrer"
-					target="_blank"
-					rel="noreferrer"
 					onClick={() => { trackEvent("coffee_chat_click"); upgradeSession("coffee_chat_click"); }}
 					className="inline-flex items-center gap-3 px-5 py-3 bg-white hover:bg-gray-100 text-black text-base font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-white/20 hover:-translate-y-0.5"
 				>
