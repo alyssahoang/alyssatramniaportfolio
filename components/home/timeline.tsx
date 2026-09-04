@@ -261,13 +261,13 @@ const TimelineSection = (_props: IDesktop) => {
 								onClick={() => trackEvent("timeline_company_click", { company: experience.title.replace(/<[^>]*>/g, "") })}
 								className="block relative group cursor-pointer"
 							>
-								<div className="relative w-full aspect-square rounded-xl overflow-hidden shadow-2xl bg-gray-800 transform transition-all duration-[10ms] group-hover:scale-[1.02] group-hover:shadow-[0_20px_40px_-12px_rgba(59, 130, 246,0.15)]">
+								<div className="relative w-full max-w-sm mx-auto aspect-video rounded-xl overflow-hidden shadow-2xl bg-gray-800 transform transition-all duration-[10ms] group-hover:scale-[1.02] group-hover:shadow-[0_20px_40px_-12px_rgba(59, 130, 246,0.15)]">
 									<Image
 										src={experience.slideImage}
 										alt={experience.title.replace(/<[^>]*>/g, "")}
 										layout="fill"
 										objectFit="cover"
-										className="transition-transform duration-[10ms] group-hover:scale-105"
+										className="grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
 										loading="eager"
 									/>
 									{/* Permanent overlay */}
@@ -280,13 +280,13 @@ const TimelineSection = (_props: IDesktop) => {
 							</a>
 						) : (
 							<div className="relative group">
-								<div className="relative w-full aspect-square rounded-xl overflow-hidden shadow-2xl bg-gray-800 transform transition-all duration-[10ms] group-hover:scale-[1.02] group-hover:shadow-[0_20px_40px_-12px_rgba(59, 130, 246,0.15)]">
+								<div className="relative w-full max-w-sm mx-auto aspect-video rounded-xl overflow-hidden shadow-2xl bg-gray-800 transform transition-all duration-[10ms] group-hover:scale-[1.02] group-hover:shadow-[0_20px_40px_-12px_rgba(59, 130, 246,0.15)]">
 									<Image
 										src={experience.slideImage}
 										alt={experience.title.replace(/<[^>]*>/g, "")}
 										layout="fill"
 										objectFit="cover"
-										className="transition-transform duration-[10ms] group-hover:scale-105"
+										className="grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
 										loading="eager"
 									/>
 									{/* Permanent overlay */}
