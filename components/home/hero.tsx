@@ -338,7 +338,7 @@ const HeroSection = React.memo(() => {
 						<line x1="10" y1="2" x2="10" y2="4" />
 						<line x1="14" y1="2" x2="14" y2="4" />
 					</svg>
-					<span>Say hello on WhatsApp</span>
+					<span>Coffee chat</span>
 				</a>
 			</div>
 		</div>

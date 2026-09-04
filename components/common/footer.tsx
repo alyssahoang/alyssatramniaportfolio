@@ -149,7 +149,7 @@ const Footer = () => {
 					className={FOOTER_LINK}
 					onClick={() => { trackEvent("coffee_chat_click"); upgradeSession("coffee_chat_click"); }}
 				>
-					Chat on WhatsApp ↗
+					Coffee chat ↗
 				</a>
 				<a
 					href="mailto:tramanh.hoang0607@gmail.com"
