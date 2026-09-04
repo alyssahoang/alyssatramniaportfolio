@@ -4,7 +4,7 @@ import { METADATA } from "../../constants";
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Alyssa Tram Anh Hoang",
+  name: "Alyssa Tram Anh H.",
   url: METADATA.siteUrl,
   jobTitle: "Data Analyst",
   worksFor: { "@type": "Organization", name: "University of Milan" },
@@ -15,7 +15,7 @@ const jsonLd = {
 };
 
 const PREVIEW_IMAGE = `${METADATA.siteUrl}/preview.png?v=1`;
-const PREVIEW_ALT = "Alyssa Tram Anh Hoang, data analyst. I help teams uncover the story behind their data and turn it into action.";
+const PREVIEW_ALT = "Alyssa Tram Anh H., data analyst. I help teams uncover the story behind their data and turn it into action.";
 
 interface LayoutProps {
   children: React.ReactNode;

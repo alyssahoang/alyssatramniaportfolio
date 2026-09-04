@@ -298,7 +298,7 @@ const HeroSection = React.memo(() => {
 				)}
 				<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
 					<span className="bg-gradient-to-r from-[#3B82F6] via-[#93C5FD] to-[#3B82F6] bg-clip-text text-transparent">
-						Alyssa Tram Anh Hoang
+						Alyssa Tram Anh H.
 					</span>
 				</h1>
 			</div>

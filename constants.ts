@@ -1,5 +1,5 @@
 export const METADATA = {
-	title: "Alyssa Tram Anh Hoang | Data Analyst",
+	title: "Alyssa Tram Anh H. | Data Analyst",
 	description: "I help teams uncover the story behind their data and turn it into action. Data analyst with four years in e-commerce and consulting and two master's degrees in data science.",
 	siteUrl: "https://alyssatramnia.com",
 };

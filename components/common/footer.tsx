@@ -89,7 +89,7 @@ const Footer = () => {
 		<div className="footer-col col-span-2 md:col-span-1">
 			<div className="flex items-center gap-2.5 mb-3">
 				<Image src="/logo.svg" alt="" width={26} height={26} />
-				<span className="font-bold text-lg">Alyssa Tram Anh Hoang</span>
+				<span className="font-bold text-lg">Alyssa Tram Anh H.</span>
 			</div>
 			<p className="text-sm text-white/90 mb-2 max-w-[16rem]">
 				I help teams uncover the story behind their data and turn it into action.
