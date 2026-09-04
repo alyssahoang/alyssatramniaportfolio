@@ -106,16 +106,20 @@ export const NAVBARITEMS = [
 		ref: "home",
 	},
 	{
-		name: "Skillset",
-		ref: "skills",
-	},
-	{
-		name: "Projects",
+		name: "Works",
 		ref: "works",
 	},
 	{
-		name: "Experience",
+		name: "Skills",
+		ref: "skills",
+	},
+	{
+		name: "Timeline",
 		ref: "timeline",
+	},
+	{
+		name: "Contact",
+		ref: "contact",
 	},
 ];
 

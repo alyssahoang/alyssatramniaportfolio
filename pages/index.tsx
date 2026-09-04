@@ -84,11 +84,11 @@ export default function Home() {
 					{renderBackdrop()}
 					<HeroSection />
 					<QuoteSection2 />
-					{/* Testimonials (ide-testimonials) return once real recommendations exist */}
-					<SkillsSection isDesktop={isDesktop} />
-					<WaveDivider flip />
+					<WaveDivider />
 					<ProjectsSection isDesktop={isDesktop} />
 					<WaveDivider flip />
+					<SkillsSection isDesktop={isDesktop} />
+					<WaveDivider />
 					<TimelineSection isDesktop={isDesktop} />
 					<CollaborationSection />
 					<Footer />

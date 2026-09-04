@@ -108,7 +108,7 @@ const CollaborationSection = () => {
 	);
 
 	return (
-		<section className={COLLABORATION_STYLE.SECTION} ref={targetSection}>
+		<section id="contact" className={COLLABORATION_STYLE.SECTION} ref={targetSection}>
 			{renderSlidingText(" SQL - Python - Power BI -  ", "ui-left")}
 
 			{renderTitle()}

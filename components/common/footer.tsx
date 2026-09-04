@@ -11,9 +11,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 const EXPLORE_LINKS = [
 	{ name: "Home", ref: "home" },
-	{ name: "Skillset", ref: "skills" },
-	{ name: "Projects", ref: "works" },
-	{ name: "Experience", ref: "timeline" },
+	{ name: "Works", ref: "works" },
+	{ name: "Skills", ref: "skills" },
+	{ name: "Timeline", ref: "timeline" },
+	{ name: "Contact", ref: "contact" },
 ];
 
 // Hidden for now — re-enable when the About pages return from drafts/.

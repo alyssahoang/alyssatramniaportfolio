@@ -62,6 +62,8 @@ const Layout = ({ children, title, description, path }: LayoutProps) => {
         <meta name="twitter:image" content={PREVIEW_IMAGE} />
         <meta name="twitter:image:alt" content={PREVIEW_ALT} />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
