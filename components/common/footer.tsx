@@ -165,11 +165,11 @@ const Footer = () => {
 
 	const renderBottomBar = (): React.ReactNode => (
 		<div className="footer-bottom w-full border-t border-white/20 mt-10 pt-6 flex flex-col sm:flex-row sm:justify-between gap-2 text-xs text-white/70">
-			<span>© 2026 Alyssa Hoang</span>
+			<span>© 2026 Alyssa Tramnia</span>
 			<span>
 				Built with Next.js, Tailwind &amp; GSAP —{" "}
 				<a
-					href="https://github.com/HoanqDucAnh/portfolio"
+					href="https://github.com/alyssahoang/alyssatramniaportfolio"
 					target="_blank"
 					rel="noreferrer"
 					className="link underline hover:text-white"
