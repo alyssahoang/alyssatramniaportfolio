@@ -25,6 +25,8 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
 
+      # The lockfile is generated with npm 11 locally; older npm resolves peers differently.
+      - run: npm install -g npm@11
       - run: npm ci --no-audit --no-fund
 
       - name: Build static site
