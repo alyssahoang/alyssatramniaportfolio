@@ -1,0 +1,11 @@
+.cus-btn {
+	--tw-text-opacity: 1;
+	color: rgb(17 24 39 / var(--tw-text-opacity));
+	background: linear-gradient(90deg, #9146FF 0%, #BF94FF 50%, #9146FF 100%),
+		linear-gradient(0deg, #ffffff, #ffffff);
+	background-size: 200% 100%;
+}
+
+.cus-btn:hover {
+	background-position: 100% 0;
+}

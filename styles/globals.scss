@@ -1,0 +1,895 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: "Google Sans";
+	src: local("Google Sans Medium"), local("GoogleSans-Medium"),
+		url("/fonts/GoogleSans-Medium.woff2") format("woff2"),
+		url("/fonts/GoogleSans-Medium.woff") format("woff");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Google Sans";
+	src: local("Google Sans Bold"), local("GoogleSans-Bold"),
+		url("/fonts/GoogleSans-Bold.woff2") format("woff2"),
+		url("/fonts/GoogleSans-Bold.woff") format("woff");
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+body {
+	@apply bg-gray-900 text-white overflow-x-hidden;
+}
+
+.sql-table {
+	background-color: #44475a;
+	color: #fff;
+	padding: 10px;
+	border-radius: 5px;
+	overflow-y: scroll;
+	max-height: 250px;
+	margin-bottom: 1rem;
+}
+
+.table-title {
+	font-weight: bold;
+	font-size: 20px;
+	margin-bottom: 10px;
+	color: #9146FF;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	height: 100px;
+	overflow: scroll;
+	position: relative;
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: #1a1b26;
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(145, 70, 255, 0.6);
+	border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #BF94FF;
+}
+
+th,
+td {
+	border: 1px solid #666;
+	padding: 8px;
+	text-align: left;
+}
+
+th {
+	background-color: #282a36;
+	color: #ff5555;
+	text-align: center;
+}
+
+thead:first-child {
+	position: sticky;
+	top: -11px;
+	z-index: 1;
+}
+
+tr:nth-child(even) {
+	background-color: #282a36;
+}
+
+tr:nth-child(odd) {
+	background-color: #44475a;
+}
+
+td {
+	text-align: center;
+	color: #f8f8f2;
+}
+
+.code-block {
+	overflow: auto;
+}
+
+.code-header {
+	background-color: #44475a;
+	color: #fff;
+	padding: 0.5rem;
+	font-weight: bold;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	text-transform: uppercase;
+}
+
+.scrollspy-sticky {
+	position: sticky;
+	z-index: 1;
+	top: 0 !important;
+	font-size: 14px;
+}
+
+.scrollspy-item:hover {
+	color: #9146FF;
+	background-color: transparent;
+	font-weight: 600;
+	border-radius: 0;
+	transition: all 0.1s ease-in-out;
+	text-decoration: none;
+}
+
+.scrollspy-item {
+	padding-bottom: 3px;
+	text-decoration: none;
+	color: #efeff0;
+}
+
+.scrollspy-active {
+	color: #9146FF;
+	background-color: transparent;
+	box-shadow: none;
+	border-left: 0.15rem solid #232f3e;
+	font-weight: 600;
+	padding-left: 0.25rem;
+	border-radius: 0;
+	line-height: 1.1rem;
+	transition: all 0.1s ease-in-out;
+}
+
+pre {
+	margin: 0;
+}
+
+.codeSec {
+	display: block;
+	color: #333;
+	white-space: pre-wrap;
+}
+
+.language-sql {
+	background-color: #282a36 !important;
+}
+
+html {
+	scroll-behavior: smooth;
+	overflow-x: hidden;
+
+	@media (min-width: 768px) {
+		font-size: 14px;
+	}
+
+	@media (min-width: 1024px) {
+		font-size: 15px;
+	}
+
+	@media (min-width: 1536px) {
+		font-size: 18px;
+	}
+	@media (min-width: 1800px) {
+		font-size: 20px;
+	}
+	@media (min-width: 2000px) {
+		font-size: 22px;
+	}
+}
+
+:root {
+	color-scheme: dark;
+}
+
+/* Visible keyboard-focus indicator.
+   The site previously shipped no focus styles, so keyboard / assistive-tech
+   users had no affordance for where they were on the page. :focus-visible
+   only triggers for keyboard navigation (never on mouse click), so this
+   leaves the pointer-driven hover design untouched while restoring an
+   accessible focus ring. */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+[role="menuitem"]:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+	outline: 2px solid #BF94FF;
+	outline-offset: 2px;
+}
+
+::-moz-selection {
+	color: white;
+	background: #9146FF;
+}
+
+::selection {
+	color: white;
+	background: #9146FF;
+}
+
+/* Collaboration marquee color — themed pages override under .theme-orange */
+.collab-marquee {
+	color: #9146FF;
+}
+
+.section-container {
+	@apply xl:px-20 md:px-12 px-4 mx-auto;
+	max-width: 95vw;
+
+	@media (min-width: 640px) {
+		max-width: 92vw;
+	}
+
+	@media (min-width: 768px) {
+		max-width: 90vw;
+	}
+
+	@media (min-width: 1024px) {
+		max-width: 88vw;
+	}
+
+	@media (min-width: 1536px) {
+		max-width: 85vw;
+	}
+
+	@media (min-width: 1800px) {
+		max-width: 80vw;
+	}
+}
+
+.typed-cursor {
+	font-size: 2rem;
+}
+
+.outer-menu {
+	&.menu-visible {
+		.hamburger {
+			> div {
+				transform: rotate(135deg);
+				&:before {
+					top: 0;
+					transform: rotate(90deg);
+				}
+				&:after {
+					top: 0;
+					transform: rotate(90deg);
+					opacity: 0;
+				}
+			}
+		}
+		.menu {
+			pointer-events: auto;
+			visibility: visible !important;
+			backdrop-filter: blur(0.625rem);
+			-webkit-backdrop-filter: blur(0.625rem);
+			> div {
+				transform: scale(1);
+				transition-duration: 0.4s;
+				> div {
+					opacity: 1;
+					transition: opacity 0.4s ease 0.4s;
+				}
+			}
+		}
+		&:hover {
+			.hamburger {
+				> div {
+					transform: rotate(225deg);
+				}
+			}
+		}
+	}
+	.hamburger {
+		z-index: 1;
+		backface-visibility: hidden;
+
+		> div {
+			height: 0.125rem;
+			transition: all 0.4s ease;
+			-webkit-box-pack: center;
+			&:before,
+			&:after {
+				content: "";
+				z-index: 1;
+				position: absolute;
+				left: 0;
+				width: 100%;
+				top: -0.5rem;
+				height: 0.125rem;
+				background: inherit;
+				transition: all 0.4s ease;
+			}
+			&:after {
+				top: 0.5rem;
+			}
+		}
+	}
+	.menu {
+		backface-visibility: hidden;
+		outline: 0.0625rem solid transparent;
+		> div {
+			width: 250vw;
+			height: 250vw;
+			transform: scale(0);
+			will-change: transform;
+			border-radius: 50%;
+			transition: all 0.4s ease;
+			backface-visibility: hidden;
+			background: rgba(0, 0, 0, 0.85);
+			@supports not (backdrop-filter: blur(1px)) {
+				background: rgba(0, 0, 0, 0.95);
+			}
+
+			> div {
+				max-width: 90vw;
+				transition: opacity 0.4s ease;
+			}
+			ul {
+				li {
+					a {
+						background: linear-gradient(
+							90deg,
+							#ffffff 0%,
+							#ffffff 50%,
+							#BF94FF 51%,
+							#9146FF 100%
+						);
+						background-size: 200% 100%;
+						-webkit-background-clip: text;
+						-webkit-text-fill-color: transparent;
+
+						&:hover,
+						&:focus {
+							background-position: 100% 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.progress {
+	height: 0.1875rem;
+
+	.progress-bar {
+		height: 0.2rem;
+		transform-origin: left;
+		will-change: transform;
+		transform: scaleX(0);
+		@apply w-full;
+		background: linear-gradient(90deg, #9146FF 0%, #BF94FF 100%);
+	}
+}
+
+.text-gradient {
+	background: linear-gradient(90deg, #BF94FF 0%, #9146FF 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.text-strong {
+	background: linear-gradient(
+		90deg,
+		#ffffff 0%,
+		#ffffff 50%,
+		#BF94FF 51%,
+		#9146FF 100%
+	);
+	background-size: 200% 100%;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.project-wrapper::-webkit-scrollbar {
+	display: none;
+}
+
+.scrollbar-none {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+	display: none;
+}
+
+.skill {
+	padding-right: 1.25rem !important;
+	padding-bottom: 1.25rem !important;
+}
+
+.img-cus {
+	border: 1px solid #9146FF !important;
+	border-radius: 0.5rem !important;
+}
+
+.img-cus:hover {
+	border: 1px solid #9146FF !important;
+	cursor: pointer;
+	transition: all 0.4s ease-in-out;
+	transform: scale(1.1);
+}
+
+.stats-number {
+	padding-right: 1.25rem !important;
+	padding-bottom: 1.25rem !important;
+	font-size: 1.75rem;
+}
+
+.stats-number p:hover {
+	color: #9146FF;
+}
+
+footer {
+	background: linear-gradient(
+		153.86deg,
+		#BF94FF 0%,
+		#9146FF 15.69%,
+		#6B2FBF 48.9%,
+		#9146FF 95.52%
+	);
+}
+
+/* Orange theme for passion & startup pages */
+.theme-orange {
+	footer {
+		background: linear-gradient(
+			153.86deg,
+			#ff9a3c 0%,
+			#f27d0d 15.69%,
+			#c45e00 48.9%,
+			#f27d0d 95.52%
+		) !important;
+	}
+
+	.text-strong {
+		background: linear-gradient(
+			90deg,
+			#ffffff 0%,
+			#ffffff 50%,
+			#ff9a3c 51%,
+			#f27d0d 100%
+		) !important;
+		background-size: 200% 100% !important;
+		-webkit-background-clip: text !important;
+		-webkit-text-fill-color: transparent !important;
+	}
+
+	.text-gradient {
+		background: linear-gradient(90deg, #ff9a3c 0%, #f27d0d 100%) !important;
+		-webkit-background-clip: text !important;
+		-webkit-text-fill-color: transparent !important;
+	}
+
+	.cus-btn {
+		background: linear-gradient(90deg, #f27d0d 0%, #ff9a3c 50%, #f27d0d 100%),
+			linear-gradient(0deg, #ffffff, #ffffff) !important;
+		background-size: 200% 100% !important;
+	}
+
+	.collab-btn {
+		background-color: #f27d0d !important;
+		&:hover {
+			background-color: #ff9a3c !important;
+			box-shadow: 0 10px 15px -3px rgba(242, 125, 13, 0.3) !important;
+		}
+	}
+
+	a:focus-visible,
+	button:focus-visible,
+	[role="button"]:focus-visible,
+	[role="menuitem"]:focus-visible,
+	[tabindex]:not([tabindex="-1"]):focus-visible,
+	input:focus-visible,
+	textarea:focus-visible,
+	select:focus-visible {
+		outline-color: #ff9a3c;
+	}
+
+	.nav-link-hover::after {
+		background: #f27d0d;
+	}
+
+	.progress-bar {
+		background: linear-gradient(90deg, #f27d0d 0%, #ff9a3c 100%) !important;
+	}
+
+	::-moz-selection {
+		background: #f27d0d;
+	}
+
+	::selection {
+		background: #f27d0d;
+	}
+
+	.collab-marquee {
+		color: #f27d0d;
+	}
+}
+
+.section-heading {
+	@apply text-3xl sm:text-4xl md:text-5xl font-bold text-gradient w-fit;
+}
+
+.section-title-sm {
+	@apply uppercase tracking-widest text-gray-200 text-sm;
+}
+
+.article-title-sm {
+	@apply uppercase tracking-widest;
+	font-size: 1.3rem;
+	line-height: 1.75rem;
+	color: #9146FF;
+}
+
+.article-title-sm:hover {
+	@apply text-gray-200;
+	cursor: pointer;
+}
+
+.article-text-sm {
+	font-size: 1.25rem;
+	line-height: 1.75rem;
+	@apply text-gray-200;
+}
+
+.article-min-read {
+	@apply italic opacity-80 text-gray-200;
+}
+
+.cus-btn {
+	--tw-text-opacity: 1;
+	color: rgb(17 24 39 / var(--tw-text-opacity));
+	background: linear-gradient(90deg, #9146FF 0%, #BF94FF 50%, #9146FF 100%),
+		linear-gradient(0deg, #ffffff, #ffffff);
+	background-size: 200% 100%;
+}
+
+.cus-btn:hover {
+	background-position: 100% 0;
+}
+
+.collab-btn {
+	background-color: #9146FF;
+	box-shadow: 0 10px 15px -3px rgba(145, 70, 255, 0.3);
+	&:hover {
+		background-color: #BF94FF;
+		box-shadow: 0 10px 15px -3px rgba(145, 70, 255, 0.4);
+	}
+}
+
+/* Glass-morphism utility */
+.glass {
+	background: rgba(17, 24, 39, 0.6);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Animated gradient border */
+.gradient-border {
+	position: relative;
+}
+.gradient-border::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	padding: 1px;
+	background: linear-gradient(135deg, #9146FF, #BF94FF, #9146FF);
+	-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+	pointer-events: none;
+}
+
+/* Float animation */
+@keyframes float {
+	0%, 100% { transform: translateY(0px) scale(1); }
+	50% { transform: translateY(-20px) scale(1.02); }
+}
+
+@keyframes glow-pulse {
+	0%, 100% { opacity: 0.3; }
+	50% { opacity: 0.6; }
+}
+
+@keyframes particle-float {
+	0% { transform: translateY(0px) translateX(0px); }
+	25% { transform: translateY(-15px) translateX(8px); }
+	50% { transform: translateY(-25px) translateX(-5px); }
+	75% { transform: translateY(-10px) translateX(12px); }
+	100% { transform: translateY(0px) translateX(0px); }
+}
+
+.animate-particle-float {
+	animation: particle-float 20s ease-in-out infinite;
+}
+
+/* Aurora blob animations */
+@keyframes aurora-drift-1 {
+	0%, 100% { transform: translate(0, 0) scale(1); }
+	25% { transform: translate(30px, -40px) scale(1.05); }
+	50% { transform: translate(-20px, 20px) scale(0.95); }
+	75% { transform: translate(15px, -10px) scale(1.02); }
+}
+
+@keyframes aurora-drift-2 {
+	0%, 100% { transform: translate(0, 0) scale(1); }
+	25% { transform: translate(-25px, 30px) scale(1.03); }
+	50% { transform: translate(35px, -25px) scale(0.97); }
+	75% { transform: translate(-15px, 15px) scale(1.04); }
+}
+
+@keyframes aurora-drift-3 {
+	0%, 100% { transform: translate(0, 0) scale(1); }
+	25% { transform: translate(20px, 25px) scale(0.98); }
+	50% { transform: translate(-30px, -15px) scale(1.06); }
+	75% { transform: translate(25px, -30px) scale(1.01); }
+}
+
+@keyframes aurora-drift-4 {
+	0%, 100% { transform: translate(0, 0) scale(1); }
+	25% { transform: translate(-35px, -20px) scale(1.04); }
+	50% { transform: translate(15px, 35px) scale(0.96); }
+	75% { transform: translate(-20px, 10px) scale(1.03); }
+}
+
+.aurora-blob {
+	will-change: transform;
+}
+
+.aurora-drift-1 { animation: aurora-drift-1 18s ease-in-out infinite; }
+.aurora-drift-2 { animation: aurora-drift-2 22s ease-in-out infinite; }
+.aurora-drift-3 { animation: aurora-drift-3 25s ease-in-out infinite; }
+.aurora-drift-4 { animation: aurora-drift-4 20s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+	.aurora-blob,
+	.animate-float,
+	.animate-glow-pulse,
+	.animate-particle-float,
+	.wave-drift { animation: none !important; }
+	.timeline-dot-glow::after { animation: none !important; opacity: 0; }
+	.pl-packet { display: none; }
+	.shimmer-loading::after { animation: none !important; }
+	/* JS marquee driver is skipped under reduced motion; fall back to a
+	   plain native horizontal scroller */
+	.theme-marquee-wrap { overflow-x: auto !important; cursor: default; }
+	.card-shine::before { animation: none !important; }
+	.ide-caret { animation: none !important; }
+	.chevron-bounce { animation: none !important; }
+	html { scroll-behavior: auto; }
+}
+
+/* SQL terminal ("Query my career") — the editable textarea sits transparently
+   over a Prism-highlighted <pre> mirror, so BOTH must share identical font
+   metrics or the caret drifts off the colored text. One class, one truth. */
+.sql-editor-metrics {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+		"Liberation Mono", "Courier New", monospace;
+	/* 16px on mobile prevents iOS focus-zoom; tighter on desktop */
+	font-size: 16px;
+	line-height: 1.6;
+	padding: 1rem;
+	white-space: pre-wrap;
+	word-break: break-word;
+	tab-size: 2;
+
+	@media (min-width: 768px) {
+		font-size: 14px;
+	}
+}
+
+/* Brand-matched Prism token colors (deliberately not a stock Prism theme so
+   the highlighting sits in the site's purple system) */
+.sql-terminal {
+	.token.keyword {
+		color: #bf94ff;
+		font-weight: 600;
+	}
+	.token.function {
+		color: #5eead4;
+	}
+	.token.string {
+		color: #86efac;
+	}
+	.token.number,
+	.token.boolean {
+		color: #fbbf24;
+	}
+	.token.operator,
+	.token.punctuation {
+		color: #9ca3af;
+	}
+	.token.comment {
+		color: #6b7280;
+		font-style: italic;
+	}
+	code {
+		color: #e5e7eb; /* identifiers/default text */
+	}
+}
+
+/* Ambient drift for the section wave dividers (composited transform only).
+   Paths are periodic over 720 SVG units, so -720px loops seamlessly. */
+@keyframes wave-drift {
+	to { transform: translateX(-720px); }
+}
+
+.wave-drift {
+	animation: wave-drift 38s linear infinite;
+	will-change: transform;
+}
+
+.animate-float {
+	animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+	animation: glow-pulse 4s ease-in-out infinite;
+}
+
+/* Nav link hover underline (composited: scaleX on transform) */
+.nav-link-hover {
+	position: relative;
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: -4px;
+		left: 10%;
+		width: 80%;
+		height: 2px;
+		background: #9146FF;
+		transform: scaleX(0);
+		transform-origin: center;
+		transition: transform 0.3s ease;
+		will-change: transform;
+	}
+	&:hover::after {
+		transform: scaleX(1);
+	}
+}
+
+/* Timeline dot pulse (composited: scale + opacity on a pseudo ring) */
+@keyframes timeline-dot-ring {
+	0% { transform: scale(1); opacity: 0.6; }
+	100% { transform: scale(2.6); opacity: 0; }
+}
+
+.timeline-dot-glow {
+	position: relative;
+	&::after {
+		content: '';
+		position: absolute;
+		inset: -2px;
+		border-radius: 9999px;
+		border: 2px solid rgba(145, 70, 255, 0.7);
+		transform: scale(1);
+		opacity: 0.6;
+		animation: timeline-dot-ring 3s ease-out infinite;
+		will-change: transform, opacity;
+		pointer-events: none;
+	}
+}
+
+/* Skeleton shimmer for third-party embeds while they load */
+@keyframes shimmer-sweep {
+	to { transform: translateX(100%); }
+}
+
+.shimmer-loading {
+	position: relative;
+	overflow: hidden;
+	background: rgba(31, 41, 55, 0.6);
+	&::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		transform: translateX(-100%);
+		background: linear-gradient(90deg, transparent, rgba(191, 148, 255, 0.08), transparent);
+		animation: shimmer-sweep 1.6s ease-in-out infinite;
+	}
+}
+
+/* One-shot light sweep across certificate cards on hover */
+@keyframes card-shine-sweep {
+	to { left: 125%; }
+}
+
+.card-shine {
+	position: relative;
+	overflow: hidden;
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: -75%;
+		width: 50%;
+		background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+		transform: skewX(-20deg);
+		pointer-events: none;
+		z-index: 2;
+	}
+	&:hover::before {
+		animation: card-shine-sweep 0.9s ease;
+	}
+}
+
+/* Testimonial theme marquee — track holds two copies of the cards and is
+   driven by JS (rAF in threads-marquee.tsx) so users can also drag it
+   left/right; the -50% wrap point makes the loop seamless. Composited
+   transform only. */
+.theme-marquee-track {
+	will-change: transform;
+}
+
+.theme-marquee-wrap {
+	cursor: grab;
+	touch-action: pan-y; /* horizontal drags belong to the marquee, vertical to the page */
+
+	&.is-dragging {
+		cursor: grabbing;
+	}
+
+	img {
+		-webkit-user-drag: none;
+		user-select: none;
+	}
+}
+
+/* IDE testimonials ("What Others Say" fake editor window) */
+.ide-scroll {
+	scrollbar-width: thin;
+	scrollbar-color: #374151 transparent;
+
+	&::-webkit-scrollbar {
+		width: 6px;
+		height: 6px;
+	}
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: #374151;
+		border-radius: 3px;
+	}
+}
+
+/* MARKBOT streaming caret */
+@keyframes ide-blink {
+	50% { opacity: 0; }
+}
+
+.ide-caret {
+	animation: ide-blink 1s step-end infinite;
+}
+
+/* Bouncing scroll-cue chevron */
+@keyframes chevron-bounce {
+	0%, 100% { transform: translateY(0); opacity: 0.7; }
+	50% { transform: translateY(8px); opacity: 1; }
+}
+
+.chevron-bounce {
+	animation: chevron-bounce 1.8s ease-in-out infinite;
+}
+
+/* Section divider */
+.section-divider {
+	height: 1px;
+	background: linear-gradient(90deg, transparent, rgba(145, 70, 255, 0.2), transparent);
+	margin: 0 auto;
+	max-width: 60%;
+}
