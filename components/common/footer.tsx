@@ -92,7 +92,7 @@ const Footer = () => {
 				<span className="font-bold text-lg">Alyssa Tram Anh Hoang</span>
 			</div>
 			<p className="text-sm text-white/90 mb-2 max-w-[16rem]">
-				I turn what customers say into what businesses do. Always happy to talk data.
+				I help teams uncover the story behind their data and turn it into action.
 			</p>
 			<p className="text-sm text-white/80">
 				Data Analyst · Data Viz Consultant · Customer Experience Specialist

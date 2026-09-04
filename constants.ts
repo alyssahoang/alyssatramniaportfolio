@@ -1,6 +1,6 @@
 export const METADATA = {
 	title: "Alyssa Tram Anh Hoang | Data Analyst",
-	description: "Hi, I'm Alyssa, a data analyst who turns customer feedback and messy datasets into decisions teams can act on. Four years in e-commerce and consulting, two master's degrees in data science.",
+	description: "I help teams uncover the story behind their data and turn it into action. Data analyst with four years in e-commerce and consulting and two master's degrees in data science.",
 	siteUrl: "https://alyssatramnia.com",
 };
 
@@ -181,7 +181,7 @@ export const TYPED_STRINGS = [
 ];
 
 export const QUOTE_STRINGS = [
-	'I turn what <span style="color:#9146FF">customers say</span> into what <span style="color:#9146FF">businesses do</span>',
+	'I help teams uncover the <span style="color:#9146FF">story behind their data</span> and turn it into <span style="color:#9146FF">action</span>',
 	'Good analysis starts with a <span style="color:#9146FF">good question</span>',
 	'Numbers tell a story. I help teams <span style="color:#9146FF">hear it</span>',
 ];
