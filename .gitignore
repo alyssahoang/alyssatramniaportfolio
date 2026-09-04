@@ -39,3 +39,6 @@ yarn-error.log*
 # private working notes live in ../web-portfolio-private (never commit)
 private/
 *.docx
+
+# local editor/agent tooling
+.claude/
