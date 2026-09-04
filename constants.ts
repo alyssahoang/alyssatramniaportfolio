@@ -216,7 +216,7 @@ export const ProjectTypes = {
 
 export const PROJECTS: IProject[] = [
 	{
-		name: "A map of customer frustration in e-commerce",
+		name: "E-commerce Reviews – What frustrates customers most?",
 		category: ProjectTypes.CX,
 		image: "/projects/review-map.png",
 		description: "I read 36K+ e-commerce reviews so nobody else has to. The result is an interactive map of where customers get frustrated, and what to fix first.",
@@ -228,7 +228,7 @@ export const PROJECTS: IProject[] = [
 		featured: true,
 	},
 	{
-		name: "Where is inventory getting stuck?",
+		name: "AdventureWorks Production – Where is inventory getting stuck?",
 		category: ProjectTypes.BI,
 		image: "/projects/inventory.gif",
 		description: "A Power BI walk-through of AdventureWorks' production floor: 4.5M units, seven assembly stages, and an on-time rate of only 41.6%. Where does the time go?",
@@ -240,7 +240,7 @@ export const PROJECTS: IProject[] = [
 		featured: true,
 	},
 	{
-		name: "Which global markets actually make money?",
+		name: "Global Store Performance – Which markets actually make money?",
 		category: ProjectTypes.BI,
 		image: "/projects/global-store.gif",
 		description: "An executive dashboard for a retailer in seven markets. Sales grew 51.5%, but the repurchase rate fell, and the biggest market was not the most profitable.",
@@ -252,7 +252,7 @@ export const PROJECTS: IProject[] = [
 		featured: true,
 	},
 	{
-		name: "Which furniture branch performs best, and why?",
+		name: "Furniture Store Performance – Which branch performs best, and why?",
 		category: ProjectTypes.BI,
 		image: "/projects/furniture-store.gif",
 		description: "Three branches, 18 monthly Excel files, one answer: the revenue gap comes from footfall, not from what people buy. Weekends bring in 46% of revenue.",
@@ -264,7 +264,7 @@ export const PROJECTS: IProject[] = [
 		featured: true,
 	},
 	{
-		name: "What made a movie successful?",
+		name: "IMDB Top 1000 – What makes a movie successful?",
 		category: ProjectTypes.MARKET,
 		image: "/projects/imdb.png",
 		description: "I mined the IMDB Top 1000 with association rules to find the combinations of genre, era and cast that keep showing up in films people love.",
@@ -276,7 +276,7 @@ export const PROJECTS: IProject[] = [
 		featured: true,
 	},
 	{
-		name: "Finding the signal in risk profiles",
+		name: "Insurance Risk Scoring – Which approvals can we trust?",
 		category: ProjectTypes.RISK,
 		image: "/projects/insurance.png",
 		description: "A risk model that explains itself: 57K insurance records, a severe class imbalance, and a logistic regression you could defend in a meeting.",
@@ -288,7 +288,7 @@ export const PROJECTS: IProject[] = [
 		featured: true,
 	},
 	{
-		name: "Who is about to leave?",
+		name: "Customer Retention – Who is about to churn, and how early can we tell?",
 		category: ProjectTypes.RISK,
 		image: "/projects/churn.png",
 		description: "Churn prediction on customer behaviour: the signals that show up before a customer walks away, and how early they can be caught.",
@@ -297,7 +297,7 @@ export const PROJECTS: IProject[] = [
 		tech: ["python", "scikit-learn", "Pandas"],
 	},
 	{
-		name: "Which customers deserve the next campaign?",
+		name: "Customer Value Segmentation – Which customers deserve the next campaign?",
 		category: ProjectTypes.CX,
 		image: "/projects/rfm.png",
 		description: "RFM segmentation that sorts a customer base by recency, frequency and value, so marketing effort lands where it actually pays back.",
@@ -306,7 +306,7 @@ export const PROJECTS: IProject[] = [
 		tech: ["python", "Pandas"],
 	},
 	{
-		name: "Where should the marketing budget go?",
+		name: "Marketing Budget Allocation – Where should the next dollar go?",
 		category: ProjectTypes.MARKET,
 		image: "/projects/budget.png",
 		description: "Channel budget allocation modelled from real response data instead of last year's split.",
@@ -315,7 +315,7 @@ export const PROJECTS: IProject[] = [
 		tech: ["python", "Pandas", "numpy"],
 	},
 	{
-		name: "What is about to expire in my fridge?",
+		name: "Kitchen Inventory – What should I cook first?",
 		category: ProjectTypes.COURSEWORK,
 		image: "/projects/fridge.png",
 		description: "A small R app that tracks what's in the fridge and what to cook first. Coursework that I still use at home.",
