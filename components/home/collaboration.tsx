@@ -99,9 +99,9 @@ const CollaborationSection = () => {
 			className={`${COLLABORATION_STYLE.TITLE} ${willChange ? "will-change-opacity" : ""
 				}`}
 		>
-			Have a question your data{" "}
+			Interested in{" "}
 			<span className="text-strong font-bold">
-				should already be answering
+				collaboration
 			</span>
 			?
 		</h2>
@@ -109,7 +109,7 @@ const CollaborationSection = () => {
 
 	return (
 		<section id="contact" className={COLLABORATION_STYLE.SECTION} ref={targetSection}>
-			{renderSlidingText(" SQL - Python - Power BI - Tableau -  ", "ui-left")}
+			{renderSlidingText(" Data Analysis - BI Dashboards - Customer Insights - Market Research -  ", "ui-left")}
 
 			{renderTitle()}
 
@@ -130,7 +130,7 @@ const CollaborationSection = () => {
 			</div>
 
 			{renderSlidingText(
-				" SQL - Python - Power BI - Tableau -  ",
+				" Data Analysis - BI Dashboards - Customer Insights - Market Research -  ",
 				"mt-6 md:mt-8 ui-right"
 			)}
 		</section>
