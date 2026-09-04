@@ -178,7 +178,7 @@ export const TYPED_STRINGS = [
 	'<span style="color:#3B82F6">Data Analyst</span>',
 	'<span style="color:#3B82F6">Analytics Engineer</span>',
 	'<span style="color:#3B82F6">Data Viz Consultant</span>',
-	'<span style="color:#3B82F6">Customer Insights</span>',
+	'<span style="color:#3B82F6">Customer Insights Analyst</span>',
 	'<span style="color:#3B82F6">Customer Experience Specialist</span>',
 ];
 
