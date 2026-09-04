@@ -80,7 +80,7 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 		<div className="flex flex-col inner-container">
 			<h2 className="section-heading seq">My Works</h2>
 			<h3 className="text-xl md:text-2xl md:max-w-3xl w-full seq mt-2 text-gray-200">
-				What I do at 2 AM on a Saturday
+				A few projects I&apos;m proud of. Each one started with a question worth answering.
 			</h3>
 		</div>
 	);

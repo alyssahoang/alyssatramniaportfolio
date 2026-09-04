@@ -15,7 +15,7 @@ const jsonLd = {
 };
 
 const PREVIEW_IMAGE = `${METADATA.siteUrl}/preview.png?v=1`;
-const PREVIEW_ALT = "Alyssa Hoang — data analyst turning customer behaviour into business decisions";
+const PREVIEW_ALT = "Alyssa Hoang, data analyst. I turn what customers say into what businesses do.";
 
 interface LayoutProps {
   children: React.ReactNode;

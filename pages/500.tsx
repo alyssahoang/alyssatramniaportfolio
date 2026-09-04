@@ -17,8 +17,8 @@ export default function ServerError() {
 						500
 					</h1>
 					<div className="w-full max-w-xl rounded-xl border border-gray-700/60 bg-[#282a36] text-left font-mono text-sm md:text-base leading-relaxed px-5 py-4 md:px-7 md:py-5 mb-8 overflow-x-auto">
-						<p className="text-gray-400">-- ERROR: something broke upstream.</p>
-						<p className="text-gray-400">-- Re-run the pipeline?</p>
+						<p className="text-gray-400">-- Something broke on my side, not yours.</p>
+						<p className="text-gray-400">-- Give it a moment and try again.</p>
 					</div>
 					<Link href="/">
 						<a className="link inline-flex items-center gap-3 px-6 py-3 bg-[#9146FF] hover:bg-[#7B3FD9] text-white text-base font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-[#9146FF]/25 hover:-translate-y-0.5">

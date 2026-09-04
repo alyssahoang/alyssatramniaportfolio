@@ -165,7 +165,7 @@ const TimelineSection = (_props: IDesktop) => {
 		<div className="flex flex-col mb-16">
 			<h2 className="section-heading seq">Timeline</h2>
 			<h3 className="text-2xl md:max-w-2xl w-full seq mt-2">
-				A quick recap of proud moments
+				Four cities, a few great teams and a lot of customer data. Here&apos;s the journey so far.
 			</h3>
 		</div>
 	);

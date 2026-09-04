@@ -95,7 +95,7 @@ const QuoteSection2 = () => {
 						<span ref={typedRef}></span>
 					</p>
 					<p className="quote-line mt-4 text-xl md:text-2xl text-gray-400">
-						scroll down and <span className="text-[#BF94FF] font-bold">see for yourself</span>
+						scroll down and <span className="text-[#BF94FF] font-bold">see what I mean</span>
 					</p>
 					<div className="quote-line mt-8 flex justify-center" aria-hidden="true">
 						<svg

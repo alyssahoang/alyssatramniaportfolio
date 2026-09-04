@@ -92,7 +92,7 @@ const Footer = () => {
 				<span className="font-bold text-lg">Alyssa Hoang</span>
 			</div>
 			<p className="text-sm text-white/90 mb-2 max-w-[16rem]">
-				I turn what customers say into what businesses do.
+				I turn what customers say into what businesses do. Always happy to talk data.
 			</p>
 			<p className="text-sm text-white/80">
 				Data Analyst · MSc Data Science
@@ -157,7 +157,7 @@ const Footer = () => {
 					className={FOOTER_LINK}
 					onClick={() => { trackEvent("resume_download"); upgradeSession("resume_download"); }}
 				>
-					Download resume ↓
+					Download my resume ↓
 				</a>
 			</div>
 			{renderSocialIcons()}

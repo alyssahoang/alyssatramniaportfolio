@@ -37,7 +37,7 @@ export default function NotFound() {
 						<p className="text-gray-400">-- 0 rows returned (took 4.04 ms)</p>
 					</div>
 					<p className="text-gray-400 text-lg mb-8">
-						Looks like this JOIN came back empty.
+						This page wandered off. Let&apos;s get you back to something that exists.
 					</p>
 					<Link href="/">
 						<a className="link inline-flex items-center gap-3 px-6 py-3 bg-[#9146FF] hover:bg-[#7B3FD9] text-white text-base font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-[#9146FF]/25 hover:-translate-y-0.5">

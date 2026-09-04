@@ -99,9 +99,9 @@ const CollaborationSection = () => {
 			className={`${COLLABORATION_STYLE.TITLE} ${willChange ? "will-change-opacity" : ""
 				}`}
 		>
-			Interested in{" "}
+			Have a question your data{" "}
 			<span className="text-strong font-bold">
-				customer Analytics Engineeringamp; business analytics
+				should already be answering
 			</span>
 			?
 		</h2>
@@ -109,7 +109,7 @@ const CollaborationSection = () => {
 
 	return (
 		<section id="contact" className={COLLABORATION_STYLE.SECTION} ref={targetSection}>
-			{renderSlidingText(" SQL - Python - Power BI -  ", "ui-left")}
+			{renderSlidingText(" SQL - Python - Power BI - Tableau -  ", "ui-left")}
 
 			{renderTitle()}
 
@@ -122,7 +122,7 @@ const CollaborationSection = () => {
 					className="collab-btn inline-flex items-center gap-2 px-8 py-3 rounded-full text-white font-bold text-lg transition-all duration-[10ms] hover:-translate-y-1 hover:scale-105"
 					onClick={() => trackEvent("collaboration_connect")}
 				>
-					Let's Connect
+					Let&apos;s talk
 					<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
 						<path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
 					</svg>
@@ -130,7 +130,7 @@ const CollaborationSection = () => {
 			</div>
 
 			{renderSlidingText(
-				" SQL - Python - Power BI -  ",
+				" SQL - Python - Power BI - Tableau -  ",
 				"mt-6 md:mt-8 ui-right"
 			)}
 		</section>
