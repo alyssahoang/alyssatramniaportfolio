@@ -155,7 +155,7 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 			<div className="flex flex-col">
 				<h2 className="section-heading">My Skills</h2>
 				<h3 className="text-2xl md:max-w-2xl w-full mt-2">
-					The tools I reach for most, from SQL and Python to Power BI and Tableau, plus a few newer ones I&apos;m enjoying.
+					Technical skills & tools I use to deliver data-driven solutions
 				</h3>
 			</div>
 		),
