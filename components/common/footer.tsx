@@ -94,11 +94,6 @@ const Footer = () => {
 			<p className="text-sm text-white/90 mb-2 max-w-[16rem]">
 				I help teams uncover the story behind their data and turn it into action.
 			</p>
-			<p className="text-sm text-white/80">
-				Data Analyst · Data Viz Consultant · Customer Experience Specialist
-				<br />
-				Warsaw, Poland
-			</p>
 		</div>
 	);
 
