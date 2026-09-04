@@ -21,7 +21,7 @@ const WaveDivider = ({ flip = false, className = "" }: WaveDividerProps) => {
 					<linearGradient id={`wave-grad-${flip ? "flip" : "normal"}`} x1="0%" y1="0%" x2="100%" y2="0%">
 						<stop offset="0%" stopColor="rgba(59, 130, 246, 0)" />
 						<stop offset="30%" stopColor="rgba(59, 130, 246, 0.12)" />
-						<stop offset="50%" stopColor="rgba(191, 148, 255, 0.15)" />
+						<stop offset="50%" stopColor="rgba(147, 197, 253, 0.15)" />
 						<stop offset="70%" stopColor="rgba(59, 130, 246, 0.12)" />
 						<stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
 					</linearGradient>

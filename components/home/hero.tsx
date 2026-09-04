@@ -325,7 +325,9 @@ const HeroSection = React.memo(() => {
 				</a>
 				<a
 					ref={coffeeCtaRef}
-					href="mailto:tramanh.hoang0607@gmail.com"
+					href="https://wa.me/48453238913?text=Hi%20Alyssa%2C%20I%20found%20your%20portfolio%20and%20would%20love%20to%20chat."
+					target="_blank"
+					rel="noreferrer"
 					target="_blank"
 					rel="noreferrer"
 					onClick={() => { trackEvent("coffee_chat_click"); upgradeSession("coffee_chat_click"); }}
@@ -338,7 +340,7 @@ const HeroSection = React.memo(() => {
 						<line x1="10" y1="2" x2="10" y2="4" />
 						<line x1="14" y1="2" x2="14" y2="4" />
 					</svg>
-					<span>Say hello</span>
+					<span>Say hello on WhatsApp</span>
 				</a>
 			</div>
 		</div>

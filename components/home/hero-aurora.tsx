@@ -11,7 +11,7 @@ const AURORA_BLOBS = [
 		animationClass: "aurora-drift-1",
 	},
 	{
-		color: "rgba(191, 148, 255, 0.14)",
+		color: "rgba(147, 197, 253, 0.14)",
 		width: "40%",
 		height: "45%",
 		top: "30%",
