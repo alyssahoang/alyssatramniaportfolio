@@ -19,11 +19,11 @@ const WaveDivider = ({ flip = false, className = "" }: WaveDividerProps) => {
 			>
 				<defs>
 					<linearGradient id={`wave-grad-${flip ? "flip" : "normal"}`} x1="0%" y1="0%" x2="100%" y2="0%">
-						<stop offset="0%" stopColor="rgba(145, 70, 255, 0)" />
-						<stop offset="30%" stopColor="rgba(145, 70, 255, 0.12)" />
+						<stop offset="0%" stopColor="rgba(59, 130, 246, 0)" />
+						<stop offset="30%" stopColor="rgba(59, 130, 246, 0.12)" />
 						<stop offset="50%" stopColor="rgba(191, 148, 255, 0.15)" />
-						<stop offset="70%" stopColor="rgba(145, 70, 255, 0.12)" />
-						<stop offset="100%" stopColor="rgba(145, 70, 255, 0)" />
+						<stop offset="70%" stopColor="rgba(59, 130, 246, 0.12)" />
+						<stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
 					</linearGradient>
 				</defs>
 				{/* Both paths are periodic over 720 units and drawn for 3 periods
@@ -37,7 +37,7 @@ const WaveDivider = ({ flip = false, className = "" }: WaveDividerProps) => {
 					<path
 						d="M0,35 C240,47 480,23 720,35 C960,47 1200,23 1440,35 C1680,47 1920,23 2160,35"
 						fill="none"
-						stroke="rgba(145, 70, 255, 0.15)"
+						stroke="rgba(59, 130, 246, 0.15)"
 						strokeWidth="1"
 					/>
 				</g>

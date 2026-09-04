@@ -36,7 +36,7 @@ const ReadFavicon = ({ read }: { read: IFavoriteRead }) => {
 
 	if (failed) {
 		return (
-			<div className="flex-none w-11 h-11 rounded-xl bg-[#9146FF]/15 border border-[#9146FF]/20 flex items-center justify-center text-[#BF94FF] font-semibold text-lg">
+			<div className="flex-none w-11 h-11 rounded-xl bg-[#3B82F6]/15 border border-[#3B82F6]/20 flex items-center justify-center text-[#93C5FD] font-semibold text-lg">
 				{initial}
 			</div>
 		);
@@ -61,7 +61,7 @@ const ReadCard = ({ read }: { read: IFavoriteRead }) => (
 		<div className="flex items-center gap-4 mb-4">
 			<ReadFavicon read={read} />
 			<div className="min-w-0">
-				<h4 className="font-semibold text-white group-hover:text-[#BF94FF] transition-colors duration-[10ms] leading-snug text-base truncate">
+				<h4 className="font-semibold text-white group-hover:text-[#93C5FD] transition-colors duration-[10ms] leading-snug text-base truncate">
 					{read.title}
 				</h4>
 				<p className="text-sm text-gray-400 truncate">by {read.author}</p>
@@ -193,7 +193,7 @@ const FavoriteReads = ({
 						target="_blank"
 						rel="noreferrer"
 						data-read-card
-						className="group block rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#9146FF]/40 hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)] hover:-translate-y-2"
+						className="group block rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#3B82F6]/40 hover:shadow-[0_20px_40px_-12px_rgba(59, 130, 246,0.15)] hover:-translate-y-2"
 						onClick={() => {
 							trackEvent("read_click", { read_title: read.title });
 							setTag("read_domain", read.domain);
@@ -208,7 +208,7 @@ const FavoriteReads = ({
 				<button
 					type="button"
 					onClick={() => setExpanded(true)}
-					className="self-center mt-8 text-sm font-medium px-5 py-2 rounded-full border border-[#9146FF]/30 text-[#BF94FF] hover:border-[#9146FF]/60 hover:bg-[#9146FF]/10 transition-all duration-[10ms]"
+					className="self-center mt-8 text-sm font-medium px-5 py-2 rounded-full border border-[#3B82F6]/30 text-[#93C5FD] hover:border-[#3B82F6]/60 hover:bg-[#3B82F6]/10 transition-all duration-[10ms]"
 				>
 					Show all {items.length} →
 				</button>

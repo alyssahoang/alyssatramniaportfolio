@@ -6,7 +6,7 @@ import { trackEvent } from "../../utils/clarity";
 // Kept as full literal strings so Tailwind's scanner generates them.
 const PULSE_CLASSES = [
 	"ring-2",
-	"ring-[#9146FF]",
+	"ring-[#3B82F6]",
 	"ring-offset-2",
 	"ring-offset-gray-900",
 ];
@@ -61,12 +61,12 @@ const ReadsHero = () => {
 			{/* Decorative purple glow — pure depth, hidden from a11y tree */}
 			<div
 				aria-hidden
-				className="pointer-events-none absolute -top-24 -left-16 w-[28rem] h-[28rem] rounded-full bg-[#9146FF]/20 blur-[120px]"
+				className="pointer-events-none absolute -top-24 -left-16 w-[28rem] h-[28rem] rounded-full bg-[#3B82F6]/20 blur-[120px]"
 			/>
 
 			<div className="relative z-10 flex flex-col">
 				<p
-					className={`text-[#BF94FF] text-sm md:text-base font-medium tracking-[0.25em] uppercase mb-4 ${reveal(
+					className={`text-[#93C5FD] text-sm md:text-base font-medium tracking-[0.25em] uppercase mb-4 ${reveal(
 						"delay-200"
 					)}`}
 				>
@@ -80,7 +80,7 @@ const ReadsHero = () => {
 					What I&apos;m Reading
 				</h1>
 				<div
-					className={`h-1 mt-6 rounded-full bg-gradient-to-r from-[#9146FF] to-[#BF94FF] transition-[width,opacity] duration-700 delay-500 ease-out ${
+					className={`h-1 mt-6 rounded-full bg-gradient-to-r from-[#3B82F6] to-[#93C5FD] transition-[width,opacity] duration-700 delay-500 ease-out ${
 						loaded ? "w-24 opacity-100" : "w-0 opacity-0"
 					}`}
 				/>
@@ -100,7 +100,7 @@ const ReadsHero = () => {
 					<button
 						type="button"
 						onClick={surpriseMe}
-						className="font-mono text-sm text-[#BF94FF] bg-[#9146FF]/10 border border-[#9146FF]/30 rounded-lg px-4 py-2 hover:border-[#9146FF]/60 hover:bg-[#9146FF]/20 transition-all duration-[10ms]"
+						className="font-mono text-sm text-[#93C5FD] bg-[#3B82F6]/10 border border-[#3B82F6]/30 rounded-lg px-4 py-2 hover:border-[#3B82F6]/60 hover:bg-[#3B82F6]/20 transition-all duration-[10ms]"
 					>
 						<span aria-hidden>🎲 </span>$ shuf reads.txt -n 1
 					</button>

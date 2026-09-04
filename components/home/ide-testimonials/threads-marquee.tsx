@@ -160,8 +160,8 @@ const ThreadsMarquee = ({
 				tabIndex={isClone ? -1 : 0}
 				className={`theme-card flex-shrink-0 w-64 text-left p-4 rounded-2xl border backdrop-blur-sm transition-all duration-[10ms] ${
 					mentionedByCurrent
-						? "bg-gray-800/80 border-[#9146FF]/60 shadow-lg shadow-[#9146FF]/10"
-						: "bg-gray-800/50 border-gray-700/50 hover:border-[#9146FF]/40 hover:bg-gray-800/70"
+						? "bg-gray-800/80 border-[#3B82F6]/60 shadow-lg shadow-[#3B82F6]/10"
+						: "bg-gray-800/50 border-gray-700/50 hover:border-[#3B82F6]/40 hover:bg-gray-800/70"
 				}`}
 			>
 				<span className="block text-sm font-semibold text-white">
@@ -183,7 +183,7 @@ const ThreadsMarquee = ({
 								width={28}
 								height={28}
 								className={`w-7 h-7 rounded-full object-cover border-2 ${
-									isCurrent ? "border-[#9146FF]" : "border-gray-900"
+									isCurrent ? "border-[#3B82F6]" : "border-gray-900"
 								}`}
 								loading="lazy"
 							/>

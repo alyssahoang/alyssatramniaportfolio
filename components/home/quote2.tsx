@@ -79,7 +79,7 @@ const QuoteSection2 = () => {
 				{/* Oversized ghost quote mark */}
 				<span
 					aria-hidden="true"
-					className="quote-ghost absolute -top-2 left-2 md:left-10 text-[8rem] md:text-[12rem] leading-none font-bold text-[#9146FF]/10 pointer-events-none"
+					className="quote-ghost absolute -top-2 left-2 md:left-10 text-[8rem] md:text-[12rem] leading-none font-bold text-[#3B82F6]/10 pointer-events-none"
 				>
 					&ldquo;
 				</span>
@@ -87,7 +87,7 @@ const QuoteSection2 = () => {
 				{/* Soft ambient glow behind the quote */}
 				<div
 					aria-hidden="true"
-					className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[24rem] h-[16rem] md:w-[30rem] md:h-[18rem] rounded-full bg-[#9146FF]/10 blur-3xl aurora-blob aurora-drift-3 pointer-events-none"
+					className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[24rem] h-[16rem] md:w-[30rem] md:h-[18rem] rounded-full bg-[#3B82F6]/10 blur-3xl aurora-blob aurora-drift-3 pointer-events-none"
 				/>
 
 				<div className="text-center relative">
@@ -95,11 +95,11 @@ const QuoteSection2 = () => {
 						<span ref={typedRef}></span>
 					</p>
 					<p className="quote-line mt-4 text-xl md:text-2xl text-gray-400">
-						scroll down and <span className="text-[#BF94FF] font-bold">see what I mean</span>
+						scroll down and <span className="text-[#93C5FD] font-bold">see what I mean</span>
 					</p>
 					<div className="quote-line mt-8 flex justify-center" aria-hidden="true">
 						<svg
-							className="chevron-bounce w-6 h-6 text-[#BF94FF]"
+							className="chevron-bounce w-6 h-6 text-[#93C5FD]"
 							fill="none"
 							stroke="currentColor"
 							viewBox="0 0 24 24"

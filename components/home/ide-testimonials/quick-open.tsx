@@ -37,7 +37,7 @@ const Highlighted = ({
 		<>
 			{text.split("").map((ch, i) =>
 				set.has(i) ? (
-					<span key={i} className="text-[#BF94FF] font-semibold">
+					<span key={i} className="text-[#93C5FD] font-semibold">
 						{ch}
 					</span>
 				) : (
@@ -158,7 +158,7 @@ const QuickOpen = ({
 							onMouseMove={() => setHighlightIdx(i)}
 							className={`w-full flex items-baseline gap-2 px-4 py-1.5 font-mono text-xs text-left transition-colors duration-[10ms] ${
 								i === highlightIdx
-									? "bg-[#9146FF]/20 text-white"
+									? "bg-[#3B82F6]/20 text-white"
 									: "text-gray-300"
 							}`}
 						>

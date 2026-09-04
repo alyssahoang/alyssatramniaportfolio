@@ -25,7 +25,7 @@ export const FOLDER_COLORS: Record<string, string> = {
 };
 
 export const folderColor = (folder: string): string =>
-	FOLDER_COLORS[folder] ?? "#BF94FF";
+	FOLDER_COLORS[folder] ?? "#93C5FD";
 
 // "Noah, Pelberg" → ["noah", "pelberg"]
 const nameParts = (author: string): string[] =>

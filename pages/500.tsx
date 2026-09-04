@@ -21,7 +21,7 @@ export default function ServerError() {
 						<p className="text-gray-400">-- Give it a moment and try again.</p>
 					</div>
 					<Link href="/">
-						<a className="link inline-flex items-center gap-3 px-6 py-3 bg-[#9146FF] hover:bg-[#7B3FD9] text-white text-base font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-[#9146FF]/25 hover:-translate-y-0.5">
+						<a className="link inline-flex items-center gap-3 px-6 py-3 bg-[#3B82F6] hover:bg-[#2563EB] text-white text-base font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-[#3B82F6]/25 hover:-translate-y-0.5">
 							← Back to home
 						</a>
 					</Link>

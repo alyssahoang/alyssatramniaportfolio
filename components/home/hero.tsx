@@ -265,7 +265,7 @@ const HeroSection = React.memo(() => {
 			<div
 				className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full animate-glow-pulse pointer-events-none"
 				style={{
-					background: "radial-gradient(circle, rgba(145, 70, 255, 0.15) 0%, transparent 70%)",
+					background: "radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%)",
 					filter: "blur(60px)",
 				}}
 			/>
@@ -297,7 +297,7 @@ const HeroSection = React.memo(() => {
 					</span>
 				)}
 				<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-					<span className="bg-gradient-to-r from-[#9146FF] via-[#BF94FF] to-[#9146FF] bg-clip-text text-transparent">
+					<span className="bg-gradient-to-r from-[#3B82F6] via-[#93C5FD] to-[#3B82F6] bg-clip-text text-transparent">
 						Alyssa Tram Anh Hoang
 					</span>
 				</h1>
@@ -314,7 +314,7 @@ const HeroSection = React.memo(() => {
 					href="/alyssa_hoang_resume.pdf"
 					download
 					onClick={() => { trackEvent("resume_download"); upgradeSession("resume_download"); }}
-					className="inline-flex items-center gap-3 px-5 py-3 bg-[#9146FF] hover:bg-[#7B3FD9] text-white text-base font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-[#9146FF]/25 hover:-translate-y-0.5"
+					className="inline-flex items-center gap-3 px-5 py-3 bg-[#3B82F6] hover:bg-[#2563EB] text-white text-base font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-[#3B82F6]/25 hover:-translate-y-0.5"
 				>
 					<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
 						<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />

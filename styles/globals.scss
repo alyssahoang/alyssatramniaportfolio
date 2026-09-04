@@ -40,7 +40,7 @@ body {
 	font-weight: bold;
 	font-size: 20px;
 	margin-bottom: 10px;
-	color: #9146FF;
+	color: #3B82F6;
 }
 
 table {
@@ -60,12 +60,12 @@ table {
 }
 
 ::-webkit-scrollbar-thumb {
-	background: rgba(145, 70, 255, 0.6);
+	background: rgba(59, 130, 246, 0.6);
 	border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: #BF94FF;
+	background: #93C5FD;
 }
 
 th,
@@ -122,7 +122,7 @@ td {
 }
 
 .scrollspy-item:hover {
-	color: #9146FF;
+	color: #3B82F6;
 	background-color: transparent;
 	font-weight: 600;
 	border-radius: 0;
@@ -137,7 +137,7 @@ td {
 }
 
 .scrollspy-active {
-	color: #9146FF;
+	color: #3B82F6;
 	background-color: transparent;
 	box-shadow: none;
 	border-left: 0.15rem solid #232f3e;
@@ -203,23 +203,23 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-	outline: 2px solid #BF94FF;
+	outline: 2px solid #93C5FD;
 	outline-offset: 2px;
 }
 
 ::-moz-selection {
 	color: white;
-	background: #9146FF;
+	background: #3B82F6;
 }
 
 ::selection {
 	color: white;
-	background: #9146FF;
+	background: #3B82F6;
 }
 
 /* Collaboration marquee color — themed pages override under .theme-orange */
 .collab-marquee {
-	color: #9146FF;
+	color: #3B82F6;
 }
 
 .section-container {
@@ -341,8 +341,8 @@ select:focus-visible {
 							90deg,
 							#ffffff 0%,
 							#ffffff 50%,
-							#BF94FF 51%,
-							#9146FF 100%
+							#93C5FD 51%,
+							#3B82F6 100%
 						);
 						background-size: 200% 100%;
 						-webkit-background-clip: text;
@@ -368,12 +368,12 @@ select:focus-visible {
 		will-change: transform;
 		transform: scaleX(0);
 		@apply w-full;
-		background: linear-gradient(90deg, #9146FF 0%, #BF94FF 100%);
+		background: linear-gradient(90deg, #3B82F6 0%, #93C5FD 100%);
 	}
 }
 
 .text-gradient {
-	background: linear-gradient(90deg, #BF94FF 0%, #9146FF 100%);
+	background: linear-gradient(90deg, #93C5FD 0%, #3B82F6 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
@@ -383,8 +383,8 @@ select:focus-visible {
 		90deg,
 		#ffffff 0%,
 		#ffffff 50%,
-		#BF94FF 51%,
-		#9146FF 100%
+		#93C5FD 51%,
+		#3B82F6 100%
 	);
 	background-size: 200% 100%;
 	-webkit-background-clip: text;
@@ -409,12 +409,12 @@ select:focus-visible {
 }
 
 .img-cus {
-	border: 1px solid #9146FF !important;
+	border: 1px solid #3B82F6 !important;
 	border-radius: 0.5rem !important;
 }
 
 .img-cus:hover {
-	border: 1px solid #9146FF !important;
+	border: 1px solid #3B82F6 !important;
 	cursor: pointer;
 	transition: all 0.4s ease-in-out;
 	transform: scale(1.1);
@@ -427,16 +427,16 @@ select:focus-visible {
 }
 
 .stats-number p:hover {
-	color: #9146FF;
+	color: #3B82F6;
 }
 
 footer {
 	background: linear-gradient(
 		153.86deg,
-		#BF94FF 0%,
-		#9146FF 15.69%,
+		#93C5FD 0%,
+		#3B82F6 15.69%,
 		#6B2FBF 48.9%,
-		#9146FF 95.52%
+		#3B82F6 95.52%
 	);
 }
 
@@ -529,7 +529,7 @@ footer {
 	@apply uppercase tracking-widest;
 	font-size: 1.3rem;
 	line-height: 1.75rem;
-	color: #9146FF;
+	color: #3B82F6;
 }
 
 .article-title-sm:hover {
@@ -550,7 +550,7 @@ footer {
 .cus-btn {
 	--tw-text-opacity: 1;
 	color: rgb(17 24 39 / var(--tw-text-opacity));
-	background: linear-gradient(90deg, #9146FF 0%, #BF94FF 50%, #9146FF 100%),
+	background: linear-gradient(90deg, #3B82F6 0%, #93C5FD 50%, #3B82F6 100%),
 		linear-gradient(0deg, #ffffff, #ffffff);
 	background-size: 200% 100%;
 }
@@ -560,11 +560,11 @@ footer {
 }
 
 .collab-btn {
-	background-color: #9146FF;
-	box-shadow: 0 10px 15px -3px rgba(145, 70, 255, 0.3);
+	background-color: #3B82F6;
+	box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
 	&:hover {
-		background-color: #BF94FF;
-		box-shadow: 0 10px 15px -3px rgba(145, 70, 255, 0.4);
+		background-color: #93C5FD;
+		box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.4);
 	}
 }
 
@@ -586,7 +586,7 @@ footer {
 	inset: 0;
 	border-radius: inherit;
 	padding: 1px;
-	background: linear-gradient(135deg, #9146FF, #BF94FF, #9146FF);
+	background: linear-gradient(135deg, #3B82F6, #93C5FD, #3B82F6);
 	-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
 	-webkit-mask-composite: xor;
 	mask-composite: exclude;
@@ -695,7 +695,7 @@ footer {
    the highlighting sits in the site's purple system) */
 .sql-terminal {
 	.token.keyword {
-		color: #bf94ff;
+		color: #93C5FD;
 		font-weight: 600;
 	}
 	.token.function {
@@ -750,7 +750,7 @@ footer {
 		left: 10%;
 		width: 80%;
 		height: 2px;
-		background: #9146FF;
+		background: #3B82F6;
 		transform: scaleX(0);
 		transform-origin: center;
 		transition: transform 0.3s ease;
@@ -774,7 +774,7 @@ footer {
 		position: absolute;
 		inset: -2px;
 		border-radius: 9999px;
-		border: 2px solid rgba(145, 70, 255, 0.7);
+		border: 2px solid rgba(59, 130, 246, 0.7);
 		transform: scale(1);
 		opacity: 0.6;
 		animation: timeline-dot-ring 3s ease-out infinite;
@@ -889,7 +889,7 @@ footer {
 /* Section divider */
 .section-divider {
 	height: 1px;
-	background: linear-gradient(90deg, transparent, rgba(145, 70, 255, 0.2), transparent);
+	background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
 	margin: 0 auto;
 	max-width: 60%;
 }

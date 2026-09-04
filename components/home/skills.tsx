@@ -198,16 +198,16 @@ const SkillsSection = ({ isDesktop }: IDesktop) => {
 			return (
 				<div
 					key={title}
-					className="skill-card p-6 rounded-2xl border border-gray-800/50 bg-gray-900/30 backdrop-blur-sm hover:border-[#9146FF]/30 transition-all duration-[10ms] relative overflow-hidden"
+					className="skill-card p-6 rounded-2xl border border-gray-800/50 bg-gray-900/30 backdrop-blur-sm hover:border-[#3B82F6]/30 transition-all duration-[10ms] relative overflow-hidden"
 				>
 					{/* Gradient accent line at top */}
-					<div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#9146FF] via-[#BF94FF] to-[#9146FF] opacity-40" />
+					<div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#3B82F6] via-[#93C5FD] to-[#3B82F6] opacity-40" />
 
 					{/* Category header with icon */}
 					<div className="flex items-center gap-2 mb-4">
 						{Icon && (
-							<div className="w-5 h-5 rounded bg-[#9146FF]/10 flex items-center justify-center flex-shrink-0">
-								<Icon className="w-3 h-3 text-[#BF94FF]" />
+							<div className="w-5 h-5 rounded bg-[#3B82F6]/10 flex items-center justify-center flex-shrink-0">
+								<Icon className="w-3 h-3 text-[#93C5FD]" />
 							</div>
 						)}
 						<h4 className={SKILL_STYLES.SKILL_TITLE}>{title}</h4>

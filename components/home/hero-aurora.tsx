@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 
 const AURORA_BLOBS = [
 	{
-		color: "rgba(145, 70, 255, 0.18)",
+		color: "rgba(59, 130, 246, 0.18)",
 		width: "45%",
 		height: "50%",
 		top: "5%",

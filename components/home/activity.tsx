@@ -20,7 +20,7 @@ const ActivitySection = () => {
 			{/* Ambient glow tying the section back to the hero/pipeline treatment */}
 			<div
 				aria-hidden="true"
-				className="absolute -top-24 right-0 w-[26rem] h-[26rem] rounded-full bg-[#9146FF]/10 blur-3xl aurora-blob aurora-drift-2 pointer-events-none"
+				className="absolute -top-24 right-0 w-[26rem] h-[26rem] rounded-full bg-[#3B82F6]/10 blur-3xl aurora-blob aurora-drift-2 pointer-events-none"
 			/>
 
 			<div className="flex flex-col mb-10 relative">

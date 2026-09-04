@@ -98,7 +98,7 @@ const ProjectsSection = ({ isDesktop }: IDesktop) => {
 							inline-flex items-center justify-center text-center w-full sm:w-auto h-full px-3 sm:px-5 py-2 sm:py-2.5 rounded-full text-[13px] sm:text-sm font-medium leading-tight transition-all duration-[10ms]
 							${
 								activeCategory === category.value
-									? "bg-[#9146FF] text-white shadow-lg shadow-[#9146FF]/20"
+									? "bg-[#3B82F6] text-white shadow-lg shadow-[#3B82F6]/20"
 									: "bg-gray-800/60 text-gray-300 hover:bg-gray-700/80 hover:text-white border border-gray-700/50"
 							}
 						`}

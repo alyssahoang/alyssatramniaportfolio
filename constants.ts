@@ -175,15 +175,15 @@ export interface ITestimonialTheme {
 export const TESTIMONIAL_THEMES: ITestimonialTheme[] = [];
 
 export const TYPED_STRINGS = [
-	'<span style="color:#9146FF">Data Analyst</span>',
-	'<span style="color:#9146FF">Data Viz Consultant</span>',
-	'<span style="color:#9146FF">Customer Experience Specialist</span>',
+	'<span style="color:#3B82F6">Data Analyst</span>',
+	'<span style="color:#3B82F6">Data Viz Consultant</span>',
+	'<span style="color:#3B82F6">Customer Experience Specialist</span>',
 ];
 
 export const QUOTE_STRINGS = [
-	'I help teams uncover the <span style="color:#9146FF">story behind their data</span> and turn it into <span style="color:#9146FF">action</span>',
-	'Good analysis starts with a <span style="color:#9146FF">good question</span>',
-	'Numbers tell a story. I help teams <span style="color:#9146FF">hear it</span>',
+	'I help teams uncover the <span style="color:#3B82F6">story behind their data</span> and turn it into <span style="color:#3B82F6">action</span>',
+	'Good analysis starts with a <span style="color:#3B82F6">good question</span>',
+	'Numbers tell a story. I help teams <span style="color:#3B82F6">hear it</span>',
 ];
 
 export const SOCIAL_LINKS = {
@@ -220,7 +220,7 @@ export const PROJECTS: IProject[] = [
 		category: ProjectTypes.CX,
 		image: "/projects/review-map.svg",
 		description: "I read 36K+ e-commerce reviews so nobody else has to. The result is an interactive map of where customers get frustrated, and what to fix first.",
-		gradient: ["#3b0764", "#9146FF"],
+		gradient: ["#172554", "#3B82F6"],
 		url: "https://interactive-customer-review-map.streamlit.app/",
 		tech: ["python", "streamlit", "Pandas"],
 		fullDescription: "Unstructured feedback is where the real customer voice lives, but no team has time to read 36,000 reviews. I cleaned and clustered them with NLP, then built a Streamlit app that lets a CX team browse the recurring pain points by theme, product and severity, and decide what to fix first.",
@@ -594,7 +594,7 @@ export const READ_CATEGORY_COLORS: Record<string, string> = {
 };
 
 export const readCategoryColor = (category: string): string =>
-	READ_CATEGORY_COLORS[category] ?? "#BF94FF";
+	READ_CATEGORY_COLORS[category] ?? "#93C5FD";
 
 // Shown in the reads hero — bump manually when the lists change, same
 // discipline as VERSION.md.

@@ -178,7 +178,7 @@ const IdeTestimonialsSection = () => {
 
 			<div
 				ref={cardRef}
-				className="ide-window rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] hover:border-[#9146FF]/40 hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)]"
+				className="ide-window rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] hover:border-[#3B82F6]/40 hover:shadow-[0_20px_40px_-12px_rgba(59, 130, 246,0.15)]"
 			>
 				{/* Title bar */}
 				<div className="flex items-center gap-3 px-4 py-3 border-b border-gray-800/70 bg-gray-900/60">
@@ -194,7 +194,7 @@ const IdeTestimonialsSection = () => {
 						<button
 							type="button"
 							onClick={() => setDrawerOpen(true)}
-							className="lg:hidden flex items-center gap-1.5 font-mono text-xs text-[#BF94FF] hover:text-white transition-colors duration-[10ms]"
+							className="lg:hidden flex items-center gap-1.5 font-mono text-xs text-[#93C5FD] hover:text-white transition-colors duration-[10ms]"
 							aria-label="Open file explorer"
 						>
 							<VscListTree aria-hidden="true" /> explorer
@@ -202,7 +202,7 @@ const IdeTestimonialsSection = () => {
 						<button
 							type="button"
 							onClick={() => showQuickOpen("button")}
-							className="font-mono text-[10px] text-[#BF94FF] border border-[#9146FF]/30 rounded px-1.5 py-0.5 hover:text-white hover:border-[#9146FF]/60 transition-all duration-[10ms]"
+							className="font-mono text-[10px] text-[#93C5FD] border border-[#3B82F6]/30 rounded px-1.5 py-0.5 hover:text-white hover:border-[#3B82F6]/60 transition-all duration-[10ms]"
 							aria-label="Quick open a recommendation file"
 						>
 							{isMac ? "⌘P" : "Ctrl+P"}
@@ -272,7 +272,7 @@ const IdeTestimonialsSection = () => {
 							});
 							window.open(LINKEDIN_RECS_URL, "_blank", "noopener,noreferrer");
 						}}
-						className="flex items-center gap-1.5 px-3 py-1.5 bg-[#9146FF] text-white hover:bg-[#7c3aed] transition-colors duration-[10ms]"
+						className="flex items-center gap-1.5 px-3 py-1.5 bg-[#3B82F6] text-white hover:bg-[#1d4ed8] transition-colors duration-[10ms]"
 						title="View all recommendations on LinkedIn"
 					>
 						<VscSourceControl aria-hidden="true" /> main*
@@ -283,7 +283,7 @@ const IdeTestimonialsSection = () => {
 					</span>
 					<span className="ml-auto hidden sm:flex items-center py-1.5">
 						{activeFile && (
-							<span className="px-3 text-[#BF94FF]">
+							<span className="px-3 text-[#93C5FD]">
 								Ln {lineCount(activeFile)}, Col 42
 							</span>
 						)}
@@ -296,7 +296,7 @@ const IdeTestimonialsSection = () => {
 			<div className="mt-6 flex flex-wrap justify-center items-center gap-x-3 gap-y-2">
 				<a
 					href={LINKEDIN_RECS_URL}
-					className="text-[#BF94FF] text-md underline hover:text-white transition-colors"
+					className="text-[#93C5FD] text-md underline hover:text-white transition-colors"
 					target="_blank"
 					rel="noreferrer"
 					onClick={() =>
@@ -310,7 +310,7 @@ const IdeTestimonialsSection = () => {
 				</span>
 				<a
 					href={LAZARD_PDF_URL}
-					className="text-[#BF94FF] text-md underline hover:text-white transition-colors"
+					className="text-[#93C5FD] text-md underline hover:text-white transition-colors"
 					target="_blank"
 					rel="noreferrer"
 					onClick={() =>

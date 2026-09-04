@@ -37,7 +37,7 @@ const ArticleCard = ({ article }: { article: IFavoriteRead }) => {
 				</div>
 			)}
 			<div className="p-5 md:p-6 flex flex-col flex-grow">
-				<h4 className="font-bold text-white group-hover:text-[#BF94FF] transition-colors duration-[10ms] leading-snug text-lg md:text-xl">
+				<h4 className="font-bold text-white group-hover:text-[#93C5FD] transition-colors duration-[10ms] leading-snug text-lg md:text-xl">
 					{article.title}
 				</h4>
 				<p className="text-sm text-gray-400 leading-relaxed mt-2 line-clamp-2">
@@ -78,7 +78,7 @@ const FeaturedArticle = ({ article }: { article: IFavoriteRead }) => {
 			)}
 			<div className="p-6 md:p-8 flex flex-col justify-center">
 				<div className="flex items-center flex-wrap gap-2 mb-4 text-xs font-medium uppercase tracking-wide text-gray-400">
-					<span className="normal-case tracking-normal text-[#BF94FF] bg-[#9146FF]/15 border border-[#9146FF]/20 rounded-full px-2.5 py-0.5">
+					<span className="normal-case tracking-normal text-[#93C5FD] bg-[#3B82F6]/15 border border-[#3B82F6]/20 rounded-full px-2.5 py-0.5">
 						Featured
 					</span>
 					<span style={{ color: readCategoryColor(article.category) }}>
@@ -86,7 +86,7 @@ const FeaturedArticle = ({ article }: { article: IFavoriteRead }) => {
 					</span>
 					<StatusBadge status={article.status} />
 				</div>
-				<h4 className="font-bold text-white group-hover:text-[#BF94FF] transition-colors duration-[10ms] leading-tight text-2xl md:text-4xl">
+				<h4 className="font-bold text-white group-hover:text-[#93C5FD] transition-colors duration-[10ms] leading-tight text-2xl md:text-4xl">
 					{article.title}
 				</h4>
 				<p className="text-sm md:text-base text-gray-400 leading-relaxed mt-4 line-clamp-3">
@@ -210,7 +210,7 @@ const FavoriteArticles = ({
 					target="_blank"
 					rel="noreferrer"
 					data-read-card
-					className="group block rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#9146FF]/40 hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)] hover:-translate-y-1"
+					className="group block rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#3B82F6]/40 hover:shadow-[0_20px_40px_-12px_rgba(59, 130, 246,0.15)] hover:-translate-y-1"
 					onClick={() => {
 						trackEvent("article_click", { article_title: featured.title });
 						setTag("article_domain", featured.domain);
@@ -230,7 +230,7 @@ const FavoriteArticles = ({
 							target="_blank"
 							rel="noreferrer"
 							data-read-card
-							className="group block h-full rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#9146FF]/40 hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)] hover:-translate-y-1"
+							className="group block h-full rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#3B82F6]/40 hover:shadow-[0_20px_40px_-12px_rgba(59, 130, 246,0.15)] hover:-translate-y-1"
 							onClick={() => {
 								trackEvent("article_click", {
 									article_title: article.title,

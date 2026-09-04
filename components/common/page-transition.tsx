@@ -101,7 +101,7 @@ const PageTransition = () => {
 		>
 			<div
 				className="absolute bottom-0 left-0 right-0 h-[3px]"
-				style={{ background: "linear-gradient(90deg, #9146FF 0%, #BF94FF 100%)" }}
+				style={{ background: "linear-gradient(90deg, #3B82F6 0%, #93C5FD 100%)" }}
 			/>
 		</div>
 	);

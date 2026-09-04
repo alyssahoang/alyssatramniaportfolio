@@ -110,8 +110,8 @@ const Assistant = ({
 				aria-expanded={open}
 				className="flex items-center gap-2 px-4 py-2.5 border-b border-gray-800/70 text-left lg:pointer-events-none"
 			>
-				<VscSparkle className="text-[#BF94FF]" aria-hidden="true" />
-				<span className="font-mono text-xs font-semibold tracking-widest bg-gradient-to-r from-[#9146FF] to-[#BF94FF] bg-clip-text text-transparent">
+				<VscSparkle className="text-[#93C5FD]" aria-hidden="true" />
+				<span className="font-mono text-xs font-semibold tracking-widest bg-gradient-to-r from-[#3B82F6] to-[#93C5FD] bg-clip-text text-transparent">
 					ALYSSABOT
 				</span>
 				<span className="hidden sm:inline font-mono text-[10px] text-gray-500">
@@ -138,7 +138,7 @@ const Assistant = ({
 					{messages.map((msg, i) =>
 						msg.role === "user" ? (
 							<div key={i} className="flex justify-end">
-								<p className="max-w-[85%] rounded-xl rounded-br-sm bg-gradient-to-br from-[#9146FF]/40 to-[#9146FF]/20 border border-[#9146FF]/40 px-3 py-2 text-xs text-gray-100">
+								<p className="max-w-[85%] rounded-xl rounded-br-sm bg-gradient-to-br from-[#3B82F6]/40 to-[#3B82F6]/20 border border-[#3B82F6]/40 px-3 py-2 text-xs text-gray-100">
 									{msg.text}
 								</p>
 							</div>
@@ -148,7 +148,7 @@ const Assistant = ({
 									{msg.text.slice(0, msg.shown)}
 									{!msg.done && (
 										<span
-											className="ide-caret inline-block w-[7px] h-[13px] align-text-bottom bg-[#BF94FF] ml-0.5"
+											className="ide-caret inline-block w-[7px] h-[13px] align-text-bottom bg-[#93C5FD] ml-0.5"
 											aria-hidden="true"
 										/>
 									)}
@@ -165,7 +165,7 @@ const Assistant = ({
 													onClick={() =>
 														onOpenFile(file, "assistant_citation")
 													}
-													className="flex items-center gap-1.5 pl-1 pr-2.5 py-1 rounded-full bg-gray-800/80 border border-gray-700/60 text-[11px] text-gray-300 hover:border-[#9146FF]/60 hover:text-white transition-all duration-[10ms]"
+													className="flex items-center gap-1.5 pl-1 pr-2.5 py-1 rounded-full bg-gray-800/80 border border-gray-700/60 text-[11px] text-gray-300 hover:border-[#3B82F6]/60 hover:text-white transition-all duration-[10ms]"
 												>
 													<Image
 														src={file.avatar}
@@ -200,7 +200,7 @@ const Assistant = ({
 								className={`text-[11px] px-2.5 py-1 rounded-full border transition-all duration-[10ms] ${
 									asked.has(theme.label)
 										? "bg-gray-800/40 border-gray-700/40 text-gray-500 hover:text-gray-300"
-										: "bg-[#9146FF]/15 border-[#9146FF]/25 text-[#BF94FF] hover:bg-[#9146FF]/30 hover:border-[#9146FF]/50"
+										: "bg-[#3B82F6]/15 border-[#3B82F6]/25 text-[#93C5FD] hover:bg-[#3B82F6]/30 hover:border-[#3B82F6]/50"
 								}`}
 							>
 								{THEME_QUESTIONS[theme.label] ?? theme.label}

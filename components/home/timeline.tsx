@@ -186,11 +186,11 @@ const TimelineSection = (_props: IDesktop) => {
 				<div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px transform md:-translate-x-1/2">
 					{/* Rail segment (draws on scroll; sibling of the dot so its scaleY doesn't distort it) */}
 					<div
-						className="timeline-rail-seg absolute inset-0 bg-gradient-to-b from-[#9146FF]/70 via-[#9146FF]/40 to-[#9146FF]/10"
+						className="timeline-rail-seg absolute inset-0 bg-gradient-to-b from-[#3B82F6]/70 via-[#3B82F6]/40 to-[#3B82F6]/10"
 						aria-hidden="true"
 					></div>
 					{/* Dot */}
-					<div className="timeline-dot absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-900 border-2 border-[#9146FF] rounded-full z-10 timeline-dot-glow"></div>
+					<div className="timeline-dot absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gray-900 border-2 border-[#3B82F6] rounded-full z-10 timeline-dot-glow"></div>
 				</div>
 
 				{/* Content wrapper */}
@@ -203,7 +203,7 @@ const TimelineSection = (_props: IDesktop) => {
 						className={`w-full md:w-1/2 pl-10 overflow-hidden ${isEven ? "md:pr-12 md:pl-0 md:text-right" : "md:pl-12 md:text-left"
 							}`}
 					>
-						<span className="inline-block text-[#BF94FF] text-lg font-semibold mb-2">
+						<span className="inline-block text-[#93C5FD] text-lg font-semibold mb-2">
 							{experience.date}
 						</span>
 						<h4
@@ -222,7 +222,7 @@ const TimelineSection = (_props: IDesktop) => {
 								{experience.techStack.map((tech) => (
 									<span
 										key={tech.name}
-										className="group relative flex items-center justify-center w-8 h-8 rounded-lg bg-gray-800/80 border border-gray-700/60 p-1.5 transition-all duration-[10ms] hover:border-[#9146FF]/50 hover:bg-gray-800"
+										className="group relative flex items-center justify-center w-8 h-8 rounded-lg bg-gray-800/80 border border-gray-700/60 p-1.5 transition-all duration-[10ms] hover:border-[#3B82F6]/50 hover:bg-gray-800"
 									>
 										{/* eslint-disable-next-line @next/next/no-img-element */}
 										<img
@@ -231,7 +231,7 @@ const TimelineSection = (_props: IDesktop) => {
 											className="w-full h-full object-contain"
 											loading="lazy"
 										/>
-										<span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 border border-[#9146FF]/30 px-2 py-0.5 text-xs text-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-[10ms] z-20">
+										<span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 border border-[#3B82F6]/30 px-2 py-0.5 text-xs text-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-[10ms] z-20">
 											{tech.name}
 										</span>
 									</span>
@@ -240,7 +240,7 @@ const TimelineSection = (_props: IDesktop) => {
 						)}
 						{experience.location && (
 							<span className={`inline-flex items-center gap-1.5 mt-3 px-3 py-1 rounded-full text-sm font-medium bg-gray-800/80 text-gray-200 ${isEven ? "md:ml-auto" : ""}`}>
-								<svg className="w-3.5 h-3.5 text-[#9146FF]" fill="currentColor" viewBox="0 0 20 20">
+								<svg className="w-3.5 h-3.5 text-[#3B82F6]" fill="currentColor" viewBox="0 0 20 20">
 									<path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
 								</svg>
 								{experience.location}
@@ -261,7 +261,7 @@ const TimelineSection = (_props: IDesktop) => {
 								onClick={() => trackEvent("timeline_company_click", { company: experience.title.replace(/<[^>]*>/g, "") })}
 								className="block relative group cursor-pointer"
 							>
-								<div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl bg-gray-800 transform transition-all duration-[10ms] group-hover:scale-[1.02] group-hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)]">
+								<div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl bg-gray-800 transform transition-all duration-[10ms] group-hover:scale-[1.02] group-hover:shadow-[0_20px_40px_-12px_rgba(59, 130, 246,0.15)]">
 									<Image
 										src={experience.slideImage}
 										alt={experience.title.replace(/<[^>]*>/g, "")}
@@ -276,11 +276,11 @@ const TimelineSection = (_props: IDesktop) => {
 									<div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[10ms]"></div>
 								</div>
 								{/* Decorative border */}
-								<div className="absolute -inset-1 bg-gradient-to-r from-[#9146FF]/20 to-yellow-600/20 rounded-xl blur-sm -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-[10ms]"></div>
+								<div className="absolute -inset-1 bg-gradient-to-r from-[#3B82F6]/20 to-yellow-600/20 rounded-xl blur-sm -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-[10ms]"></div>
 							</a>
 						) : (
 							<div className="relative group">
-								<div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl bg-gray-800 transform transition-all duration-[10ms] group-hover:scale-[1.02] group-hover:shadow-[0_20px_40px_-12px_rgba(145,70,255,0.15)]">
+								<div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl bg-gray-800 transform transition-all duration-[10ms] group-hover:scale-[1.02] group-hover:shadow-[0_20px_40px_-12px_rgba(59, 130, 246,0.15)]">
 									<Image
 										src={experience.slideImage}
 										alt={experience.title.replace(/<[^>]*>/g, "")}
@@ -295,7 +295,7 @@ const TimelineSection = (_props: IDesktop) => {
 									<div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[10ms]"></div>
 								</div>
 								{/* Decorative border */}
-								<div className="absolute -inset-1 bg-gradient-to-r from-[#9146FF]/20 to-yellow-600/20 rounded-xl blur-sm -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-[10ms]"></div>
+								<div className="absolute -inset-1 bg-gradient-to-r from-[#3B82F6]/20 to-yellow-600/20 rounded-xl blur-sm -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-[10ms]"></div>
 							</div>
 						)}
 					</div>

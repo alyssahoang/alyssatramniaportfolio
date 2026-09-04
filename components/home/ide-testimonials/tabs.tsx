@@ -35,7 +35,7 @@ const Tabs = ({
 					}}
 					className={`group flex items-center gap-1.5 pl-3 pr-1.5 py-2 font-mono text-xs whitespace-nowrap cursor-pointer border-r border-gray-800/70 border-t-2 transition-colors duration-[10ms] ${
 						isActive
-							? "bg-gray-950 text-white border-t-[#9146FF]"
+							? "bg-gray-950 text-white border-t-[#3B82F6]"
 							: "bg-gray-900/60 text-gray-400 border-t-transparent hover:text-gray-200"
 					}`}
 				>

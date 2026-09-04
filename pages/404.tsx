@@ -27,11 +27,11 @@ export default function NotFound() {
 					</h1>
 					<div className="w-full max-w-xl rounded-xl border border-gray-700/60 bg-[#282a36] text-left font-mono text-sm md:text-base leading-relaxed px-5 py-4 md:px-7 md:py-5 mb-8 overflow-x-auto">
 						<p>
-							<span className="text-[#BF94FF]">SELECT</span> *{" "}
-							<span className="text-[#BF94FF]">FROM</span> pages
+							<span className="text-[#93C5FD]">SELECT</span> *{" "}
+							<span className="text-[#93C5FD]">FROM</span> pages
 						</p>
 						<p>
-							<span className="text-[#BF94FF]">WHERE</span> path ={" "}
+							<span className="text-[#93C5FD]">WHERE</span> path ={" "}
 							<span className="text-[#34D399]">&apos;{path}&apos;</span>;
 						</p>
 						<p className="text-gray-400">-- 0 rows returned (took 4.04 ms)</p>
@@ -40,7 +40,7 @@ export default function NotFound() {
 						This page wandered off. Let&apos;s get you back to something that exists.
 					</p>
 					<Link href="/">
-						<a className="link inline-flex items-center gap-3 px-6 py-3 bg-[#9146FF] hover:bg-[#7B3FD9] text-white text-base font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-[#9146FF]/25 hover:-translate-y-0.5">
+						<a className="link inline-flex items-center gap-3 px-6 py-3 bg-[#3B82F6] hover:bg-[#2563EB] text-white text-base font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-[#3B82F6]/25 hover:-translate-y-0.5">
 							← Back to home
 						</a>
 					</Link>

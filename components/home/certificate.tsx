@@ -61,7 +61,7 @@ const CertificateSection = ({ isDesktop }: IDesktop) => {
 
 	const renderCertificate = (cert: typeof CERTIFICATES[number]): React.ReactNode => (
 		<div key={cert.name} className="cert-card group h-full">
-			<div className="card-shine h-full flex flex-col rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 shadow-xl overflow-hidden hover:border-[#9146FF]/30 hover:bg-gray-800/70 hover:shadow-[0_0_30px_-5px_rgba(145,70,255,0.2)] hover:-translate-y-2 transition-all duration-[10ms]">
+			<div className="card-shine h-full flex flex-col rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 shadow-xl overflow-hidden hover:border-[#3B82F6]/30 hover:bg-gray-800/70 hover:shadow-[0_0_30px_-5px_rgba(59, 130, 246,0.2)] hover:-translate-y-2 transition-all duration-[10ms]">
 				{/* Uniform white "stage" so badges/certificates of any shape read consistently */}
 				<div className="p-4">
 					<div className="h-52 md:h-56 w-full rounded-xl bg-white flex items-center justify-center p-5 overflow-hidden">
@@ -76,7 +76,7 @@ const CertificateSection = ({ isDesktop }: IDesktop) => {
 				</div>
 				<div className="mt-auto px-5 py-4 border-t border-gray-700/50 text-left">
 					<p className="text-white font-bold">{cert.name}</p>
-					<span className="inline-block mt-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#9146FF]/10 text-[#BF94FF] border border-[#9146FF]/20">
+					<span className="inline-block mt-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#3B82F6]/10 text-[#93C5FD] border border-[#3B82F6]/20">
 						{cert.issuer}
 					</span>
 				</div>

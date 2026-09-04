@@ -64,7 +64,7 @@ const LANGUAGE_COLORS: Record<string, string> = {
 const GITHUB_USERNAME = process.env.NEXT_PUBLIC_GITHUB_USERNAME || "alyssahoang";
 
 const PANEL_CLASSES =
-	"w-full rounded-2xl p-6 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 shadow-xl hover:border-[#9146FF]/30 hover:shadow-[0_0_30px_-5px_rgba(145,70,255,0.15)] transition-all duration-[10ms]";
+	"w-full rounded-2xl p-6 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 shadow-xl hover:border-[#3B82F6]/30 hover:shadow-[0_0_30px_-5px_rgba(59, 130, 246,0.15)] transition-all duration-[10ms]";
 
 const GitHubStats = memo(() => {
 	const [stats, setStats] = useState<GitHubStatsData | null>(null);
@@ -195,10 +195,10 @@ const GitHubStats = memo(() => {
 			className="gh-stat-card flex flex-col items-center justify-center p-4 rounded-xl hover:scale-105 transition-all duration-[10ms] cursor-pointer"
 			style={{
 				background: 'linear-gradient(135deg, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.9))',
-				border: '1px solid rgba(145, 70, 255, 0.15)',
+				border: '1px solid rgba(59, 130, 246, 0.15)',
 			}}
 		>
-			<div className="text-2xl mb-2 text-[#9146FF]">{icon}</div>
+			<div className="text-2xl mb-2 text-[#3B82F6]">{icon}</div>
 			<div className="text-2xl font-bold text-white">
 				{inView ? <CountUp end={value} duration={2} separator="," /> : <span>0</span>}
 			</div>
@@ -301,7 +301,7 @@ const GitHubStats = memo(() => {
 			>
 				<h4 className="text-sm font-medium text-gray-400 mb-4">Contribution Activity</h4>
 				<img
-					src={`https://ghchart.rshah.org/9146FF/${GITHUB_USERNAME}`}
+					src={`https://ghchart.rshah.org/3B82F6/${GITHUB_USERNAME}`}
 					alt="GitHub Contribution Calendar"
 					className="w-full h-auto rounded-lg"
 					style={{ filter: 'invert(1) hue-rotate(180deg)', opacity: 0.85 }}
