@@ -17,7 +17,7 @@ Copy `.env.example` to `.env.local` for optional analytics and GitHub-stats sett
 - Preferred: push to `main`; `.github/workflows/deploy.yml` builds and publishes to GitHub Pages.
 - Fallback (no Actions): `npm run deploy:branch` builds locally and pushes `out/` to the `gh-pages` branch.
 
-Custom domain is set by `public/CNAME`. See `PLAN.md` for hosting status and `CONTENT-PLAN.md` for the content roadmap.
+Custom domain is set by `public/CNAME`.
 
 ## Content
 
