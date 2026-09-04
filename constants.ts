@@ -186,7 +186,6 @@ export const QUOTE_STRINGS = [
 	'I help teams uncover the <span style="color:#3B82F6">story behind their data</span> and turn it into <span style="color:#3B82F6">action</span>',
 	'A good dashboard answers the question <span style="color:#3B82F6">before anyone asks it</span>',
 	'One screen, <span style="color:#3B82F6">one decision</span>. Everything else is noise',
-	'Design for the person reading at <span style="color:#3B82F6">8 a.m.</span>, not the one who built it',
 	'If a number needs a footnote, it needs a <span style="color:#3B82F6">better chart</span>',
 	'Good analysis starts with a <span style="color:#3B82F6">good question</span>',
 	'<span style="color:#3B82F6">Clarity</span> over cleverness, every time',
