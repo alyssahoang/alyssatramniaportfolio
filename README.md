@@ -25,4 +25,4 @@ All site data lives in `constants.ts` (metadata, nav, projects, skills, timeline
 
 ## Credits
 
-Built from the MIT-licensed template by [HoanqDucAnh/portfolio](https://github.com/HoanqDucAnh/portfolio), itself based on folio by Ayush Singh. See `LICENSE`.
+Built from the MIT-licensed template based on folio by Ayush Singh. See `LICENSE`.
