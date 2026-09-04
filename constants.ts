@@ -1,5 +1,5 @@
 export const METADATA = {
-	title: "Alyssa Hoang | Data Analyst",
+	title: "Alyssa Tram Anh Hoang | Data Analyst",| Data Analyst",
 	description: "Hi, I'm Alyssa, a data analyst who turns customer feedback and messy datasets into decisions teams can act on. Four years in e-commerce and consulting, two master's degrees in data science.",
 	siteUrl: "https://alyssatramnia.com",
 };
@@ -175,10 +175,9 @@ export interface ITestimonialTheme {
 export const TESTIMONIAL_THEMES: ITestimonialTheme[] = [];
 
 export const TYPED_STRINGS = [
-	'Hi, I\'m <span style="color:#9146FF">Alyssa</span> — nice to meet you',
-	'I make <span style="color:#9146FF">customer data</span> easy to act on',
-	'<span style="color:#9146FF">4+ years</span> in e-commerce & consulting analytics',
-	'Now in <span style="color:#9146FF">Warsaw</span> · MSc Data Science',
+	'<span style="color:#9146FF">Data Analyst</span>',
+	'<span style="color:#9146FF">Data Viz Consultant</span>',
+	'<span style="color:#9146FF">Customer Experience Specialist</span>',
 ];
 
 export const QUOTE_STRINGS = [

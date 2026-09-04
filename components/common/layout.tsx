@@ -4,9 +4,9 @@ import { METADATA } from "../../constants";
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Tram Anh (Alyssa) Hoang",
+  name: "Alyssa Tram Anh Hoang",
   url: METADATA.siteUrl,
-  jobTitle: "Analytics Engineer",
+  jobTitle: "Data Analyst",
   worksFor: { "@type": "Organization", name: "University of Milan" },
   sameAs: [
     "https://www.linkedin.com/in/alyssahoang/",

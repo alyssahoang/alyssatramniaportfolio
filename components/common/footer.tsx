@@ -89,13 +89,13 @@ const Footer = () => {
 		<div className="footer-col col-span-2 md:col-span-1">
 			<div className="flex items-center gap-2.5 mb-3">
 				<Image src="/logo.svg" alt="" width={26} height={26} />
-				<span className="font-bold text-lg">Alyssa Hoang</span>
+				<span className="font-bold text-lg">Alyssa Tram Anh Hoang</span>
 			</div>
 			<p className="text-sm text-white/90 mb-2 max-w-[16rem]">
 				I turn what customers say into what businesses do. Always happy to talk data.
 			</p>
 			<p className="text-sm text-white/80">
-				Data Analyst · MSc Data Science
+				Data Analyst · Data Viz Consultant · Customer Experience Specialist
 				<br />
 				Warsaw, Poland
 			</p>
@@ -157,7 +157,7 @@ const Footer = () => {
 					className={FOOTER_LINK}
 					onClick={() => { trackEvent("resume_download"); upgradeSession("resume_download"); }}
 				>
-					Download my resume ↓
+					Resume ↓
 				</a>
 			</div>
 			{renderSocialIcons()}

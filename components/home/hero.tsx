@@ -298,7 +298,7 @@ const HeroSection = React.memo(() => {
 				)}
 				<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
 					<span className="bg-gradient-to-r from-[#9146FF] via-[#BF94FF] to-[#9146FF] bg-clip-text text-transparent">
-						Tram Anh (Alyssa) Hoang
+						Alyssa Tram Anh Hoang
 					</span>
 				</h1>
 			</div>
@@ -321,7 +321,7 @@ const HeroSection = React.memo(() => {
 						<polyline points="7 10 12 15 17 10" />
 						<line x1="12" y1="15" x2="12" y2="3" />
 					</svg>
-					<span>Download my resume</span>
+					<span>Resume</span>
 				</a>
 				<a
 					ref={coffeeCtaRef}
