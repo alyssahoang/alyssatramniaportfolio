@@ -32,6 +32,8 @@
     "**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
+    "drafts",
+    "node_modules",
+    "out"
   ]
 }

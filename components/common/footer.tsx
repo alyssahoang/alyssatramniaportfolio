@@ -13,13 +13,13 @@ const EXPLORE_LINKS = [
 	{ name: "Home", ref: "home" },
 	{ name: "Skillset", ref: "skills" },
 	{ name: "Projects", ref: "works" },
-	{ name: "My Activity", ref: "activity" },
 	{ name: "Experience", ref: "timeline" },
 ];
 
-const ABOUT_LINKS = [
-	{ name: "Passion", href: "/aboutme/passion" },
-	{ name: "Reads", href: "/aboutme/reads" },
+// Hidden for now — re-enable when the About pages return from drafts/.
+const ABOUT_LINKS: Array<{ name: string; href: string }> = [
+	// { name: "Passion", href: "/aboutme/passion" },
+	// { name: "Reads", href: "/aboutme/reads" },
 ];
 
 const COLUMN_HEADING = "text-white/80 text-xs uppercase tracking-widest mb-4";
@@ -119,7 +119,7 @@ const Footer = () => {
 		</div>
 	);
 
-	const renderAbout = (): React.ReactNode => (
+	const renderAbout = (): React.ReactNode => ABOUT_LINKS.length === 0 ? null : (
 		<div className="footer-col">
 			<p className={COLUMN_HEADING}>About me</p>
 			<div className="space-y-2.5">

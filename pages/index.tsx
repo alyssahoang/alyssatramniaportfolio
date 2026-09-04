@@ -17,7 +17,6 @@ import WaveDivider from "@/components/common/wave-divider";
 // Below-the-fold sections — SSR for SEO, but the client JS chunks load lazily so
 // they don't compete with hero hydration on the main thread.
 const ProjectsSection = dynamic(() => import("@/components/home/projects"));
-const ActivitySection = dynamic(() => import("@/components/home/activity"));
 const TimelineSection = dynamic(() => import("@/components/home/timeline"));
 const CollaborationSection = dynamic(() => import("@/components/home/collaboration"));
 
@@ -89,8 +88,6 @@ export default function Home() {
 					<SkillsSection isDesktop={isDesktop} />
 					<WaveDivider flip />
 					<ProjectsSection isDesktop={isDesktop} />
-					<WaveDivider />
-					<ActivitySection />
 					<WaveDivider flip />
 					<TimelineSection isDesktop={isDesktop} />
 					<CollaborationSection />

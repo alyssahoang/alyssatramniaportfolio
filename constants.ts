@@ -114,20 +114,8 @@ export const NAVBARITEMS = [
 		ref: "works",
 	},
 	{
-		name: "My Activity",
-		ref: "activity",
-	},
-	{
 		name: "Experience",
 		ref: "timeline",
-	},
-	{
-		name: "Passion",
-		ref: "/aboutme/passion",
-	},
-	{
-		name: "Reads",
-		ref: "/aboutme/reads",
 	},
 ];
 
