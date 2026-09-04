@@ -109,7 +109,7 @@ const CollaborationSection = () => {
 
 	return (
 		<section id="contact" className={COLLABORATION_STYLE.SECTION} ref={targetSection}>
-			{renderSlidingText(" Data Analysis - BI Dashboards - Customer Insights - Market Research -  ", "ui-left")}
+			{renderSlidingText(" E-commerce · Customer Experience · Consulting · Market Intelligence ·  ", "ui-left")}
 
 			{renderTitle()}
 
@@ -130,7 +130,7 @@ const CollaborationSection = () => {
 			</div>
 
 			{renderSlidingText(
-				" Data Analysis - BI Dashboards - Customer Insights - Market Research -  ",
+				" Data Analysis · BI Dashboards · Customer Insights · Market Research ·  ",
 				"mt-6 md:mt-8 ui-right"
 			)}
 		</section>
