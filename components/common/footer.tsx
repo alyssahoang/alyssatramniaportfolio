@@ -37,11 +37,9 @@ const Footer = () => {
 		const el = footerRef.current;
 		const cols = el.querySelectorAll(".footer-col");
 		const socials = el.querySelectorAll(".footer-social");
-		const bottom = el.querySelector(".footer-bottom");
 
 		gsap.set(cols, { opacity: 0, y: 30 });
 		gsap.set(socials, { scale: 0 });
-		if (bottom) gsap.set(bottom, { opacity: 0 });
 
 		const trigger = ScrollTrigger.create({
 			trigger: el,
@@ -60,8 +58,7 @@ const Footer = () => {
 						socials,
 						{ scale: 1, duration: 0.4, ease: "back.out(2)", stagger: 0.05 },
 						"-=0.4"
-					)
-					.to(bottom, { opacity: 1, duration: 0.5, ease: "power2.out" }, "-=0.2");
+					);
 			},
 		});
 
@@ -168,24 +165,6 @@ const Footer = () => {
 		</div>
 	);
 
-	const renderBottomBar = (): React.ReactNode => (
-		<div className="footer-bottom w-full border-t border-white/20 mt-10 pt-6 flex flex-col sm:flex-row sm:justify-between gap-2 text-xs text-white/70">
-			<span>© 2026 Alyssa Tramnia</span>
-			<span>
-				Built with Next.js, Tailwind &amp; GSAP —{" "}
-				<a
-					href="https://github.com/alyssahoang/alyssatramniaportfolio"
-					target="_blank"
-					rel="noreferrer"
-					className="link underline hover:text-white"
-					onClick={() => trackEvent("footer_source_click")}
-				>
-					source on GitHub
-				</a>
-			</span>
-		</div>
-	);
-
 	return (
 		<footer
 			ref={footerRef}
@@ -209,7 +188,6 @@ const Footer = () => {
 						{renderAbout()}
 						{renderConnect()}
 					</div>
-					{renderBottomBar()}
 				</div>
 			</div>
 		</footer>
