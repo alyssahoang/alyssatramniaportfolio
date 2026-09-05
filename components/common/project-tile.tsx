@@ -7,8 +7,12 @@ import { trackEvent, setTag } from "../../utils/clarity";
 
 const getCategoryLabel = (category: string): string => {
 	switch (category) {
-		case ProjectTypes.MARKET:
-			return "Market & Social";
+		case ProjectTypes.CUSTOMER:
+			return "Customer";
+		case ProjectTypes.OPS:
+			return "Operations";
+		case ProjectTypes.MARKETS:
+			return "Markets";
 		default:
 			return category;
 	}
@@ -59,7 +63,7 @@ const ProjectTile = ({
 		name,
 		tech,
 		image,
-		category,
+		categories,
 		url,
 		gradient: [stop1, stop2],
 	} = project;
@@ -107,7 +111,7 @@ const ProjectTile = ({
 							<span
 								className={`px-3 py-1.5 text-xs font-semibold rounded-full shadow-lg ${CATEGORY_BADGE_STYLE}`}
 							>
-								{getCategoryLabel(category)}
+								{getCategoryLabel(categories[0])}
 							</span>
 						</div>
 						{/* Expand Icon */}

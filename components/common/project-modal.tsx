@@ -12,17 +12,6 @@ interface ProjectModalProps {
 	originRect?: DOMRect | null;
 }
 
-const getCategoryLabel = (category: string): string => {
-	const labels: Record<string, string> = {
-		"End-to-End Data Analytics": "Data Pipeline",
-		"BI - Dashboard - Visualization": "BI & Dashboard",
-		"Statistics - ML - AI Project": "ML & Statistics",
-		"Cloud - Infrastructure": "Cloud & Infra",
-		"Learning": "Learning",
-	};
-	return labels[category] || category;
-};
-
 const ProjectModal = ({ project, onClose, originRect }: ProjectModalProps) => {
 	const overlayRef = useRef<HTMLDivElement>(null);
 	const cardRef = useRef<HTMLDivElement>(null);
@@ -149,9 +138,16 @@ const ProjectModal = ({ project, onClose, originRect }: ProjectModalProps) => {
 				{/* Content */}
 				<div className="p-6 md:p-8 -mt-8 relative z-20">
 					{/* Category */}
-					<span className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-[#3B82F6]/20 text-[#93C5FD] mb-3">
-						{getCategoryLabel(project.category)}
-					</span>
+					<div className="flex flex-wrap gap-2 mb-3">
+						{project.categories.map((category) => (
+							<span
+								key={category}
+								className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-[#3B82F6]/20 text-[#93C5FD]"
+							>
+								{category}
+							</span>
+						))}
+					</div>
 
 					<h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
 						{project.name}

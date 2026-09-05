@@ -8,15 +8,17 @@ import { initHeadingWipe, prefersReducedMotion } from "../../utils/motion";
 
 const CATEGORIES = [
 	{ value: ProjectTypes.FEATURED, label: "Featured" },
-	{ value: ProjectTypes.CX, label: "Customer Experience" },
-	{ value: ProjectTypes.MARKET, label: "Market & Social" },
-	{ value: ProjectTypes.RISK, label: "Forecasting & Risk" },
+	{ value: ProjectTypes.CUSTOMER, label: "Customer & Marketing" },
+	{ value: ProjectTypes.RISK, label: "Risk & Credit" },
+	{ value: ProjectTypes.OPS, label: "Retail & Operations" },
+	{ value: ProjectTypes.MARKETS, label: "Markets & Media" },
 	{ value: ProjectTypes.BI, label: "BI & Dashboards" },
-	{ value: ProjectTypes.COURSEWORK, label: "Coursework" },
+	{ value: ProjectTypes.HEALTH, label: "Health" },
+	{ value: ProjectTypes.WEBAPP, label: "Web App" },
 ];
 
 const matchesCategory = (project: typeof PROJECTS[number], category: string) =>
-	category === ProjectTypes.FEATURED ? !!project.featured : project.category === category;
+	category === ProjectTypes.FEATURED ? !!project.featured : project.categories.includes(category);
 
 const ProjectsSection = ({ isDesktop }: IDesktop) => {
 	const targetSectionRef = useRef<HTMLDivElement>(null);
