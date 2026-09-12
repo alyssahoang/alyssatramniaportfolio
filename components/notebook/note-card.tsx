@@ -56,7 +56,7 @@ const NoteCard = ({ note }: { note: INote }) => {
 		<article
 			id={`note-${note.slug}`}
 			data-note-card
-			className="group flex flex-col rounded-2xl bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 p-5 md:p-6 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#3B82F6]/40 hover:shadow-[0_20px_40px_-12px_rgba(59,130,246,0.15)] scroll-mt-28"
+			className="group flex flex-col rounded-2xl bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 p-5 md:p-6 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#219190]/40 hover:shadow-[0_20px_40px_-12px_rgba(33,145,144,0).15)] scroll-mt-28"
 		>
 			<div className="flex items-center justify-between gap-3 mb-3">
 				<TopicPill topic={note.topic} />
@@ -72,7 +72,7 @@ const NoteCard = ({ note }: { note: INote }) => {
 						onClick={toggle}
 						aria-expanded={open}
 						aria-controls={bodyId}
-						className="text-left w-full group-hover:text-[#93C5FD] transition-colors duration-[10ms] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] rounded-sm"
+						className="text-left w-full group-hover:text-[#57C785] transition-colors duration-[10ms] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#219190] rounded-sm"
 					>
 						{note.title}
 					</button>
@@ -96,7 +96,7 @@ const NoteCard = ({ note }: { note: INote }) => {
 								>
 									<span
 										aria-hidden
-										className="absolute left-0 top-[0.55em] w-1.5 h-1.5 rounded-full bg-[#3B82F6]"
+										className="absolute left-0 top-[0.55em] w-1.5 h-1.5 rounded-full bg-[#219190]"
 									/>
 									{point}
 								</li>
@@ -118,7 +118,7 @@ const NoteCard = ({ note }: { note: INote }) => {
 							href={note.source.url}
 							target="_blank"
 							rel="noreferrer"
-							className="link inline-block mt-4 text-sm text-[#93C5FD] hover:text-white"
+							className="link inline-block mt-4 text-sm text-[#57C785] hover:text-white"
 							onClick={() =>
 								trackEvent("note_source_click", { note: note.slug })
 							}
@@ -148,7 +148,7 @@ const NoteCard = ({ note }: { note: INote }) => {
 						onClick={toggle}
 						aria-expanded={open}
 						aria-controls={bodyId}
-						className="flex-none text-xs font-medium text-[#93C5FD] hover:text-white transition-colors duration-[10ms]"
+						className="flex-none text-xs font-medium text-[#57C785] hover:text-white transition-colors duration-[10ms]"
 					>
 						{open ? "Show less" : "Read the reasoning"}
 						<span

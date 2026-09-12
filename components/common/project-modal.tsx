@@ -142,7 +142,7 @@ const ProjectModal = ({ project, onClose, originRect }: ProjectModalProps) => {
 						{project.categories.map((category) => (
 							<span
 								key={category}
-								className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-[#3B82F6]/20 text-[#93C5FD]"
+								className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-[#219190]/20 text-[#57C785]"
 							>
 								{category}
 							</span>
@@ -208,7 +208,7 @@ const ProjectModal = ({ project, onClose, originRect }: ProjectModalProps) => {
 										target="_blank"
 										rel="noopener noreferrer"
 										aria-label={`${techItem} — opens in new tab`}
-										className={`${chipClass} transition-colors duration-[10ms] hover:border-[#3B82F6]/40 hover:bg-gray-700/80`}
+										className={`${chipClass} transition-colors duration-[10ms] hover:border-[#219190]/40 hover:bg-gray-700/80`}
 									>
 										{content}
 									</a>
@@ -227,7 +227,7 @@ const ProjectModal = ({ project, onClose, originRect }: ProjectModalProps) => {
 							href={project.url}
 							target="_blank"
 							rel="noreferrer"
-							className="inline-flex items-center gap-2 px-6 py-3 bg-[#3B82F6] hover:bg-[#2563EB] text-white font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-[#3B82F6]/25"
+							className="inline-flex items-center gap-2 px-6 py-3 bg-[#219190] hover:bg-[#1F5673] text-white font-medium rounded-full transition-all duration-[10ms] hover:shadow-lg hover:shadow-[#219190]/25"
 							onClick={() => { trackEvent("project_view_external"); setTag("project_name", project.name); }}
 						>
 							View Project

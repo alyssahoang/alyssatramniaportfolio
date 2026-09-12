@@ -9,7 +9,7 @@ class MyDocument extends Document {
 		return (
 			<Html lang="en">
 				<Head>
-					<meta name="theme-color" content="#111827" />
+					<meta name="theme-color" content="#12151A" />
 					<link
 						rel="preload"
 						as="font"

@@ -22,7 +22,21 @@ module.exports = {
 
 			black: colors.black,
 			white: colors.white,
-			gray: colors.gray,
+			// Cool graphite grays from the "Technical / precise" UI ramp
+			// (#12151A · #1C2028 · #2B3340 · #5A6472 · #C3CAD4), filled in between.
+			gray: {
+				50: "#F4F6F8",
+				100: "#E6EAEF",
+				200: "#D5DBE2",
+				300: "#C3CAD4",
+				400: "#9AA3B0",
+				500: "#7A8494",
+				600: "#5A6472",
+				700: "#2B3340",
+				800: "#1C2028",
+				900: "#12151A",
+				950: "#0C0E12",
+			},
 			red: colors.red,
 			yellow: colors.amber,
 			green: colors.emerald,

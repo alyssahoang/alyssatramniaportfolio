@@ -57,7 +57,7 @@ interface NodeProps {
 	tech?: string;
 }
 
-const Node = ({ x, y, w, h, label, sub, name, stroke = "#3B82F6", icon, iconFilter, tech }: NodeProps) => {
+const Node = ({ x, y, w, h, label, sub, name, stroke = "#219190", icon, iconFilter, tech }: NodeProps) => {
 	// With a left-aligned icon, the text block re-centers in the space to its right.
 	const textX = x + w / 2 + (icon ? 14 : 0);
 	const group = (
@@ -98,7 +98,7 @@ const Node = ({ x, y, w, h, label, sub, name, stroke = "#3B82F6", icon, iconFilt
 				x={textX}
 				y={sub ? y + h / 2 - 3 : y + h / 2 + 4.5}
 				textAnchor="middle"
-				fill="#D1D5DB"
+				fill="#C3CAD4"
 				fontSize={14}
 				fontFamily={MONO_FONT}
 				className={LABEL_HIDDEN_MOBILE}
@@ -110,7 +110,7 @@ const Node = ({ x, y, w, h, label, sub, name, stroke = "#3B82F6", icon, iconFilt
 					x={textX}
 					y={y + h / 2 + 15}
 					textAnchor="middle"
-					fill="#6B7280"
+					fill="#7A8494"
 					fontSize={11}
 					fontFamily={MONO_FONT}
 					className={LABEL_HIDDEN_MOBILE}
@@ -128,7 +128,7 @@ const ColumnHeading = ({ x, label }: { x: number; label: string }) => (
 		x={x}
 		y={56}
 		textAnchor="middle"
-		fill="#6B7280"
+		fill="#7A8494"
 		fontSize={12}
 		letterSpacing={2.5}
 		fontFamily={MONO_FONT}
@@ -396,8 +396,8 @@ const PipelineDag = () => {
 				{/* userSpaceOnUse — bounding-box gradients are undefined (invisible)
 				    on a perfectly horizontal line, whose bbox height is 0. */}
 				<linearGradient id="pl-orch-grad" gradientUnits="userSpaceOnUse" x1={320} y1={690} x2={1230} y2={690}>
-					<stop offset="0%" stopColor="#3B82F6" />
-					<stop offset="100%" stopColor="#93C5FD" />
+					<stop offset="0%" stopColor="#219190" />
+					<stop offset="100%" stopColor="#57C785" />
 				</linearGradient>
 				{/* Rounds the Hightouch brand mark into an app-icon chip — it ships on an
 				    opaque gradient, so a sharp square would read as a light tile. */}
@@ -420,7 +420,7 @@ const PipelineDag = () => {
 						key={i}
 						d={d}
 						className="pl-edge"
-						stroke="#3B82F6"
+						stroke="#219190"
 						strokeOpacity={0.3}
 						strokeWidth={1.5}
 						fill="none"
@@ -433,7 +433,7 @@ const PipelineDag = () => {
 						key={i}
 						d={d}
 						className="pl-dashed"
-						stroke="#3B82F6"
+						stroke="#219190"
 						strokeOpacity={0.28}
 						strokeWidth={1.5}
 						strokeDasharray="5 7"
@@ -448,7 +448,7 @@ const PipelineDag = () => {
 						key={i}
 						d={d}
 						className="pl-reverse"
-						stroke="#93C5FD"
+						stroke="#57C785"
 						strokeOpacity={0.45}
 						strokeWidth={1.5}
 						strokeDasharray="2 6"
@@ -459,7 +459,7 @@ const PipelineDag = () => {
 					x={470}
 					y={112}
 					textAnchor="middle"
-					fill="#6B7280"
+					fill="#7A8494"
 					fontSize={11}
 					fontStyle="italic"
 					fontFamily={MONO_FONT}
@@ -471,7 +471,7 @@ const PipelineDag = () => {
 					x={585}
 					y={622}
 					textAnchor="middle"
-					fill="#6B7280"
+					fill="#7A8494"
 					fontSize={11}
 					fontStyle="italic"
 					fontFamily={MONO_FONT}
@@ -494,18 +494,18 @@ const PipelineDag = () => {
 				    arc returns down into the marketing APIs node. */}
 				<TechLink tech="Hightouch">
 					<g className="pl-node" data-name="rev-ht">
-						<rect x={567} y={-101} width={276} height={78} rx={15} fill="none" stroke="#93C5FD" strokeOpacity={0.12} strokeWidth={1.5} />
-						<rect x={570} y={-98} width={270} height={72} rx={12} fill="rgba(17, 24, 39, 0.65)" stroke="#93C5FD" strokeOpacity={0.55} strokeWidth={1.5} />
+						<rect x={567} y={-101} width={276} height={78} rx={15} fill="none" stroke="#57C785" strokeOpacity={0.12} strokeWidth={1.5} />
+						<rect x={570} y={-98} width={270} height={72} rx={12} fill="rgba(17, 24, 39, 0.65)" stroke="#57C785" strokeOpacity={0.55} strokeWidth={1.5} />
 						<image href="/pipeline/hightouch.png" x={590} y={-78} width={32} height={32} clipPath="url(#pl-ht-clip)" />
-						<text x={729} y={-68} textAnchor="middle" fill="#D1D5DB" fontSize={16} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+						<text x={729} y={-68} textAnchor="middle" fill="#C3CAD4" fontSize={16} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 							Hightouch
 						</text>
-						<text x={729} y={-48} textAnchor="middle" fill="#6B7280" fontSize={12} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+						<text x={729} y={-48} textAnchor="middle" fill="#7A8494" fontSize={12} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 							reverse ETL · sync audiences
 						</text>
 					</g>
 				</TechLink>
-				<polygon points="173,90 187,90 180,105" fill="#93C5FD" fillOpacity={0.7} className="pl-label" />
+				<polygon points="173,90 187,90 180,105" fill="#57C785" fillOpacity={0.7} className="pl-label" />
 
 				{/* Ingestion */}
 				<Node x={295} y={212} w={180} h={56} label="apis processor" sub="transform · standardize" name="ing-python" icon="/projects/tech/python.svg" tech="python" />
@@ -520,10 +520,10 @@ const PipelineDag = () => {
 						<text x={605} y={335} textAnchor="middle" fill="#34D399" fontSize={24} fontWeight="bold" fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 							S3
 						</text>
-						<text x={605} y={368} textAnchor="middle" fill="#6B7280" fontSize={12} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+						<text x={605} y={368} textAnchor="middle" fill="#7A8494" fontSize={12} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 							raw archive
 						</text>
-						<text x={605} y={388} textAnchor="middle" fill="#6B7280" fontSize={12} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+						<text x={605} y={388} textAnchor="middle" fill="#7A8494" fontSize={12} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 							daily partitions
 						</text>
 					</g>
@@ -535,38 +535,38 @@ const PipelineDag = () => {
 
 				{/* Warehouse + transform */}
 				<g className="pl-node" data-name="warehouse">
-					<rect x={942} y={147} width={226} height={386} rx={19} fill="none" stroke="#93C5FD" strokeOpacity={0.12} strokeWidth={1.5} />
-					<rect x={945} y={150} width={220} height={380} rx={16} fill="rgba(59, 130, 246, 0.06)" stroke="#93C5FD" strokeOpacity={0.5} strokeWidth={1.5} />
-					<text x={1055} y={192} textAnchor="middle" fill="#93C5FD" fontSize={17} fontWeight="bold" fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+					<rect x={942} y={147} width={226} height={386} rx={19} fill="none" stroke="#57C785" strokeOpacity={0.12} strokeWidth={1.5} />
+					<rect x={945} y={150} width={220} height={380} rx={16} fill="rgba(33, 145, 144, 0.06)" stroke="#57C785" strokeOpacity={0.5} strokeWidth={1.5} />
+					<text x={1055} y={192} textAnchor="middle" fill="#57C785" fontSize={17} fontWeight="bold" fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 						Redshift + dbt
 					</text>
-					<line x1={972} y1={212} x2={1138} y2={212} stroke="#3B82F6" strokeOpacity={0.3} strokeWidth={1} />
+					<line x1={972} y1={212} x2={1138} y2={212} stroke="#219190" strokeOpacity={0.3} strokeWidth={1} />
 					<TechLink tech="AWS Redshift">
 						<image href="/skills/1st/AWS%20Redshift.svg" x={988} y={232} width={20} height={20} />
-						<text x={1065} y={248} textAnchor="middle" fill="#D1D5DB" fontSize={14} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+						<text x={1065} y={248} textAnchor="middle" fill="#C3CAD4" fontSize={14} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 							Redshift
 						</text>
-						<text x={1055} y={266} textAnchor="middle" fill="#6B7280" fontSize={11.5} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+						<text x={1055} y={266} textAnchor="middle" fill="#7A8494" fontSize={11.5} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 							raw schemas + curated marts
 						</text>
 					</TechLink>
-					<line x1={972} y1={292} x2={1138} y2={292} stroke="#3B82F6" strokeOpacity={0.18} strokeWidth={1} strokeDasharray="3 5" />
+					<line x1={972} y1={292} x2={1138} y2={292} stroke="#219190" strokeOpacity={0.18} strokeWidth={1} strokeDasharray="3 5" />
 					<TechLink tech="dbt">
 						<image href="/skills/1st/dbt.svg" x={978} y={312} width={20} height={20} />
-						<text x={1065} y={328} textAnchor="middle" fill="#D1D5DB" fontSize={14} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+						<text x={1065} y={328} textAnchor="middle" fill="#C3CAD4" fontSize={14} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 							dbt models
 						</text>
-						<text x={1055} y={346} textAnchor="middle" fill="#6B7280" fontSize={11.5} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+						<text x={1055} y={346} textAnchor="middle" fill="#7A8494" fontSize={11.5} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 							stg → int → marts
 						</text>
 					</TechLink>
-					<line x1={972} y1={372} x2={1138} y2={372} stroke="#3B82F6" strokeOpacity={0.18} strokeWidth={1} strokeDasharray="3 5" />
+					<line x1={972} y1={372} x2={1138} y2={372} stroke="#219190" strokeOpacity={0.18} strokeWidth={1} strokeDasharray="3 5" />
 					<TechLink tech="Github">
 						<image href="/skills/1st/Github.svg" x={982} y={392} width={20} height={20} />
-						<text x={1065} y={408} textAnchor="middle" fill="#D1D5DB" fontSize={14} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+						<text x={1065} y={408} textAnchor="middle" fill="#C3CAD4" fontSize={14} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 							dbt CI/CD
 						</text>
-						<text x={1055} y={426} textAnchor="middle" fill="#6B7280" fontSize={11.5} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+						<text x={1055} y={426} textAnchor="middle" fill="#7A8494" fontSize={11.5} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 							PR checks · deploy
 						</text>
 					</TechLink>
@@ -576,20 +576,20 @@ const PipelineDag = () => {
 				</g>
 
 				{/* Consumers */}
-				<Node x={1225} y={197} w={200} h={56} label="RTB ML model" sub="real-time bidding" name="con-rtb" stroke="#93C5FD" icon="/pipeline/kmeans.png" iconFilter="invert(1)" />
-				<Node x={1225} y={312} w={200} h={56} label="Mode" sub="BI dashboards" name="con-mode" stroke="#93C5FD" icon="/skills/1st/Mode.svg" tech="Mode" />
-				<Node x={1225} y={427} w={200} h={56} label="Hex" sub="notebooks · ad-hoc" name="con-hex" stroke="#93C5FD" icon="/skills/1st/Hex.svg" tech="Hex" />
+				<Node x={1225} y={197} w={200} h={56} label="RTB ML model" sub="real-time bidding" name="con-rtb" stroke="#57C785" icon="/pipeline/kmeans.png" iconFilter="invert(1)" />
+				<Node x={1225} y={312} w={200} h={56} label="Mode" sub="BI dashboards" name="con-mode" stroke="#57C785" icon="/skills/1st/Mode.svg" tech="Mode" />
+				<Node x={1225} y={427} w={200} h={56} label="Hex" sub="notebooks · ad-hoc" name="con-hex" stroke="#57C785" icon="/skills/1st/Hex.svg" tech="Hex" />
 
 				{/* Orchestration bar */}
 				<path d={ORCH_PATH} className="pl-orch-line" stroke="url(#pl-orch-grad)" strokeWidth={4} strokeLinecap="round" fill="none" />
-				<polygon points="1230,678 1258,690 1230,702" fill="#93C5FD" className="pl-label" />
+				<polygon points="1230,678 1258,690 1230,702" fill="#57C785" className="pl-label" />
 				<TechLink tech="Apache Airflow">
 					<image href="/projects/tech/Apache%20Airflow.svg" x={678} y={643} width={28} height={28} />
-					<text x={790} y={664} textAnchor="middle" fill="#93C5FD" fontSize={16} fontWeight="bold" fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+					<text x={790} y={664} textAnchor="middle" fill="#57C785" fontSize={16} fontWeight="bold" fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 						Airflow on MWAA
 					</text>
 				</TechLink>
-				<text x={775} y={724} textAnchor="middle" fill="#6B7280" fontSize={12.5} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
+				<text x={775} y={724} textAnchor="middle" fill="#7A8494" fontSize={12.5} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
 					schedules ingestion · dbt runs · data-quality checks · CI/CD
 				</text>
 				<text x={720} y={768} textAnchor="middle" fill="#4B5563" fontSize={11} fontFamily={MONO_FONT} className={LABEL_HIDDEN_MOBILE}>
@@ -604,9 +604,9 @@ const PipelineDag = () => {
 						cx={0}
 						cy={0}
 						r={3.5}
-						fill="#93C5FD"
+						fill="#57C785"
 						opacity={0}
-						style={{ filter: "drop-shadow(0 0 6px #93C5FD)" }}
+						style={{ filter: "drop-shadow(0 0 6px #57C785)" }}
 					/>
 				))}
 			</g>

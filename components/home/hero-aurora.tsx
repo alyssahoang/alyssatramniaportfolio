@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 
 const AURORA_BLOBS = [
 	{
-		color: "rgba(59, 130, 246, 0.18)",
+		color: "rgba(33, 145, 144, 0.18)",
 		width: "45%",
 		height: "50%",
 		top: "5%",
@@ -11,7 +11,7 @@ const AURORA_BLOBS = [
 		animationClass: "aurora-drift-1",
 	},
 	{
-		color: "rgba(147, 197, 253, 0.14)",
+		color: "rgba(87, 199, 133, 0.14)",
 		width: "40%",
 		height: "45%",
 		top: "30%",

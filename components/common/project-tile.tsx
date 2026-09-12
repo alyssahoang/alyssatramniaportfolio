@@ -87,7 +87,7 @@ const ProjectTile = ({
 					}
 				}}
 			>
-				<div className="relative h-full rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#3B82F6]/40 hover:shadow-[0_20px_40px_-12px_rgba(59, 130, 246,0.15)] hover:-translate-y-2">
+				<div className="relative h-full rounded-2xl overflow-hidden bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#219190]/40 hover:shadow-[0_20px_40px_-12px_rgba(33,145,144,0).15)] hover:-translate-y-2">
 					{/* Image Container */}
 					<div className="relative aspect-[16/10] overflow-hidden">
 						{/* Gradient Overlay */}
@@ -137,7 +137,7 @@ const ProjectTile = ({
 					{/* Content */}
 					<div className="p-5" style={{ transform: "translateZ(20px)" }}>
 						{/* Project Name */}
-						<h3 className="text-lg font-semibold text-white mb-2 group-hover:text-[#93C5FD] transition-colors duration-[10ms] line-clamp-2">
+						<h3 className="text-lg font-semibold text-white mb-2 group-hover:text-[#57C785] transition-colors duration-[10ms] line-clamp-2">
 							{name}
 						</h3>
 
@@ -153,7 +153,7 @@ const ProjectTile = ({
 							{tech.slice(0, 5).map((techItem) => (
 								<div
 									key={techItem}
-									className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-800/80 border border-gray-700/50 transition-colors duration-[10ms] hover:border-[#3B82F6]/30 hover:bg-gray-700/80"
+									className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gray-800/80 border border-gray-700/50 transition-colors duration-[10ms] hover:border-[#219190]/30 hover:bg-gray-700/80"
 								>
 									<Image
 										src={`/projects/tech/${techItem}.${["S3", "EC2", "Lambda", "MWAA", "Terraform", "Dagster", "Flink", "Apache Iceberg", "MinIO", "Spark", "Trino", "ClickHouse", "FastAPI", "VPC"].includes(techItem) ? "webp" : "svg"}`}

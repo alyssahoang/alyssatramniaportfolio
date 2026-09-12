@@ -53,7 +53,7 @@ const NotebookFilter = ({
 							value={query}
 							onChange={(e) => onQueryChange(e.target.value)}
 							placeholder="Search notes, tags, ideas…"
-							className="w-full bg-gray-800/60 border border-gray-700/50 rounded-full pl-9 pr-4 py-2 text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:border-[#3B82F6]/60 focus:bg-gray-800 transition-colors duration-[10ms]"
+							className="w-full bg-gray-800/60 border border-gray-700/50 rounded-full pl-9 pr-4 py-2 text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:border-[#219190]/60 focus:bg-gray-800 transition-colors duration-[10ms]"
 						/>
 					</label>
 					<span
@@ -76,8 +76,8 @@ const NotebookFilter = ({
 						onClick={() => pick(null)}
 						className={`${basePill} ${
 							active === null
-								? "bg-[#3B82F6] border-[#3B82F6] text-white"
-								: "border-gray-700 text-gray-400 hover:border-[#3B82F6]/40 hover:text-gray-200"
+								? "bg-[#219190] border-[#219190] text-white"
+								: "border-gray-700 text-gray-400 hover:border-[#219190]/40 hover:text-gray-200"
 						}`}
 					>
 						All

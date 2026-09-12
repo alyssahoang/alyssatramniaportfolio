@@ -68,7 +68,7 @@ const PaletteStrip = ({
 				type="button"
 				onClick={() => copy(all, all)}
 				title="Copy all hex codes in this ramp"
-				className="flex-none text-[11px] font-medium px-2.5 py-1 rounded-md border border-gray-700 text-gray-400 hover:border-[#3B82F6]/50 hover:text-[#93C5FD] transition-colors duration-[10ms]"
+				className="flex-none text-[11px] font-medium px-2.5 py-1 rounded-md border border-gray-700 text-gray-400 hover:border-[#219190]/50 hover:text-[#57C785] transition-colors duration-[10ms]"
 			>
 				{copied === all ? "Copied ✓" : "Copy"}
 			</button>

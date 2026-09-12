@@ -41,8 +41,8 @@ const ReadsFilter = ({
 					onClick={() => pick(null)}
 					className={`${basePill} ${
 						active === null
-							? "bg-[#3B82F6] border-[#3B82F6] text-white"
-							: "border-gray-700 text-gray-400 hover:border-[#3B82F6]/40 hover:text-gray-200"
+							? "bg-[#219190] border-[#219190] text-white"
+							: "border-gray-700 text-gray-400 hover:border-[#219190]/40 hover:text-gray-200"
 					}`}
 				>
 					All

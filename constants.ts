@@ -183,20 +183,20 @@ export interface ITestimonialTheme {
 export const TESTIMONIAL_THEMES: ITestimonialTheme[] = [];
 
 export const TYPED_STRINGS = [
-	'<span style="color:#3B82F6">Data Analyst</span>',
-	'<span style="color:#3B82F6">Analytics Engineer</span>',
-	'<span style="color:#3B82F6">Data Viz Consultant</span>',
-	'<span style="color:#3B82F6">Customer Insights Analyst</span>',
-	'<span style="color:#3B82F6">Customer Experience Specialist</span>',
+	'<span style="color:#219190">Data Analyst</span>',
+	'<span style="color:#219190">Analytics Engineer</span>',
+	'<span style="color:#219190">Data Viz Consultant</span>',
+	'<span style="color:#219190">Customer Insights Analyst</span>',
+	'<span style="color:#219190">Customer Experience Specialist</span>',
 ];
 
 export const QUOTE_STRINGS = [
-	'I help teams uncover the <span style="color:#3B82F6">story behind their data</span> and turn it into <span style="color:#3B82F6">action</span>',
-	'A good dashboard answers the question <span style="color:#3B82F6">before anyone asks it</span>',
-	'One screen, <span style="color:#3B82F6">one decision</span>. Everything else is noise',
-	'If a number needs a footnote, it needs a <span style="color:#3B82F6">better chart</span>',
-	'Good analysis starts with a <span style="color:#3B82F6">good question</span>',
-	'<span style="color:#3B82F6">Clarity</span> over cleverness, every time',
+	'I help teams uncover the <span style="color:#219190">story behind their data</span> and turn it into <span style="color:#219190">action</span>',
+	'A good dashboard answers the question <span style="color:#219190">before anyone asks it</span>',
+	'One screen, <span style="color:#219190">one decision</span>. Everything else is noise',
+	'If a number needs a footnote, it needs a <span style="color:#219190">better chart</span>',
+	'Good analysis starts with a <span style="color:#219190">good question</span>',
+	'<span style="color:#219190">Clarity</span> over cleverness, every time',
 ];
 
 export const SOCIAL_LINKS = {
@@ -236,7 +236,7 @@ export const PROJECTS: IProject[] = [
 		categories: [ProjectTypes.CUSTOMER, ProjectTypes.WEBAPP],
 		image: "/projects/review-map.png",
 		description: "I read 36K+ e-commerce reviews so nobody else has to. The result is an interactive map of where customers get frustrated, and what to fix first.",
-		gradient: ["#172554", "#3B82F6"],
+		gradient: ["#1B2A4A", "#219190"],
 		url: "https://interactive-customer-review-map.streamlit.app/",
 		tech: ["python", "streamlit", "Pandas"],
 		fullDescription: "Unstructured feedback is where the real customer voice lives, but no team has time to read 36,000 reviews. I cleaned and clustered them with NLP, then built a Streamlit app that lets a CX team browse the recurring pain points by theme, product and severity, and decide what to fix first.",
@@ -260,7 +260,7 @@ export const PROJECTS: IProject[] = [
 		categories: [ProjectTypes.BI],
 		image: "/projects/global-store.gif",
 		description: "An executive dashboard for a retailer in seven markets. Sales grew 51.5%, but the repurchase rate fell, and the biggest market was not the most profitable.",
-		gradient: ["#172554", "#3B82F6"],
+		gradient: ["#1B2A4A", "#219190"],
 		url: "https://mavenanalytics.io/projects/57600",
 		tech: ["PowerBI"],
 		fullDescription: "Global Superstore sells across APAC, the EU, the US and more. I modelled four years of sales, profit and customer transactions into one Power BI view: KPI scorecards with period-over-period change, a map paired with a share-of-sales versus profit-margin chart, and a product scatter that isolates high-revenue, low-profit outliers. Sales reached $13M and profit $1.5M, yet the repurchase rate dropped to 36.3%, APAC led on share but trailed on margin, and Tables lost money on every sale.",
@@ -353,7 +353,7 @@ export const PROJECTS: IProject[] = [
 		categories: [ProjectTypes.OPS],
 		image: "/projects/delivery.png",
 		description: "93,853 Olist orders in a multilevel model with seller and destination random effects. Routing dominates, and a quarter of the variance still sits with who ships and where.",
-		gradient: ["#1e3a8a", "#60a5fa"],
+		gradient: ["#1B2A4A", "#57C785"],
 		url: "https://github.com/alyssahoang/olist-delivery-lead-time-multilevel",
 		tech: ["R"],
 		fullDescription: "Random intercepts for sellers and customer states, a ladder of fixed effects for routing, shipment profile, season and product theme, then shipment-regime clusters and their interactions. Same-state shipments are about 17% faster; freight intensity is the strongest positive driver; 26% of variance remains above the order level after all controls. Robust fits, trimming, region-specific refits and bootstrap intervals all keep the same ordering of effects.",
@@ -709,7 +709,7 @@ export const READ_CATEGORY_COLORS: Record<string, string> = {
 };
 
 export const readCategoryColor = (category: string): string =>
-	READ_CATEGORY_COLORS[category] ?? "#93C5FD";
+	READ_CATEGORY_COLORS[category] ?? "#57C785";
 
 // Shown in the reads hero — bump manually when the lists change, same
 // discipline as VERSION.md.
@@ -742,7 +742,7 @@ export const NOTEBOOK_TOPIC_COLORS: Record<string, string> = {
 };
 
 export const notebookTopicColor = (topic: string): string =>
-	NOTEBOOK_TOPIC_COLORS[topic] ?? "#93C5FD";
+	NOTEBOOK_TOPIC_COLORS[topic] ?? "#57C785";
 
 export interface INote {
 	/** Stable anchor id — deep-linkable as /notebook/#note-<slug>. */

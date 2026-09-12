@@ -6,7 +6,7 @@ import { trackEvent } from "../../utils/clarity";
 // full literal strings so Tailwind's scanner generates them.
 const PULSE_CLASSES = [
 	"ring-2",
-	"ring-[#3B82F6]",
+	"ring-[#219190]",
 	"ring-offset-2",
 	"ring-offset-gray-900",
 ];
@@ -67,12 +67,12 @@ const NotebookHero = ({
 			{/* Decorative glow — pure depth, hidden from the a11y tree */}
 			<div
 				aria-hidden
-				className="pointer-events-none absolute -top-24 -left-16 w-[28rem] h-[28rem] rounded-full bg-[#3B82F6]/20 blur-[120px]"
+				className="pointer-events-none absolute -top-24 -left-16 w-[28rem] h-[28rem] rounded-full bg-[#219190]/20 blur-[120px]"
 			/>
 
 			<div className="relative z-10 flex flex-col">
 				<p
-					className={`text-[#93C5FD] text-sm md:text-base font-medium tracking-[0.25em] uppercase mb-4 ${reveal(
+					className={`text-[#57C785] text-sm md:text-base font-medium tracking-[0.25em] uppercase mb-4 ${reveal(
 						"delay-200"
 					)}`}
 				>
@@ -86,7 +86,7 @@ const NotebookHero = ({
 					Notebook
 				</h1>
 				<div
-					className={`h-1 mt-6 rounded-full bg-gradient-to-r from-[#3B82F6] to-[#93C5FD] transition-[width,opacity] duration-700 delay-500 ease-out ${
+					className={`h-1 mt-6 rounded-full bg-gradient-to-r from-[#219190] to-[#57C785] transition-[width,opacity] duration-700 delay-500 ease-out ${
 						loaded ? "w-24 opacity-100" : "w-0 opacity-0"
 					}`}
 				/>
@@ -110,7 +110,7 @@ const NotebookHero = ({
 							<button
 								type="button"
 								onClick={randomNote}
-								className="font-mono text-sm text-[#93C5FD] bg-[#3B82F6]/10 border border-[#3B82F6]/30 rounded-lg px-4 py-2 hover:border-[#3B82F6]/60 hover:bg-[#3B82F6]/20 transition-all duration-[10ms]"
+								className="font-mono text-sm text-[#57C785] bg-[#219190]/10 border border-[#219190]/30 rounded-lg px-4 py-2 hover:border-[#219190]/60 hover:bg-[#219190]/20 transition-all duration-[10ms]"
 							>
 								<span aria-hidden>🎲 </span>Open a note at random
 							</button>

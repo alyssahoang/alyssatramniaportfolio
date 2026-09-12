@@ -28,14 +28,14 @@ const PaletteCard = ({ card }: { card: IPaletteCard }) => {
 		<article
 			id={`palette-${card.slug}`}
 			data-palette-card
-			className="rounded-2xl bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 p-5 md:p-6 scroll-mt-28 transition-colors duration-[10ms] hover:border-[#3B82F6]/30"
+			className="rounded-2xl bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 p-5 md:p-6 scroll-mt-28 transition-colors duration-[10ms] hover:border-[#219190]/30"
 		>
 			<div className="flex flex-wrap items-baseline gap-x-3 gap-y-2">
 				<h3 className="font-bold text-white text-lg md:text-xl">
 					{card.title}
 				</h3>
 				{card.tag && (
-					<span className="flex-none text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-[#3B82F6]/15 text-[#93C5FD] border border-[#3B82F6]/25">
+					<span className="flex-none text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-[#219190]/15 text-[#57C785] border border-[#219190]/25">
 						{card.tag}
 					</span>
 				)}

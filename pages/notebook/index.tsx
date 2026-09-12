@@ -168,7 +168,7 @@ export default function Notebook() {
 											setActiveTopic(null);
 											setQuery("");
 										}}
-										className="mt-4 text-sm font-medium text-[#93C5FD] hover:text-white transition-colors duration-[10ms]"
+										className="mt-4 text-sm font-medium text-[#57C785] hover:text-white transition-colors duration-[10ms]"
 									>
 										Clear the filters
 									</button>

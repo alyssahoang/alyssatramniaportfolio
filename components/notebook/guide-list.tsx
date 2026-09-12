@@ -41,7 +41,7 @@ const GuideList = ({
 					return (
 						<Link href={`/notebook/${guide.slug}`} key={guide.slug}>
 							<a
-								className="group block rounded-2xl bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 p-5 md:p-6 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#3B82F6]/40 hover:shadow-[0_20px_40px_-12px_rgba(59,130,246,0).15)] hover:-translate-y-1"
+								className="group block rounded-2xl bg-gray-900/80 backdrop-blur-sm border border-gray-800/50 p-5 md:p-6 transition-all duration-[10ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:border-[#219190]/40 hover:shadow-[0_20px_40px_-12px_rgba(33,145,144,0).15)] hover:-translate-y-1"
 								onClick={() =>
 									trackEvent("guide_click", { guide: guide.slug })
 								}
@@ -61,7 +61,7 @@ const GuideList = ({
 										{guide.date}
 									</span>
 								</div>
-								<h4 className="font-bold text-white group-hover:text-[#93C5FD] transition-colors duration-[10ms] leading-snug text-lg md:text-xl">
+								<h4 className="font-bold text-white group-hover:text-[#57C785] transition-colors duration-[10ms] leading-snug text-lg md:text-xl">
 									{guide.title}
 								</h4>
 								<p className="text-sm text-gray-400 leading-relaxed mt-2.5">
@@ -73,7 +73,7 @@ const GuideList = ({
 											{guide.meta}
 										</span>
 									)}
-									<span className="flex-none text-xs font-medium text-[#93C5FD]">
+									<span className="flex-none text-xs font-medium text-[#57C785]">
 										Open the sheet
 										<span
 											aria-hidden

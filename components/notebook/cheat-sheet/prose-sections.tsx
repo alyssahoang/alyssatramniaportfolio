@@ -39,7 +39,7 @@ const Numbered = ({
 	<div className="flex gap-4">
 		<span
 			aria-hidden
-			className="flex-none w-7 h-7 rounded-full bg-[#3B82F6]/15 border border-[#3B82F6]/30 text-[#93C5FD] text-xs font-bold flex items-center justify-center mt-0.5"
+			className="flex-none w-7 h-7 rounded-full bg-[#219190]/15 border border-[#219190]/30 text-[#57C785] text-xs font-bold flex items-center justify-center mt-0.5"
 		>
 			{n}
 		</span>
@@ -63,7 +63,7 @@ export const HowToUse = () => {
 				<span className="font-semibold text-white">How to use this</span>
 				<span
 					aria-hidden
-					className={`text-[#93C5FD] transition-transform duration-200 ${
+					className={`text-[#57C785] transition-transform duration-200 ${
 						open ? "rotate-180" : ""
 					}`}
 				>
@@ -79,7 +79,7 @@ export const HowToUse = () => {
 						>
 							<span
 								aria-hidden
-								className="absolute left-0 top-[0.55em] w-1.5 h-1.5 rounded-full bg-[#3B82F6]/70"
+								className="absolute left-0 top-[0.55em] w-1.5 h-1.5 rounded-full bg-[#219190]/70"
 							/>
 							{line}
 						</li>
@@ -98,7 +98,7 @@ export const DecisionGates = () => (
 					<p className="text-sm text-gray-400 leading-relaxed mt-2">
 						{gate.detail}
 					</p>
-					<p className="text-sm text-[#93C5FD] leading-relaxed mt-3 flex gap-2">
+					<p className="text-sm text-[#57C785] leading-relaxed mt-3 flex gap-2">
 						<span aria-hidden className="flex-none">
 							→
 						</span>
@@ -107,7 +107,7 @@ export const DecisionGates = () => (
 				</Numbered>
 			</div>
 		))}
-		<p className="text-sm md:text-base text-gray-300 leading-relaxed border-l-2 border-[#3B82F6]/50 pl-4 md:pl-5 py-1">
+		<p className="text-sm md:text-base text-gray-300 leading-relaxed border-l-2 border-[#219190]/50 pl-4 md:pl-5 py-1">
 			{GRAY_INSIGHT}
 		</p>
 	</div>
@@ -225,7 +225,7 @@ export const FiveDials = () => (
 			<h3 className="font-bold text-white text-lg">
 				Derive your own: the five dials
 			</h3>
-			<span className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-[#3B82F6]/15 text-[#93C5FD] border border-[#3B82F6]/25">
+			<span className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-[#219190]/15 text-[#57C785] border border-[#219190]/25">
 				mechanism
 			</span>
 		</div>
@@ -280,7 +280,7 @@ export const References = () => {
 					});
 				}}
 				aria-expanded={open}
-				className="mt-4 text-sm font-medium text-[#93C5FD] hover:text-white transition-colors duration-[10ms]"
+				className="mt-4 text-sm font-medium text-[#57C785] hover:text-white transition-colors duration-[10ms]"
 			>
 				{open ? "Show less" : `Show all ${total} sources`}
 				<span
@@ -320,7 +320,7 @@ export const References = () => {
 													href={ref.url}
 													target="_blank"
 													rel="noreferrer"
-													className="link inline-block font-mono text-[11px] text-[#93C5FD]/80 hover:text-[#93C5FD] mt-1 break-all"
+													className="link inline-block font-mono text-[11px] text-[#57C785]/80 hover:text-[#57C785] mt-1 break-all"
 												>
 													{ref.url}
 												</a>

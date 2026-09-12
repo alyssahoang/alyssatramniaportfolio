@@ -154,12 +154,12 @@ export default function ColorCheatSheet() {
 				<section className="w-full relative select-none section-container pt-32 md:pt-40 pb-8 md:pb-10 overflow-hidden">
 					<div
 						aria-hidden
-						className="pointer-events-none absolute -top-24 -left-16 w-[28rem] h-[28rem] rounded-full bg-[#3B82F6]/20 blur-[120px]"
+						className="pointer-events-none absolute -top-24 -left-16 w-[28rem] h-[28rem] rounded-full bg-[#219190]/20 blur-[120px]"
 					/>
 					<div className="relative z-10 flex flex-col">
 						<Link href="/notebook">
 							<a
-								className={`link text-xs uppercase tracking-[0.2em] text-gray-500 hover:text-[#93C5FD] w-fit mb-5 ${reveal(
+								className={`link text-xs uppercase tracking-[0.2em] text-gray-500 hover:text-[#57C785] w-fit mb-5 ${reveal(
 									"delay-100"
 								)}`}
 								onClick={() => trackEvent("cheat_sheet_back_to_notebook")}
@@ -168,7 +168,7 @@ export default function ColorCheatSheet() {
 							</a>
 						</Link>
 						<p
-							className={`text-[#93C5FD] text-sm md:text-base font-medium tracking-[0.25em] uppercase mb-4 ${reveal(
+							className={`text-[#57C785] text-sm md:text-base font-medium tracking-[0.25em] uppercase mb-4 ${reveal(
 								"delay-200"
 							)}`}
 						>
@@ -182,7 +182,7 @@ export default function ColorCheatSheet() {
 							{CHEAT_SHEET_META.title}
 						</h1>
 						<div
-							className={`h-1 mt-6 rounded-full bg-gradient-to-r from-[#3B82F6] to-[#93C5FD] transition-[width,opacity] duration-700 delay-500 ease-out ${
+							className={`h-1 mt-6 rounded-full bg-gradient-to-r from-[#219190] to-[#57C785] transition-[width,opacity] duration-700 delay-500 ease-out ${
 								loaded ? "w-24 opacity-100" : "w-0 opacity-0"
 							}`}
 						/>
@@ -215,7 +215,7 @@ export default function ColorCheatSheet() {
 							<a
 								key={s.id}
 								href={`#${s.id}`}
-								className="link flex-none text-xs font-medium px-3 py-1.5 rounded-full border border-gray-700/70 text-gray-400 hover:border-[#3B82F6]/50 hover:text-[#93C5FD] whitespace-nowrap transition-colors duration-[10ms]"
+								className="link flex-none text-xs font-medium px-3 py-1.5 rounded-full border border-gray-700/70 text-gray-400 hover:border-[#219190]/50 hover:text-[#57C785] whitespace-nowrap transition-colors duration-[10ms]"
 								onClick={() =>
 									trackEvent("cheat_sheet_jump", { section: s.id })
 								}
