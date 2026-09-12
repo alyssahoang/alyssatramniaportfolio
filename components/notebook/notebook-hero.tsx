@@ -15,11 +15,13 @@ const PULSE_CLASSES = [
 // choreography as the Reads hero (a `loaded` flag driving a staggered
 // fade/translate-up) so the two secondary pages feel like siblings.
 const NotebookHero = ({
-	noteCount,
-	topicCount,
+	stats = [],
+	showShuffle = false,
 }: {
-	noteCount: number;
-	topicCount: number;
+	/** Short meta fragments joined with "·" under the tagline. */
+	stats?: string[];
+	/** Only offered when there are note cards on the page to shuffle to. */
+	showShuffle?: boolean;
 }) => {
 	const [loaded, setLoaded] = useState(false);
 	const pulseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -93,28 +95,33 @@ const NotebookHero = ({
 						"delay-700"
 					)}`}
 				>
-					Notes I keep as I learn data science — the ideas that took me a
-					second pass to understand, and the mistakes I would rather not make
-					twice.
+					Everything I learn about data science, written down before I forget
+					it.
 				</p>
-				<div
-					className={`flex flex-wrap items-center gap-x-5 gap-y-3 mt-8 ${reveal(
-						"delay-1000"
-					)}`}
-				>
-					<button
-						type="button"
-						onClick={randomNote}
-						className="font-mono text-sm text-[#93C5FD] bg-[#3B82F6]/10 border border-[#3B82F6]/30 rounded-lg px-4 py-2 hover:border-[#3B82F6]/60 hover:bg-[#3B82F6]/20 transition-all duration-[10ms]"
+				{/* The shuffle chip needs note cards to jump to, and the counts need
+				    something to count — an empty notebook shows neither. */}
+				{(showShuffle || stats.length > 0) && (
+					<div
+						className={`flex flex-wrap items-center gap-x-5 gap-y-3 mt-8 ${reveal(
+							"delay-1000"
+						)}`}
 					>
-						<span aria-hidden>🎲 </span>Open a note at random
-					</button>
-					<span className="text-xs uppercase tracking-[0.15em] text-gray-500">
-						{noteCount} {noteCount === 1 ? "note" : "notes"} · {topicCount}{" "}
-						{topicCount === 1 ? "topic" : "topics"} · updated{" "}
-						{NOTEBOOK_LAST_UPDATED}
-					</span>
-				</div>
+						{showShuffle && (
+							<button
+								type="button"
+								onClick={randomNote}
+								className="font-mono text-sm text-[#93C5FD] bg-[#3B82F6]/10 border border-[#3B82F6]/30 rounded-lg px-4 py-2 hover:border-[#3B82F6]/60 hover:bg-[#3B82F6]/20 transition-all duration-[10ms]"
+							>
+								<span aria-hidden>🎲 </span>Open a note at random
+							</button>
+						)}
+						{stats.length > 0 && (
+							<span className="text-xs uppercase tracking-[0.15em] text-gray-500">
+								{stats.join(" · ")} · updated {NOTEBOOK_LAST_UPDATED}
+							</span>
+						)}
+					</div>
+				)}
 			</div>
 		</section>
 	);

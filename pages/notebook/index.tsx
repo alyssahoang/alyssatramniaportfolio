@@ -3,13 +3,14 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-import { METADATA, NOTES } from "../constants";
+import { METADATA, NOTEBOOK_GUIDES, NOTES } from "../../constants";
 import Layout from "@/components/common/layout";
 import Header from "@/components/common/header";
 import ProgressIndicator from "@/components/common/progress-indicator";
 import NotebookHero from "@/components/notebook/notebook-hero";
 import NotebookFilter, { ITopicCount } from "@/components/notebook/notebook-filter";
 import NotebookList from "@/components/notebook/notebook-list";
+import GuideList from "@/components/notebook/guide-list";
 import CollaborationSection from "@/components/home/collaboration";
 import Footer from "@/components/common/footer";
 import Scripts from "@/components/common/scripts";
@@ -22,8 +23,9 @@ if (typeof window !== "undefined") {
 
 const DEBOUNCE_TIME = 100;
 
+// Echoes the hero line, but keeps the topic keywords a search engine needs.
 const DESCRIPTION =
-	"Notes I keep while learning data science — SQL, statistics, machine learning, data modelling and the mistakes worth remembering.";
+	"Everything I learn about data science, written down before I forget it — working notes on SQL, statistics, machine learning and data modelling.";
 
 export default function Notebook() {
 	const resizeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -99,6 +101,17 @@ export default function Notebook() {
 	);
 
 	const isFiltering = activeTopic !== null || query.trim().length > 0;
+	const noNotes = NOTES.length === 0;
+
+	const stats: string[] = [];
+	if (NOTEBOOK_GUIDES.length)
+		stats.push(
+			`${NOTEBOOK_GUIDES.length} cheat ${
+				NOTEBOOK_GUIDES.length === 1 ? "sheet" : "sheets"
+			}`
+		);
+	if (NOTES.length)
+		stats.push(`${NOTES.length} ${NOTES.length === 1 ? "note" : "notes"}`);
 
 	return (
 		<Layout
@@ -112,36 +125,57 @@ export default function Notebook() {
 			<ProgressIndicator />
 			<main className="flex-col flex">
 				{renderBackdrop()}
-				<NotebookHero noteCount={NOTES.length} topicCount={topics.length} />
-				<NotebookFilter
-					topics={topics}
-					active={activeTopic}
-					onTopicChange={handleTopic}
-					query={query}
-					onQueryChange={handleQuery}
-					resultCount={notes.length}
-				/>
-				{notes.length > 0 ? (
-					<NotebookList notes={notes} animate={!touched} />
-				) : (
-					<div className="section-container text-center py-16 md:py-24">
-						<p className="text-gray-400">
-							No note matches that yet
-							{query.trim() ? ` — nothing for "${query.trim()}"` : ""}.
-						</p>
-						{isFiltering && (
-							<button
-								type="button"
-								onClick={() => {
-									setActiveTopic(null);
-									setQuery("");
-								}}
-								className="mt-4 text-sm font-medium text-[#93C5FD] hover:text-white transition-colors duration-[10ms]"
-							>
-								Clear the filters
-							</button>
-						)}
+				<NotebookHero stats={stats} showShuffle={NOTES.length > 0} />
+
+				<GuideList guides={NOTEBOOK_GUIDES} />
+
+				{/* Three states for the notes: none written yet (no controls to show),
+				    notes that match, and notes that exist but not for this filter. */}
+				{noNotes ? (
+					<div className="section-container py-12 md:py-20">
+						<div className="rounded-2xl border border-dashed border-gray-700/60 bg-gray-900/40 px-6 py-12 md:py-16 text-center">
+							<p className="text-gray-300 text-lg">
+								The first short notes are on their way.
+							</p>
+							<p className="text-sm text-gray-500 mt-2 max-w-md mx-auto leading-relaxed">
+								I am writing them up as I go — the cheat sheet above is the
+								first thing to land.
+							</p>
+						</div>
 					</div>
+				) : (
+					<>
+						<NotebookFilter
+							topics={topics}
+							active={activeTopic}
+							onTopicChange={handleTopic}
+							query={query}
+							onQueryChange={handleQuery}
+							resultCount={notes.length}
+						/>
+						{notes.length > 0 ? (
+							<NotebookList notes={notes} animate={!touched} />
+						) : (
+							<div className="section-container text-center py-16 md:py-24">
+								<p className="text-gray-400">
+									No note matches that yet
+									{query.trim() ? ` — nothing for "${query.trim()}"` : ""}.
+								</p>
+								{isFiltering && (
+									<button
+										type="button"
+										onClick={() => {
+											setActiveTopic(null);
+											setQuery("");
+										}}
+										className="mt-4 text-sm font-medium text-[#93C5FD] hover:text-white transition-colors duration-[10ms]"
+									>
+										Clear the filters
+									</button>
+								)}
+							</div>
+						)}
+					</>
 				)}
 				<CollaborationSection />
 				<Footer />
