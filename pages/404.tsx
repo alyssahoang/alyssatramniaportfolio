@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
+import { METADATA } from "../constants";
 import Layout from "@/components/common/layout";
 import Header from "@/components/common/header";
 import Footer from "@/components/common/footer";
@@ -18,7 +19,7 @@ export default function NotFound() {
 
 	return (
 		<>
-			<Layout title="404 — Page not found | Alyssa Hoang">
+			<Layout title={`404 — Page not found — ${METADATA.title}`}>
 				<Header />
 				<div className="fixed top-0 left-0 h-screen w-screen bg-gray-900 -z-1"></div>
 				<main className="section-container min-h-screen flex flex-col items-center justify-center text-center select-none py-24">

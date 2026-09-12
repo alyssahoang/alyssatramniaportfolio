@@ -1,5 +1,7 @@
 export const METADATA = {
-	title: "Alyssa Tram Anh H. | Data Analyst",
+	// The site name: browser tab, search results, og:site_name, and the suffix
+	// on every per-page title ("Notebook — Alyssa Tramnia").
+	title: "Alyssa Tramnia",
 	description: "I help teams uncover the story behind their data and turn it into action. Data analyst with four years in e-commerce and consulting and two master's degrees in data science.",
 	siteUrl: "https://alyssatramnia.com",
 };
