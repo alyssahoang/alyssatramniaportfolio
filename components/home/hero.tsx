@@ -11,7 +11,7 @@ import { isSmallScreen } from "pages";
 import { trackEvent, setTag, upgradeSession } from "../../utils/clarity";
 import { initMagneticHover } from "../../utils/motion";
 
-const HeroImage = dynamic(() => import("./hero-image"), { ssr: false });
+const HeroJourney = dynamic(() => import("./hero-journey"), { ssr: false });
 
 // Visitor counter (optional). Provide your own Firebase web-app config via
 // NEXT_PUBLIC_FIREBASE_* env vars; when NEXT_PUBLIC_FIREBASE_PROJECT_ID is unset
@@ -86,12 +86,17 @@ const countview = async (
 };
 
 const HERO_STYLES = {
+	// Below lg the journey map stacks under the text in normal flow; from lg up
+	// the text and the map sit side by side.
 	SECTION:
-		"w-full flex md:items-center py-8 section-container min-h-[85vh] md:min-h-screen relative mb-6 md:mb-12",
+		"w-full flex flex-col justify-center lg:flex-row lg:justify-start lg:items-center py-8 section-container min-h-[85vh] md:min-h-screen relative mb-6 md:mb-12",
 	CONTENT: "font-medium flex flex-col pt-20 sm:pt-24 md:pt-0 select-none relative z-10",
 	SOCIAL_LINK: "link hover:opacity-90 hover:scale-110 transition-all duration-[10ms] md:mr-4 mr-2",
+	// From lg up the map takes its own right-hand column (stretching the hero
+	// height and centring the map) instead of sitting behind the name. The
+	// column narrows on smaller desktops so the name never runs into it.
 	BG_WRAPPER:
-		"absolute hero-bg right-0 md:bottom-0 bottom-8 -z-1 md:w-3/4 w-full scale-125 sm:scale-100 flex items-end",
+		"hero-bg relative mt-10 w-full flex justify-center -z-1 pointer-events-none lg:mt-0 lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-[46%] xl:w-[56%] 2xl:w-[58%] lg:items-center",
 	TYPED_SPAN: "text-xl sm:text-2xl md:text-3xl seq",
 };
 
@@ -261,7 +266,7 @@ const HeroSection = React.memo(() => {
 	}, []);
 
 	const renderBackgroundImage = (): React.ReactNode => (
-		<div ref={bgWrapperRef} className={HERO_STYLES.BG_WRAPPER} style={{ maxHeight: "650px" }}>
+		<div ref={bgWrapperRef} className={HERO_STYLES.BG_WRAPPER}>
 			<div
 				className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full animate-glow-pulse pointer-events-none"
 				style={{
@@ -269,7 +274,9 @@ const HeroSection = React.memo(() => {
 					filter: "blur(60px)",
 				}}
 			/>
-			<HeroImage />
+			<div className="relative w-full">
+				<HeroJourney />
+			</div>
 		</div>
 	);
 
@@ -298,7 +305,7 @@ const HeroSection = React.memo(() => {
 				)}
 				<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
 					<span className="bg-gradient-to-r from-[#219190] via-[#57C785] to-[#219190] bg-clip-text text-transparent">
-						Alyssa Tram Anh H.
+						Alyssa Tramnia
 					</span>
 				</h1>
 			</div>

@@ -190,6 +190,29 @@ export const TYPED_STRINGS = [
 	'<span style="color:#219190">Customer Experience Specialist</span>',
 ];
 
+export interface IJourneyStop {
+	year: string;
+	place: string;
+	role: string;
+}
+
+// Checkpoints on the hero journey map, oldest first. Mirrors TIMELINE, so
+// update both together. Each stop's spot on the map (and the scenery around
+// it) lives in components/home/hero-journey.tsx, matched by index.
+export const HERO_JOURNEY: IJourneyStop[] = [
+	{ year: "2011", place: "Hanoi", role: "BA English for Finance & Banking" },
+	{ year: "2018", place: "Accenture", role: "Project Quality Lead" },
+	{ year: "2020", place: "Lazada", role: "Vendor Performance Supervisor" },
+	{ year: "2022", place: "Lazada", role: "Customer Experience Analyst" },
+	{ year: "2023", place: "Lazada", role: "Data Analyst, Regional CX" },
+	{ year: "2024", place: "Vero", role: "Senior Data & Insights Analyst" },
+	{ year: "2024", place: "Warsaw", role: "MSc Data Science & Business Analytics" },
+	{ year: "2025", place: "Milan", role: "MSc Data Science in Economics & Health" },
+];
+
+// Label on the signpost at the foggy edge of the map.
+export const HERO_JOURNEY_NEXT = "Next: coming soon";
+
 export const QUOTE_STRINGS = [
 	'I help teams uncover the <span style="color:#219190">story behind their data</span> and turn it into <span style="color:#219190">action</span>',
 	'A good dashboard answers the question <span style="color:#219190">before anyone asks it</span>',
