@@ -1,6 +1,6 @@
 // Content for the colour cheat sheet at /notebook/color-cheat-sheet/.
 //
-// Ported from the standalone HTML sheet in 01_Design Template/color-palette.
+// Ported from the standalone HTML sheet in Social-Content-Sites/Colors.
 // The wording is carried over as written; only the presentation changed. The
 // palette tables live next door in color-cheat-sheet-palettes.ts because they
 // were transcribed mechanically.
@@ -54,6 +54,14 @@ export interface IDecisionGate {
 	detail: string;
 	/** The recommendation this gate leads to. */
 	answer: string;
+	/** Illustrated ✗ / ✓ pair under the gate; captions as written. */
+	examples?: Array<{
+		tone: "bad" | "good";
+		label: string;
+		caption: string;
+		/** Italic tail of the caption, e.g. "look here". */
+		emphasis?: string;
+	}>;
 }
 
 export const DECISION_GATES: IDecisionGate[] = [
@@ -64,6 +72,20 @@ export const DECISION_GATES: IDecisionGate[] = [
 			"Bar charts, columns, dot plots — the axis has already done the work. Adding a hue per category spends color on information the reader can already see.",
 		answer:
 			"Gray everything, one accent hue on the series you're talking about.",
+		examples: [
+			{
+				tone: "bad",
+				label: "color spent on nothing",
+				caption:
+					"Six hues encode what the axis already says. Color is now unavailable for anything meaningful.",
+			},
+			{
+				tone: "good",
+				label: "gray + one accent",
+				caption: "Position does the separating. Color is saved to say one thing:",
+				emphasis: "look here",
+			},
+		],
 	},
 	{
 		n: 2,
@@ -139,6 +161,8 @@ export interface IRule {
 	/** Labels for the two mini examples. */
 	bad: string;
 	good: string;
+	/** Which ✗ / ✓ drawing illustrates the rule (see cheat-sheet/illustrations). */
+	illustration: "budget" | "scarcity" | "order";
 }
 
 export const THREE_RULES: IRule[] = [
@@ -149,6 +173,7 @@ export const THREE_RULES: IRule[] = [
 			"Decide your hues once, for the whole dashboard, before you build any single chart — this hue is always region, this one is always alert. In Power BI or Tableau that means setting a theme up front rather than picking colors visual by visual.",
 		bad: "blue means 3 things",
 		good: "one hue, one job",
+		illustration: "budget",
 	},
 	{
 		title: "Semantic colors only work while they're scarce",
@@ -157,6 +182,7 @@ export const THREE_RULES: IRule[] = [
 			"On a good day, a well-built dashboard should look almost entirely neutral. If someone calls it boring when nothing is broken, that's the system working — and it's worth saying so when you hand it over.",
 		bad: "red is wallpaper",
 		good: "red is a signal",
+		illustration: "scarcity",
 	},
 	{
 		title: "Assignment order carries meaning you didn't intend",
@@ -165,6 +191,7 @@ export const THREE_RULES: IRule[] = [
 			"Assign color by importance or by data order. Try not to leave it to whatever order the tool happened to use.",
 		bad: "alphabetical",
 		good: "by size / importance",
+		illustration: "order",
 	},
 ];
 
@@ -195,6 +222,25 @@ export const FIVE_DIALS: Array<{ n: number; name: string; text: string }> = [
 		text: "Last, and mostly a matter of picking a convention your audience already holds. It carries less of the mood than you might expect — the dials above are doing most of the work.",
 	},
 ];
+
+// Section 4 opener, around the five dials above.
+export const DIALS_LEDE =
+	"Mood is not a hue lookup. These five dials do the work, roughly in order of impact — hue comes last.";
+
+// Proof strips: the same blue at different saturation / neutral temperature.
+// Not copyable in the original, so rendered as plain swatches.
+export const DIAL_PROOF = {
+	lede: "every ramp below is the same blue. Only saturation and neutral temperature change — and they land in completely different registers.",
+	rows: [
+		{ label: "Saturation 85%", note: "reads consumer, urgent, young", hexes: ["#CFE0FF", "#7AA9FF", "#2A6DFF", "#0B3FB8", "#06276E"] },
+		{ label: "Saturation 45%", note: "reads institutional, competent", hexes: ["#E3EAF4", "#B0C5DE", "#6F90BB", "#3D6A99", "#1D3F63"] },
+		{ label: "Saturation 18%", note: "reads premium, restrained", hexes: ["#EEF0F2", "#D2D7DD", "#A9B2BC", "#7A838E", "#434B55"] },
+		{ label: "Warm neutrals", note: "same lightness, warmer grays", hexes: ["#F2EFEC", "#DBD5CD", "#B6ADA2", "#8A8076", "#4F473F"] },
+	],
+};
+
+export const DIALS_WATCH =
+	"“Luxury = brown” is really “luxury = low saturation” wearing a hue costume — brown is desaturated dark orange. Deep green or charcoal-and-bone would read just as premium.";
 
 export const NON_NEGOTIABLES: Array<{ rule: string; why: string }> = [
 	{
