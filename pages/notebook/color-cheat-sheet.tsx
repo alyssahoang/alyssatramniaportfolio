@@ -67,36 +67,6 @@ const SECTIONS: INavSection[] = [
 // Clears the fixed site header when it is showing.
 const SPY_OFFSET = 140;
 
-const IMAGE_DIR = "/images/notebook/color-cheat-sheet";
-
-// The LinkedIn post image for a section. Opens the 2160px original on click.
-const PostImage = ({ slug, alt }: { slug: string; alt: string }) => (
-	<figure className="m-0 mb-8 max-w-[380px]">
-		<a
-			href={`${IMAGE_DIR}/${slug}-2160.webp`}
-			target="_blank"
-			rel="noreferrer"
-			className="block rounded-xl overflow-hidden border border-white/10 hover:border-[#219190]/50 transition-colors duration-[10ms]"
-			onClick={() => trackEvent("cheat_sheet_image_open", { image: slug })}
-		>
-			{/* eslint-disable-next-line @next/next/no-img-element */}
-			<img
-				src={`${IMAGE_DIR}/${slug}-1080.webp`}
-				srcSet={`${IMAGE_DIR}/${slug}-1080.webp 1080w, ${IMAGE_DIR}/${slug}-2160.webp 2160w`}
-				sizes="(min-width: 440px) 380px, calc(100vw - 2rem)"
-				width={1080}
-				height={1350}
-				loading="lazy"
-				alt={alt}
-				className="block w-full h-auto"
-			/>
-		</a>
-		<figcaption className="text-xs text-gray-500 mt-2">
-			As posted on LinkedIn · click to open full size
-		</figcaption>
-	</figure>
-);
-
 // Section shell: the heading gets the site's clip-path wipe on scroll-in.
 const Section = ({
 	id,
@@ -415,10 +385,6 @@ export default function ColorCheatSheet() {
 							</div>
 
 							<Section id="need-color" number="01" title="Start here: do you need color at all?">
-								<PostImage
-									slug="gray-most-important"
-									alt="LinkedIn post: “The most important color on your dashboard is gray.” The same six-bar regional chart twice — six hues on the left, gray bars with one blue accent on the right."
-								/>
 								<DecisionGates />
 							</Section>
 
@@ -434,10 +400,6 @@ export default function ColorCheatSheet() {
 							</Section>
 
 							<Section id="by-feeling" number="04" title="By feeling">
-								<PostImage
-									slug="palettes-by-feeling"
-									alt="LinkedIn post: “Color isn't just decoration. It guides.” Eight mood palettes, each a five-color ramp shown in a sample dashboard."
-								/>
 								<FiveDials />
 								<div className="space-y-6 mt-6">
 									{MOOD_PALETTES.map((card) => (
@@ -447,10 +409,6 @@ export default function ColorCheatSheet() {
 							</Section>
 
 							<Section id="by-industry" number="05" title="By industry">
-								<PostImage
-									slug="palettes-by-industry"
-									alt="LinkedIn post: “Every industry already has colors your audience expects.” Eight industry palettes with a reference brand, a sample dashboard and a caution for each."
-								/>
 								<div className="space-y-6">
 									{INDUSTRY_PALETTES.map((card) => (
 										<PaletteCard key={card.slug} card={card} />
