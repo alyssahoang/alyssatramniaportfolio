@@ -117,6 +117,12 @@ export const NAVBARITEMS = [
 		name: "Timeline",
 		ref: "timeline",
 	},
+	// A leading "/" marks a route rather than a homepage hash anchor — the
+	// header and mobile menu both branch on that.
+	{
+		name: "Notebook",
+		ref: "/notebook",
+	},
 	{
 		name: "Contact",
 		ref: "contact",
@@ -713,4 +719,213 @@ export const FAVORITE_READS: IFavoriteRead[] = [];
 // publications). Reuses IFavoriteRead — `author` is the publication and
 // `domain` is the article's host.
 export const FAV_ARTICLES: IFavoriteRead[] = [];
+
+// ---------------------------------------------------------------------------
+// Notebook — my own notes from learning data science (vs FAVORITE_READS and
+// FAV_ARTICLES, which point at other people's writing). One entry is one
+// lesson worth keeping: the takeaway as the title, the reasoning underneath.
+// ---------------------------------------------------------------------------
+
+// Per-topic accent, same spirit as READ_CATEGORY_COLORS: the pill picks up the
+// topic color while the card chrome stays the site blue.
+export const NOTEBOOK_TOPIC_COLORS: Record<string, string> = {
+	SQL: "#38bdf8",
+	Python: "#5eead4",
+	Statistics: "#fbbf24",
+	"Machine Learning": "#f472b6",
+	"Data Engineering": "#a78bfa",
+	"Power BI": "#fb923c",
+	Craft: "#94a3b8",
+};
+
+export const notebookTopicColor = (topic: string): string =>
+	NOTEBOOK_TOPIC_COLORS[topic] ?? "#93C5FD";
+
+export interface INote {
+	/** Stable anchor id — deep-linkable as /notebook/#note-<slug>. */
+	slug: string;
+	/** The lesson itself, phrased as the takeaway. */
+	title: string;
+	topic: string;
+	/** When I learned it — free text, shown in the card meta row. */
+	date: string;
+	/** One or two sentences: the core idea, in my own words. */
+	summary: string;
+	/** Reasoning and caveats, revealed when the card expands. */
+	points?: string[];
+	/** Optional snippet. `language` must be a Prism language loaded in prism-setup. */
+	code?: { language: string; snippet: string };
+	tags?: string[];
+	/** Where it came from, when it came from somewhere specific. */
+	source?: { label: string; url: string };
+}
+
+// Shown in the notebook hero — bump manually when NOTES changes, same
+// discipline as READS_LAST_UPDATED.
+export const NOTEBOOK_LAST_UPDATED = "Sep 2026";
+
+export const NOTES: INote[] = [
+	{
+		slug: "window-functions-keep-the-grain",
+		title: "Window functions keep every row; GROUP BY collapses them",
+		topic: "SQL",
+		date: "Sep 2026",
+		summary:
+			"An aggregate with OVER() answers a group-level question without giving up row-level detail — exactly what I need when the output still has to be one row per order, per user, per day.",
+		points: [
+			"GROUP BY returns one row per group. The same aggregate with OVER (PARTITION BY ...) returns every original row with the group answer attached to each one.",
+			"PARTITION BY sets the scope of the window; ORDER BY inside OVER() sets the order the frame walks in.",
+			"The gotcha: with ORDER BY and no frame clause the default frame is RANGE UNBOUNDED PRECEDING, which pulls in all tied rows at once — a running total then repeats the same value across ties. Spell out ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW for a strict row-by-row running total.",
+		],
+		code: {
+			language: "sql",
+			snippet: `-- each order against the customer total, no self-join needed
+SELECT
+  order_id,
+  customer_id,
+  amount,
+  SUM(amount) OVER (PARTITION BY customer_id)         AS customer_total,
+  SUM(amount) OVER (
+    PARTITION BY customer_id ORDER BY ordered_at
+    ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW  -- ROWS, not RANGE
+  )                                                   AS running_total
+FROM orders;`,
+		},
+		tags: ["window functions", "grain", "running total"],
+	},
+	{
+		slug: "p-value-is-not-probability-of-hypothesis",
+		title: "A p-value is not the probability that my hypothesis is true",
+		topic: "Statistics",
+		date: "Sep 2026",
+		summary:
+			"It is the probability of seeing data at least this extreme if the null hypothesis were true — a statement about the data given an assumption, not about the assumption given the data.",
+		points: [
+			"P(data | H0), never P(H0 | data). Flipping that conditional is the most common misreading of a test result.",
+			"Significance scales with sample size: at large n a difference far too small to act on still clears p < 0.05. The test answers whether an effect is there, not whether it is big enough to care about.",
+			"So the effect size and a confidence interval belong next to every p-value — the interval carries both the direction and the precision of the estimate.",
+		],
+		tags: ["hypothesis testing", "effect size", "a/b testing"],
+	},
+	{
+		slug: "leakage-hides-in-preprocessing",
+		title: "Leakage usually hides in preprocessing, not in the features",
+		topic: "Machine Learning",
+		date: "Sep 2026",
+		summary:
+			"Fitting a scaler, imputer, or encoder on the full dataset before splitting lets the test set leak into training through the statistics. Cross-validation looks excellent and production disappoints.",
+		points: [
+			"Fit on train only, then transform the test set. Anything learned from data counts as fitting: means, variances, category lists, target encodings.",
+			"Inside cross-validation, wrap every step in a Pipeline so the transformers refit on each fold's training rows only.",
+			"For time series a random split leaks the future into the past. Split by time and validate forward with something like TimeSeriesSplit.",
+		],
+		code: {
+			language: "python",
+			snippet: `from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import cross_val_score
+
+# the scaler refits inside each fold, so no test statistics leak in
+pipe = Pipeline([
+    ("scale", StandardScaler()),
+    ("model", LogisticRegression(max_iter=1000)),
+])
+
+scores = cross_val_score(pipe, X_train, y_train, cv=5, scoring="roc_auc")`,
+		},
+		tags: ["data leakage", "cross-validation", "scikit-learn"],
+	},
+	{
+		slug: "accuracy-lies-on-imbalanced-data",
+		title: "Accuracy lies on imbalanced data — pick the metric that matches the cost",
+		topic: "Machine Learning",
+		date: "Sep 2026",
+		summary:
+			"If 1% of transactions are fraud, a model that always predicts no fraud is 99% accurate and completely useless. The metric has to encode which mistake actually hurts.",
+		points: [
+			"Precision: of everything I flagged, how much was real — the cost of false alarms, in review time and customer patience.",
+			"Recall: of everything real, how much I caught — the cost of misses, in fraud paid out or churn left unnoticed.",
+			"When positives are rare, precision-recall AUC is more honest than ROC-AUC: the huge negative class keeps the false-positive rate small, so ROC-AUC stays flattering.",
+			"Set the decision threshold from that trade-off rather than leaving it at the 0.5 default.",
+		],
+		tags: ["classification", "precision", "recall", "imbalance"],
+	},
+	{
+		slug: "star-schema-over-one-wide-table",
+		title: "A star schema beats one wide table as soon as a second person uses the data",
+		topic: "Data Engineering",
+		date: "Sep 2026",
+		summary:
+			"Facts hold events at a declared grain, dimensions hold the attributes you slice by. That shape is what lets a BI tool generate correct joins without being told how.",
+		points: [
+			"Declare the grain of a fact table in one sentence before writing any DDL — 'one row per order line'. Most later ambiguity traces back to a grain nobody wrote down.",
+			"Conformed dimensions (one customer table, one date table) are what let measures from different facts sit side by side in the same visual.",
+			"Keep a dedicated date dimension instead of leaning on raw timestamps: fiscal periods, week-start conventions, and holidays live there rather than in every query.",
+			"A wide denormalized table is still right for a single-purpose extract. It stops being right the moment two teams want different slices of it.",
+		],
+		tags: ["dimensional modeling", "star schema", "grain"],
+	},
+	{
+		slug: "measures-live-in-filter-context",
+		title: "A DAX measure is evaluated in the filter context of the visual it lands in",
+		topic: "Power BI",
+		date: "Sep 2026",
+		summary:
+			"One measure returns a different number in every cell, because the rows, columns, slicers, and page filters around it define the context it computes under.",
+		points: [
+			"CALCULATE is the function that modifies filter context — its filter arguments replace the incoming filters on those columns.",
+			"REMOVEFILTERS (or ALL) clears context, which is how a percent-of-total measure gets its denominator.",
+			"Calculated columns are the opposite: they evaluate row by row at refresh, are stored in the model, and are blind to the visual's filters. Reach for a measure unless you need to slice by the result.",
+		],
+		code: {
+			language: "sql",
+			snippet: `Revenue = SUMX(Sales, Sales[Qty] * Sales[UnitPrice])
+
+-- denominator ignores the Product slicers, keeps every other filter
+Revenue % of Category =
+DIVIDE(
+    [Revenue],
+    CALCULATE([Revenue], REMOVEFILTERS(Product[Product Name]))
+)`,
+		},
+		tags: ["dax", "filter context", "calculate"],
+	},
+	{
+		slug: "chained-indexing-assigns-to-a-copy",
+		title: "Chained indexing in pandas can assign to a copy instead of the frame",
+		topic: "Python",
+		date: "Sep 2026",
+		summary:
+			"df[mask]['col'] = value is two operations: a selection that may hand back a copy, then an assignment into that copy. The original frame is untouched and pandas raises SettingWithCopyWarning.",
+		points: [
+			"Do the whole thing in one .loc call so pandas assigns into the original frame: df.loc[mask, 'col'] = value.",
+			"The warning is a heuristic and can miss cases, so treat any chained [] on the left of an assignment as a bug even when nothing complains.",
+			"When an independent frame is genuinely what I want, say so with .copy() — the intent then reads clearly to whoever edits it next.",
+		],
+		code: {
+			language: "python",
+			snippet: `# leaves df unchanged, and only maybe warns about it
+df[df["amount"] > 100]["tier"] = "high"
+
+# assigns into df
+df.loc[df["amount"] > 100, "tier"] = "high"`,
+		},
+		tags: ["pandas", "gotcha", "SettingWithCopyWarning"],
+	},
+	{
+		slug: "write-the-question-before-the-query",
+		title: "Write the question down before opening the editor",
+		topic: "Craft",
+		date: "Sep 2026",
+		summary:
+			"Nearly every analysis I have had to redo was not wrong SQL — it answered a question slightly different from the one that was asked. One sentence agreed up front saves a day of work.",
+		points: [
+			"Name the population, the time window, and the metric definition explicitly. 'Active users' and 'revenue' each mean three different things until someone pins them down.",
+			"State which decision the answer feeds. If no decision changes with the result, the analysis is optional — and worth saying so out loud.",
+			"Sketch the shape of the output, columns and grain, before the first SELECT. It catches grain mistakes while they are still free to fix.",
+		],
+		tags: ["analysis", "scoping", "communication"],
+	},
+];
 

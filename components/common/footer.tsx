@@ -9,11 +9,14 @@ import { prefersReducedMotion } from "../../utils/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const EXPLORE_LINKS = [
+// `ref` is a homepage hash anchor; `href` marks a standalone route, which
+// goes through <Link> so navigation stays client-side.
+const EXPLORE_LINKS: Array<{ name: string; ref?: string; href?: string }> = [
 	{ name: "Home", ref: "home" },
 	{ name: "Works", ref: "works" },
 	{ name: "Skills", ref: "skills" },
 	{ name: "Timeline", ref: "timeline" },
+	{ name: "Notebook", href: "/notebook" },
 	{ name: "Contact", ref: "contact" },
 ];
 
@@ -98,16 +101,26 @@ const Footer = () => {
 		<div className="footer-col">
 			<p className={COLUMN_HEADING}>Explore</p>
 			<div className="space-y-2.5">
-				{EXPLORE_LINKS.map((item) => (
-					<a
-						key={item.name}
-						href={`/#${item.ref}`}
-						className={FOOTER_LINK}
-						onClick={() => trackEvent("nav_link_click", { target: item.name, location: "footer" })}
-					>
-						{item.name}
-					</a>
-				))}
+				{EXPLORE_LINKS.map((item) => {
+					const onClick = () =>
+						trackEvent("nav_link_click", { target: item.name, location: "footer" });
+					return item.href ? (
+						<Link href={item.href} key={item.name}>
+							<a className={FOOTER_LINK} onClick={onClick}>
+								{item.name}
+							</a>
+						</Link>
+					) : (
+						<a
+							key={item.name}
+							href={`/#${item.ref}`}
+							className={FOOTER_LINK}
+							onClick={onClick}
+						>
+							{item.name}
+						</a>
+					);
+				})}
 			</div>
 		</div>
 	);
