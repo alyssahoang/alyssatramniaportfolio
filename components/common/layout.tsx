@@ -14,8 +14,8 @@ const jsonLd = {
   ],
 };
 
-const PREVIEW_IMAGE = `${METADATA.siteUrl}/preview.png?v=1`;
-const PREVIEW_ALT = "Alyssa Tram Anh H., data analyst. I help teams uncover the story behind their data and turn it into action.";
+const PREVIEW_IMAGE = `${METADATA.siteUrl}/preview.png?v=2`;
+const PREVIEW_ALT = "Alyssa Tramnia, data analyst. I help teams uncover the story behind their data and turn it into action.";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -52,7 +52,7 @@ const Layout = ({ children, title, description, path }: LayoutProps) => {
         <meta property="og:site_name" content={METADATA.title} />
         <meta property="og:image" content={PREVIEW_IMAGE} />
         <meta property="og:image:secure_url" content={PREVIEW_IMAGE} />
-        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content={PREVIEW_ALT} />
