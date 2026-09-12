@@ -893,3 +893,17 @@ footer {
 	margin: 0 auto;
 	max-width: 60%;
 }
+
+/* Sticky positioning fix.
+   overflow-x: hidden on BOTH html and body turns <body> into a scroll
+   container that never scrolls (the window does), so every position: sticky
+   element sticks to <body> and scrolls away with the page: the cheat sheet
+   sidebar and its phone chip bar included. `clip` hides horizontal overflow
+   the same way without creating a scroll container. Browsers without `clip`
+   keep `hidden` from the rules above. Kept last so it wins source order. */
+@supports (overflow: clip) {
+	html,
+	body {
+		overflow-x: clip;
+	}
+}
