@@ -126,6 +126,10 @@ export const NAVBARITEMS = [
 		ref: "/notebook",
 	},
 	{
+		name: "Tools",
+		ref: "/tools",
+	},
+	{
 		name: "Contact",
 		ref: "contact",
 	},
@@ -832,5 +836,51 @@ export const NOTEBOOK_GUIDES: IGuide[] = [
 		topic: "Data Viz",
 		date: "Sep 2026",
 		meta: "27 palettes · 19 industries · 8 moods",
+	},
+];
+
+// Browser tools listed on /tools/. Each one is a self-contained static page in
+// public/tools/<slug>/ (its own HTML, no React), linked with a plain <a>.
+export interface ITool {
+	/** Folder name under public/tools/ and the analytics id. */
+	slug: string;
+	name: string;
+	/** One line under the name: what you get. */
+	tagline: string;
+	description: string;
+	topic: string;
+	date: string;
+	/** Scale of the thing, e.g. "12 frames · 27 palettes". */
+	meta?: string;
+	/** Static page path, with the trailing slash GitHub Pages serves. */
+	href: string;
+	/** Screenshot shown on the card, 1600 × 840. */
+	image: string;
+	imageAlt: string;
+	features?: string[];
+}
+
+// Shown in the tools hero — bump manually when a tool ships or changes.
+export const TOOLS_LAST_UPDATED = "Sep 2026";
+
+export const TOOLS: ITool[] = [
+	{
+		slug: "power-bi-layout-generator",
+		name: "Free Power BI Layout Generator",
+		tagline: "Report backgrounds, a matching theme and a .pbip project in a few clicks",
+		description:
+			"Stop rebuilding the same report shell in PowerPoint or Figma. Pick a navigation frame, a main menu and a palette, mark where your visuals go, then export canvas backgrounds, a matching theme file and a Power BI project with the pages already wired up.",
+		topic: "Power BI",
+		date: "Sep 2026",
+		meta: "12 frames · 6 main menus · 27 palettes",
+		href: "/tools/power-bi-layout-generator/",
+		image: "/tools/power-bi-layout-generator/preview.png",
+		imageAlt:
+			"Free Power BI Layout Generator: a report background with a sidebar, next to palette, navigation and export controls",
+		features: [
+			"Navigation that follows your real Power BI page names",
+			"Theme colors in Power BI's own slot order, in light or dark mode",
+			"Exports PNG, SVG, a theme JSON and a .pbip project with placeholder visuals",
+		],
 	},
 ];

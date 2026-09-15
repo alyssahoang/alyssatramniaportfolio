@@ -17,6 +17,7 @@ const EXPLORE_LINKS: Array<{ name: string; ref?: string; href?: string }> = [
 	{ name: "Skills", ref: "skills" },
 	{ name: "Timeline", ref: "timeline" },
 	{ name: "Notebook", href: "/notebook" },
+	{ name: "Tools", href: "/tools" },
 	{ name: "Contact", ref: "contact" },
 ];
 
