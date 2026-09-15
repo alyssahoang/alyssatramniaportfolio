@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://alyssatramnia.com/tools/power-bi-layout-generator/">
 <meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0e1115">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Alyssa Tramnia">
 <meta property="og:title" content="Free Power BI Layout Generator">
@@ -21,7 +22,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<style>:root{color-scheme:light}body{margin:0;font:14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f8f9fa}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>:root{color-scheme:dark}body{margin:0;font:14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#0e1115;color:#e6e9ed}img{max-width:100%}[hidden]{display:none!important}</style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Free Power BI Layout Generator","url":"https://alyssatramnia.com/tools/power-bi-layout-generator/","image":"https://alyssatramnia.com/tools/power-bi-layout-generator/preview.png","description":"Free Power BI layout generator: design report backgrounds with navigation and a main menu, then export PNG, a matching theme and a ready-to-open .pbip project.","applicationCategory":"BusinessApplication","operatingSystem":"Any (runs in a web browser)","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["12 navigation frames, from sidebars and top tabs to icon rails and a filter panel, plus 6 main menu styles","27 palettes for industries and moods, your own brand color or colors taken from an image, in light or dark mode","Mark where KPI cards, charts, tables and slicers go, or keep the canvas free","PNG and SVG backgrounds with a matching Power BI theme file","A ready-to-open Power BI project (.pbip): page navigation that follows your real page names, editable text boxes and placeholder visuals","Add extra theme settings, such as a ZoomCharts license, merged into the theme"],"author":{"@type":"Person","name":"Alyssa Tramnia","url":"https://alyssatramnia.com"}}</script>
 <title>Free Power BI Layout Generator: Backgrounds, Themes &amp; PBIP</title>
 <meta name="description" content="Free Power BI layout generator: design report backgrounds with navigation and a main menu, then export PNG, a matching theme and a ready-to-open .pbip project.">
@@ -289,8 +290,11 @@ kbd{font-family:var(--f-mono);font-size:10.5px;border:1px solid var(--line);bord
 .faq details{border-bottom:1px solid var(--line);padding:12px 0}
 .faq summary{cursor:pointer;font-weight:600;font-size:15px}
 .faq details p{margin-top:8px;color:var(--sub)}
-.about .about-foot{margin-top:36px;font-size:13px;color:var(--sub)}
 .about a{color:inherit;text-underline-offset:3px}
+.about .about-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--sub)}
+.about .about-foot nav{display:flex;align-items:center;gap:8px}
+.about .about-foot a{color:var(--ink);font-weight:500;text-decoration:none}
+.about .about-foot a:hover,.about .about-foot a:focus-visible{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -604,7 +608,10 @@ kbd{font-family:var(--f-mono);font-size:10.5px;border:1px solid var(--line);bord
       </div>
     </div>
 
-    <p class="about-foot">Made by <a href="https://alyssatramnia.com/">Alyssa Tramnia</a>, data analyst. <a href="/tools/">More tools</a> · <a href="https://www.linkedin.com/in/alyssahoang/">LinkedIn</a></p>
+    <footer class="about-foot">
+      <span>Made by <a href="https://alyssatramnia.com/">Alyssa Tramnia</a></span>
+      <nav aria-label="More from Alyssa Tramnia"><a href="/tools/">More tools</a><span aria-hidden="true">·</span><a href="https://www.linkedin.com/in/alyssahoang/" rel="noopener">LinkedIn</a></nav>
+    </footer>
   </div>
 </section>
 <div class="picker" id="picker" role="dialog" aria-labelledby="pkTitle" hidden>
