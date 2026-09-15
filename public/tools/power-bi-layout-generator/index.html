@@ -1098,9 +1098,13 @@ function render({nav,p,o,W,H,page,cards}){
         if(c>0) g.push(`<rect x="${ix-P(10)}" y="${iy}" width="1" height="${ihh-P(10)}" fill="${t.border}"/>`);
         g.push(`<text x="${ix}" y="${iy+FG*1.1}" font-size="${(FG*1.05).toFixed(1)}" font-weight="700" fill="${accT}">${String(i+1).padStart(2,'0')}</text>`);
         const nx=ix+FG*1.9;
-        g.push(txt?tx(nx,iy+FG*1.1,fit(pg,iw-FG*1.9-P(16),FG*1.1),t.text,pg,700):bar(nx,iy+P(4),iw*.45,P(8),t.faint));
-        g.push(bar(nx,iy+FG*1.1+P(12),Math.max(0,Math.min(iw-FG*1.9-P(24),P(120))),P(5),t.faint));
-        g.push(bar(nx,iy+FG*1.1+P(24),Math.max(0,Math.min(iw-FG*1.9-P(40),P(80))),P(5),t.faint));
+        g.push(txt?tx(nx,iy+FG*1.1,fit(pg,iw-FG*1.9-P(16),FG*1.1),t.text,pg,700,'start','Page name'):bar(nx,iy+P(4),iw*.45,P(8),t.faint));
+        /* description placeholder: pixels in images, an editable text box in the Power BI project */
+        if(o.liveText&&txt) liveBox('Page description','What this page answers',nx,iy+FG*1.1+P(22),FG*.92,t.sub,400,'start');
+        else{
+          g.push(bar(nx,iy+FG*1.1+P(12),Math.max(0,Math.min(iw-FG*1.9-P(24),P(120))),P(5),t.faint));
+          g.push(bar(nx,iy+FG*1.1+P(24),Math.max(0,Math.min(iw-FG*1.9-P(40),P(80))),P(5),t.faint));
+        }
         navZ.push({k:'button',label:pg,target:i,x:Math.round(ix-P(4)),y:Math.round(iy-P(4)),w:Math.round(iw-P(16)),h:Math.round(ihh)});
       });
       g.push(o.footerLinks?socials(x0,H-P(28)-FG*.36,'start',false,t.sub):txt?tx(x0,H-P(28),FG,t.sub,o.footer):bar(x0,H-P(34),P(110),P(6),t.faint));
@@ -1124,7 +1128,7 @@ function render({nav,p,o,W,H,page,cards}){
         g.push(holder(cx2+P(20)+ic/2,cy2+P(20)+ic/2,ic,mix(t.card,t.A,dark?.2:.12)));
         g.push(ico(i,cx2+P(20)+ic/2,cy2+P(20)+ic/2,P(20),t.A));
         g.push(chev(cx2+w-P(24),cy2+P(40),t.sub,'right'));
-        g.push(txt?tx(cx2+P(20),cy2+h-P(26),fit(pg,w-P(40),FT*1.15),t.text,pg,600):bar(cx2+P(20),cy2+h-P(36),Math.min(w*.5,P(120)),P(9),t.faint));
+        g.push(txt?tx(cx2+P(20),cy2+h-P(26),fit(pg,w-P(40),FT*1.15),t.text,pg,600,'start','Page name'):bar(cx2+P(20),cy2+h-P(36),Math.min(w*.5,P(120)),P(9),t.faint));
         navZ.push({k:'button',label:pg,target:i,x:cx2,y:cy2,w,h});
       });
       g.push(o.footerLinks?socials(P(48),H-P(24)-FG*.36,'start',false,t.sub):txt?tx(P(48),H-P(24),FG,t.sub,o.footer):bar(P(48),H-P(30),P(110),P(6),t.faint));
@@ -1148,7 +1152,7 @@ function render({nav,p,o,W,H,page,cards}){
         g.push(`<rect x="${rx+.5}" y="${ry+.5}" width="${rw-1}" height="${rh-1}" rx="${Math.min(rad,rh/2)}" fill="${t.card}" stroke="${t.border}"${filt}/>`);
         g.push(holder(rx+P(14)+ic/2,ry+rh/2,ic,mix(t.card,t.A,dark?.2:.12)));
         g.push(ico(i,rx+P(14)+ic/2,ry+rh/2,ic*.55,t.A));
-        g.push(txt?tx(rx+P(26)+ic,ry+rh/2+FG*1.1*.36,fit(pg,rw-ic-P(80),FG*1.1),t.text,pg,600):bar(rx+P(26)+ic,ry+rh/2-P(4),P(120),P(8),t.faint));
+        g.push(txt?tx(rx+P(26)+ic,ry+rh/2+FG*1.1*.36,fit(pg,rw-ic-P(80),FG*1.1),t.text,pg,600,'start','Page name'):bar(rx+P(26)+ic,ry+rh/2-P(4),P(120),P(8),t.faint));
         g.push(chev(rx+rw-P(22),ry+rh/2,t.sub,'right'));
         navZ.push({k:'button',label:pg,target:i,x:rx,y:ry,w:rw,h:rh});
       });
@@ -1180,7 +1184,7 @@ function render({nav,p,o,W,H,page,cards}){
         const X=Math.round(x);
         g.push(`<rect x="${X}" y="${yb}" width="${BW}" height="${bh2}" rx="${bh2/2}" fill="${btn}"/>`);
         const ls=fit(pg,BW-P(24),FG*1.1);
-        g.push(txt?tx(X+BW/2,yb+bh2/2+ls*.36,ls,white,pg,600,'middle'):bar(X+BW*.25,yb+bh2/2-P(3),BW*.5,P(6),'rgba(255,255,255,.4)'));
+        g.push(txt?tx(X+BW/2,yb+bh2/2+ls*.36,ls,white,pg,600,'middle','Page name'):bar(X+BW*.25,yb+bh2/2-P(3),BW*.5,P(6),'rgba(255,255,255,.4)'));
         navZ.push({k:'button',label:pg,x:X,y:yb,w:BW,h:bh2});
         x+=BW+GP;
       });
@@ -1208,7 +1212,7 @@ function render({nav,p,o,W,H,page,cards}){
         const ic=Math.min(P(40),rh-P(16));
         g.push(holder(rx+P(18)+ic/2,ry+rh/2,ic,mix(t.card,t.A,dark?.2:.12)));
         g.push(ico(i,rx+P(18)+ic/2,ry+rh/2,ic*.52,t.A));
-        g.push(txt?tx(rx+P(30)+ic,ry+rh/2+P(6),fit(pg,rw-ic-P(90),FT*1.2),t.text,pg,600):bar(rx+P(30)+ic,ry+rh/2-P(4),P(140),P(8),t.faint));
+        g.push(txt?tx(rx+P(30)+ic,ry+rh/2+P(6),fit(pg,rw-ic-P(90),FT*1.2),t.text,pg,600,'start','Page name'):bar(rx+P(30)+ic,ry+rh/2-P(4),P(140),P(8),t.faint));
         g.push(chev(rx+rw-P(26),ry+rh/2,t.sub,'right'));
         navZ.push({k:'button',label:pg,x:rx,y:ry,w:rw,h:rh});
         y+=rowH+rg;
@@ -1233,8 +1237,9 @@ function render({nav,p,o,W,H,page,cards}){
         g.push(holder(cx+P(22)+ic/2,cy+P(22)+ic/2,ic,mix(t.card,t.A,dark?.2:.12)));
         g.push(ico(i,cx+P(22)+ic/2,cy+P(22)+ic/2,P(24),t.A));
         g.push(chev(cx+w-P(28),cy+P(45),t.sub,'right'));
-        g.push(txt?tx(cx+P(22),cy+h-P(40),fit(pg,w-P(44),FT*1.2),t.text,pg,600):bar(cx+P(22),cy+h-P(52),Math.min(w*.5,P(140)),P(10),t.faint));
-        g.push(bar(cx+P(22),cy+h-P(26),Math.min(w*.55,P(150)),P(6),t.faint));
+        g.push(txt?tx(cx+P(22),cy+h-P(40),fit(pg,w-P(44),FT*1.2),t.text,pg,600,'start','Page name'):bar(cx+P(22),cy+h-P(52),Math.min(w*.5,P(140)),P(10),t.faint));
+        if(o.liveText&&txt) liveBox('Page description','What this page answers',cx+P(22),cy+h-P(18),FG*.92,t.sub,400,'start');
+        else g.push(bar(cx+P(22),cy+h-P(26),Math.min(w*.55,P(150)),P(6),t.faint));
         navZ.push({k:'button',label:pg,x:cx,y:cy,w,h});
       });
       g.push(o.footerLinks?socials(P(40),H-P(30)-FG*.36,'start',false,t.sub):txt?tx(P(40),H-P(30),FG,t.sub,o.footer):bar(P(40),H-P(36),P(110),P(6),t.faint));
@@ -2272,7 +2277,7 @@ function pbiLinkButton(url,label){
     }};
 }
 /* Power BI's own page navigator: button text comes from the real page names, so renaming a page updates the menu */
-function pbiNavigator(nz){
+function pbiNavigator(nz,menuId){
   const pt=Math.max(6,Math.round(nz.size*.75*2)/2);
   const text=(sel,color,bold)=>({properties:{
     fontSize:Dbl(pt),fontFamily:Str(bold?'Segoe UI Semibold':'Segoe UI'),bold:Bool(bold),
@@ -2283,6 +2288,12 @@ function pbiNavigator(nz){
   return {visualType:'pageNavigator',
     objects:{
       layout:[{properties:{orientation:Dbl(nz.orient==='vertical'?1:0),cellPadding:Dbl(nz.cell||0)}}],
+      /* Show card (names from Microsoft's report theme schema): report pages only. The main menu is hidden and also
+         switched off by name, so the navigator has exactly one row per background row */
+      pages:[
+        {properties:{showByDefault:Bool(true),showHiddenPages:Bool(false),showTooltipPages:Bool(false)}},
+        ...(menuId?[{properties:{showPage:Bool(false)},selector:{id:menuId}}]:[])
+      ],
       text:[text('default',nz.color,false),text('hover',nz.active,false),text('press',nz.active,true),text('selected',nz.active,true)],
       fill:['default','hover','press','selected'].map(clear),
       outline:['default','hover','press','selected'].map(clear),
@@ -2440,7 +2451,7 @@ async function exportPBIP(){
       });
       if(rr.navigatorZ){
         z+=1000;const vid=hex20();
-        put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,rr.navigatorZ,pbiNavigator(rr.navigatorZ)));navigators++;
+        put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,rr.navigatorZ,pbiNavigator(rr.navigatorZ,list[0].id)));navigators++;
       }
       (rr.navigatorZ?[]:rr.navZ).forEach((zn,k)=>{
         const target=list[(zn.target!=null?zn.target:k)+1]; if(!target) return;
