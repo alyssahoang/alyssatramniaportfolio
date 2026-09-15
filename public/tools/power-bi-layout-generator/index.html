@@ -82,6 +82,8 @@ main{padding-block:26px 56px;padding-inline:32px;min-width:0}
 .seg button[aria-pressed="true"]{background:var(--raised);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.14)}
 .seg.frames{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
 .seg.frames button{font-size:11px}
+.coffee{display:inline-flex;align-items:center;gap:4px;margin-top:8px;padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--raised);color:var(--ink);font-size:12px;font-weight:600;text-decoration:none}
+.coffee:hover,.coffee:focus-visible{border-color:var(--acc)}
 .addon-info{font-size:12px;line-height:1.45;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--raised);overflow-wrap:anywhere}
 .addon-info b{display:block;font-weight:600}
 .palhead{grid-column:1/-1;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--sub);margin:6px 2px 0}
@@ -261,6 +263,8 @@ kbd{font-family:var(--f-mono);font-size:10.5px;border:1px solid var(--line);bord
 .pk-none{grid-column:1/-1;color:var(--sub);font-size:12px;margin:6px 0}
 .toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);background:var(--ink);color:var(--ground);padding:8px 14px;border-radius:6px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:10}
 .toast.on{opacity:1;transform:translate(-50%,0)}
+.toast.on.link{pointer-events:auto}
+.toast a{color:inherit;font-weight:600;margin-left:6px;text-underline-offset:3px}
 
 @media (max-width:1240px){.stage{grid-template-columns:minmax(0,1fr)} .stage>div:first-child{position:static} .spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}}
 @media (max-width:900px){
@@ -302,7 +306,7 @@ kbd{font-family:var(--f-mono);font-size:10.5px;border:1px solid var(--line);bord
   <aside class="rail" aria-label="Background settings">
     <div class="mark">
       <svg viewBox="0 0 34 24" aria-hidden="true"><rect x=".5" y=".5" width="33" height="23" rx="2" fill="none" stroke="currentColor"/><rect x="1" y="1" width="8" height="22" fill="var(--acc)"/><rect x="12" y="4" width="19" height="16" rx="1" fill="none" stroke="currentColor" stroke-dasharray="2 2" opacity=".6"/></svg>
-      <div><h1>Power BI Layout Generator</h1><p>Free backgrounds, themes &amp; .pbip</p><nav class="backlinks" aria-label="Site"><a href="/tools/">← All tools</a><a href="#about">About this tool</a></nav></div>
+      <div><h1>Power BI Layout Generator</h1><p>Free backgrounds, themes &amp; .pbip</p><nav class="backlinks" aria-label="Site"><a href="/tools/">← All tools</a><a href="#about">About this tool</a></nav><a class="coffee" href="https://buymeacoffee.com/alyssatramnia" target="_blank" rel="noopener">☕ Buy me a coffee</a></div>
     </div>
 
     <section class="group" aria-labelledby="g-pal">
@@ -610,7 +614,7 @@ kbd{font-family:var(--f-mono);font-size:10.5px;border:1px solid var(--line);bord
 
     <footer class="about-foot">
       <span>Made by <a href="https://alyssatramnia.com/">Alyssa Tramnia</a></span>
-      <nav aria-label="More from Alyssa Tramnia"><a href="/tools/">More tools</a><span aria-hidden="true">·</span><a href="https://www.linkedin.com/in/alyssahoang/" rel="noopener">LinkedIn</a></nav>
+      <nav aria-label="More from Alyssa Tramnia"><a href="/tools/">More tools</a><span aria-hidden="true">·</span><a href="https://www.linkedin.com/in/alyssahoang/" rel="noopener">LinkedIn</a><span aria-hidden="true">·</span><a href="https://buymeacoffee.com/alyssatramnia" target="_blank" rel="noopener">☕ Buy me a coffee</a></nav>
     </footer>
   </div>
 </section>
@@ -1616,7 +1620,13 @@ const opts=(p=pal(),mode=S.mode)=>({mode,sidebar:S.sidebar,cardStyle:S.cardStyle
 const renderPage=(i,extra={})=>{const [W,H]=dims(), p=effPal(pal(),S.accent);return render({nav:S.nav,p,o:opts(pal()),W,H,page:i,cards:S.cards[i]||[],...extra})};
 let sel=-1, current=null;
 
-function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>el.classList.remove('on'),2400)}
+function toast(msg){const el=$('#toast');el.classList.remove('link');el.textContent=msg;el.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>el.classList.remove('on'),2400)}
+/* after a finished export only: the same message bar with a Buy me a coffee link, kept up long enough to click */
+function toastCoffee(msg){
+  const el=$('#toast');
+  el.innerHTML=`${esc(msg)}<a href="https://buymeacoffee.com/alyssatramnia" target="_blank" rel="noopener">☕ buy me a coffee</a>`;
+  el.classList.add('on','link');clearTimeout(toast.h);toast.h=setTimeout(()=>el.classList.remove('on','link'),7000);
+}
 async function copy(text,msg){try{await navigator.clipboard.writeText(text);toast(msg)}catch(e){toast('Copy is blocked here — select the text instead')}}
 
 const dlReady=(window.claude&&typeof window.claude.use==='function')?window.claude.use('downloads'):null;
@@ -2477,7 +2487,7 @@ async function exportPBIP(){
 
     const blob=await zip.generateAsync({type:'blob'});
     await saveFile(`${slug(PN)}-pbip.zip`,blob);
-    toast(`Project ready: ${list.length} pages, ${visuals} placeholder visuals, ${buttons} navigation buttons${logos?`, ${logos} logo images`:''}${texts?`, ${texts} editable text boxes`:''}${navigators?`, ${navigators} page navigators`:''}${links?`, ${links} web links`:''}`);
+    toastCoffee(`Project ready: ${list.length} pages${texts?`, ${texts} editable text boxes`:''}. If it saved you time,`);
   }catch(e){console.error(e);toast('Could not build the Power BI project')}
 }
 
