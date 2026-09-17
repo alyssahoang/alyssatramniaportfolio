@@ -24,6 +24,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <style>:root{color-scheme:dark}body{margin:0;font:14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#0e1115;color:#e6e9ed}img{max-width:100%}[hidden]{display:none!important}</style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Free Power BI Layout Generator","url":"https://alyssatramnia.com/tools/power-bi-layout-generator/","image":"https://alyssatramnia.com/tools/power-bi-layout-generator/preview.png","description":"Free Power BI layout generator: design report backgrounds with navigation and a main menu, then export PNG, a matching theme and a ready-to-open .pbip project.","applicationCategory":"BusinessApplication","operatingSystem":"Any (runs in a web browser)","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["12 navigation frames, from sidebars and top tabs to icon rails and a filter panel, plus 6 main menu styles","27 palettes for industries and moods, your own brand color or colors taken from an image, in light or dark mode","Mark where KPI cards, charts, tables and slicers go, or keep the canvas free","PNG and SVG backgrounds with a matching Power BI theme file","A ready-to-open Power BI project (.pbip): page navigation that follows your real page names, editable text boxes and placeholder visuals","Add extra theme settings, such as a ZoomCharts license, merged into the theme"],"author":{"@type":"Person","name":"Alyssa Tramnia","url":"https://alyssatramnia.com"}}</script>
+<script>try{['backplate.v2','backplate.logo','backplate.photo','backplate.addon'].forEach(function(k){localStorage.removeItem(k)})}catch(e){}</script>
 <title>Free Power BI Layout Generator: Backgrounds, Themes &amp; PBIP</title>
 <meta name="description" content="Free Power BI layout generator: design report backgrounds with navigation and a main menu, then export PNG, a matching theme and a ready-to-open .pbip project.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -469,6 +470,8 @@ kbd{font-family:var(--f-mono);font-size:10.5px;border:1px solid var(--line);bord
       <div class="gh" id="g-cards">Card look</div>
       <div class="ctl"><span>Style</span><div class="seg" data-key="cardStyle">
         <button type="button" data-val="plain">Plain</button><button type="button" data-val="band">Title band</button><button type="button" data-val="tab">Tick</button></div></div>
+      <div class="ctl"><span>Color</span><div class="seg" data-key="cardTone">
+        <button type="button" data-val="paper">Paper</button><button type="button" data-val="tint">Tint</button><button type="button" data-val="color">Color</button><button type="button" data-val="nav">Nav</button></div></div>
       <div class="ctl"><span>Corners</span><div class="seg" data-key="radius">
         <button type="button" data-val="0">0</button><button type="button" data-val="4">4</button><button type="button" data-val="8">8</button><button type="button" data-val="14">14</button></div></div>
       <div class="ctl"><span>Shadow</span><div class="seg" data-key="shadow">
@@ -793,6 +796,24 @@ function tokens(p,o){
   }else if(o.navInk==='mono'){
     t.navIcon=t.navTextActive;
   }
+  /* card color, like the nav tones: paper (the card surface), tint (a wash of the palette), color (the palette hue), nav (the navigation color) */
+  const ct=o.cardTone||'paper';
+  if(ct==='tint') t.cardFill=mix(t.card,A,dark?.2:.1);
+  else if(ct==='color'){
+    let bg=dark?mix(p.seq[3],'#000000',.3):p.seq[3];
+    const ink=bestInk(bg), away=ink==='#ffffff'?'#000000':'#ffffff';
+    for(let i=0;i<10&&contrast(ink,bg)<4.8;i++) bg=mix(bg,away,.08);
+    t.cardFill=bg;
+  }
+  else if(ct==='nav') t.cardFill=t.navBg;
+  else t.cardFill=t.card;
+  const solidCard=ct==='color'||ct==='nav';
+  t.cardInk=readable(solidCard?bestInk(t.cardFill):t.text,[t.cardFill],4.5);
+  t.cardSub=readable(mix(t.cardInk,t.cardFill,.35),[t.cardFill],3);
+  t.cardBorder=ct==='paper'?t.border:mix(t.cardFill,t.cardInk,.14);
+  t.heroFill=solidCard?mix(t.cardFill,t.cardInk,.08):mix(t.cardFill,A,dark?.18:.09);
+  if(ct!=='paper') t.band=mix(t.cardFill,t.cardInk,.07);
+  t.cardAccent=solidCard?t.cardInk:A;
   /* label color: white, or the palette's own hue (kept readable); auto leaves the tone's ink */
   if(o.textInk==='white'){t.navTextActive='#ffffff';t.navText=mix('#ffffff',t.navBg,.12);t.navIcon='#ffffff';t.navActiveInk='#ffffff';t.navActiveIcon='#ffffff';return t}
   t.navActive=t.canvas;   /* auto and palette: the active item is filled with the page background, like a tab into the page */
@@ -1496,21 +1517,22 @@ function render({nav,p,o,W,H,page,cards}){
       const x2=Math.round(X+(cd.c+cd.cs)*(cu+gap)-gap), y2=Math.round(Y+(cd.r+cd.rs)*(ru+gap)-gap);
       zones.push({k:cd.k,x,y,w:Math.max(4,x2-x),h:Math.max(4,y2-y)});
     });
-    zones.forEach(z=>{
+    /* in the Power BI project each card is its own styled visual (background, border, shadow), so nothing is painted under it */
+    (o.forPbip?[]:zones).forEach(z=>{
       const {x,y,w,h,k:kd}=z;
-      let fill=t.card, rr=Math.min(rad,h/2,w/2);
-      if(kd==='hero') fill=mix(t.card,t.A,dark?.18:.09);
-      if(kd==='text') fill=mix(t.card,t.canvas,.45);
+      let fill=t.cardFill, rr=Math.min(rad,h/2,w/2);
+      if(kd==='hero') fill=t.heroFill;
+      if(kd==='text') fill=mix(t.cardFill,t.canvas,.45);
       if(kd==='slicer') rr=Math.min(rad,P(8),h/2);
       const f=o.shadow&&kd!=='text'?filt:'';
-      g.push(`<rect x="${x+.5}" y="${y+.5}" width="${w-1}" height="${h-1}" rx="${rr}" fill="${fill}" stroke="${t.border}" stroke-width="1"${f}/>`);
+      g.push(`<rect x="${x+.5}" y="${y+.5}" width="${w-1}" height="${h-1}" rx="${rr}" fill="${fill}" stroke="${t.cardBorder}" stroke-width="1"${f}/>`);
       if(kd==='slicer'){
-        g.push(chev(x+w-P(18),h>P(60)?y+P(17):y+h/2,t.sub,'down'));
+        g.push(chev(x+w-P(18),h>P(60)?y+P(17):y+h/2,t.cardSub,'down'));
       }else if(o.cardStyle==='band'&&(kd==='chart'||kd==='table'||kd==='map')&&h>P(110)){
         const bh=P(36), q=Math.max(0,rr-1), X0=x+1, X1=x+w-1, Y0=y+1;
         g.push(`<path d="M${X0} ${y+bh}V${Y0+q}Q${X0} ${Y0} ${X0+q} ${Y0}H${X1-q}Q${X1} ${Y0} ${X1} ${Y0+q}V${y+bh}Z" fill="${t.band}"/><rect x="${X0}" y="${y+bh}" width="${w-2}" height="1" fill="${t.border}"/>`);
       }else if(o.cardStyle==='tab'&&kd!=='text'&&h>P(34)){
-        g.push(`<rect x="${x+P(14)}" y="${y+P(14)}" width="${P(3)}" height="${Math.min(P(16),h-P(28))}" rx="${P(1.5)}" fill="${t.A}"/>`);
+        g.push(`<rect x="${x+P(14)}" y="${y+P(14)}" width="${P(3)}" height="${Math.min(P(16),h-P(28))}" rx="${P(1.5)}" fill="${t.cardAccent}"/>`);
       }
     });
   }
@@ -1523,7 +1545,7 @@ function themeSlots(p,o){
   const t=tokens(p,o), dark=o.mode==='dark', A=t.A;
   const second=p.div[0].toLowerCase()===p.seq[3].toLowerCase()?p.div[4]:p.div[0];
   const cand=[A,second,darkest(p.seq),p.seq[2],p.div[3],t.sub,p.div[1],dark?mix(A,'#ffffff',.45):p.seq[1]];
-  const visible=c=>Math.abs(lum(c)-lum(t.card))<.06?mix(c,dark?'#ffffff':'#000000',.35):c;
+  const visible=c=>Math.abs(lum(c)-lum(t.cardFill))<.06?mix(c,dark?'#ffffff':'#000000',.35):c;
   const data=[];
   cand.forEach(c=>{let x=visible(c.toLowerCase()),k=0;while(data.includes(x)&&k<5){x=mix(x,dark?'#ffffff':'#000000',.18);k++}data.push(x)});
   /* chart order follows the theme: the palette's own hue family first (darkest first on light, nearest the main color on dark),
@@ -1534,11 +1556,13 @@ function themeSlots(p,o){
   const group=c=>{const v=hsv(c);return v.s<.15?1:hueGap(v.h,mainHue)<=45?0:isWarm(v.h)?3:2};
   const inGroup=(a,b)=>dark?Math.abs(lum(a)-lum(A))-Math.abs(lum(b)-lum(A)):lum(a)-lum(b);
   const byTheme=arr=>arr.slice().sort((a,b)=>group(a)-group(b)||inGroup(a,b));
-  const pale=data.filter(c=>contrast(c,t.card)<2.5), firm=data.filter(c=>!pale.includes(c));
+  /* measured against the card the charts sit on, so on colored cards the colors that blend in go last */
+  const pale=data.filter(c=>contrast(c,t.cardFill)<2.5), firm=data.filter(c=>!pale.includes(c));
   const sl={
     data:[...byTheme(firm),...byTheme(pale)],
-    firstLevel:t.text, secondLevel:t.sub, thirdLevel:mix(t.sub,t.card,.55), fourthLevel:mix(t.sub,t.card,.3),
-    background:t.card, secondaryBackground:dark?mix(t.card,'#ffffff',.07):mix(t.canvas,t.border,.5),
+    /* visuals live on cards, so the theme's text and background follow the card color */
+    firstLevel:t.cardInk, secondLevel:t.cardSub, thirdLevel:mix(t.cardSub,t.cardFill,.55), fourthLevel:mix(t.cardSub,t.cardFill,.3),
+    background:t.cardFill, secondaryBackground:dark?mix(t.card,'#ffffff',.07):mix(t.canvas,t.border,.5),
     tableAccent:A,
     negative:p.div[0], positive:p.div[4], neutral:t.sub,
     max:p.div[4], middle:p.div[2], min:p.div[0]
@@ -1599,7 +1623,7 @@ function themeJSON(p,o){
 }
 
 /* ---------- state ---------- */
-const DEF={view:'frames',group:'industry',pal:'finance',nav:'wide',mode:'light',size:'1920x1080',fontGeneral:12,fontTitle:14,fontCallout:24,sidebar:'brand',cardStyle:'plain',radius:8,shadow:true,texture:'none',text:true,header:true,title:'',titleEdited:false,brand:'Company',subtitle:'Last refreshed · DD MMM YYYY',footer:'Confidential · Internal use',footerLinks:true,textInk:'auto',accent:null,pagesText:'',pagesEdited:false,page:0,menuStyle:'tiles',cards:{},kind:'chart',snap:2,labels:false,iconStyle:'outline',iconWeight:2,iconHolder:'none',showIcons:true,pbipText:'live',pageNames:'auto',slotOverrides:{},slotReverse:{},photoCredit:'',photoFit:'fill',imgSide:'right',photoBlur:6,photoDim:0.5,photoPages:false,photoData:null,photoThumb:null,imgPal:null,imgDiv:null,navAlign:'top',navInk:'auto',tabRadius:12,navFill:'solid',activeStyle:'fill',band:false,filterSlots:4,logo:'placeholder',logoV:2,logoData:null,logoName:'',logoIcon:'bars',icons:{}};
+const DEF={view:'frames',group:'industry',pal:'finance',nav:'wide',mode:'light',size:'1920x1080',fontGeneral:12,fontTitle:14,fontCallout:24,sidebar:'brand',cardStyle:'plain',cardTone:'paper',radius:8,shadow:true,texture:'none',text:true,header:true,title:'',titleEdited:false,brand:'Company',subtitle:'Last refreshed · DD MMM YYYY',footer:'Confidential · Internal use',footerLinks:true,textInk:'auto',accent:null,pagesText:'',pagesEdited:false,page:0,menuStyle:'tiles',cards:{},kind:'chart',snap:2,labels:false,iconStyle:'outline',iconWeight:2,iconHolder:'none',showIcons:true,pbipText:'live',pageNames:'auto',slotOverrides:{},slotReverse:{},photoCredit:'',photoFit:'fill',imgSide:'right',photoBlur:6,photoDim:0.5,photoPages:false,photoData:null,photoThumb:null,imgPal:null,imgDiv:null,navAlign:'top',navInk:'auto',tabRadius:12,navFill:'solid',activeStyle:'fill',band:false,filterSlots:4,logo:'placeholder',logoV:2,logoData:null,logoName:'',logoIcon:'bars',icons:{}};
 let S={...DEF};
 try{const saved=JSON.parse(localStorage.getItem('backplate.v2')||'null');if(saved) S={...DEF,...saved,size:DEF.size,logoData:null,photoData:null,photoThumb:null}}catch(e){}
 if(S.logoV!==2){S.logo='placeholder';S.logoV=2}
@@ -1616,7 +1640,7 @@ function pagesFor(p){
   const list=S.pagesEdited?S.pagesText.split('\n').map(x=>x.trim()).filter(Boolean):p.pages;
   return (list.length?list:p.pages).slice(0,8);
 }
-const opts=(p=pal(),mode=S.mode)=>({mode,sidebar:S.sidebar,cardStyle:S.cardStyle,radius:S.radius,shadow:S.shadow,texture:S.texture,text:S.text,header:S.header,brand:S.brand,title:String(S.titleEdited?S.title:p.title).replace(/\*/g,''),titleRaw:S.titleEdited?S.title:p.title,subtitle:S.subtitle,footer:S.footer,footerLinks:S.footerLinks,textInk:S.textInk,menuStyle:S.menuStyle,pages:pagesFor(p),icons:pagesFor(p).map((n,i)=>S.icons[n]||autoIcon(n,i)),iconStyle:S.iconStyle,iconWeight:S.iconWeight,iconHolder:S.iconHolder,showIcons:S.showIcons,logo:S.logo,logoIcon:S.logoIcon,fontGeneral:S.fontGeneral,fontTitle:S.fontTitle,fontCallout:S.fontCallout,logoData:S.logoData,navAlign:S.navAlign,navFill:S.navFill,activeStyle:S.activeStyle,band:S.band,filterSlots:S.filterSlots,navInk:S.navInk,tabRadius:S.tabRadius,photoData:S._thumb?(S.photoThumb||null):S.photoData,photoBlur:S.photoBlur,photoDim:S.photoDim,photoPages:S.photoPages,photoCredit:S.photoCredit,photoFit:S.photoFit,imgSide:S.imgSide});
+const opts=(p=pal(),mode=S.mode)=>({mode,sidebar:S.sidebar,cardStyle:S.cardStyle,cardTone:S.cardTone,radius:S.radius,shadow:S.shadow,texture:S.texture,text:S.text,header:S.header,brand:S.brand,title:String(S.titleEdited?S.title:p.title).replace(/\*/g,''),titleRaw:S.titleEdited?S.title:p.title,subtitle:S.subtitle,footer:S.footer,footerLinks:S.footerLinks,textInk:S.textInk,menuStyle:S.menuStyle,pages:pagesFor(p),icons:pagesFor(p).map((n,i)=>S.icons[n]||autoIcon(n,i)),iconStyle:S.iconStyle,iconWeight:S.iconWeight,iconHolder:S.iconHolder,showIcons:S.showIcons,logo:S.logo,logoIcon:S.logoIcon,fontGeneral:S.fontGeneral,fontTitle:S.fontTitle,fontCallout:S.fontCallout,logoData:S.logoData,navAlign:S.navAlign,navFill:S.navFill,activeStyle:S.activeStyle,band:S.band,filterSlots:S.filterSlots,navInk:S.navInk,tabRadius:S.tabRadius,photoData:S._thumb?(S.photoThumb||null):S.photoData,photoBlur:S.photoBlur,photoDim:S.photoDim,photoPages:S.photoPages,photoCredit:S.photoCredit,photoFit:S.photoFit,imgSide:S.imgSide});
 const renderPage=(i,extra={})=>{const [W,H]=dims(), p=effPal(pal(),S.accent);return render({nav:S.nav,p,o:opts(pal()),W,H,page:i,cards:S.cards[i]||[],...extra})};
 let sel=-1, current=null;
 
@@ -2354,30 +2378,39 @@ function pbiTextbox(it){
       padding:[{properties:{top:Dbl(0),right:Dbl(0),bottom:Dbl(0),left:Dbl(0)}}]
     }};
 }
-function pbiPlaceholder(kind,n,o,t){
+/* boxed = a card the user drew: the card is the visual's own background, border (with corner radius) and shadow,
+   so it can be recolored and resized in Power BI. Unboxed (filter panel slots, intro text) stays transparent. */
+function pbiPlaceholder(kind,n,o,t,boxed){
   const type=PBI_TYPE[kind]||'clusteredColumnChart';
+  const card=t.cardFill||t.card;
+  const fill=kind==='hero'?(t.heroFill||card):kind==='text'?mix(card,t.canvas,.45):card;
+  const ink=boxed?(t.cardInk||t.text):t.text, sub=boxed?(t.cardSub||t.sub):t.sub;
+  const box=boxed?{
+    background:[{properties:{show:Bool(true),color:{solid:{color:Str(fill)}},transparency:Dbl(0)}}],
+    border:[{properties:{show:Bool(true),color:{solid:{color:Str(t.cardBorder||t.border)}},radius:Dbl(o.radius||0),width:Dbl(1)}}],
+    dropShadow:[{properties:{show:Bool(!!o.shadow&&kind!=='text')}}]
+  }:{background:Off(),border:Off()};
   if(type==='textbox') return {visualType:'textbox',
-    objects:{general:[{properties:{paragraphs:[{textRuns:[{value:`Text ${n}`,textStyle:{fontFamily:'Segoe UI Semibold',fontSize:`${o.fontTitle}pt`,color:t.text}}],horizontalTextAlignment:'left'}]}}]},
-    visualContainerObjects:{background:Off(),border:Off(),visualHeader:Off()}};
+    objects:{general:[{properties:{paragraphs:[{textRuns:[{value:`Text ${n}`,textStyle:{fontFamily:'Segoe UI Semibold',fontSize:`${o.fontTitle}pt`,color:ink}}],horizontalTextAlignment:'left'}]}}]},
+    visualContainerObjects:{...box,visualHeader:Off()}};
   if(type==='slicer'){
     const sz=Dbl(Math.max(6,Math.round(o.fontGeneral||12)));
     return {visualType:'slicer',
       objects:{
         data:[{properties:{mode:Str('Dropdown')}}],
-        header:[{properties:{show:Bool(true),text:Str(`Filter ${n}`),fontFamily:Str('Segoe UI'),textSize:sz,fontColor:{solid:{color:Str(t.slicerHeader||t.sub)}}}}],
-        items:[{properties:{fontFamily:Str('Segoe UI'),textSize:sz,fontColor:{solid:{color:Str(t.slicerText||t.text)}},background:{solid:{color:Str(t.slicerBg||t.card)}}}}]
+        header:[{properties:{show:Bool(true),text:Str(`Filter ${n}`),fontFamily:Str('Segoe UI'),textSize:sz,fontColor:{solid:{color:Str(boxed?sub:(t.slicerHeader||t.sub))}}}}],
+        items:[{properties:{fontFamily:Str('Segoe UI'),textSize:sz,fontColor:{solid:{color:Str(boxed?ink:(t.slicerText||t.text))}},background:{solid:{color:Str(boxed?fill:(t.slicerBg||t.card))}}}}]
       },
       visualContainerObjects:{
-        background:Off(),border:Off(),visualHeader:Off(),
+        ...box,visualHeader:Off(),
         title:[{properties:{show:Bool(false),text:Str(`Filter ${n}`)}}],
         padding:[{properties:{top:Dbl(0),right:Dbl(0),bottom:Dbl(0),left:Dbl(0)}}]
       }};
   }
-  const titled=type!=='slicer';
   return {visualType:type,
     visualContainerObjects:{
-      background:Off(),border:Off(),
-      title:[{properties:{show:Bool(titled),text:Str(`${KIND[kind]} ${n}`),fontSize:Dbl(o.fontTitle),fontColor:{solid:{color:Str(t.text)}}}}]
+      ...box,
+      title:[{properties:{show:Bool(true),text:Str(`${KIND[kind]} ${n}`),fontSize:Dbl(o.fontTitle),fontColor:{solid:{color:Str(ink)}}}}]
     }};
 }
 
@@ -2455,7 +2488,7 @@ async function exportPBIP(){
         z+=1000;const vid=hex20();
         put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,rr.imgZ,pbiImage(imgFile,'Menu image',rr.imgZ.fit==='fit'?'Fit':'Fill',null)));visuals++;
       }
-      rr.zones.forEach((zn,j)=>{z+=1000;const vid=hex20();put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,zn,pbiPlaceholder(zn.k,j+1,o,t)));visuals++});
+      rr.zones.forEach((zn,j)=>{z+=1000;const vid=hex20();put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,zn,pbiPlaceholder(zn.k,j+1,o,t,true)));visuals++});
       (rr.textZ||[]).forEach(zn=>{
         z+=1000;const vid=hex20();put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,zn,pbiTextbox(zn)));texts++;
       });
