@@ -564,7 +564,7 @@ kbd{font-family:var(--f-mono);font-size:10.5px;border:1px solid var(--line);bord
             <button type="button" data-val="live">Editable text boxes</button><button type="button" data-val="baked">In the image</button></div></div>
           <div class="ctl" style="margin-top:6px;grid-template-columns:96px minmax(0,1fr)"><span>Page names</span><div class="seg" data-key="pageNames">
             <button type="button" data-val="auto">From Power BI</button><button type="button" data-val="fixed">Fixed labels</button></div></div>
-          <p class="hint">Unzip and open the <code>.pbip</code> in Power BI Desktop. From Power BI: sidebar and tab names follow your real page names. For images: Canvas background → Fit, 0% transparency.</p>
+          <p class="hint">Unzip and open the <code>.pbip</code> in Power BI Desktop. Extract to a short path such as <code>C:\PBI\</code> if Windows says the destination path is too long. From Power BI: sidebar and tab names follow your real page names. For images: Canvas background → Fit, 0% transparency.</p>
         </div>
 
         <div>
@@ -751,6 +751,9 @@ function tokens(p,o){
     t.border=mix(t.canvas,deep,.13);
     t.text=mix(deep,'#0b0d10',.55);
     t.sub=mix(deep,t.canvas,.45);
+    /* secondary text (header subtitle, captions) must read on the canvas: WCAG AA asks 4.5:1 for text this size.
+       The plain mix gave 3.9:1 on the finance palette; step towards the deep tone until it passes. */
+    for(let i=0;i<24&&contrast(t.sub,t.canvas)<4.6;i++) t.sub=mix(t.sub,deep,.08);
     t.faint=mix(t.canvas,deep,.1);
     if(lum(A)>.45){
       /* darken a too-light main color by lowering lightness only; mixing in black turns yellow into olive */
@@ -2274,7 +2277,6 @@ async function exportZip(){
 
 /* ---------- Power BI project (PBIP, enhanced report format), mirrored from Desktop-saved projects ---------- */
 const SCH='https://developer.microsoft.com/json-schemas/fabric/';
-const hex20=()=>Array.from(crypto.getRandomValues(new Uint8Array(10)),b=>b.toString(16).padStart(2,'0')).join('');
 function uuid(){
   try{if(crypto.randomUUID) return crypto.randomUUID()}catch(e){}
   const b=crypto.getRandomValues(new Uint8Array(16)); b[6]=(b[6]&15)|64; b[8]=(b[8]&63)|128;
@@ -2286,7 +2288,7 @@ const Str=s=>Lit(`'${String(s).replace(/'/g,"''")}'`);
 const Bool=b=>Lit(b?'true':'false');
 const Dbl=n=>Lit(`${n}D`);
 const Off=()=>[{properties:{show:Bool(false)}}];
-const PBI_TYPE={kpi:'cardVisual',hero:'cardVisual',chart:'clusteredColumnChart',table:'tableEx',slicer:'slicer',map:'map',text:'textbox'};
+const PBI_TYPE={kpi:'cardVisual',hero:'cardVisual',chart:'clusteredColumnChart',table:'tableEx',slicer:'slicer',map:'azureMap',text:'textbox'};
 
 function pbiContainer(name,z,zn,visual){
   return {$schema:SCH+'item/report/definition/visualContainer/2.12.0/schema.json',name,
@@ -2421,10 +2423,17 @@ async function exportPBIP(){
   try{
     const [W,H]=dims(), base=pal(), P0=effPal(base,S.accent), o=opts(), pages=pagesFor(base);
     const PN=(o.title||'').replace(/[^A-Za-z0-9 _-]+/g,'').replace(/\s+/g,' ').trim().slice(0,40)||'Backplate Report';
-    const R=`${PN}.Report`, M=`${PN}.SemanticModel`, zip=new JSZip(), root=zip.folder(PN);
+    const R=`${PN}.Report`, M=`${PN}.SemanticModel`, zip=new JSZip(), root=zip;
+    // No wrapper folder inside the zip: every unzip tool already extracts into one named after the file, and the
+    // PBIR page/visual folders are deep enough that a second copy of the project name pushed the longest entry
+    // (…/definition/pages/<id>/visuals/<id>/visual.json) past the 260-character path limit Windows' own unzip enforces.
     const put=(path,obj)=>root.file(path,typeof obj==='string'?obj:JSON.stringify(obj,null,2));
-    const list=[{i:-1,name:'Main menu',file:'bg-00-main-menu.png'},...pages.map((n,i)=>({i,name:n,file:`bg-${String(i+1).padStart(2,'0')}-${slug(n)}.png`}))];
-    list.forEach(it=>{it.id=hex20()});
+    const list=[{i:-1,name:'Main menu',file:'bg-00-main-menu.png'},...pages.map((n,i)=>({i,name:n,file:`bg-${String(i+1).padStart(2,'0')}-${slug(n).slice(0,24).replace(/-$/,'')}.png`}))];
+    // Page and visual folders are named p1, p2… and v1, v2… rather than the 20 hex characters Desktop uses.
+    // They only have to be unique (page: across the report, visual: across its page), and short names keep the
+    // longest entry — …/definition/pages/<id>/visuals/<id>/visual.json — clear of the 260-character path limit
+    // Windows' own unzip enforces. Desktop keeps whatever names it finds.
+    list.forEach((it,i)=>{it.id='p'+(i+1)});
     const themeFile='BackplateTheme.json', at={visual:'2.12.0',report:'3.4.0',page:'2.3.1'};
     const useLogo=S.logo==='placeholder'||(S.logo==='image'&&!!S.logoData);
     let logoFile=null, logoBlob=null;
@@ -2462,7 +2471,7 @@ async function exportPBIP(){
       settings:{useStylableVisualContainerHeader:true,exportDataMode:'AllowSummarized',defaultDrillFilterOtherVisuals:true,allowChangeFilterTypes:true,useEnhancedTooltips:true,useDefaultAggregateDisplayName:true}
     });
     put(`${R}/definition/pages/pages.json`,{$schema:SCH+'item/report/definition/pagesMetadata/1.1.0/schema.json',pageOrder:list.map(it=>it.id),activePageName:list[0].id});
-    const theme=JSON.parse(themeJSON(P0,o)); theme.name='Backplate Theme';
+    const theme=JSON.parse(themeJSON(P0,o)); theme.name=themeFile; /* Desktop loads the theme only when name equals the registered file name */
     put(`${R}/StaticResources/RegisteredResources/${themeFile}`,theme);
     root.file(`${R}/StaticResources/SharedResources/BaseThemes/Fluent2-CY26SU08.json`,window.PBI_BASE_THEME.text);
     if(logoFile) root.file(`${R}/StaticResources/RegisteredResources/${logoFile}`,logoBlob);
@@ -2483,32 +2492,32 @@ async function exportPBIP(){
           outspace:[{properties:{color:{solid:{color:Str(t.canvas)}},transparency:Dbl(0)}}]
         }
       });
-      let z=0;
+      let z=0, vn=0;
       if(imgFile&&rr.imgZ){
-        z+=1000;const vid=hex20();
+        z+=1000;const vid='v'+(++vn);
         put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,rr.imgZ,pbiImage(imgFile,'Menu image',rr.imgZ.fit==='fit'?'Fit':'Fill',null)));visuals++;
       }
-      rr.zones.forEach((zn,j)=>{z+=1000;const vid=hex20();put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,zn,pbiPlaceholder(zn.k,j+1,o,t,true)));visuals++});
+      rr.zones.forEach((zn,j)=>{z+=1000;const vid='v'+(++vn);put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,zn,pbiPlaceholder(zn.k,j+1,o,t,true)));visuals++});
       (rr.textZ||[]).forEach(zn=>{
-        z+=1000;const vid=hex20();put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,zn,pbiTextbox(zn)));texts++;
+        z+=1000;const vid='v'+(++vn);put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,zn,pbiTextbox(zn)));texts++;
       });
       if(rr.navigatorZ){
-        z+=1000;const vid=hex20();
+        z+=1000;const vid='v'+(++vn);
         put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,rr.navigatorZ,pbiNavigator(rr.navigatorZ,list[0].id)));navigators++;
       }
       (rr.navigatorZ?[]:rr.navZ).forEach((zn,k)=>{
         const target=list[(zn.target!=null?zn.target:k)+1]; if(!target) return;
-        z+=1000;const vid=hex20();put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,zn,pbiNavButton(target.id,target.name)));buttons++;
+        z+=1000;const vid='v'+(++vn);put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,zn,pbiNavButton(target.id,target.name)));buttons++;
       });
       (rr.frameZ||[]).forEach((zn,j)=>{
-        z+=1000;const vid=hex20();put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,zn,pbiPlaceholder(zn.k,j+1,o,{...t,...(zn.color?{text:zn.color}:{}),...(zn.headerColor?{slicerHeader:zn.headerColor}:{}),...(zn.itemBg?{slicerBg:zn.itemBg,slicerText:zn.itemColor}:{})})));visuals++;
+        z+=1000;const vid='v'+(++vn);put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,zn,pbiPlaceholder(zn.k,j+1,o,{...t,...(zn.color?{text:zn.color}:{}),...(zn.headerColor?{slicerHeader:zn.headerColor}:{}),...(zn.itemBg?{slicerBg:zn.itemBg,slicerText:zn.itemColor}:{})})));visuals++;
       });
       if(logoFile&&rr.logoZ){
-        z+=1000;const vid=hex20();
+        z+=1000;const vid='v'+(++vn);
         put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,rr.logoZ,pbiLogo(logoFile,it.i>=0?list[0].id:null)));logos++;
       }
       (rr.socialZ||[]).forEach(zn=>{
-        z+=1000;const vid=hex20();put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,zn,pbiLinkButton(zn.url,zn.label)));links++;
+        z+=1000;const vid='v'+(++vn);put(`${dir}/visuals/${vid}/visual.json`,pbiContainer(vid,z,zn,pbiLinkButton(zn.url,zn.label)));links++;
       });
     }
 
