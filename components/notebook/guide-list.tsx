@@ -10,11 +10,17 @@ const GuideList = ({
 	heading = "Cheat sheets",
 	subheading = "Reference pages I keep coming back to mid-project",
 	id = "cheat-sheets",
+	unit = ["sheet", "sheets"],
+	cta = "Open the sheet",
 }: {
 	guides: IGuide[];
 	heading?: string;
 	subheading?: string;
 	id?: string;
+	/** Singular and plural noun for the count next to the heading. */
+	unit?: [string, string];
+	/** Link text on each card. */
+	cta?: string;
 }) => {
 	if (!guides.length) return null;
 
@@ -27,7 +33,7 @@ const GuideList = ({
 				<div className="flex items-end gap-3">
 					<h2 className="section-heading seq">{heading}</h2>
 					<span className="text-sm text-gray-500 font-normal whitespace-nowrap pb-1.5">
-						· {guides.length} {guides.length === 1 ? "sheet" : "sheets"}
+						· {guides.length} {guides.length === 1 ? unit[0] : unit[1]}
 					</span>
 				</div>
 				<h3 className="text-xl md:text-2xl md:max-w-3xl w-full seq mt-2 text-gray-200">
@@ -74,7 +80,7 @@ const GuideList = ({
 										</span>
 									)}
 									<span className="flex-none text-xs font-medium text-[#57C785]">
-										Open the sheet
+										{cta}
 										<span
 											aria-hidden
 											className="inline-block ml-1.5 transition-transform duration-200 group-hover:translate-x-0.5"

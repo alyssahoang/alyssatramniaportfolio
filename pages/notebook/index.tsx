@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-import { METADATA, NOTEBOOK_GUIDES, NOTES } from "../../constants";
+import { METADATA, NOTEBOOK_GUIDES, NOTEBOOK_POSTS, NOTES } from "../../constants";
 import Layout from "@/components/common/layout";
 import Header from "@/components/common/header";
 import ProgressIndicator from "@/components/common/progress-indicator";
@@ -104,6 +104,10 @@ export default function Notebook() {
 	const noNotes = NOTES.length === 0;
 
 	const stats: string[] = [];
+	if (NOTEBOOK_POSTS.length)
+		stats.push(
+			`${NOTEBOOK_POSTS.length} ${NOTEBOOK_POSTS.length === 1 ? "post" : "posts"}`
+		);
 	if (NOTEBOOK_GUIDES.length)
 		stats.push(
 			`${NOTEBOOK_GUIDES.length} cheat ${
@@ -127,6 +131,15 @@ export default function Notebook() {
 				{renderBackdrop()}
 				<NotebookHero stats={stats} showShuffle={NOTES.length > 0} />
 
+				<GuideList
+					guides={NOTEBOOK_POSTS}
+					heading="Blog"
+					subheading="Longer reads on how data work actually goes wrong"
+					id="blog"
+					unit={["post", "posts"]}
+					cta="Read the post"
+				/>
+
 				<GuideList guides={NOTEBOOK_GUIDES} />
 
 				{/* Three states for the notes: none written yet (no controls to show),
@@ -138,8 +151,8 @@ export default function Notebook() {
 								The first short notes are on their way.
 							</p>
 							<p className="text-sm text-gray-500 mt-2 max-w-md mx-auto leading-relaxed">
-								I am writing them up as I go — the cheat sheet above is the
-								first thing to land.
+								I am writing them up as I go — the post and the cheat sheet
+								above landed first.
 							</p>
 						</div>
 					</div>

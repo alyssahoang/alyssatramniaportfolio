@@ -25,12 +25,31 @@ interface LayoutProps {
   description?: string;
   /** Route path ("/aboutme/reads") for canonical + og:url; defaults to home. */
   path?: string;
+  /** Per-page share image, a /public path; falls back to the site preview. */
+  image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  /** og:type — "article" for blog posts. */
+  type?: "website" | "article";
 }
 
-const Layout = ({ children, title, description, path }: LayoutProps) => {
+const Layout = ({
+  children,
+  title,
+  description,
+  path,
+  image,
+  imageAlt,
+  imageWidth = 1200,
+  imageHeight = 630,
+  type = "website",
+}: LayoutProps) => {
   const pageTitle = title || METADATA.title;
   const pageDescription = description || METADATA.description;
   const pageUrl = `${METADATA.siteUrl}${path || ""}`;
+  const shareImage = image ? `${METADATA.siteUrl}${image}` : PREVIEW_IMAGE;
+  const shareAlt = image ? imageAlt || pageTitle : PREVIEW_ALT;
 
   return (
     <>
@@ -45,22 +64,22 @@ const Layout = ({ children, title, description, path }: LayoutProps) => {
         <meta name="description" content={pageDescription} />
         <link rel="canonical" href={pageUrl} />
         <meta property="og:locale" content="en_US" />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content={type} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:url" content={pageUrl} />
         <meta property="og:site_name" content={METADATA.title} />
-        <meta property="og:image" content={PREVIEW_IMAGE} />
-        <meta property="og:image:secure_url" content={PREVIEW_IMAGE} />
+        <meta property="og:image" content={shareImage} />
+        <meta property="og:image:secure_url" content={shareImage} />
         <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content={PREVIEW_ALT} />
+        <meta property="og:image:width" content={String(image ? imageWidth : 1200)} />
+        <meta property="og:image:height" content={String(image ? imageHeight : 630)} />
+        <meta property="og:image:alt" content={shareAlt} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content={PREVIEW_IMAGE} />
-        <meta name="twitter:image:alt" content={PREVIEW_ALT} />
+        <meta name="twitter:image" content={shareImage} />
+        <meta name="twitter:image:alt" content={shareAlt} />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

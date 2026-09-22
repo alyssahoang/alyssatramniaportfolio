@@ -839,6 +839,20 @@ export const NOTEBOOK_GUIDES: IGuide[] = [
 	},
 ];
 
+// Blog posts — long reads at /notebook/<slug>/, same shape as a guide. Newest
+// first; each slug must match a file in pages/notebook/.
+export const NOTEBOOK_POSTS: IGuide[] = [
+	{
+		slug: "hidden-trap-of-being-data-driven",
+		title: "The Hidden Trap of Being Data-Driven",
+		description:
+			"Being data-driven does not automatically mean being objective. The data can be real, the query can run, and the conclusion can still be wrong — here is where it happens.",
+		topic: "Craft",
+		date: "Sep 2026",
+		meta: "7 min read · 6 traps · 7 figures",
+	},
+];
+
 // Browser tools listed on /tools/. Each one is a self-contained static page in
 // public/tools/<slug>/ (its own HTML, no React), linked with a plain <a>.
 export interface ITool {

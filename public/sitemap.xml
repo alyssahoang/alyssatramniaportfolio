@@ -8,9 +8,15 @@
   </url>
   <url>
     <loc>https://alyssatramnia.com/notebook/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alyssatramnia.com/notebook/hidden-trap-of-being-data-driven/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://alyssatramnia.com/notebook/color-cheat-sheet/</loc>
