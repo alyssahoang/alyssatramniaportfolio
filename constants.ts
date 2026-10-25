@@ -273,7 +273,7 @@ export const PROJECTS: IProject[] = [
 	{
 		name: "E-commerce Profitability – Where does the business make money, and where does it leak?",
 		categories: [ProjectTypes.BI, ProjectTypes.CUSTOMER],
-		image: "/projects/ecommerce-profitability.png",
+		image: "/projects/ecommerce-profitability.gif",
 		description: "My entry for the ZoomCharts 4U Report E-commerce Challenge: three pages, three business questions, built with drill-down charts in a few days.",
 		gradient: ["#134e4a", "#0e7490"],
 		url: "https://app.powerbi.com/view?r=eyJrIjoiM2QxNjE5NTItZTM2Ny00YWQ1LWFjYmUtZmQ1YzA5ZGYwZTJiIiwidCI6IjQ2NTRiNmYxLTBlNDctNDU3OS1hOGExLTAyZmU5ZDk0M2M3YiIsImMiOjl9",
