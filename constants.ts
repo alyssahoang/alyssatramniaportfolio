@@ -271,6 +271,18 @@ export const PROJECTS: IProject[] = [
 		featured: true,
 	},
 	{
+		name: "E-commerce Profitability – Where does the business make money, and where does it leak?",
+		categories: [ProjectTypes.BI, ProjectTypes.CUSTOMER],
+		image: "/projects/ecommerce-profitability.png",
+		description: "My entry for the ZoomCharts 4U Report E-commerce Challenge: three pages, three business questions, built with drill-down charts in a few days.",
+		gradient: ["#134e4a", "#0e7490"],
+		url: "https://app.powerbi.com/view?r=eyJrIjoiM2QxNjE5NTItZTM2Ny00YWQ1LWFjYmUtZmQ1YzA5ZGYwZTJiIiwidCI6IjQ2NTRiNmYxLTBlNDctNDU3OS1hOGExLTAyZmU5ZDk0M2M3YiIsImMiOjl9",
+		tech: ["PowerBI"],
+		fullDescription: "I joined the ZoomCharts 4U Report E-commerce Challenge late, with only a few days to learn drill-down charts and build the report. Rather than fitting everything onto one page, I organised it around three questions. The Executive Overview shows how the business is performing overall. The Profitability page looks at where value is created across products, channels and customer groups. The Drivers page shows where margin is lost to promotions, returns, stockouts, delivery and operating costs. The part I enjoyed most was the cohort analysis, which follows customer groups after their first purchase and shows where retention holds and where it weakens. Filters and metric switches let a reader move from the overall picture down to the categories, channels or customers behind it.",
+		impact: ["Growth is becoming more profitable", "The best-selling category is not the most profitable", "Discounting does not always deliver profitable sales"],
+		featured: true,
+	},
+	{
 		name: "AdventureWorks Production – Where is inventory getting stuck?",
 		categories: [ProjectTypes.BI],
 		image: "/projects/inventory.gif",
