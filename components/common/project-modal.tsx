@@ -105,7 +105,7 @@ const ProjectModal = ({ project, onClose, originRect }: ProjectModalProps) => {
 
 			<div
 				ref={cardRef}
-				className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto scrollbar-none rounded-2xl bg-gray-900 border border-gray-700/50 shadow-2xl"
+				className={`relative w-full ${project.embedUrl ? "max-w-5xl" : "max-w-2xl"} max-h-[90vh] overflow-y-auto scrollbar-none rounded-2xl bg-gray-900 border border-gray-700/50 shadow-2xl`}
 			>
 				{/* Close button */}
 				<button
@@ -118,25 +118,37 @@ const ProjectModal = ({ project, onClose, originRect }: ProjectModalProps) => {
 					</svg>
 				</button>
 
-				{/* Hero image */}
-				<div className="relative aspect-[16/9] overflow-hidden rounded-t-2xl">
-					<div
-						className="absolute inset-0 opacity-50 z-10"
-						style={{
-							background: `linear-gradient(135deg, ${stop1}90 0%, ${stop2}90 100%)`,
-						}}
-					/>
-					<Image
-						src={project.image}
-						alt={project.name}
-						layout="fill"
-						objectFit="cover"
-					/>
-					<div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-900 to-transparent z-10" />
-				</div>
+				{project.embedUrl ? (
+					/* Live report, shown as soon as the modal opens */
+					<div className="relative aspect-[16/9] overflow-hidden rounded-t-2xl bg-black">
+						<iframe
+							title={project.name}
+							src={project.embedUrl}
+							className="absolute inset-0 w-full h-full border-0"
+							allowFullScreen
+						/>
+					</div>
+				) : (
+					/* Hero image */
+					<div className="relative aspect-[16/9] overflow-hidden rounded-t-2xl">
+						<div
+							className="absolute inset-0 opacity-50 z-10"
+							style={{
+								background: `linear-gradient(135deg, ${stop1}90 0%, ${stop2}90 100%)`,
+							}}
+						/>
+						<Image
+							src={project.image}
+							alt={project.name}
+							layout="fill"
+							objectFit="cover"
+						/>
+						<div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-900 to-transparent z-10" />
+					</div>
+				)}
 
 				{/* Content */}
-				<div className="p-6 md:p-8 -mt-8 relative z-20">
+				<div className={`p-6 md:p-8 relative z-20 ${project.embedUrl ? "" : "-mt-8"}`}>
 					{/* Category */}
 					<div className="flex flex-wrap gap-2 mb-3">
 						{project.categories.map((category) => (

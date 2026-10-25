@@ -240,6 +240,8 @@ export interface IProject {
 	description: string;
 	gradient: [string, string];
 	url: string;
+	/** Power BI "Publish to web" link; when set, the modal shows the live report instead of the hero image. */
+	embedUrl?: string;
 	tech: string[];
 	fullDescription?: string;
 	impact?: string[];
@@ -277,6 +279,7 @@ export const PROJECTS: IProject[] = [
 		description: "My entry for the ZoomCharts 4U Report E-commerce Challenge: three pages, three business questions, built with drill-down charts in a few days.",
 		gradient: ["#134e4a", "#0e7490"],
 		url: "https://app.powerbi.com/view?r=eyJrIjoiM2QxNjE5NTItZTM2Ny00YWQ1LWFjYmUtZmQ1YzA5ZGYwZTJiIiwidCI6IjQ2NTRiNmYxLTBlNDctNDU3OS1hOGExLTAyZmU5ZDk0M2M3YiIsImMiOjl9",
+		embedUrl: "https://app.powerbi.com/view?r=eyJrIjoiM2QxNjE5NTItZTM2Ny00YWQ1LWFjYmUtZmQ1YzA5ZGYwZTJiIiwidCI6IjQ2NTRiNmYxLTBlNDctNDU3OS1hOGExLTAyZmU5ZDk0M2M3YiIsImMiOjl9",
 		tech: ["PowerBI"],
 		fullDescription: "I joined the ZoomCharts 4U Report E-commerce Challenge late, with only a few days to learn drill-down charts and build the report. Rather than fitting everything onto one page, I organised it around three questions. The Executive Overview shows how the business is performing overall. The Profitability page looks at where value is created across products, channels and customer groups. The Drivers page shows where margin is lost to promotions, returns, stockouts, delivery and operating costs. The part I enjoyed most was the cohort analysis, which follows customer groups after their first purchase and shows where retention holds and where it weakens. Filters and metric switches let a reader move from the overall picture down to the categories, channels or customers behind it.",
 		impact: ["Growth is becoming more profitable", "The best-selling category is not the most profitable", "Discounting does not always deliver profitable sales"],
@@ -288,7 +291,8 @@ export const PROJECTS: IProject[] = [
 		image: "/projects/furniture-store.gif",
 		description: "Three branches, 18 monthly Excel files, one answer: the revenue gap comes from footfall, not from what people buy. Weekends bring in 46% of revenue.",
 		gradient: ["#3f2a14", "#d97706"],
-		url: "https://mavenshowcase.com/project/57541",
+		url: "https://app.powerbi.com/view?r=eyJrIjoiNDIyOGZlMjctZGZhYS00MDlkLThkZTYtZDdhMmI2YWVmOGFhIiwidCI6ImNiNDg0NDZlLTkwZTYtNGJmMS04MjViLTQwZTQ4ZmNjOWZmNiJ9&pageName=beb5247e74e7400e042d",
+		embedUrl: "https://app.powerbi.com/view?r=eyJrIjoiNDIyOGZlMjctZGZhYS00MDlkLThkZTYtZDdhMmI2YWVmOGFhIiwidCI6ImNiNDg0NDZlLTkwZTYtNGJmMS04MjViLTQwZTQ4ZmNjOWZmNiJ9&pageName=beb5247e74e7400e042d",
 		tech: ["PowerBI", "excel", "python"],
 		fullDescription: "A furniture retailer with branches in Long Island City, Paramus and Red Hook supplied 18 monthly transaction files. I consolidated them into a three-page Power BI report: Executive Overview, Product Intelligence, and Store & Demand. Average order value is almost identical across branches, so the revenue gap is traffic. Saturday and Sunday produce 46.3% of revenue, 19 of 80 products make half of it, and H1 2026 closed up 7.0%. The dataset had no product images, so I generated a consistent catalogue with a Python script, seeded by product id so the set is reproducible.",
 		impact: ["Revenue gap explained by footfall", "Weekends 46.3% of revenue", "19 of 80 products = half of revenue"],
