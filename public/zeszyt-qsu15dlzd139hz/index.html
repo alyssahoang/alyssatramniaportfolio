@@ -1,0 +1,2043 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Mój zeszyt polskiego</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a squared school notebook (zeszyt w kratkę) with a red margin; flashcards are index cards (fiszki) laid on it. */
+:root {
+  --paper: #F2F5F8;
+  --grid: rgba(44, 86, 150, 0.075);
+  --card: #FFFFFF;
+  --ink: #17223A;
+  --muted: #5A6579;
+  --line: #D6DDE6;
+  --accent: #2446B5;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #E4EAFB;
+  --margin: #D4433D;
+  --rule: rgba(36, 70, 181, 0.10);
+  --again: #C23A34;
+  --hard: #A86A12;
+  --good: #1D7F55;
+  --easy: #2A64A8;
+  --new: #2A64A8;
+  --learn: #C23A34;
+  --review: #1D7F55;
+  --shadow: 0 1px 2px rgba(23, 34, 58, 0.06), 0 8px 24px rgba(23, 34, 58, 0.08);
+  --f-display: "Literata", "Georgia", "Times New Roman", serif;
+  --f-body: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #10151E; --grid: rgba(150, 180, 235, 0.055); --card: #19202C; --ink: #E5E9F1; --muted: #98A2B4;
+    --line: #2B3444; --accent: #93A8FF; --accent-ink: #0F1422; --accent-soft: #222C48; --margin: #EE7069;
+    --rule: rgba(147, 168, 255, 0.08); --again: #EE7069; --hard: #E0A84A; --good: #4DBE8B; --easy: #7FB0EE;
+    --new: #7FB0EE; --learn: #EE7069; --review: #4DBE8B; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #10151E; --grid: rgba(150, 180, 235, 0.055); --card: #19202C; --ink: #E5E9F1; --muted: #98A2B4;
+  --line: #2B3444; --accent: #93A8FF; --accent-ink: #0F1422; --accent-soft: #222C48; --margin: #EE7069;
+  --rule: rgba(147, 168, 255, 0.08); --again: #EE7069; --hard: #E0A84A; --good: #4DBE8B; --easy: #7FB0EE;
+  --new: #7FB0EE; --learn: #EE7069; --review: #4DBE8B; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.5;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+button, input, select { font: inherit; color: inherit; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.2; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px 20px; flex-wrap: wrap; padding-block: 10px; }
+.brand { display: flex; align-items: baseline; gap: 10px; min-width: 0; }
+.brand b { font-family: var(--f-display); font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; }
+.brand span { font-family: var(--f-mono); font-size: .72rem; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+.tabs { display: flex; gap: 4px; }
+.tab { border: 0; background: none; padding: 6px 12px; border-radius: 8px; cursor: pointer; display: grid; text-align: center; line-height: 1.15; }
+.tab .pl { font-weight: 700; font-size: .98rem; }
+.tab .en { font-size: .7rem; color: var(--muted); font-family: var(--f-mono); letter-spacing: .04em; text-transform: uppercase; }
+.tab:hover { background: var(--accent-soft); }
+.tab[aria-current="page"] { background: var(--accent); color: var(--accent-ink); }
+.tab[aria-current="page"] .en { color: inherit; opacity: .8; }
+.sync { font-family: var(--f-mono); font-size: .7rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.sync i { width: 7px; height: 7px; border-radius: 50%; background: var(--hard); display: inline-block; }
+.sync.on i { background: var(--good); }
+
+main { padding-block: 28px 64px; }
+.view[hidden] { display: none; }
+.eyebrow { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.muted { color: var(--muted); }
+.btn { border: 1px solid var(--line); background: var(--card); padding: 9px 16px; border-radius: 10px; cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: var(--ink); }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn.small { padding: 5px 10px; font-size: .88rem; border-radius: 8px; }
+.linkbtn { border: 0; background: none; color: var(--accent); cursor: pointer; padding: 0; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.say { border: 1px solid var(--line); background: var(--card); width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: none; place-items: center; flex: none; color: var(--accent); padding: 0; }
+.has-voice .say { display: inline-grid; }
+.say svg { width: 15px; height: 15px; }
+.say:hover { border-color: var(--accent); background: var(--accent-soft); }
+
+/* Fiszki (home) */
+.home { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.hello h1 { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; }
+.hello p { margin: 6px 0 0; color: var(--muted); }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+.panel h2 { font-size: 1.15rem; }
+.counts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 16px 0; }
+.count { border-top: 3px solid currentColor; padding-top: 8px; }
+.count b { display: block; font-family: var(--f-display); font-size: 2.1rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.count span { font-size: .85rem; color: var(--muted); }
+.count.n { color: var(--new); } .count.l { color: var(--learn); } .count.r { color: var(--review); }
+.count b, .count span { color: var(--ink); }
+.count.n b { color: var(--new); } .count.l b { color: var(--learn); } .count.r b { color: var(--review); }
+.opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; margin-bottom: 18px; }
+.field { display: grid; gap: 4px; min-width: 0; }
+.field label, .field .lbl { font-size: .82rem; color: var(--muted); font-weight: 600; }
+select, input[type="text"], input[type="search"] { border: 1px solid var(--line); background: var(--card); border-radius: 8px; padding: 8px 10px; width: 100%; min-width: 0; }
+.check { display: flex; gap: 8px; align-items: flex-start; font-size: .92rem; cursor: pointer; }
+.check input { margin-top: 3px; accent-color: var(--accent); width: 16px; height: 16px; flex: none; }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.side { display: grid; gap: 16px; }
+.stat-row { display: flex; gap: 20px; flex-wrap: wrap; }
+.stat b { font-family: var(--f-display); font-size: 1.6rem; display: block; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat span { font-size: .82rem; color: var(--muted); }
+.bars { width: 100%; height: auto; display: block; margin-top: 12px; }
+.next-class { display: grid; gap: 8px; }
+.next-class .when { font-family: var(--f-display); font-size: 1.15rem; font-weight: 600; }
+.lesson-links { display: grid; gap: 8px; margin-top: 4px; }
+.lesson-link { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; color: var(--ink); background: var(--card); }
+.lesson-link:hover { border-color: var(--accent); }
+.lesson-link small { color: var(--muted); font-family: var(--f-mono); font-size: .72rem; white-space: nowrap; }
+.progress { height: 6px; border-radius: 3px; background: var(--accent-soft); overflow: hidden; }
+.progress i { display: block; height: 100%; background: var(--good); border-radius: 3px; }
+
+/* Study */
+.study { max-width: 680px; margin: 0 auto; display: grid; gap: 16px; }
+.study-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.qcounts { font-family: var(--f-mono); font-size: .9rem; display: flex; gap: 14px; font-variant-numeric: tabular-nums; }
+.qcounts .n { color: var(--new); } .qcounts .l { color: var(--learn); } .qcounts .r { color: var(--review); }
+.qcounts .cur { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+.fiszka {
+  background-color: var(--card);
+  background-image: repeating-linear-gradient(transparent 0 31px, var(--rule) 31px 32px);
+  background-position: 0 64px;
+  border: 1px solid var(--line); border-radius: 6px; box-shadow: var(--shadow);
+  min-height: 320px; padding: 24px 28px 28px; position: relative; display: grid; align-content: start; gap: 14px;
+}
+.fiszka::before { content: ""; position: absolute; left: 0; right: 0; top: 56px; height: 2px; background: var(--margin); opacity: .7; }
+.fiszka .eyebrow { min-height: 22px; }
+.face { display: grid; justify-items: center; text-align: center; gap: 10px; padding-top: 24px; }
+.face .prompt { font-size: .85rem; color: var(--muted); }
+.face .big { font-family: var(--f-display); font-size: clamp(1.7rem, 5.5vw, 2.5rem); font-weight: 600; line-height: 1.2; overflow-wrap: anywhere; }
+.face .person { font-family: var(--f-mono); font-size: 1rem; color: var(--accent); }
+.answer { border-top: 1px dashed var(--line); padding-top: 18px; display: grid; justify-items: center; text-align: center; gap: 8px; }
+.answer .big { font-family: var(--f-display); font-size: clamp(1.4rem, 4.5vw, 2rem); font-weight: 600; overflow-wrap: anywhere; }
+.answer .note { font-size: .92rem; color: var(--muted); max-width: 46ch; }
+.row-say { display: inline-flex; align-items: center; gap: 10px; }
+.rate { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.rate.two { grid-template-columns: repeat(2, 1fr); }
+.rate button { border: 1px solid var(--line); background: var(--card); border-radius: 10px; padding: 10px 6px; cursor: pointer; display: grid; gap: 2px; font-weight: 700; }
+.rate button small { font-family: var(--f-mono); font-weight: 400; font-size: .74rem; color: var(--muted); }
+.rate button kbd { font-family: var(--f-mono); font-size: .66rem; color: var(--muted); font-weight: 400; }
+.rate .again { color: var(--again); } .rate .hard { color: var(--hard); } .rate .good { color: var(--good); } .rate .easy { color: var(--easy); }
+.rate button:hover { border-color: currentColor; }
+.reveal { width: 100%; justify-content: center; padding: 14px; font-size: 1.05rem; }
+.hint { text-align: center; font-size: .8rem; color: var(--muted); font-family: var(--f-mono); }
+.done { text-align: center; display: grid; gap: 12px; justify-items: center; padding: 40px 20px; }
+.done h2 { font-size: 2rem; }
+
+/* Lekcje */
+.lessons { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 28px; align-items: start; }
+.lnav { display: grid; gap: 8px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 84px); }
+.lnav a { display: grid; gap: 2px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); text-decoration: none; color: var(--ink); }
+.lnav a[aria-current="true"] { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--margin); }
+.lnav a b { font-family: var(--f-display); font-weight: 600; }
+.lnav a small { font-family: var(--f-mono); font-size: .72rem; color: var(--muted); }
+.sheet { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 28px 32px 36px 56px; position: relative; display: grid; gap: 30px; min-width: 0; }
+.sheet::before { content: ""; position: absolute; top: 0; bottom: 0; left: 36px; width: 2px; background: var(--margin); opacity: .55; }
+.sheet header { display: grid; gap: 6px; }
+.sheet header h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; }
+.sheet header .en { font-family: var(--f-display); font-style: italic; color: var(--muted); font-size: 1.1rem; }
+.topics { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.topics span { font-size: .82rem; background: var(--accent-soft); color: var(--ink); padding: 3px 10px; border-radius: 99px; }
+.sec { display: grid; gap: 12px; min-width: 0; }
+.sec > h3 { font-size: 1.2rem; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.sec > h3 small { font-family: var(--f-mono); font-size: .72rem; color: var(--muted); letter-spacing: .05em; text-transform: uppercase; font-weight: 400; }
+.sec p { margin: 0; max-width: 68ch; }
+.phrases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; }
+.phrase { display: flex; gap: 10px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+.phrase .t { min-width: 0; flex: 1; }
+.phrase .p { font-family: var(--f-display); font-weight: 600; display: block; overflow-wrap: anywhere; }
+.phrase .e { font-size: .9rem; color: var(--muted); display: block; }
+.phrase .e em { font-style: normal; color: var(--accent); font-size: .82rem; }
+.scroll { overflow-x: auto; }
+table.grid { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; min-width: 460px; }
+table.grid th, table.grid td { border-bottom: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: top; }
+table.grid thead th { font-family: var(--f-display); font-size: 1rem; border-bottom: 2px solid var(--ink); }
+table.grid thead th small { display: block; font-family: var(--f-body); font-weight: 400; color: var(--muted); font-size: .78rem; }
+table.grid tbody th { font-family: var(--f-mono); font-weight: 400; font-size: .82rem; color: var(--muted); white-space: nowrap; }
+table.grid td { font-family: var(--f-display); }
+table.grid td b { color: var(--accent); font-weight: 700; }
+.callout { border-left: 3px solid var(--margin); padding: 8px 14px; background: var(--accent-soft); border-radius: 0 8px 8px 0; font-size: .95rem; }
+.callout p + p { margin-top: 6px; }
+.gender { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.gender > div { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; gap: 6px; align-content: start; }
+.gender .dem { font-family: var(--f-display); font-size: 1.6rem; font-weight: 700; color: var(--accent); line-height: 1; }
+.gender .end { font-family: var(--f-mono); font-size: .78rem; color: var(--muted); }
+.gender ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 10px; font-family: var(--f-display); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { border: 1px solid var(--line); background: var(--card); padding: 4px 12px; border-radius: 99px; font-family: var(--f-display); cursor: default; }
+.has-voice .chip { cursor: pointer; }
+.has-voice .chip:hover { border-color: var(--accent); background: var(--accent-soft); }
+.pron { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; }
+.pron div { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.pron b { font-family: var(--f-display); font-size: 1.15rem; color: var(--accent); }
+.pron span { min-width: 0; }
+.pron em { font-style: normal; font-family: var(--f-display); font-weight: 600; }
+.pron small { display: block; color: var(--muted); font-size: .84rem; }
+.refs { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.refs li { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.tag { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .04em; text-transform: uppercase; padding: 2px 8px; border-radius: 5px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+.tag.zeszyt { background: color-mix(in srgb, var(--margin) 14%, transparent); color: var(--margin); }
+.tag.online { background: color-mix(in srgb, var(--good) 14%, transparent); color: var(--good); }
+
+/* Sytuacje */
+.sheet header .intro { margin: 6px 0 0; max-width: 68ch; }
+.dlg { display: grid; gap: 8px; }
+.line { display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; gap: 12px; align-items: start; padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); }
+.line.me { background: var(--accent-soft); border-color: transparent; }
+.line .who { font-family: var(--f-mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding-top: 4px; overflow-wrap: anywhere; }
+.line.me .who { color: var(--accent); }
+.line .t { min-width: 0; }
+.line .p { font-family: var(--f-display); font-weight: 600; display: block; overflow-wrap: anywhere; }
+.line .e { font-size: .9rem; color: var(--muted); display: block; }
+
+/* Zadania */
+.hw { display: grid; gap: 20px; max-width: 820px; }
+.hw-group { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; display: grid; gap: 14px; }
+.hw-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.hw-head h2 { font-size: 1.2rem; }
+.hw-item { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-top: 1px solid var(--line); }
+.hw-item input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--good); flex: none; cursor: pointer; }
+.hw-item label { display: grid; gap: 4px; cursor: pointer; flex: 1; min-width: 0; }
+.hw-item .what { font-weight: 600; }
+.hw-item.isdone .what { text-decoration: line-through; color: var(--muted); }
+.hw-item .meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: .88rem; color: var(--muted); }
+.pill { font-family: var(--f-mono); font-size: .72rem; padding: 2px 8px; border-radius: 99px; border: 1px solid currentColor; white-space: nowrap; }
+.pill.ok { color: var(--good); } .pill.todo { color: var(--hard); }
+
+/* Słówka */
+.words-tools { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 12px; margin-bottom: 16px; }
+.words { display: grid; gap: 0; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 4px 18px; }
+.word { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.word:last-child { border-bottom: 0; }
+.word .p { font-family: var(--f-display); font-weight: 600; overflow-wrap: anywhere; }
+.word .e { color: var(--muted); font-size: .92rem; overflow-wrap: anywhere; }
+.word .st { display: flex; gap: 8px; align-items: center; justify-content: flex-end; }
+.status { font-family: var(--f-mono); font-size: .7rem; padding: 2px 8px; border-radius: 99px; white-space: nowrap; border: 1px solid currentColor; }
+.status.new { color: var(--new); } .status.learn { color: var(--learn); } .status.review { color: var(--review); } .status.due { color: var(--review); background: color-mix(in srgb, var(--review) 14%, transparent); }
+.addform { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin-bottom: 20px; display: grid; gap: 12px; }
+.addform .row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) auto; gap: 10px; align-items: end; }
+.empty { padding: 24px 0; text-align: center; color: var(--muted); }
+.del { border: 0; background: none; color: var(--muted); cursor: pointer; font-size: .8rem; padding: 2px 4px; }
+.del.armed { color: var(--again); font-weight: 700; }
+.listhead { display: flex; justify-content: space-between; align-items: baseline; margin: 4px 0 10px; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 860px) {
+  .home, .lessons { grid-template-columns: minmax(0, 1fr); }
+  .lnav { position: static; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .phrases, .pron { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .brand span { display: none; }
+  .tabs { width: 100%; justify-content: space-between; }
+  .tab { padding: 6px 4px; }
+  .tab .pl { font-size: .88rem; }
+  .tab .en { font-size: .6rem; }
+  .line { grid-template-columns: minmax(0, 1fr) auto; }
+  .line .who { grid-column: 1 / -1; padding-top: 0; }
+  .opts, .words-tools { grid-template-columns: minmax(0, 1fr); }
+  .gender { grid-template-columns: minmax(0, 1fr); }
+  .sheet { padding: 22px 18px 28px 34px; }
+  .sheet::before { left: 18px; }
+  .fiszka { padding: 20px 18px 22px; }
+  .rate button { padding: 9px 2px; font-size: .92rem; }
+  .word { grid-template-columns: minmax(0, 1fr) auto; }
+  .word .e { grid-column: 1; grid-row: 2; }
+  .word .st { grid-row: 1 / span 2; grid-column: 2; }
+  .addform .row { grid-template-columns: minmax(0, 1fr); }
+  .sync { order: 3; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .answer { animation: rise .18s ease-out; }
+  @keyframes rise { from { opacity: .3; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><b>Mój zeszyt</b><span>Polski A1.1 · Varia</span></div>
+    <nav class="tabs" aria-label="Sections">
+      <button class="tab" data-view="fiszki" id="tab-fiszki"><span class="pl">Fiszki</span><span class="en">Flashcards</span></button>
+      <button class="tab" data-view="lekcje" id="tab-lekcje"><span class="pl">Lekcje</span><span class="en">Lessons</span></button>
+      <button class="tab" data-view="sytuacje" id="tab-sytuacje"><span class="pl">Sytuacje</span><span class="en">Situations</span></button>
+      <button class="tab" data-view="zadania" id="tab-zadania"><span class="pl">Zadania</span><span class="en">Homework</span></button>
+      <button class="tab" data-view="slowka" id="tab-slowka"><span class="pl">Słówka</span><span class="en">Words</span></button>
+    </nav>
+    <div class="sync" id="sync" title="Where your progress is saved"><i></i><span>Saved in this browser</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="view" id="view-fiszki"></section>
+  <section class="view" id="view-study" hidden></section>
+  <section class="view" id="view-lekcje" hidden></section>
+  <section class="view" id="view-sytuacje" hidden></section>
+  <section class="view" id="view-zadania" hidden></section>
+  <section class="view" id="view-slowka" hidden></section>
+</main>
+
+<script type="application/json" id="course">
+{
+  "course": { "name": "Polski A1.1 · weekend", "school": "Varia (Kraków), online via Google Meet", "teacher": "Anna Winczura", "start": "2026-10-17", "end": "2027-01-23" },
+  "lessons": [
+    {
+      "id": "l1", "n": 1, "date": "2026-10-17",
+      "title": "Pierwszy kontakt", "en": "First contact",
+      "topics": ["Greetings", "Introducing yourself", "Where you're from & where you live", "Languages", "Classroom phrases & instructions", "More greetings: Dobry wieczór, Pa!, Na zdrowie!", "Alphabet & pronunciation", "być, mieć, rozumieć, wiedzieć, mieszkać", "Formal vs informal (pan / pani)"],
+      "vocab": [
+        { "name": "Powitania", "en": "Greetings & goodbyes", "cards": [
+          ["Cześć!", "Hi! / Bye!", "informal"],
+          ["Dzień dobry!", "Hello! / Good morning!", "formal, used all day"],
+          ["Hej!", "Hey!", "very informal"],
+          ["Miłego dnia!", "Have a nice day!"],
+          ["Miłego weekendu!", "Have a nice weekend!"],
+          ["Dziękuję za spotkanie.", "Thank you for the meeting."],
+          ["Czy możemy być na ty?", "Can we be on first-name terms?", "switching from pan/pani to ty"],
+          ["Tak, oczywiście!", "Yes, of course!"]
+        ]},
+        { "name": "Przedstawianie się", "en": "Introducing yourself", "cards": [
+          ["Mam na imię Anna.", "My first name is Anna.", "lit. 'I have for a name'"],
+          ["Nazywam się Anna Winczura.", "My name is Anna Winczura.", "first name + surname"],
+          ["imię", "first name"],
+          ["nazwisko", "surname"],
+          ["Jak masz na imię?", "What's your first name?", "informal"],
+          ["Jak się nazywasz?", "What's your (full) name?", "informal · answer: Nazywam się…"],
+          ["Skąd jesteś?", "Where are you from?", "informal"],
+          ["Jestem z Polski, z Krakowa.", "I'm from Poland, from Kraków."],
+          ["Gdzie mieszkasz?", "Where do you live?", "informal"],
+          ["Mieszkam w Grenoble.", "I live in Grenoble."],
+          ["Mieszkam w Polsce.", "I live in Poland."],
+          ["Mieszkam w Warszawie.", "I live in Warsaw."],
+          ["…, a ty?", "…, and you?"],
+          ["Dlaczego uczysz się języka polskiego?", "Why are you learning Polish?"],
+          ["Uczę się polskiego, bo…", "I'm learning Polish because…"],
+          ["Potrzebuję polskiego do pracy.", "I need Polish for work."]
+        ]},
+        { "name": "Skąd?", "en": "From which country (z + country)", "cards": [
+          ["z Niemiec", "from Germany"],
+          ["z Chin", "from China"],
+          ["z Ukrainy", "from Ukraine"],
+          ["z Indii", "from India"],
+          ["z Iranu", "from Iran"],
+          ["z Rumunii", "from Romania"],
+          ["z USA", "from the USA"]
+        ]},
+        { "name": "Języki", "en": "Languages", "cards": [
+          ["Jaki język znasz?", "What language do you know?"],
+          ["Mówię po polsku.", "I speak Polish."],
+          ["Nie mówię po niemiecku.", "I don't speak German."],
+          ["po angielsku", "in English"],
+          ["po francusku", "in French"],
+          ["po niemiecku", "in German"],
+          ["po hiszpańsku", "in Spanish"],
+          ["po włosku", "in Italian"],
+          ["po rosyjsku", "in Russian"],
+          ["po ukraińsku", "in Ukrainian"],
+          ["po czesku", "in Czech"],
+          ["po chińsku", "in Chinese"],
+          ["po japońsku", "in Japanese"],
+          ["po arabsku", "in Arabic"],
+          ["Znam język hindi.", "I know Hindi."]
+        ]},
+        { "name": "Na lekcji", "en": "Useful classroom phrases", "cards": [
+          ["Mam pytanie.", "I have a question."],
+          ["Nie wiem.", "I don't know."],
+          ["Nie rozumiem!", "I don't understand!"],
+          ["Co to znaczy…?", "What does … mean?"],
+          ["To znaczy…", "That means…"],
+          ["tutaj", "here"],
+          ["tam", "there"],
+          ["Jak się wymawia twoje imię?", "How do you pronounce your name?"],
+          ["Proszę przeliterować nazwisko.", "Please spell your surname."],
+          ["Proszę podać imię i nazwisko.", "Please give your first name and surname."],
+          ["Proszę podać adres e-mailowy.", "Please give your email address."],
+          ["Proszę podać numer telefonu.", "Please give your phone number."],
+          ["kropka", "dot ( . )"],
+          ["małpa", "at sign ( @ )", "literally 'monkey'"],
+          ["myślnik", "dash ( - )"],
+          ["praca w parach", "pair work"],
+          ["w sekretariacie", "at the school office"],
+          ["przerwa", "break"],
+          ["Czas na kawę!", "Time for coffee!"]
+        ]},
+        { "name": "Kawa czy herbata?", "en": "This or that? (the preferences game)", "cards": [
+          ["kawa czy herbata?", "coffee or tea?"],
+          ["kawa", "coffee"],
+          ["herbata", "tea"],
+          ["morze", "sea"],
+          ["góry", "mountains"],
+          ["wiosna", "spring"],
+          ["lato", "summer"],
+          ["jesień", "autumn"],
+          ["zima", "winter"],
+          ["obiad w restauracji", "lunch at a restaurant", "obiad = the main (afternoon) meal"],
+          ["obiad w domu", "lunch at home"],
+          ["duże miasto", "big city"],
+          ["małe miasto", "small town"],
+          ["danie wegetariańskie", "vegetarian dish"],
+          ["mięso", "meat"],
+          ["ziemniaki", "potatoes"],
+          ["frytki", "chips / fries"],
+          ["spektakl", "show, play", "= teatr"],
+          ["kino", "cinema"],
+          ["siłownia", "gym"],
+          ["joga", "yoga"],
+          ["czekolada", "chocolate"],
+          ["chipsy", "crisps"],
+          ["teatr", "theatre"],
+          ["komedia", "comedy"],
+          ["dramat", "drama"],
+          ["pierogi", "pierogi (dumplings)"],
+          ["słońce", "sun"],
+          ["deszcz", "rain"],
+          ["kot", "cat"],
+          ["pies", "dog"]
+        ]},
+        { "name": "Słowa do wymowy", "en": "Pronunciation words", "cards": [
+          ["złoty", "złoty (Polish money); golden"],
+          ["zimno", "(it's) cold"],
+          ["żona", "wife"],
+          ["żaba", "frog"],
+          ["sok", "juice"],
+          ["zielony", "green"],
+          ["rzeka", "river"],
+          ["chleb", "bread"],
+          ["co?", "what?"],
+          ["dzwonek", "bell"],
+          ["ciepło", "(it's) warm"],
+          ["dzień", "day"],
+          ["dziecko", "child"],
+          ["czoło", "forehead"],
+          ["dżinsy", "jeans"],
+          ["Mam czas!", "I have time!"]
+        ]},
+        { "name": "Więcej powitań", "en": "More greetings and thanks (textbook pictures)", "cards": [
+          ["Dobry wieczór!", "Good evening!", "formal"],
+          ["Dobranoc!", "Good night!"],
+          ["Do widzenia!", "Goodbye!", "formal"],
+          ["Pa!", "Bye!", "informal"],
+          ["Hejka!", "Hiya!", "very informal"],
+          ["Dzięki!", "Thanks!", "informal"],
+          ["Dzięki wielkie!", "Thanks a lot!", "informal"],
+          ["Przepraszam bardzo!", "I'm very sorry!"],
+          ["Przepraszam za spóźnienie.", "Sorry I'm late."],
+          ["Bardzo mi miło.", "Very nice to meet you."],
+          ["Apsik!", "Achoo!"],
+          ["Na zdrowie!", "Bless you! / Cheers!", "after a sneeze, or as a toast"],
+          ["Sto lat!", "Happy birthday! (lit. 'a hundred years')", "also said as a joke after a sneeze"],
+          ["Przepraszam, gdzie jest toaleta?", "Excuse me, where is the toilet?"]
+        ]},
+        { "name": "Jak się masz?", "en": "How are you? (Podręcznik str. 10)", "cards": [
+          ["Tak sobie.", "So-so."],
+          ["bardzo dobrze", "very well"],
+          ["bardzo źle", "very badly"],
+          ["super", "great"],
+          ["Jak się pan / pani ma?", "How are you? (formal)"],
+          ["Co u pana / pani słychać?", "How are things? (formal)"],
+          ["A u ciebie?", "And with you?", "informal"],
+          ["A u pana / pani?", "And with you?", "formal"],
+          ["Gdzie teraz mieszkasz?", "Where do you live now?"],
+          ["Teraz mieszkam w Polsce.", "Now I live in Poland."],
+          ["teraz", "now"],
+          ["Jestem z Francji.", "I'm from France."],
+          ["z Hiszpanii", "from Spain"],
+          ["z Ameryki", "from America"],
+          ["student / studentka", "student (man / woman)"],
+          ["sekretarz / sekretarka", "secretary (man / woman)"]
+        ]},
+        { "name": "Polecenia na lekcji", "en": "Classroom instructions (picture cards)", "cards": [
+          ["Proszę posłuchać.", "Please listen."],
+          ["Proszę przeczytać.", "Please read."],
+          ["Proszę napisać.", "Please write it down."],
+          ["Proszę powtórzyć.", "Please repeat."],
+          ["Jeszcze raz.", "Once more."],
+          ["Proszę zrobić ćwiczenie.", "Please do the exercise."],
+          ["Proszę zrobić pracę domową.", "Please do your homework."],
+          ["Proszę otworzyć książkę.", "Please open your book."],
+          ["Proszę zamknąć zeszyt.", "Please close your notebook."],
+          ["Proszę przetłumaczyć.", "Please translate."],
+          ["Proszę wyjaśnić jeszcze raz.", "Please explain again."],
+          ["Czy rozumiesz?", "Do you understand?"],
+          ["Rozumiem.", "I understand."],
+          ["Już rozumiem.", "Now I understand."],
+          ["Pamiętam. / Nie pamiętam.", "I remember. / I don't remember."],
+          ["Ja wiem!", "I know!"],
+          ["Przepraszam, ale nie rozumiem.", "Sorry, but I don't understand."],
+          ["Jak to się pisze?", "How do you write it?"],
+          ["Jak to się czyta?", "How do you read it?"],
+          ["Jak jest po polsku „thank you”?", "How do you say 'thank you' in Polish?"],
+          ["Jak powiedzieć po polsku…?", "How do you say … in Polish?"],
+          ["Twoja kolej.", "Your turn."],
+          ["słownik", "dictionary"],
+          ["zeszyt", "notebook, exercise book"],
+          ["ćwiczenie", "exercise"],
+          ["praca domowa", "homework"],
+          ["nauczyciel / nauczycielka", "teacher (man / woman)"]
+        ]},
+        { "name": "Słowa z alfabetu", "en": "Words from the alphabet and pronunciation slides", "cards": [
+          ["dom", "house, home"],
+          ["kto", "who"],
+          ["coś", "something"],
+          ["nic", "nothing"],
+          ["czas", "time"],
+          ["jutro", "tomorrow"],
+          ["bardzo", "very"],
+          ["łatwo", "easy, easily"],
+          ["ciemno", "(it's) dark"],
+          ["cicho", "quiet, quietly"],
+          ["kolor", "colour"],
+          ["śnieg", "snow"],
+          ["chmura", "cloud"],
+          ["gęś", "goose"],
+          ["koń", "horse"],
+          ["ćma", "moth"],
+          ["gazeta", "newspaper"],
+          ["szansa", "chance"],
+          ["dżungla", "jungle"],
+          ["dzwon", "bell (a big one)"],
+          ["dźwig", "crane (machine)"],
+          ["kasza", "groats, e.g. buckwheat"],
+          ["dżem", "jam"],
+          ["ósma", "eight o'clock; eighth"],
+          ["samogłoska", "vowel"],
+          ["spółgłoska", "consonant"]
+        ]}
+      ],
+      "sections": [
+        { "type": "note", "title": "Akcent", "en": "Word stress", "html": "<p>Polish almost always stresses the <b>second-to-last syllable</b>: POL-ska, KRA-ków, War-SZA-wa, dzię-KU-ję, u-ni-wer-SY-tet.</p>" },
+        { "type": "pron", "title": "Wymowa", "en": "Pronunciation: sounds that look alike", "rows": [
+          ["s", "sok", "like s in 'sun'"],
+          ["z", "zebra", "like z in 'zoo'"],
+          ["ś = si", "się, ktoś", "soft 'sh', tongue raised to the palate"],
+          ["ź = zi", "zielony, zimno", "soft 'zh'"],
+          ["sz", "szok", "hard 'sh' as in 'shop'"],
+          ["ż = rz", "żaba, żona, rzeka", "like s in 'measure'; ż and rz sound the same"],
+          ["h = ch", "herbata, chleb", "like ch in Scottish 'loch'"],
+          ["c", "co", "like ts in 'cats'"],
+          ["dz", "dzwonek", "like ds in 'kids'"],
+          ["ć = ci", "ciepło", "soft 'ch'"],
+          ["dź = dzi", "dzień, dziecko", "soft 'j'"],
+          ["cz", "czy, czoło", "hard 'ch' as in 'church'"],
+          ["dż", "dżinsy", "like j in 'jam'"],
+          ["ł", "złoty, małpa", "like w in 'water'"],
+          ["w", "wiosna", "like v in 'very'"]
+        ]},
+        { "type": "chips", "title": "Alfabet", "en": "Alphabet example words (Zeszyt ćwiczeń str. 4, 5)", "groups": [
+          ["Od A do Z", ["A – ananas, aktor, akcja", "B – banan, bar, balet", "C – co, cytryna, centrum", "D – dom, dobry, Dorota", "E – Ewa, lekcja, energia", "F – fakt, film, fizyka", "G – gol, grupa, Belgia", "H – historia, hurra, halo", "I – inteligentny, Irlandia, internet", "J – ja, majonez, restauracja", "K – kasa, kto, Kraków", "L – Lublin, lekcja, kolega", "Ł – łatwo, małpa, złoty", "M – mama, ma, makaron", "N – noc, natura, Norwegia", "O – on, Oslo, opera", "P – Polska, papier, popularny", "R – Rumunia, Berlin, kolor", "S – Sycylia, student, klasa", "T – Turcja, tygrys, Tokio", "U – Urugwaj, kultura, Julia", "W – Wenezuela, Warszawa, wino", "Y – my, artysta, Rysy", "Z – zebra, zoo, rozumiem"]],
+          ["Które to słowo? Minimal pairs (CD 14)", ["sześć – cześć", "znaczy – znaczą", "artysta – artystka", "Kraków – Krakowie", "my – mi", "czy – trzy", "na – ma", "Kasia – kasza", "drzwi – dźwig", "dzień – dżem"]],
+          ["Proszę przeczytać (Podręcznik str. 6)", ["bar", "mama", "telefon", "kino", "jutro", "Kraków", "dobry", "poeta", "kawa", "woda", "mleko", "grupa", "reforma", "waga", "jajko", "historia", "chmura", "szkoła", "dzień", "dziękuję", "mówię", "herbata", "Wałęsa", "klasa", "sala", "świetnie", "siedem", "gazeta", "źle", "zimno", "rzeka", "być", "cicho", "cztery", "bardzo", "dźwig", "dżungla", "dżinsy", "do widzenia"]]
+        ]},
+        { "type": "conj", "title": "Czasowniki", "en": "Verbs: the -m, -sz conjugation", "verbs": [
+          { "inf": "być", "en": "to be", "forms": ["jestem", "jesteś", "jest", "jesteśmy", "jesteście", "są"] },
+          { "inf": "mieć", "en": "to have", "forms": ["mam", "masz", "ma", "mamy", "macie", "mają"] },
+          { "inf": "rozumieć", "en": "to understand", "forms": ["rozumiem", "rozumiesz", "rozumie", "rozumiemy", "rozumiecie", "rozumieją"] },
+          { "inf": "wiedzieć", "en": "to know (a fact)", "forms": ["wiem", "wiesz", "wie", "wiemy", "wiecie", "wiedzą"] },
+          { "inf": "mieszkać", "en": "to live", "forms": ["mieszkam", "mieszkasz", "mieszka", "mieszkamy", "mieszkacie", "mieszkają"] }
+        ], "html": "<p><b>Uwaga!</b> być (są) and wiedzieć (wiedzą) are irregular in the plural.</p><p><b>oni</b> = a group with at least one man (on + on, on + ona). <b>one</b> = only women (ona + ona), or things.</p>" },
+        { "type": "formal", "title": "Ty czy pan / pani?", "en": "Informal vs formal", "rows": [
+          ["Skąd jesteś?", "Skąd pan / pani jest?"],
+          ["Gdzie mieszkasz?", "Gdzie pan / pani mieszka?"],
+          ["Jak masz na imię?", "Jak pan / pani ma na imię?"],
+          ["Jak się nazywasz?", "Jak pan / pani się nazywa?"],
+          ["Czy rozumiesz po polsku?", "Czy pan / pani rozumie po polsku?"],
+          ["Czy wiesz, co to jest?", "Czy pan / pani wie, co to jest?"]
+        ], "html": "<p>With <b>pan</b> (to a man) or <b>pani</b> (to a woman), the verb takes the <b>on / ona</b> form: <i>pani jest</i>, <i>pan mieszka</i>.</p>" }
+      ],
+      "inclass": [
+        ["Podręcznik", "str. 6, ćw. 1a · str. 7, ćw. 4", "pronunciation"],
+        ["Podręcznik", "str. 8", "ważne zwroty (useful phrases)"],
+        ["Podręcznik", "str. 10", "dialogues: Cześć! / Dzień dobry!"],
+        ["Zeszyt ćwiczeń", "str. 4", "alfabet"],
+        ["Zeszyt ćwiczeń", "str. 5 · CD 14", "spelling names and emails"]
+      ],
+      "links": [
+        ["Wordwall: podstawowe zwroty po polsku", "https://wordwall.net/pl/resource/75818360/polski-jako-obcy/podstawowe-zwroty-po-polsku"],
+        ["Po polsku po Polsce: lekcja 1", "https://popolskupopolsce.edu.pl/lekcja/1/"]
+      ],
+      "homework": [
+        { "id": "l1-h1", "where": "Podręcznik", "ref": "str. 8, ćw. 7" },
+        { "id": "l1-h2", "where": "Zeszyt ćwiczeń", "ref": "str. 6, ćw. 5b, 5c" },
+        { "id": "l1-h3", "where": "Zeszyt ćwiczeń", "ref": "str. 7" },
+        { "id": "l1-h4", "where": "Online", "ref": "Po polsku po Polsce, lekcja 1: MAZOWIECKIE, stacja 1", "url": "https://popolskupopolsce.edu.pl/lekcja/1/" }
+      ]
+    },
+    {
+      "id": "l2", "n": 2, "date": "2026-10-24",
+      "title": "Jaki on jest? Jaka ona jest?", "en": "What is he like? What is she like?",
+      "topics": ["Small talk: Co słychać?", "umieć, znać, wiedzieć", "Numbers 0–100", "Phone numbers & addresses", "Co to jest? Kto to jest?", "Noun gender: ten / ta / to", "Adjectives: -y / -a / -e", "Plural-only nouns", "Polish cities & rivers"],
+      "vocab": [
+        { "name": "Co słychać?", "en": "Small talk", "cards": [
+          ["Jak się masz?", "How are you?", "informal"],
+          ["Dobrze, dziękuję.", "Fine, thank you."],
+          ["świetnie", "great"],
+          ["dobrze", "well, fine"],
+          ["źle", "badly"],
+          ["fatalnie", "terribly"],
+          ["Co słychać?", "How's it going? / What's up?"],
+          ["Po staremu.", "Same as always."],
+          ["Co nowego?", "What's new?"],
+          ["Nic nowego.", "Nothing new."],
+          ["Co u ciebie?", "How are things with you?"],
+          ["U mnie wszystko w porządku.", "Everything's fine with me."],
+          ["Wszystko w porządku?", "Is everything OK?"],
+          ["Jesteś zmęczona?", "Are you tired? (to a woman)", "to a man: zmęczony"],
+          ["Nie jestem zmęczona.", "I'm not tired. (a woman speaking)"],
+          ["Jesteś zajęty?", "Are you busy? (to a man)", "to a woman: zajęta"],
+          ["Nie jestem zajęty.", "I'm not busy. (a man speaking)"],
+          ["Na razie!", "Bye for now!"],
+          ["Do zobaczenia!", "See you!"],
+          ["Nic nie szkodzi!", "No problem! / Never mind!"],
+          ["sobota rano", "Saturday morning"],
+          ["dziś", "today", "also: dzisiaj"]
+        ]},
+        { "name": "Umiem, znam, wiem", "en": "Can, know, know", "cards": [
+          ["Umiem tańczyć tango.", "I can dance the tango."],
+          ["Nie umiem grać na gitarze.", "I can't play the guitar."],
+          ["Umiesz grać na pianinie?", "Can you play the piano?"],
+          ["Umiesz grać w tenisa?", "Can you play tennis?"],
+          ["Umiem mówić po francusku.", "I can speak French."],
+          ["Znam Kraków.", "I know Kraków."],
+          ["Znasz dobrze Kraków?", "Do you know Kraków well?"],
+          ["Znasz język angielski?", "Do you know English?"],
+          ["Wiem, że Kraków to jest ładne miasto.", "I know that Kraków is a pretty city."],
+          ["Wiesz, skąd jest Adrian?", "Do you know where Adrian is from?"],
+          ["Nie wiem, skąd jest Adrian.", "I don't know where Adrian is from."],
+          ["Rozumiesz dobrze po polsku?", "Do you understand Polish well?"],
+          ["Nie rozumiem dobrze po polsku.", "I don't understand Polish well."],
+          ["Nie jestem z Polski, ale mieszkam w Polsce.", "I'm not from Poland, but I live in Poland."],
+          ["Masz kota albo psa?", "Do you have a cat or a dog?"],
+          ["Mam psa, ale nie mam kota.", "I have a dog, but I don't have a cat."],
+          ["Nie mam kota ani psa.", "I have neither a cat nor a dog."],
+          ["Mieszkasz w centrum?", "Do you live in the centre?"],
+          ["Mieszkam poza centrum.", "I live outside the centre."],
+          ["albo", "or"],
+          ["ale", "but"],
+          ["ani", "nor, neither… nor", "after a negative: nie mam kota ani psa"]
+        ]},
+        { "name": "Liczebniki 0–10", "en": "Numbers", "cards": [
+          ["zero", "0"], ["jeden", "1"], ["dwa", "2"], ["trzy", "3"], ["cztery", "4"], ["pięć", "5"],
+          ["sześć", "6"], ["siedem", "7"], ["osiem", "8"], ["dziewięć", "9"], ["dziesięć", "10"]
+        ]},
+        { "name": "Rzeczowniki", "en": "Nouns and their gender", "cards": [
+          ["kubek", "mug", "ten · masculine"],
+          ["autobus", "bus", "ten · masculine"],
+          ["uniwersytet", "university", "ten · masculine"],
+          ["mężczyzna", "man", "ten · masculine, even though it ends in -a"],
+          ["artysta", "artist (man)", "ten · masculine, even though it ends in -a"],
+          ["optymista", "optimist (man)", "ten · masculine, even though it ends in -a"],
+          ["naleśnik", "pancake, crêpe", "ten · masculine"],
+          ["kosmos", "(outer) space", "ten · masculine"],
+          ["kobieta", "woman", "ta · feminine"],
+          ["książka", "book", "ta · feminine"],
+          ["fotografia", "photograph", "ta · feminine"],
+          ["energia", "energy", "ta · feminine"],
+          ["torba", "bag", "ta · feminine"],
+          ["kawiarnia", "café", "ta · feminine"],
+          ["aktorka", "actress", "ta · feminine"],
+          ["noc", "night", "ta · feminine, even without -a"],
+          ["pani", "lady; you (formal, to a woman)", "ta · feminine, ends in -i"],
+          ["gospodyni", "hostess, housewife", "ta · feminine, ends in -i"],
+          ["biuro", "office", "to · neuter"],
+          ["okno", "window", "to · neuter"],
+          ["zdjęcie", "photo", "to · neuter"],
+          ["piwo", "beer", "to · neuter"],
+          ["mleko", "milk", "to · neuter"],
+          ["centrum", "centre", "to · neuter, ends in -um"],
+          ["miasto", "city, town", "to · neuter"]
+        ]},
+        { "name": "Przymiotniki", "en": "Adjectives", "cards": [
+          ["dobry / dobra / dobre", "good"],
+          ["stary / stara / stare", "old"],
+          ["polski / polska / polskie", "Polish"],
+          ["drogi / droga / drogie", "expensive; dear"],
+          ["piękny / piękna / piękne", "beautiful"],
+          ["ładny", "pretty, nice"],
+          ["duży", "big"],
+          ["zimny", "cold"],
+          ["ciepły", "warm"],
+          ["interesujący", "interesting", "= ciekawy"],
+          ["popularny", "popular"],
+          ["inteligentny", "intelligent"],
+          ["historyczny", "historic"],
+          ["Jaki on jest?", "What is he / it like?", "masculine"],
+          ["Jaka ona jest?", "What is she / it like?", "feminine"],
+          ["Jakie ono jest?", "What is it like?", "neuter"]
+        ]},
+        { "name": "Zdania", "en": "Describing things", "cards": [
+          ["Ta kawa jest dobra.", "This coffee is good."],
+          ["Morze jest zimne.", "The sea is cold."],
+          ["Ten student jest inteligentny.", "This student is intelligent."],
+          ["To centrum jest historyczne.", "This centre is historic."],
+          ["Torba jest duża.", "The bag is big."],
+          ["Książka jest interesująca.", "The book is interesting."],
+          ["Kraków to piękne miasto.", "Kraków is a beautiful city."],
+          ["Bałtyk to zimne morze.", "The Baltic is a cold sea."],
+          ["Uniwersytet Jagielloński to stary uniwersytet.", "The Jagiellonian University is an old university."],
+          ["Joanna Kulig to polska aktorka.", "Joanna Kulig is a Polish actress."],
+          ["„Ida” to dobry polski film.", "'Ida' is a good Polish film."]
+        ]},
+        { "name": "Tylko liczba mnoga", "en": "Plural-only nouns", "cards": [
+          ["drzwi", "door", "always plural"],
+          ["okulary", "glasses", "always plural"]
+        ]},
+        { "name": "Liczebniki 11–100", "en": "Numbers 11–100", "cards": [
+          ["jedenaście", "11", "-naście = 11–19"], ["dwanaście", "12"], ["trzynaście", "13"], ["czternaście", "14"],
+          ["piętnaście", "15"], ["szesnaście", "16"], ["siedemnaście", "17"], ["osiemnaście", "18"], ["dziewiętnaście", "19"],
+          ["dwadzieścia", "20", "-dzieści = 20, 30, 40"], ["dwadzieścia jeden", "21"], ["dwadzieścia dwa", "22"],
+          ["trzydzieści", "30"], ["trzydzieści jeden", "31"], ["czterdzieści", "40"],
+          ["pięćdziesiąt", "50", "-dziesiąt = 50–90"], ["sześćdziesiąt", "60"], ["siedemdziesiąt", "70"],
+          ["osiemdziesiąt", "80"], ["dziewięćdziesiąt", "90"], ["sto", "100"],
+          ["Ile jest dwa plus trzy?", "What's two plus three?"], ["Ile jest sześć minus cztery?", "What's six minus four?"]
+        ]},
+        { "name": "Telefon i adres", "en": "Phone numbers and addresses", "cards": [
+          ["Czy masz telefon?", "Do you have a phone?"],
+          ["Jaki masz numer telefonu?", "What's your phone number?"],
+          ["Jaki masz adres?", "What's your address?"],
+          ["Czy masz paszport?", "Do you have a passport?"],
+          ["Jaki numer telefonu ma pani Anna Nowak?", "What's Anna Nowak's phone number?"],
+          ["Jaki ona ma adres?", "What's her address?"],
+          ["numer komórki", "mobile number"],
+          ["numer stacjonarny", "landline number"],
+          ["komórka", "mobile phone"],
+          ["wizytówka", "business card"],
+          ["ulica (ul.)", "street"],
+          ["aleja (al.)", "avenue"],
+          ["osiedle (os.)", "housing estate"],
+          ["plac (pl.)", "square"],
+          ["numer budynku", "building number"],
+          ["numer mieszkania", "flat number"],
+          ["przez", "'slash' when saying an address", "ul. Polna 10/3 = dziesięć przez trzy"],
+          ["Zgadza się?", "Is that right?"],
+          ["Tak, zgadza się!", "Yes, that's right!"],
+          ["Nie, nie zgadza się!", "No, that's not right!"],
+          ["następnie", "then, next"]
+        ]},
+        { "name": "Co to jest? Kto to jest?", "en": "What is it? Who is it? (Podręcznik str. 16)", "cards": [
+          ["Co to jest?", "What is it?"],
+          ["To jest…", "It is… / This is…"],
+          ["To są…", "These are…", "with plural-only nouns: To są drzwi."],
+          ["Kto to jest?", "Who is it?"],
+          ["lampa", "lamp", "ta · feminine"],
+          ["krzesło", "chair", "to · neuter"],
+          ["stół", "table", "ten · masculine"],
+          ["komputer", "computer", "ten · masculine"],
+          ["telefon", "phone", "ten · masculine"],
+          ["radio", "radio", "to · neuter"],
+          ["długopis", "pen", "ten · masculine"],
+          ["samochód", "car", "ten · masculine"],
+          ["adres", "address", "ten · masculine"],
+          ["lekcja", "lesson", "ta · feminine"],
+          ["grupa", "group", "ta · feminine"],
+          ["gimnazjum", "middle school", "to · neuter, ends in -um"],
+          ["chłopak", "boy; boyfriend", "ten · masculine"],
+          ["dziewczyna", "girl; girlfriend", "ta · feminine"],
+          ["lektor / lektorka", "language teacher (man / woman)"],
+          ["dentysta / dentystka", "dentist (man / woman)", "ten dentysta: masculine, even though it ends in -a"],
+          ["artystka", "artist (woman)", "ta · feminine"],
+          ["optymistka", "optimist (woman)", "ta · feminine"]
+        ]},
+        { "name": "Dialogi z podręcznika", "en": "Textbook dialogues (Podręcznik str. 17)", "cards": [
+          ["Przepraszam, wiesz, kto to jest?", "Excuse me, do you know who that is?"],
+          ["To jest nowy profesor.", "That's the new professor."],
+          ["Ma hiszpańskie nazwisko, ale jest z Polski.", "He has a Spanish surname, but he's from Poland."],
+          ["Czy to jest twój samochód?", "Is this your car?"],
+          ["Mam japoński samochód.", "I have a Japanese car."],
+          ["Bardzo elegancki!", "Very elegant!"],
+          ["Samochód jest w serwisie.", "The car is at the garage."],
+          ["Wiesz, gdzie to jest?", "Do you know where that is?"],
+          ["Przepraszam, gdzie jest biblioteka?", "Excuse me, where is the library?"],
+          ["Jestem z Wietnamu.", "I'm from Vietnam."],
+          ["prawda / nieprawda", "true / false"]
+        ]}
+      ],
+      "sections": [
+        { "type": "note", "title": "Liczebniki", "en": "How the numbers are built", "html": "<p><b>11–19</b> end in <b>-naście</b>: jede<b>naście</b>, dwa<b>naście</b>… dziewięt<b>naście</b>.</p><p><b>20, 30, 40</b> end in <b>-dzieści</b>: dwa<b>dzieścia</b>, trzy<b>dzieści</b>, czter<b>dzieści</b>.</p><p><b>50–90</b> end in <b>-dziesiąt</b>: pięć<b>dziesiąt</b>… dziewięć<b>dziesiąt</b>. <b>100</b> = sto.</p><p>Put the tens and the units together: 21 = dwadzieścia jeden, 34 = trzydzieści cztery. You can always say a phone number digit by digit: 607 876 234 → sześć zero siedem, osiem siedem sześć, dwa trzy cztery.</p>" },
+        { "type": "conj", "title": "Umieć, znać, wiedzieć", "en": "Three ways to 'know'", "verbs": [
+          { "inf": "umieć", "en": "to know how, can", "forms": ["umiem", "umiesz", "umie", "umiemy", "umiecie", "umieją"] },
+          { "inf": "znać", "en": "to know (someone / something)", "forms": ["znam", "znasz", "zna", "znamy", "znacie", "znają"] },
+          { "inf": "wiedzieć", "en": "to know (a fact)", "forms": ["wiem", "wiesz", "wie", "wiemy", "wiecie", "wiedzą"] }
+        ], "html": "<p><b>umieć</b> + a verb: a skill. <i>Umiem tańczyć tango.</i></p><p><b>znać</b> + a noun: a person, place or language. <i>Znam Kraków. Znam język angielski.</i></p><p><b>wiedzieć</b> + a fact (often with że, gdzie, skąd, co). <i>Wiem, że Kraków to ładne miasto. Nie wiem, skąd jest Adrian.</i></p>" },
+        { "type": "gender", "title": "Rodzaj rzeczownika", "en": "Noun gender", "cols": [
+          { "dem": "ten", "name": "rodzaj męski · masculine", "end": "ends in a consonant · sometimes -a", "ex": ["kubek", "kot", "pies", "autobus", "uniwersytet", "mężczyzna", "artysta", "optymista"] },
+          { "dem": "ta", "name": "rodzaj żeński · feminine", "end": "ends in -a · sometimes -i or a consonant", "ex": ["kawa", "herbata", "książka", "kobieta", "fotografia", "energia", "pani", "gospodyni", "noc"] },
+          { "dem": "to", "name": "rodzaj nijaki · neuter", "end": "ends in -o, -e, -ę, -um", "ex": ["biuro", "okno", "dziecko", "zdjęcie", "imię", "centrum"] }
+        ], "html": "<p><b>Pluralia tantum</b>, nouns that exist only in the plural: <i>drzwi</i> (door), <i>okulary</i> (glasses), <i>dżinsy</i> (jeans).</p>" },
+        { "type": "adj", "title": "Jaki? Jaka? Jakie?", "en": "Adjective endings follow the noun", "rows": [
+          ["dobry", "dobra", "dobre", "dobry film · dobra kawa · dobre piwo"],
+          ["stary", "stara", "stare", "stary uniwersytet · stara fotografia · stare centrum"],
+          ["polski", "polska", "polskie", "polski film · polska aktorka · polskie imię"],
+          ["drogi", "droga", "drogie", "drogi kubek · droga torba · drogie biuro"]
+        ], "html": "<p>Normal endings: <b>-y / -a / -e</b>. After <b>k</b> and <b>g</b>: <b>-i / -a / -ie</b>, because Polish never writes ky, ke, gy, ge (ky → ki, ke → kie, gy → gi, ge → gie).</p>" },
+        { "type": "chips", "title": "Polskie miasta i rzeki", "en": "Cities and rivers (Zeszyt ćwiczeń str. 4)", "groups": [
+          ["Miasta", ["Warszawa", "Kraków", "Łódź", "Wrocław", "Poznań", "Szczecin", "Zakopane", "Katowice", "Kołobrzeg", "Zamość", "Rzeszów", "Suwałki", "Zielona Góra", "Gdańsk", "Elbląg", "Częstochowa"]],
+          ["Rzeki", ["Wisła", "Odra", "Warta", "Bug"]],
+          ["Międzynarodowe słowa", ["biologia", "kultura", "edukacja", "historia", "kosmos", "moda", "emocja", "metropolia", "dialog", "optymizm", "horoskop", "karnawał", "centrum", "student", "alternatywa", "literatura", "ulica", "papier", "policja", "metal", "komedia", "bilet", "ryzyko", "hit", "energia"]]
+        ]}
+      ],
+      "inclass": [
+        ["Zeszyt ćwiczeń", "str. 4", "wymowa: cities and rivers"],
+        ["Zeszyt ćwiczeń", "str. 6", "checking homework"],
+        ["Zeszyt ćwiczeń", "str. 9, ćw. 6a", "verbs: być, mieć, rozumieć"],
+        ["Zeszyt ćwiczeń", "str. 9, ćw. 4 · Podręcznik str. 12", "liczebniki (numbers)"],
+        ["Podręcznik", "str. 16", "international words, noun gender"],
+        ["Podręcznik", "str. 17 · Zeszyt ćwiczeń str. 15", "presentation: Kraków to piękne miasto"]
+      ],
+      "links": [
+        ["Wordwall: rodzaje rzeczownika", "https://wordwall.net/pl/resource/27693860/rodzaje-rzeczownika"],
+        ["Kwiat Jabłoni: „Dzień dobry” (song from class, YouTube)", "https://www.youtube.com/watch?v=tu6vPd--Wdk"]
+      ],
+      "homework": [
+        { "id": "l2-h1", "where": "Podręcznik", "ref": "str. 14, ćw. 11a, 11b, 11c, 11d" },
+        { "id": "l2-h2", "where": "Zeszyt ćwiczeń", "ref": "str. 12, ćw. 1a, 1b" },
+        { "id": "l2-h3", "where": "Zeszyt ćwiczeń", "ref": "str. 13, ćw. 3a" },
+        { "id": "l2-h4", "where": "Zeszyt ćwiczeń", "ref": "str. 15, ćw. 9" }
+      ]
+    }
+  ],
+  "situations": [
+    {
+      "id": "s-ratunek", "title": "Ratunkowe zwroty", "en": "Survival phrases",
+      "intro": "Use these in every other situation. When you say you're learning, most people in Warsaw will slow down or switch to English.",
+      "dialogue": [
+        ["Ktoś", "Przepraszam, gdzie jest przystanek?", "Excuse me, where is the stop?"],
+        ["Ty", "Przepraszam, nie rozumiem. Proszę mówić wolniej.", "Sorry, I don't understand. Please speak more slowly."],
+        ["Ktoś", "Gdzie… jest… przystanek?", "Where… is… the stop?"],
+        ["Ty", "Aha! Tam, po lewej.", "Oh! Over there, on the left."],
+        ["Ktoś", "Dziękuję bardzo!", "Thank you very much!"],
+        ["Ty", "Nie ma za co.", "You're welcome."]
+      ],
+      "say": [
+        ["Przepraszam, nie rozumiem.", "Sorry, I don't understand."],
+        ["Proszę powtórzyć.", "Please repeat."],
+        ["Proszę mówić wolniej.", "Please speak more slowly."],
+        ["Mówię trochę po polsku.", "I speak a little Polish."],
+        ["Uczę się polskiego.", "I'm learning Polish."],
+        ["Czy mówi pan / pani po angielsku?", "Do you speak English? (formal)"],
+        ["Mówisz po angielsku?", "Do you speak English? (informal)"],
+        ["Jak to się mówi po polsku?", "How do you say that in Polish?"],
+        ["Co to znaczy?", "What does that mean?"],
+        ["Proszę napisać.", "Please write it down."],
+        ["Chwileczkę.", "Just a moment."],
+        ["Przepraszam!", "Excuse me! / Sorry!"],
+        ["Dziękuję bardzo.", "Thank you very much."],
+        ["Nie ma za co.", "You're welcome."],
+        ["Nie jestem stąd.", "I'm not from here."]
+      ],
+      "hear": [
+        ["Słucham?", "Pardon? / Yes?", "also how Poles answer the phone"],
+        ["Skąd pan / pani jest?", "Where are you from? (formal)"],
+        ["Dobrze pan / pani mówi po polsku!", "You speak Polish well!"],
+        ["Nie ma problemu.", "No problem."],
+        ["Proszę bardzo.", "Here you are. / You're welcome."],
+        ["Może po angielsku?", "Maybe in English?"]
+      ],
+      "words": [
+        ["tak", "yes"], ["nie", "no"], ["proszę", "please; here you are"], ["dziękuję", "thank you"],
+        ["przepraszam", "sorry; excuse me"], ["po lewej", "on the left"], ["po prawej", "on the right"], ["prosto", "straight ahead"]
+      ]
+    },
+    {
+      "id": "s-sklep", "title": "W supermarkecie", "en": "At the supermarket",
+      "intro": "Biedronka, Lidl, Żabka, Carrefour: the cashier asks the same few questions every time. Learn to recognise them and you'll get through any checkout.",
+      "dialogue": [
+        ["Kasjerka", "Dzień dobry. Ma pan / pani kartę Moja Biedronka?", "Hello. Do you have a Moja Biedronka card?"],
+        ["Ty", "Nie, nie mam.", "No, I don't."],
+        ["Kasjerka", "Torebka?", "A bag?"],
+        ["Ty", "Tak, poproszę jedną.", "Yes, one please."],
+        ["Kasjerka", "Razem czterdzieści dwa złote pięćdziesiąt.", "That's 42.50 zł altogether."],
+        ["Ty", "Mogę zapłacić kartą?", "Can I pay by card?"],
+        ["Kasjerka", "Tak, proszę zbliżyć kartę. Paragon?", "Yes, please tap your card. Receipt?"],
+        ["Ty", "Nie, dziękuję. Do widzenia!", "No, thanks. Goodbye!"]
+      ],
+      "say": [
+        ["Przepraszam, gdzie jest mleko?", "Excuse me, where is the milk?"],
+        ["Przepraszam, gdzie są jajka?", "Excuse me, where are the eggs?", "plural: są"],
+        ["Poproszę torbę.", "A bag, please."],
+        ["Mogę zapłacić kartą?", "Can I pay by card?"],
+        ["Płacę gotówką.", "I'm paying cash."],
+        ["Nie mam karty.", "I don't have a (loyalty) card."],
+        ["Nie, dziękuję.", "No, thank you."],
+        ["To wszystko.", "That's all."],
+        ["Poproszę dziesięć deko szynki.", "100 grams of ham, please.", "at the deli counter: 10 dag = 100 g"],
+        ["Poproszę pół kilo sera.", "Half a kilo of cheese, please."],
+        ["Do widzenia!", "Goodbye!", "formal"]
+      ],
+      "hear": [
+        ["Ma pan / pani kartę?", "Do you have a (loyalty) card?"],
+        ["Torebka?", "A bag?"],
+        ["Kartą czy gotówką?", "Card or cash?"],
+        ["Paragon?", "Receipt?"],
+        ["Coś jeszcze?", "Anything else?"],
+        ["Proszę zbliżyć kartę.", "Please tap your card.", "on the card terminal"],
+        ["Zapraszam do kasy obok.", "Please come to the next checkout."]
+      ],
+      "words": [
+        ["chleb", "bread"], ["bułka", "bread roll"], ["masło", "butter"], ["ser", "cheese"], ["jajka", "eggs"],
+        ["szynka", "ham"], ["woda", "water"], ["owoce", "fruit"], ["warzywa", "vegetables"], ["jabłko", "apple"],
+        ["pomidor", "tomato"], ["kasa", "checkout, till"], ["kasa samoobsługowa", "self-checkout"], ["koszyk", "basket"],
+        ["wózek", "trolley"], ["promocja", "special offer"], ["paragon", "receipt"],
+        ["złoty / złote / złotych", "złoty (Polish money)", "1 złoty, 2–4 złote, 5+ złotych"]
+      ]
+    },
+    {
+      "id": "s-restauracja", "title": "W restauracji", "en": "At a restaurant",
+      "intro": "A table for three, the menu, ordering, the bill. In Poland you usually ask for the bill yourself; the waiter won't bring it until you do.",
+      "dialogue": [
+        ["Kelner", "Dzień dobry! Stolik dla ilu osób?", "Hello! A table for how many?"],
+        ["Ty", "Dla trzech osób. Jest krzesełko dla dziecka?", "For three. Is there a high chair for a child?"],
+        ["Kelner", "Oczywiście. Proszę, menu. Coś do picia?", "Of course. Here's the menu. Something to drink?"],
+        ["Ty", "Poproszę wodę gazowaną i sok dla dziecka.", "Sparkling water and a juice for the child, please."],
+        ["Kelner", "Co podać?", "What can I get you?"],
+        ["Ty", "Dla mnie żurek i pierogi ruskie.", "For me, żurek and pierogi ruskie."],
+        ["Kelner", "Smacznego!", "Enjoy your meal!"],
+        ["Ty", "Dziękuję! … Poproszę rachunek.", "Thank you! … The bill, please."]
+      ],
+      "say": [
+        ["Stolik dla trzech osób, proszę.", "A table for three, please."],
+        ["Mam rezerwację na nazwisko…", "I have a reservation under the name…"],
+        ["Poproszę menu.", "The menu, please."],
+        ["Co pan / pani poleca?", "What do you recommend?"],
+        ["Dla mnie…", "For me…"],
+        ["Czy jest menu dla dzieci?", "Is there a children's menu?"],
+        ["Jest krzesełko dla dziecka?", "Is there a high chair for a child?"],
+        ["Czy to jest ostre?", "Is it spicy?"],
+        ["Jestem wegetarianinem / wegetarianką.", "I'm vegetarian. (man / woman)"],
+        ["Poproszę rachunek.", "The bill, please."],
+        ["Było pyszne, dziękujemy!", "It was delicious, thank you! (we)"]
+      ],
+      "hear": [
+        ["Ma pan / pani rezerwację?", "Do you have a reservation?"],
+        ["Coś do picia?", "Something to drink?"],
+        ["Co podać?", "What can I get you?"],
+        ["Czy państwo już wybrali?", "Have you decided? (to a group)"],
+        ["Smacznego!", "Enjoy your meal!", "answer: Dziękuję!"],
+        ["Smakowało?", "Did you enjoy it?"],
+        ["Razem czy osobno?", "Together or separately?", "when paying"]
+      ],
+      "words": [
+        ["stolik", "table (in a restaurant)"], ["kelner / kelnerka", "waiter / waitress"], ["zupa", "soup"],
+        ["danie główne", "main course"], ["deser", "dessert"], ["napój", "drink"],
+        ["woda gazowana", "sparkling water"], ["woda niegazowana", "still water"], ["wino", "wine"],
+        ["żurek", "sour rye soup"], ["rosół", "chicken broth"], ["pierogi ruskie", "pierogi with potato and cheese"],
+        ["schabowy", "breaded pork cutlet"], ["rachunek", "the bill"], ["napiwek", "tip", "about 10% is usual"]
+      ]
+    },
+    {
+      "id": "s-transport", "title": "Komunikacja miejska", "en": "Public transport in Warsaw",
+      "intro": "Metro, trams, buses and SKM trains all take the same ZTM tickets. You can buy them from a biletomat or in an app such as Jakdojade or mObilet.",
+      "dialogue": [
+        ["Ty", "Przepraszam, czy ten tramwaj jedzie do centrum?", "Excuse me, does this tram go to the centre?"],
+        ["Pasażerka", "Tak. Ale metro jest szybsze.", "Yes. But the metro is faster."],
+        ["Ty", "Gdzie jest stacja metra?", "Where is the metro station?"],
+        ["Pasażerka", "Tam, prosto i w prawo.", "Over there, straight on and to the right."],
+        ["Ty", "Dziękuję! A gdzie mogę kupić bilet?", "Thanks! And where can I buy a ticket?"],
+        ["Pasażerka", "W biletomacie albo w aplikacji.", "At the ticket machine or in the app."],
+        ["Metro", "Następna stacja: Centrum.", "Next station: Centrum."]
+      ],
+      "say": [
+        ["Czy ten autobus jedzie do centrum?", "Does this bus go to the centre?"],
+        ["Czy ten tramwaj jedzie na Dworzec Centralny?", "Does this tram go to Central Station?"],
+        ["Gdzie jest przystanek?", "Where is the stop?"],
+        ["Gdzie jest stacja metra?", "Where is the metro station?"],
+        ["Gdzie mogę kupić bilet?", "Where can I buy a ticket?"],
+        ["Poproszę bilet dwudziestominutowy.", "A 20-minute ticket, please."],
+        ["Bilet ulgowy dla dziecka.", "A reduced-fare ticket for a child."],
+        ["Gdzie mam wysiąść?", "Where should I get off?"],
+        ["Przepraszam, wysiadam!", "Excuse me, I'm getting off!", "say it to get through a crowd"],
+        ["Czy to miejsce jest wolne?", "Is this seat free?"],
+        ["Proszę, niech pan / pani usiądzie.", "Please, have a seat.", "offering your seat"]
+      ],
+      "hear": [
+        ["Następny przystanek…", "Next stop…"],
+        ["Następna stacja…", "Next station…", "metro"],
+        ["Kontrola biletów, proszę bilet.", "Ticket inspection, your ticket please."],
+        ["Proszę skasować bilet.", "Please validate your ticket.", "paper tickets go in the kasownik"],
+        ["Wysiada pan / pani?", "Are you getting off?", "answer: Tak / Nie"],
+        ["Proszę odsunąć się od drzwi.", "Please stand back from the doors."]
+      ],
+      "words": [
+        ["autobus", "bus"], ["tramwaj", "tram"], ["metro", "metro, underground"], ["pociąg", "train"],
+        ["przystanek", "stop (bus, tram)"], ["stacja", "station"], ["bilet", "ticket"], ["biletomat", "ticket machine"],
+        ["kasownik", "ticket validator"], ["przesiadka", "change, transfer"], ["kierunek", "direction"],
+        ["karta miejska", "city transport card"], ["rozkład jazdy", "timetable"], ["wsiadać", "to get on"], ["wysiadać", "to get off"]
+      ]
+    },
+    {
+      "id": "s-praca", "title": "W pracy", "en": "At work",
+      "intro": "Even if your work happens in English, a few Polish lines with colleagues by the coffee machine go a long way.",
+      "dialogue": [
+        ["Kolega", "Cześć! Jesteś tu nowy / nowa?", "Hi! Are you new here?"],
+        ["Ty", "Tak. Jestem analitykiem danych. Mam na imię…", "Yes. I'm a data analyst. My name is…"],
+        ["Kolega", "Miło mi! Mówisz po polsku?", "Nice to meet you! Do you speak Polish?"],
+        ["Ty", "Trochę. Uczę się. Możemy mówić po angielsku?", "A little. I'm learning. Can we speak English?"],
+        ["Kolega", "Jasne! Masz chwilę? Mam pytanie o raport.", "Sure! Do you have a moment? I have a question about the report."],
+        ["Ty", "Tak, oczywiście. Wyślę ci dane po spotkaniu.", "Yes, of course. I'll send you the data after the meeting."]
+      ],
+      "say": [
+        ["Jestem analitykiem danych.", "I'm a data analyst. (man)"],
+        ["Jestem analityczką danych.", "I'm a data analyst. (woman)"],
+        ["Pracuję z danymi.", "I work with data."],
+        ["Robię raporty i dashboardy.", "I make reports and dashboards."],
+        ["Pracuję zdalnie.", "I work remotely."],
+        ["Pracuję w biurze.", "I work in the office."],
+        ["Dzisiaj pracuję z domu.", "Today I'm working from home."],
+        ["Mam spotkanie.", "I have a meeting."],
+        ["Możemy mówić po angielsku?", "Can we speak English?"],
+        ["Wyślę ci raport.", "I'll send you the report."],
+        ["Miło mi.", "Nice to meet you."],
+        ["Do jutra!", "See you tomorrow!"]
+      ],
+      "hear": [
+        ["Masz chwilę?", "Do you have a moment?"],
+        ["Gdzie pracujesz?", "Where do you work?"],
+        ["Co robisz w pracy?", "What do you do at work?"],
+        ["Kiedy będzie raport?", "When will the report be ready?"],
+        ["Spotkanie jest przełożone.", "The meeting has been postponed."],
+        ["Idziemy na lunch?", "Shall we go for lunch?"],
+        ["Dobra robota!", "Good job!"]
+      ],
+      "words": [
+        ["praca", "work, job"], ["biuro", "office"], ["firma", "company"], ["zespół", "team"], ["spotkanie", "meeting"],
+        ["raport", "report"], ["dane", "data"], ["baza danych", "database"], ["tabela", "table"], ["wykres", "chart"],
+        ["kolega / koleżanka", "colleague (man / woman)"], ["szef / szefowa", "boss (man / woman)"],
+        ["termin", "deadline"], ["urlop", "holiday, time off"]
+      ]
+    },
+    {
+      "id": "s-dom", "title": "W domu", "en": "At home with your partner and child",
+      "intro": "Everyday family lines. Children pick up Polish fast, so this is a good set to practise together. Where a word changes for a boy or a girl, both forms are given.",
+      "dialogue": [
+        ["Ty", "Dzień dobry, kochanie!", "Good morning, darling!"],
+        ["Dziecko", "Dzień dobry! Jestem głodny / głodna!", "Good morning! I'm hungry!"],
+        ["Ty", "Śniadanie jest gotowe. Umyj ręce!", "Breakfast is ready. Wash your hands!"],
+        ["Partner", "Kawa czy herbata?", "Coffee or tea?"],
+        ["Ty", "Kawa, poproszę. Kto dzisiaj odbiera dziecko?", "Coffee, please. Who's picking up our child today?"],
+        ["Partner", "Ja. A ty robisz zakupy?", "Me. And you're doing the shopping?"],
+        ["Ty", "Tak. Do zobaczenia wieczorem!", "Yes. See you this evening!"]
+      ],
+      "say": [
+        ["Mam jedno dziecko.", "I have one child."],
+        ["Mam syna.", "I have a son."],
+        ["Mam córkę.", "I have a daughter."],
+        ["To jest mój partner.", "This is my partner. (man)"],
+        ["To jest moja partnerka.", "This is my partner. (woman)"],
+        ["Dzień dobry, kochanie!", "Good morning, darling!"],
+        ["Śniadanie jest gotowe!", "Breakfast is ready!"],
+        ["Obiad jest gotowy!", "Dinner is ready!"],
+        ["Umyj ręce!", "Wash your hands!"],
+        ["Ubierz się!", "Get dressed!"],
+        ["Pospiesz się!", "Hurry up!"],
+        ["Jesteś głodny / głodna?", "Are you hungry? (to a boy / girl)"],
+        ["Brawo! Super!", "Well done! Great!"],
+        ["Nie wolno!", "Not allowed! / You mustn't!"],
+        ["Czas spać.", "Time for bed."],
+        ["Dobranoc!", "Good night!"],
+        ["Kocham cię.", "I love you."],
+        ["Kto dzisiaj odbiera dziecko?", "Who's picking up our child today?"],
+        ["Do zobaczenia wieczorem!", "See you this evening!"]
+      ],
+      "hear": [
+        ["Mamo! / Tato!", "Mum! / Dad!", "the form for calling someone"],
+        ["Nie chcę!", "I don't want to!"],
+        ["Jeszcze pięć minut!", "Five more minutes!"],
+        ["Masz dzieci?", "Do you have children?", "other parents"],
+        ["Ile lat ma dziecko?", "How old is your child?"],
+        ["Jak ma na imię?", "What's his / her name?"]
+      ],
+      "words": [
+        ["rodzina", "family"], ["mama", "mum"], ["tata", "dad"], ["syn", "son"], ["córka", "daughter"],
+        ["mąż", "husband"], ["partner / partnerka", "partner (man / woman)"], ["przedszkole", "kindergarten"],
+        ["szkoła", "school"], ["plac zabaw", "playground"], ["zabawka", "toy"], ["mieszkanie", "flat, apartment"],
+        ["pokój", "room"], ["łóżko", "bed"]
+      ]
+    },
+    {
+      "id": "s-partner", "title": "Z partnerem", "en": "With your partner",
+      "intro": "Everyday lines for the two of you: his day, food, compliments and bedtime. Words about him use the masculine form (głodny, zmęczony, przystojny). Where a word describes you, both forms are given: zmęczony if you're a man, zmęczona if you're a woman.",
+      "dialogue": [
+        ["Ty", "Cześć, kochanie! Jak było w pracy?", "Hi, darling! How was work?"],
+        ["Partner", "Dobrze, ale dużo pracy. Jestem zmęczony.", "Good, but a lot of work. I'm tired."],
+        ["Ty", "Biedny! Jesteś głodny?", "Poor thing! Are you hungry?"],
+        ["Partner", "Bardzo! Co na kolację?", "Very! What's for dinner?"],
+        ["Ty", "Makaron. Za dziesięć minut.", "Pasta. In ten minutes."],
+        ["Partner", "Super. Ładnie dzisiaj wyglądasz!", "Great. You look nice today!"],
+        ["Ty", "Dziękuję! … Już późno, idę spać. Dobranoc!", "Thank you! … It's late, I'm going to bed. Good night!"],
+        ["Partner", "Dobranoc, kochanie. Śpij dobrze!", "Good night, darling. Sleep well!"]
+      ],
+      "groups": [
+        { "name": "Jak minął dzień?", "en": "His day and work", "cards": [
+          ["Jak było w pracy?", "How was work?"],
+          ["Jak minął dzień?", "How was your day?"],
+          ["Co nowego w pracy?", "What's new at work?"],
+          ["Miałeś dużo pracy?", "Did you have a lot of work?", "to a man (past tense)"],
+          ["Jak się czujesz?", "How are you feeling?"],
+          ["Jesteś zmęczony?", "Are you tired?", "to a man"],
+          ["Opowiadaj!", "Tell me all about it!"],
+          ["Biedny!", "Poor thing!", "to a man"],
+          ["Odpocznij.", "Have a rest."]
+        ]},
+        { "name": "Jesteś głodny?", "en": "Food and hunger", "cards": [
+          ["Jesteś głodny?", "Are you hungry?", "to a man"],
+          ["Chcesz coś zjeść?", "Do you want something to eat?"],
+          ["Co chcesz na kolację?", "What do you want for dinner?"],
+          ["Zrobić ci kanapkę?", "Shall I make you a sandwich?"],
+          ["Kolacja jest gotowa!", "Dinner is ready!"],
+          ["Smakuje ci?", "Do you like it? (the food)"],
+          ["Chcesz jeszcze?", "Do you want some more?"],
+          ["Napijesz się herbaty?", "Would you like some tea?"],
+          ["Zamówimy pizzę?", "Shall we order a pizza?"],
+          ["Jestem głodny / głodna.", "I'm hungry. (man / woman)"]
+        ]},
+        { "name": "Komplementy", "en": "Compliments", "cards": [
+          ["Ładnie wyglądasz.", "You look nice."],
+          ["Jesteś przystojny.", "You're handsome."],
+          ["Pięknie pachniesz.", "You smell lovely."],
+          ["Świetnie gotujesz!", "You're a great cook!"],
+          ["Jesteś super tatą.", "You're a great dad.", "tatą: the form after jesteś (instrumental case)"],
+          ["Jesteś najlepszy!", "You're the best!", "to a man"],
+          ["Jestem z ciebie dumny / dumna.", "I'm proud of you. (man / woman speaking)"],
+          ["Masz rację.", "You're right."],
+          ["Dziękuję, że jesteś.", "Thank you for being there for me."],
+          ["Tęsknię za tobą.", "I miss you."],
+          ["Kocham cię.", "I love you."]
+        ]},
+        { "name": "Idę spać", "en": "Going to bed", "cards": [
+          ["Idę spać.", "I'm going to bed."],
+          ["Jestem zmęczony / zmęczona.", "I'm tired. (man / woman)"],
+          ["Już późno.", "It's late."],
+          ["Idziesz spać?", "Are you coming to bed?"],
+          ["Wyłącz światło, proszę.", "Turn off the light, please."],
+          ["Nastaw budzik.", "Set the alarm."],
+          ["Obudź mnie o siódmej.", "Wake me up at seven."],
+          ["Śpij dobrze!", "Sleep well!"],
+          ["Słodkich snów!", "Sweet dreams!"],
+          ["Jak spałeś?", "How did you sleep?", "to a man"],
+          ["Wyspałeś się?", "Did you get enough sleep?", "to a man"]
+        ]},
+        { "name": "Na co dzień", "en": "Everyday life together", "cards": [
+          ["Co robimy w weekend?", "What are we doing at the weekend?"],
+          ["Oglądamy film?", "Shall we watch a film?"],
+          ["Pomóc ci?", "Can I help you?"],
+          ["Możesz mi pomóc?", "Can you help me?"],
+          ["Wrócę późno.", "I'll be back late."],
+          ["Napisz, jak dojedziesz.", "Text me when you get there."],
+          ["Uważaj na siebie!", "Take care!"],
+          ["Przepraszam, mój błąd.", "Sorry, my mistake."],
+          ["Nie ma sprawy.", "No problem."]
+        ]}
+      ],
+      "say": [],
+      "hear": [
+        ["Męczący dzień.", "A tiring day."],
+        ["Dużo pracy.", "A lot of work."],
+        ["Nic ciekawego.", "Nothing interesting."],
+        ["Umieram z głodu!", "I'm starving!", "lit. 'I'm dying of hunger'"],
+        ["Co na kolację?", "What's for dinner?"],
+        ["Ty też!", "You too!"],
+        ["Zaraz przyjdę.", "I'll be right there."]
+      ],
+      "words": [
+        ["kochanie", "darling", "the most common term of endearment"], ["skarbie", "honey, treasure", "said when calling him"],
+        ["misiu", "teddy (pet name)", "said when calling him"], ["kolacja", "dinner, evening meal"], ["kanapka", "sandwich"],
+        ["sen", "sleep; dream"], ["budzik", "alarm clock"], ["światło", "light"], ["komplement", "compliment"]
+      ]
+    },
+    {
+      "id": "s-znajomi", "title": "U znajomych", "en": "Visiting friends",
+      "intro": "Bring something (wine, flowers, a cake) and expect to take your shoes off at the door. Hosts often offer kapcie (slippers).",
+      "dialogue": [
+        ["Kasia", "Cześć! Wejdźcie, wejdźcie!", "Hi! Come in, come in! (to several people)"],
+        ["Ty", "Cześć! Dziękujemy za zaproszenie. To dla was.", "Hi! Thanks for inviting us. This is for you."],
+        ["Kasia", "Wino! Nie trzeba było! Napijecie się czegoś?", "Wine! You shouldn't have! Will you have something to drink?"],
+        ["Ty", "Poproszę herbatę. Ale ładne mieszkanie!", "Tea, please. What a nice flat!"],
+        ["Kasia", "Dziękuję! Częstujcie się!", "Thanks! Help yourselves!"],
+        ["Ty", "Pyszne! … Niestety, musimy już iść.", "Delicious! … Unfortunately, we have to go now."],
+        ["Kasia", "Już? Zostańcie jeszcze!", "Already? Stay a bit longer!"]
+      ],
+      "say": [
+        ["Dziękuję za zaproszenie.", "Thank you for the invitation."],
+        ["To dla ciebie.", "This is for you. (one person)"],
+        ["To dla was.", "This is for you. (several people)"],
+        ["Ale ładne mieszkanie!", "What a nice flat!"],
+        ["Poproszę herbatę.", "Tea, please."],
+        ["Pyszne!", "Delicious!"],
+        ["Na zdrowie!", "Cheers!"],
+        ["Co u was słychać?", "How are things with you (all)?"],
+        ["Muszę już iść.", "I have to go now."],
+        ["Musimy już iść.", "We have to go now."],
+        ["Było super, dziękuję!", "It was great, thank you!"],
+        ["Wpadnijcie do nas!", "Come over to our place!"]
+      ],
+      "hear": [
+        ["Wejdź! / Wejdźcie!", "Come in! (one / several)"],
+        ["Rozgość się!", "Make yourself at home!"],
+        ["Napijesz się czegoś?", "Will you have something to drink?"],
+        ["Częstuj się!", "Help yourself!"],
+        ["Nie trzeba było!", "You shouldn't have!", "when you bring a gift"],
+        ["Zostań jeszcze!", "Stay a bit longer!"]
+      ],
+      "words": [
+        ["znajomi", "friends, people you know"], ["przyjaciel / przyjaciółka", "close friend (man / woman)"],
+        ["zaproszenie", "invitation"], ["prezent", "present, gift"], ["kwiaty", "flowers"], ["ciasto", "cake"],
+        ["kolacja", "supper, evening meal"], ["impreza", "party"], ["kapcie", "slippers"]
+      ]
+    },
+    {
+      "id": "s-wies", "title": "U rodziców na wsi", "en": "Visiting parents in the village",
+      "intro": "Expect a lot of food and the same questions on every visit. Jedz, jedz! means you'll get seconds whether you're hungry or not. If these are your partner's parents, ask them how they'd like you to address them: pan / pani, or mamo / tato.",
+      "dialogue": [
+        ["Mama", "Dzień dobry, kochani! Jak podróż?", "Hello, my dears! How was the trip?"],
+        ["Ty", "Dzień dobry! Dobrze, ale długo. Ale tu pięknie i cicho!", "Hello! Fine, but long. It's so beautiful and quiet here!"],
+        ["Mama", "Siadajcie, obiad gotowy. Rosół, schabowy, kompot…", "Sit down, lunch is ready. Broth, pork cutlet, compote…"],
+        ["Ty", "Mmm, pyszne! Dziękuję bardzo.", "Mmm, delicious! Thank you very much."],
+        ["Mama", "Jedz, jedz! Weź jeszcze!", "Eat, eat! Have some more!"],
+        ["Ty", "Dziękuję, już nie mogę. Jestem najedzony / najedzona.", "Thank you, I can't eat any more. I'm full."],
+        ["Tata", "A jak praca? Jak wnuczek / wnuczka?", "And how's work? How's our grandson / granddaughter?"]
+      ],
+      "say": [
+        ["Jak się macie?", "How are you (both)?"],
+        ["Jak zdrowie?", "How's your health?"],
+        ["Ale tu pięknie!", "It's so beautiful here!"],
+        ["Ale tu cicho!", "It's so quiet here!"],
+        ["Pomogę w kuchni.", "I'll help in the kitchen."],
+        ["Pyszne, dziękuję!", "Delicious, thank you!"],
+        ["Poproszę jeszcze trochę.", "A little more, please."],
+        ["Dziękuję, już nie mogę.", "Thank you, I can't eat any more."],
+        ["Jestem najedzony / najedzona.", "I'm full. (man / woman)"],
+        ["Idziemy na spacer?", "Shall we go for a walk?"],
+        ["Przyjedziemy za miesiąc.", "We'll come again in a month."]
+      ],
+      "hear": [
+        ["Jak podróż?", "How was the trip?"],
+        ["Siadajcie!", "Sit down! (to several people)"],
+        ["Jedz, jedz!", "Eat, eat!"],
+        ["Weź jeszcze!", "Have some more!"],
+        ["Jak praca?", "How's work?"],
+        ["Ale wnuczek urósł! / Ale wnuczka urosła!", "How our grandson / granddaughter has grown!"],
+        ["Kiedy znowu przyjedziecie?", "When will you come again?"]
+      ],
+      "words": [
+        ["wieś", "village, the countryside", "na wsi = in the countryside"], ["rodzice", "parents"],
+        ["teściowie", "parents-in-law"], ["babcia", "grandma"], ["dziadek", "grandpa"],
+        ["wnuczek / wnuczka", "grandson / granddaughter"], ["dom", "house, home"], ["ogród", "garden"],
+        ["las", "forest"], ["pole", "field"], ["jezioro", "lake"], ["kura", "hen"], ["krowa", "cow"],
+        ["kompot", "kompot (fruit drink)"], ["spacer", "walk"]
+      ]
+    },
+    {
+      "id": "s-kuchnia", "title": "Gotowanie", "en": "Cooking",
+      "intro": "You cook every day, so use it: name each thing out loud as you pick it up. It's free daily practice.",
+      "dialogue": [
+        ["Partner", "Co dzisiaj gotujemy?", "What are we cooking today?"],
+        ["Ty", "Zupę pomidorową. Potrzebuję pomidorów, cebuli i czosnku.", "Tomato soup. I need tomatoes, onion and garlic."],
+        ["Partner", "Ja kroję cebulę. Gdzie jest nóż?", "I'll cut the onion. Where's the knife?"],
+        ["Ty", "W szufladzie. Podaj mi garnek, proszę.", "In the drawer. Pass me the pot, please."],
+        ["Partner", "Proszę. Dodać sól?", "Here you go. Shall I add salt?"],
+        ["Ty", "Tak, trochę. … Obiad gotowy! Smacznego!", "Yes, a little. … Dinner's ready! Enjoy!"]
+      ],
+      "say": [
+        ["Co dzisiaj gotujemy?", "What are we cooking today?"],
+        ["Gotuję zupę.", "I'm cooking soup."],
+        ["Potrzebuję…", "I need…"],
+        ["Podaj mi nóż, proszę.", "Pass me the knife, please."],
+        ["Gdzie jest sól?", "Where's the salt?"],
+        ["Kroję cebulę.", "I'm cutting the onion."],
+        ["Smażę jajka.", "I'm frying eggs."],
+        ["Woda się gotuje.", "The water is boiling."],
+        ["To jest za słone.", "It's too salty."],
+        ["Spróbuj!", "Taste it!"],
+        ["Kto zmywa?", "Who's doing the dishes?"]
+      ],
+      "hear": [
+        ["Co na obiad?", "What's for dinner?"],
+        ["Ładnie pachnie!", "It smells nice!"],
+        ["Uważaj, gorące!", "Careful, it's hot!"],
+        ["Jeszcze pięć minut.", "Five more minutes."]
+      ],
+      "words": [
+        ["kuchnia", "kitchen; cuisine"], ["garnek", "pot"], ["patelnia", "frying pan"], ["nóż", "knife"],
+        ["łyżka", "spoon"], ["widelec", "fork"], ["talerz", "plate"], ["piekarnik", "oven"], ["lodówka", "fridge"],
+        ["sól", "salt"], ["pieprz", "pepper"], ["cukier", "sugar"], ["olej", "oil"], ["cebula", "onion"],
+        ["czosnek", "garlic"], ["makaron", "pasta"], ["ryż", "rice"], ["kurczak", "chicken"],
+        ["gotować", "to cook; to boil"], ["smażyć", "to fry"], ["piec", "to bake"], ["kroić", "to cut, to slice"], ["mieszać", "to stir"]
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+(function () {
+  "use strict";
+  const COURSE = JSON.parse(document.getElementById("course").textContent);
+  const LESSONS = COURSE.lessons;
+  const SITS = COURSE.situations || [];
+  const SIT_PARTS = [["say", "Mówisz"], ["hear", "Usłyszysz"], ["words", "Słowa"]];
+  const PERSONS = ["ja", "ty", "on / ona / ono · pan / pani", "my", "wy", "oni / one"];
+  const PERSON_SHORT = ["ja", "ty", "on / ona / pan / pani", "my", "wy", "oni / one"];
+  const MIN = 60000, DAY = 86400000;
+  const STEPS = [1, 10];          // learning steps, minutes
+  const RELEARN = 10;             // relearning step, minutes
+  const LEARN_AHEAD = 20 * MIN;
+
+  const MONTHS = ["stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca", "lipca", "sierpnia", "września", "października", "listopada", "grudnia"];
+  const DAYS = ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
+
+  const $ = (s, el) => (el || document).querySelector(s);
+  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const parseDate = (s) => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
+  const dayKey = (t) => { const d = new Date(t); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); };
+  const dayStart = (t) => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };
+  const plDate = (d, withDay) => (withDay ? DAYS[d.getDay()] + ", " : "") + d.getDate() + " " + MONTHS[d.getMonth()];
+  const shortDate = (d) => String(d.getDate()).padStart(2, "0") + "." + String(d.getMonth() + 1).padStart(2, "0");
+  const lessonById = (id) => LESSONS.find((l) => l.id === id);
+  const sitById = (id) => SITS.find((s) => s.id === id);
+
+  /* ---------- state ---------- */
+  const LS_KEY = "zeszyt-polski-v1";
+  function blank() {
+    return { v: 1, cards: {}, hw: {}, custom: [], days: {}, newByDay: {}, settings: { deck: "all", reverse: false, newPerDay: 15, autoSpeak: false }, updatedAt: 0 };
+  }
+  function normalize(s) {
+    const b = blank();
+    if (!s || typeof s !== "object") return b;
+    return {
+      v: 1,
+      cards: s.cards && typeof s.cards === "object" ? { ...s.cards } : {},
+      hw: s.hw && typeof s.hw === "object" ? { ...s.hw } : {},
+      custom: Array.isArray(s.custom) ? s.custom.filter((c) => c && c.id && c.pl).map((c) => ({ ...c })) : [],
+      days: s.days && typeof s.days === "object" ? { ...s.days } : {},
+      newByDay: s.newByDay && typeof s.newByDay === "object" ? { ...s.newByDay } : {},
+      settings: { ...b.settings, ...(s.settings || {}) },
+      updatedAt: Number(s.updatedAt) || 0
+    };
+  }
+  let S = blank();
+  try { const raw = localStorage.getItem(LS_KEY); if (raw) S = normalize(JSON.parse(raw)); } catch (e) { /* storage unavailable */ }
+
+  const sync = { ref: null, mode: "local", timer: null, writing: false, dirty: false };
+  function setSync(mode) {
+    sync.mode = mode;
+    const el = $("#sync");
+    el.classList.toggle("on", mode === "account");
+    $("span", el).textContent = mode === "account" ? "Saved to your account" : mode === "error" ? "Couldn't save to your account" : "Saved in this browser";
+  }
+  function save() {
+    S.updatedAt = Date.now();
+    try { localStorage.setItem(LS_KEY, JSON.stringify(S)); } catch (e) { /* ignore */ }
+    if (!sync.ref) return;
+    clearTimeout(sync.timer);
+    sync.timer = setTimeout(pushRemote, 1200);
+  }
+  async function pushRemote() {
+    if (!sync.ref) return;
+    if (sync.writing) { sync.dirty = true; return; }
+    sync.writing = true;
+    try {
+      await sync.ref.set(JSON.parse(JSON.stringify(S)));
+      setSync("account");
+    } catch (e) {
+      if (e && e.code === "unavailable") { setTimeout(pushRemote, 2000 + Math.random() * 2000); }
+      else { setSync("error"); if (e && (e.code === "invalid_argument" || e.code === "revoked" || e.code === "not_granted")) sync.ref = null; }
+    } finally {
+      sync.writing = false;
+      if (sync.dirty) { sync.dirty = false; pushRemote(); }
+    }
+  }
+  document.addEventListener("visibilitychange", () => { if (document.hidden && sync.timer) { clearTimeout(sync.timer); sync.timer = null; pushRemote(); } });
+
+  async function initRemote() {
+    if (!window.claude || typeof window.claude.use !== "function") return;
+    try {
+      const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+      if (!db || !user) return;
+      const uid = await user.id();
+      if (!uid) return;
+      const ref = db.doc("data/users/" + uid + "/progress");
+      const snap = await ref.get();
+      sync.ref = ref;
+      if (snap.exists) {
+        const remote = normalize(snap.data());
+        if (remote.updatedAt > S.updatedAt) {
+          S = remote;
+          try { localStorage.setItem(LS_KEY, JSON.stringify(S)); } catch (e) { /* ignore */ }
+          buildCards();
+          if (!session) render();
+        } else if (S.updatedAt > remote.updatedAt) {
+          pushRemote();
+        }
+        setSync("account");
+      } else if (S.updatedAt > 0) {
+        await pushRemote();
+      } else {
+        setSync("account");
+      }
+    } catch (e) {
+      setSync("local");
+    }
+  }
+
+  /* ---------- cards ---------- */
+  let CARDS = [], BY_ID = {};
+  function buildCards() {
+    CARDS = []; BY_ID = {};
+    const add = (c) => { if (BY_ID[c.id]) return; BY_ID[c.id] = c; CARDS.push(c); };
+    LESSONS.forEach((l) => {
+      l.vocab.forEach((g) => g.cards.forEach((c) => {
+        add({ id: "v:" + c[0], kind: "v", pl: c[0], en: c[1], note: c[2] || "", lesson: l.id, group: g.name });
+      }));
+      l.sections.filter((s) => s.type === "conj").forEach((s) => s.verbs.forEach((v) => v.forms.forEach((f, i) => {
+        add({ id: "c:" + v.inf + ":" + i, kind: "c", inf: v.inf, en: v.en, person: i, form: f, lesson: l.id, group: "Odmiana" });
+      })));
+    });
+    SITS.forEach((s) => {
+      (s.groups || []).forEach((g) => g.cards.forEach((c) => {
+        add({ id: "v:" + c[0], kind: "v", pl: c[0], en: c[1], note: c[2] || "", lesson: s.id, group: g.name });
+      }));
+      SIT_PARTS.forEach(([part, label]) => (s[part] || []).forEach((c) => {
+        add({ id: "v:" + c[0], kind: "v", pl: c[0], en: c[1], note: c[2] || "", lesson: s.id, group: label });
+      }));
+    });
+    S.custom.forEach((c) => add({ id: "v:my:" + c.id, kind: "v", pl: c.pl, en: c.en, note: c.note || "", lesson: "mine", group: "Moje słówka", customId: c.id }));
+  }
+  function deckLabel(key) {
+    if (key === "all") return "Everything";
+    if (key === "verbs") return "Verb forms only";
+    if (key === "mine") return "My own words";
+    if (key === "sit") return "All situations";
+    const s = sitById(key);
+    if (s) return "Sytuacja · " + s.title;
+    const l = lessonById(key);
+    return l ? "Lekcja " + l.n + " · " + shortDate(parseDate(l.date)) : key;
+  }
+  function deckOptions() {
+    return [["all", deckLabel("all")]].concat(LESSONS.map((l) => [l.id, deckLabel(l.id)]), [["sit", deckLabel("sit")]], SITS.map((s) => [s.id, deckLabel(s.id)]), [["verbs", deckLabel("verbs")], ["mine", deckLabel("mine")]]);
+  }
+  function inDeck(c, key) {
+    if (key === "all") return true;
+    if (key === "verbs") return c.kind === "c";
+    if (key === "sit") return c.lesson.startsWith("s-");
+    return c.lesson === key;
+  }
+  function srcLabel(c) {
+    if (c.lesson === "mine") return "Moje słówka";
+    const s = sitById(c.lesson);
+    if (s) return "Sytuacja · " + s.title + " · " + c.group;
+    return "Lekcja " + lessonById(c.lesson).n + " · " + c.group;
+  }
+  // study ids for a deck; vocab cards also get an English → Polish twin when reverse is on
+  function poolFor(key, reverse) {
+    const out = [];
+    CARDS.forEach((c) => {
+      if (!inDeck(c, key)) return;
+      out.push(c.id);
+      if (reverse && c.kind === "v") out.push("r|" + c.id);
+    });
+    return out;
+  }
+  const baseId = (sid) => (sid.startsWith("r|") ? sid.slice(2) : sid);
+
+  /* ---------- scheduler (Anki-style SM-2) ---------- */
+  function schedule(prev, rating, now) {
+    const c = prev ? { ...prev } : { s: "new", step: 0, ivl: 0, ease: 2.5, reps: 0, lapses: 0 };
+    const today = dayStart(now);
+    c.reps = (c.reps || 0) + 1;
+    c.last = now;
+    if (c.s === "new" || c.s === "learn") {
+      if (rating === 1) { c.s = "learn"; c.step = 0; c.due = now + STEPS[0] * MIN; }
+      else if (rating === 2) { c.s = "learn"; c.due = now + (c.step === 0 ? Math.round((STEPS[0] + STEPS[1]) / 2) : STEPS[c.step]) * MIN; }
+      else if (rating === 3) {
+        const next = (c.s === "new" ? 0 : c.step) + 1;
+        if (next >= STEPS.length) { c.s = "review"; c.ivl = 1; c.due = today + DAY; }
+        else { c.s = "learn"; c.step = next; c.due = now + STEPS[next] * MIN; }
+      } else { c.s = "review"; c.ivl = 4; c.due = today + 4 * DAY; }
+    } else if (c.s === "relearn") {
+      if (rating === 1) { c.due = now + RELEARN * MIN; }
+      else { c.s = "review"; if (rating === 4) c.ivl += 1; c.due = today + c.ivl * DAY; }
+    } else {
+      if (rating === 1) { c.lapses = (c.lapses || 0) + 1; c.ease = Math.max(1.3, c.ease - 0.2); c.ivl = Math.max(1, Math.round(c.ivl * 0.5)); c.s = "relearn"; c.due = now + RELEARN * MIN; }
+      else if (rating === 2) { c.ease = Math.max(1.3, c.ease - 0.15); c.ivl = Math.max(c.ivl + 1, Math.round(c.ivl * 1.2)); c.due = today + c.ivl * DAY; }
+      else if (rating === 3) { c.ivl = Math.max(c.ivl + 1, Math.round(c.ivl * c.ease)); c.due = today + c.ivl * DAY; }
+      else { c.ease = c.ease + 0.15; c.ivl = Math.max(c.ivl + 1, Math.round(c.ivl * c.ease * 1.3)); c.due = today + c.ivl * DAY; }
+    }
+    return c;
+  }
+  function fmtGap(ms) {
+    const m = Math.max(1, Math.round(ms / MIN));
+    if (m < 60) return (ms < MIN ? "<1" : m) + " min";
+    const h = Math.round(m / 60);
+    if (h < 24) return h + " h";
+    const d = Math.round(ms / DAY);
+    if (d < 31) return d + " d";
+    return (d / 30).toFixed(1).replace(".0", "") + " mo";
+  }
+  const isLearning = (st) => st && (st.s === "learn" || st.s === "relearn");
+
+  function queueInfo(key, reverse) {
+    const now = Date.now();
+    const pool = poolFor(key, reverse);
+    let learn = 0, review = 0, fresh = 0, nextDue = Infinity;
+    pool.forEach((id) => {
+      const st = S.cards[id];
+      if (!st) { fresh++; return; }
+      if (isLearning(st)) { learn++; nextDue = Math.min(nextDue, st.due); }
+      else if (st.due <= now) review++;
+      else nextDue = Math.min(nextDue, st.due);
+    });
+    const newLeft = Math.max(0, S.settings.newPerDay - (S.newByDay[dayKey(now)] || 0));
+    return { pool, learn, review, fresh, newToday: Math.min(fresh, newLeft), newLeft, nextDue };
+  }
+
+  /* ---------- speech ---------- */
+  let plVoice = null, plVoices = [];
+  // browsers don't report a voice's gender, so recognise the common Polish voices by name
+  const FEMALE = /paulina|zofia|zosia|ewa|agnieszka|maja|google polski|female/i;
+  const MALE = /adam|marek|krzysztof|jacek|jakub|\bmale\b/i;
+  const voiceGender = (v) => (FEMALE.test(v.name) ? "female" : MALE.test(v.name) ? "male" : "");
+  const voiceLabel = (v) => v.name.replace(/^Microsoft\s+/i, "").replace(/\s*[-–(]\s*Polish.*$/i, "") + (voiceGender(v) ? " · " + voiceGender(v) : "");
+  function pickVoice() {
+    if (!("speechSynthesis" in window)) return;
+    const vs = window.speechSynthesis.getVoices() || [];
+    plVoices = vs.filter((v) => /^pl(-|_|$)/i.test(v.lang));
+    plVoice = plVoices.find((v) => v.name === S.settings.voice)
+      || plVoices.find((v) => voiceGender(v) === "female")
+      || plVoices.find((v) => voiceGender(v) !== "male")
+      || plVoices[0] || null;
+    document.documentElement.classList.toggle("has-voice", !!plVoice);
+  }
+  try {
+    pickVoice();
+    if ("speechSynthesis" in window) window.speechSynthesis.addEventListener("voiceschanged", () => {
+      pickVoice();
+      try { if (!session && view === "fiszki") renderHome(); } catch (e) { /* not ready yet */ }
+    });
+  } catch (e) { /* no speech */ }
+  function speak(text) {
+    if (!plVoice) return;
+    try {
+      const clean = String(text).replace(/[„”…]/g, "").replace(/\s*[\/=]\s*/g, ", ");
+      const u = new SpeechSynthesisUtterance(clean);
+      u.lang = plVoice.lang; u.voice = plVoice; u.rate = 0.9;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(u);
+    } catch (e) { /* ignore */ }
+  }
+  const SAY_ICON = '<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M2 6h2.5L8 3v10L4.5 10H2z"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" d="M10.5 5.5a3.5 3.5 0 0 1 0 5M12.5 3.5a6.3 6.3 0 0 1 0 9"/></svg>';
+  const sayBtn = (text) => '<button class="say" type="button" data-say="' + esc(text) + '" aria-label="Listen: ' + esc(text) + '">' + SAY_ICON + "</button>";
+
+  /* ---------- routing ---------- */
+  const VIEWS = ["fiszki", "lekcje", "sytuacje", "zadania", "slowka"];
+  let view = "fiszki", currentLesson = LESSONS[LESSONS.length - 1].id, currentSit = SITS.length ? SITS[0].id : null, session = null;
+  function readHash() {
+    const h = (location.hash || "").slice(1);
+    if (VIEWS.includes(h)) view = h;
+    else if (lessonById(h)) { view = "lekcje"; currentLesson = h; }
+    else if (sitById(h)) { view = "sytuacje"; currentSit = h; }
+  }
+  function go(v, itemId) {
+    if (session) endSession();
+    view = v;
+    if (itemId && v === "lekcje") currentLesson = itemId;
+    if (itemId && v === "sytuacje") currentSit = itemId;
+    try { history.replaceState(null, "", "#" + (v === "lekcje" ? currentLesson : v === "sytuacje" && itemId ? currentSit : v)); } catch (e) { /* ignore */ }
+    render();
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", () => { readHash(); if (session) endSession(); render(); });
+
+  function render() {
+    document.querySelectorAll(".tab").forEach((t) => t.setAttribute("aria-current", !session && t.dataset.view === view ? "page" : "false"));
+    VIEWS.forEach((v) => { $("#view-" + v).hidden = !!session || v !== view; });
+    $("#view-study").hidden = !session;
+    if (session) return renderStudy();
+    if (view === "fiszki") renderHome();
+    if (view === "lekcje") renderLessons();
+    if (view === "sytuacje") renderSituations();
+    if (view === "zadania") renderHomework();
+    if (view === "slowka") renderWords();
+  }
+
+  /* ---------- home ---------- */
+  function streak() {
+    let n = 0, t = Date.now();
+    if (!S.days[dayKey(t)]) t -= DAY;
+    while (S.days[dayKey(t)]) { n++; t -= DAY; }
+    return n;
+  }
+  function nextClass() {
+    const start = parseDate(COURSE.course.start), end = parseDate(COURSE.course.end);
+    const today = new Date(dayStart(Date.now()));
+    let d = new Date(start);
+    while (d < today) d.setDate(d.getDate() + 7);
+    if (d.getTime() === today.getTime() && new Date().getHours() >= 13) d.setDate(d.getDate() + 7);
+    return d <= end ? d : null;
+  }
+  function hwOpen(lessons) { let open = 0, all = 0; lessons.forEach((l) => l.homework.forEach((h) => { all++; if (!S.hw[h.id]) open++; })); return { open, all }; }
+  function barsSvg() {
+    const n = 14, w = 280, h = 64, gap = 4, bw = (w - gap * (n - 1)) / n;
+    const vals = [];
+    for (let i = n - 1; i >= 0; i--) { const t = Date.now() - i * DAY; vals.push({ v: S.days[dayKey(t)] || 0, d: new Date(t) }); }
+    const max = Math.max(10, ...vals.map((x) => x.v));
+    let out = '<svg class="bars" viewBox="0 0 ' + w + " " + (h + 16) + '" role="img" aria-label="Cards reviewed per day, last 14 days">';
+    out += '<line x1="0" x2="' + w + '" y1="' + h + '" y2="' + h + '" stroke="var(--line)" stroke-width="1"/>';
+    vals.forEach((x, i) => {
+      const bh = x.v ? Math.max(3, (x.v / max) * (h - 4)) : 0;
+      const xx = i * (bw + gap);
+      const last = i === n - 1;
+      out += '<rect x="' + xx.toFixed(1) + '" y="' + (h - bh).toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + bh.toFixed(1) + '" rx="2" fill="' + (last ? "var(--accent)" : "var(--good)") + '" opacity="' + (last ? 1 : 0.75) + '"><title>' + plDate(x.d) + ": " + x.v + "</title></rect>";
+      if (i === 0 || last || x.d.getDay() === 6) out += '<text x="' + (xx + bw / 2).toFixed(1) + '" y="' + (h + 13) + '" text-anchor="middle" font-size="9" font-family="IBM Plex Mono, monospace" fill="var(--muted)">' + (last ? "dziś" : shortDate(x.d)) + "</text>";
+    });
+    return out + "</svg>";
+  }
+  function renderHome() {
+    const st = S.settings;
+    const q = queueInfo(st.deck, st.reverse);
+    const now = new Date();
+    const total = q.learn + q.review + q.newToday;
+    const learned = Object.keys(S.cards).filter((k) => S.cards[k].s === "review").length;
+    const nc = nextClass();
+    const hw = hwOpen(LESSONS);
+    const lastLesson = LESSONS[LESSONS.length - 1];
+    const hwLast = hwOpen([lastLesson]);
+    let emptyMsg = "";
+    if (!total) {
+      if (!q.pool.length) emptyMsg = st.deck === "mine" ? "You haven't added any words yet. Add some in Słówka." : "This deck has no cards.";
+      else if (q.fresh && !q.newLeft) emptyMsg = "You've learned all " + st.newPerDay + " new cards for today. Raise the daily limit below to keep going.";
+      else emptyMsg = "Nothing due right now." + (q.nextDue < Infinity ? " Next review in " + fmtGap(q.nextDue - Date.now()) + "." : "");
+    }
+    $("#view-fiszki").innerHTML =
+      '<div class="home">' +
+        '<div style="display:grid;gap:20px;min-width:0">' +
+          '<div class="hello"><div class="eyebrow">' + esc(plDate(now, true)) + '</div><h1>' + (now.getHours() >= 18 ? "Dobry wieczór!" : "Dzień dobry!") + '</h1><p>' + (total ? "You have " + total + " card" + (total === 1 ? "" : "s") + " to study today." : "You're all caught up.") + "</p></div>" +
+          '<div class="panel">' +
+            "<h2>Do powtórki <span class=\"muted\" style=\"font-family:var(--f-body);font-weight:400;font-size:.95rem\">· to review</span></h2>" +
+            '<div class="counts">' +
+              '<div class="count n"><b>' + q.newToday + "</b><span>new</span></div>" +
+              '<div class="count l"><b>' + q.learn + "</b><span>learning</span></div>" +
+              '<div class="count r"><b>' + q.review + "</b><span>due</span></div>" +
+            "</div>" +
+            '<div class="opts">' +
+              '<div class="field"><label for="opt-deck">Deck</label><select id="opt-deck">' + deckOptions().map((o) => '<option value="' + o[0] + '"' + (o[0] === st.deck ? " selected" : "") + ">" + esc(o[1]) + "</option>").join("") + "</select></div>" +
+              '<div class="field"><label for="opt-new">New cards per day</label><select id="opt-new">' + [5, 10, 15, 20, 30, 50].map((n) => '<option value="' + n + '"' + (n === st.newPerDay ? " selected" : "") + ">" + n + "</option>").join("") + "</select></div>" +
+              '<label class="check"><input type="checkbox" id="opt-rev"' + (st.reverse ? " checked" : "") + "><span>Also practise English → Polish</span></label>" +
+              '<label class="check"><input type="checkbox" id="opt-say"' + (st.autoSpeak ? " checked" : "") + "><span>Read Polish aloud automatically" + (plVoice ? "" : ' <span class="muted">(no Polish voice on this device)</span>') + "</span></label>" +
+              (plVoices.length > 1 ? '<div class="field"><label for="opt-voice">Voice</label><select id="opt-voice">' + plVoices.map((v) => '<option value="' + esc(v.name) + '"' + (v === plVoice ? " selected" : "") + ">" + esc(voiceLabel(v)) + "</option>").join("") + "</select></div>" : "") +
+            "</div>" +
+            '<div class="actions">' +
+              '<button class="btn primary" id="go-study"' + (total ? "" : " disabled") + ">Zacznij · Start review</button>" +
+              '<button class="btn" id="go-cram"' + (q.pool.length ? "" : " disabled") + ">Quick practice</button>" +
+              (emptyMsg ? '<span class="muted" style="font-size:.9rem">' + esc(emptyMsg) + "</span>" : "") +
+            "</div>" +
+            '<p class="muted" style="font-size:.82rem;margin:14px 0 0">Keys: <b>space</b> shows the answer, <b>1</b> Again · <b>2</b> Hard · <b>3</b> Good · <b>4</b> Easy. Quick practice shuffles 20 cards and doesn\'t change your schedule.</p>' +
+          "</div>" +
+        "</div>" +
+        '<div class="side">' +
+          '<div class="panel">' +
+            '<div class="stat-row">' +
+              '<div class="stat"><b>' + streak() + '</b><span>day streak</span></div>' +
+              '<div class="stat"><b>' + learned + '</b><span>cards learned</span></div>' +
+              '<div class="stat"><b>' + (S.days[dayKey(Date.now())] || 0) + '</b><span>reviews today</span></div>' +
+            "</div>" + barsSvg() +
+          "</div>" +
+          '<div class="panel next-class">' +
+            '<div class="eyebrow">Następna lekcja · next class</div>' +
+            '<div class="when">' + (nc ? esc(plDate(nc, true)) : "Course finished") + "</div>" +
+            '<div class="muted" style="font-size:.92rem">' + (hwLast.open ? hwLast.open + " of " + hwLast.all + " homework tasks from lekcja " + lastLesson.n + " still open." : "Homework from lekcja " + lastLesson.n + " is done. Dobra robota!") + (hw.open > hwLast.open ? " Plus " + (hw.open - hwLast.open) + " from earlier." : "") + "</div>" +
+            '<div class="progress" aria-hidden="true"><i style="width:' + (hw.all ? Math.round(((hw.all - hw.open) / hw.all) * 100) : 0) + '%"></i></div>' +
+            '<div><button class="linkbtn" data-go="zadania">Open homework</button></div>' +
+          "</div>" +
+          '<div class="panel next-class"><div class="eyebrow">Sytuacje · your situations</div>' +
+            '<div class="muted" style="font-size:.92rem">' + SITS.length + " everyday situations from your life in Warsaw: shop, restaurant, transport, work, home, friends, parents, cooking. To study them on their own, pick “All situations” in the deck menu.</div>" +
+            '<div><button class="linkbtn" data-go="sytuacje">Open situations</button></div>' +
+          "</div>" +
+          '<div class="panel"><div class="eyebrow">Lekcje · lessons</div><div class="lesson-links">' +
+            LESSONS.slice().reverse().map((l) => '<a class="lesson-link" href="#' + l.id + '" data-lesson="' + l.id + '"><span><b style="font-family:var(--f-display)">' + l.n + ".</b> " + esc(l.title) + "</span><small>" + shortDate(parseDate(l.date)) + "</small></a>").join("") +
+          "</div></div>" +
+        "</div>" +
+      "</div>";
+  }
+
+  /* ---------- study session ---------- */
+  function startSession(key) {
+    const st = S.settings;
+    const q = queueInfo(key, st.reverse);
+    const now = Date.now();
+    const learning = [], reviews = [], fresh = [];
+    q.pool.forEach((id) => {
+      const s = S.cards[id];
+      if (!s) { if (fresh.length < q.newLeft) fresh.push(id); }
+      else if (isLearning(s)) learning.push(id);
+      else if (s.due <= now) reviews.push(id);
+    });
+    reviews.sort((a, b) => S.cards[a].due - S.cards[b].due);
+    session = { mode: "srs", key, ids: new Set([...learning, ...reviews, ...fresh]), reviews, fresh, count: 0, cur: null, flipped: false, last: null };
+    nextCard();
+  }
+  function startCram(key) {
+    const pool = poolFor(key, S.settings.reverse);
+    for (let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
+    session = { mode: "cram", key, queue: pool.slice(0, 20), count: 0, cur: null, flipped: false };
+    nextCard();
+  }
+  function srsCounts() {
+    const now = Date.now();
+    let l = 0;
+    session.ids.forEach((id) => { if (isLearning(S.cards[id])) l++; });
+    return {
+      n: session.fresh.filter((id) => !S.cards[id]).length,
+      l,
+      r: session.reviews.filter((id) => S.cards[id] && S.cards[id].s === "review" && S.cards[id].due <= now).length
+    };
+  }
+  function nextCard() {
+    session.flipped = false;
+    if (session.mode === "cram") { session.cur = session.queue[0] || null; render(); autoSay(); return; }
+    const now = Date.now();
+    const learningDue = [...session.ids].filter((id) => isLearning(S.cards[id]) && S.cards[id].due <= now && id !== session.last).sort((a, b) => S.cards[a].due - S.cards[b].due);
+    const revs = session.reviews.filter((id) => S.cards[id] && S.cards[id].s === "review" && S.cards[id].due <= now);
+    const news = session.fresh.filter((id) => !S.cards[id]);
+    let pick = learningDue[0] || null;
+    if (!pick) {
+      if (revs.length && news.length) pick = session.count % 4 === 3 ? news[0] : revs[0];
+      else pick = revs[0] || news[0] || null;
+    }
+    if (!pick) {
+      const ahead = [...session.ids].filter((id) => isLearning(S.cards[id]) && S.cards[id].due <= now + LEARN_AHEAD).sort((a, b) => S.cards[a].due - S.cards[b].due);
+      pick = ahead.find((id) => id !== session.last) || ahead[0] || null;
+    }
+    session.cur = pick;
+    render();
+    autoSay();
+  }
+  function cardParts(sid) {
+    const rev = sid.startsWith("r|");
+    const c = BY_ID[baseId(sid)];
+    if (!c) return null;
+    const where = srcLabel(c);
+    if (c.kind === "c") {
+      return { where, prompt: "Conjugate", front: '<div class="big">' + esc(c.inf) + '</div><div class="person">' + esc(PERSON_SHORT[c.person]) + " …?</div><div class=\"prompt\">" + esc(c.en) + "</div>", frontSay: null, back: esc(PERSON_SHORT[c.person] + " " + c.form), note: "", sayBack: c.form };
+    }
+    if (rev) return { where, prompt: "Say it in Polish", front: '<div class="big">' + esc(c.en) + "</div>", frontSay: null, back: esc(c.pl), note: c.note, sayBack: c.pl };
+    return { where, prompt: "What does it mean?", front: '<div class="big">' + esc(c.pl) + "</div>", frontSay: c.pl, back: esc(c.en), note: c.note, sayBack: null };
+  }
+  function autoSay() {
+    if (!session || !session.cur || !S.settings.autoSpeak) return;
+    const p = cardParts(session.cur);
+    if (!p) return;
+    if (!session.flipped && p.frontSay) speak(p.frontSay);
+    if (session.flipped && p.sayBack) speak(p.sayBack);
+  }
+  function renderStudy() {
+    const el = $("#view-study");
+    const top = '<div class="study-top"><button class="btn small" id="end-study">← Back</button>' + (session.mode === "srs" ? (() => { const c = srsCounts(); const cur = session.cur ? (S.cards[session.cur] ? (isLearning(S.cards[session.cur]) ? "l" : "r") : "n") : ""; return '<div class="qcounts" aria-label="Cards left"><span class="n' + (cur === "n" ? " cur" : "") + '" title="new">' + c.n + '</span><span class="l' + (cur === "l" ? " cur" : "") + '" title="learning">' + c.l + '</span><span class="r' + (cur === "r" ? " cur" : "") + '" title="due">' + c.r + "</span></div>"; })() : '<div class="qcounts"><span class="muted">Quick practice · ' + session.queue.length + " left</span></div>") + "</div>";
+    if (!session.cur) {
+      const later = session.mode === "srs" ? [...session.ids].filter((id) => isLearning(S.cards[id])).length : 0;
+      el.innerHTML = '<div class="study">' + top + '<div class="fiszka"><div class="eyebrow"></div><div class="done"><h2>Gotowe!</h2><p class="muted">' +
+        (session.count ? "You studied " + session.count + " card" + (session.count === 1 ? "" : "s") + ". " : "") +
+        (later ? later + " card" + (later === 1 ? " is" : "s are") + " still in learning and will come back later today." : session.mode === "srs" ? "That's everything for now." : "Practice round finished.") +
+        '</p><div class="actions" style="justify-content:center"><button class="btn primary" id="end-study2">Back to Fiszki</button>' + (session.mode === "cram" ? '<button class="btn" id="again-cram">Another round</button>' : "") + "</div></div></div></div>";
+      return;
+    }
+    const p = cardParts(session.cur);
+    const prev = S.cards[session.cur];
+    let actions;
+    if (!session.flipped) {
+      actions = '<button class="btn primary reveal" id="flip">Pokaż odpowiedź · Show answer</button><div class="hint">space</div>';
+    } else if (session.mode === "cram") {
+      actions = '<div class="rate two"><button class="again" data-rate="1">Again<kbd>1</kbd></button><button class="good" data-rate="3">Got it<kbd>3</kbd></button></div>';
+    } else {
+      const now = Date.now();
+      const lab = (r) => fmtGap(schedule(prev, r, now).due - now);
+      actions = '<div class="rate">' +
+        '<button class="again" data-rate="1">Again<small>' + lab(1) + "</small><kbd>1</kbd></button>" +
+        '<button class="hard" data-rate="2">Hard<small>' + lab(2) + "</small><kbd>2</kbd></button>" +
+        '<button class="good" data-rate="3">Good<small>' + lab(3) + "</small><kbd>3</kbd></button>" +
+        '<button class="easy" data-rate="4">Easy<small>' + lab(4) + "</small><kbd>4</kbd></button></div>";
+    }
+    el.innerHTML = '<div class="study">' + top +
+      '<article class="fiszka" aria-live="polite"><div class="eyebrow">' + esc(p.where) + "</div>" +
+        '<div class="face"><div class="prompt">' + esc(p.prompt) + "</div>" + (p.frontSay ? '<div class="row-say">' + p.front + sayBtn(p.frontSay) + "</div>" : p.front) + "</div>" +
+        (session.flipped ? '<div class="answer"><div class="row-say"><div class="big">' + p.back + "</div>" + (p.sayBack ? sayBtn(p.sayBack) : "") + "</div>" + (p.note ? '<div class="note">' + esc(p.note) + "</div>" : "") + "</div>" : "") +
+      "</article>" + actions + "</div>";
+  }
+  function flip() { if (!session || !session.cur || session.flipped) return; session.flipped = true; render(); autoSay(); }
+  function rate(r) {
+    if (!session || !session.cur || !session.flipped) return;
+    const id = session.cur;
+    session.count++;
+    if (session.mode === "cram") {
+      session.queue.shift();
+      if (r === 1) session.queue.splice(Math.min(3, session.queue.length), 0, id);
+      nextCard();
+      return;
+    }
+    const now = Date.now(), k = dayKey(now);
+    if (!S.cards[id]) S.newByDay[k] = (S.newByDay[k] || 0) + 1;
+    S.cards[id] = schedule(S.cards[id], r, now);
+    S.days[k] = (S.days[k] || 0) + 1;
+    session.last = id;
+    save();
+    nextCard();
+  }
+  function endSession() { session = null; try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch (e) { /* ignore */ } }
+
+  /* ---------- lessons ---------- */
+  function renderSection(s) {
+    let body = "";
+    if (s.type === "pron") {
+      body = '<div class="pron">' + s.rows.map((r) => "<div><b>" + esc(r[0]) + '</b><span><em>' + esc(r[1]) + "</em> " + sayBtnInline(r[1]) + "<small>" + esc(r[2]) + "</small></span></div>").join("") + "</div>";
+    } else if (s.type === "conj") {
+      body = '<div class="scroll"><table class="grid"><thead><tr><th></th>' + s.verbs.map((v) => "<th>" + esc(v.inf) + "<small>" + esc(v.en) + "</small></th>").join("") + "</tr></thead><tbody>" +
+        PERSONS.map((p, i) => "<tr><th>" + esc(p) + "</th>" + s.verbs.map((v) => "<td>" + highlightEnding(v.forms[i]) + "</td>").join("") + "</tr>").join("") + "</tbody></table></div>";
+    } else if (s.type === "formal") {
+      body = '<div class="scroll"><table class="grid"><thead><tr><th>nieoficjalnie · informal (ty)</th><th>oficjalnie · formal (pan / pani)</th></tr></thead><tbody>' +
+        s.rows.map((r) => "<tr><td>" + esc(r[0]) + "</td><td>" + esc(r[1]) + "</td></tr>").join("") + "</tbody></table></div>";
+    } else if (s.type === "gender") {
+      body = '<div class="gender">' + s.cols.map((c) => '<div><span class="dem">' + esc(c.dem) + '</span><b style="font-size:.9rem">' + esc(c.name) + '</b><span class="end">' + esc(c.end) + "</span><ul>" + c.ex.map((w) => "<li>" + esc(w) + "</li>").join("") + "</ul></div>").join("") + "</div>";
+    } else if (s.type === "adj") {
+      body = '<div class="scroll"><table class="grid"><thead><tr><th>on · masc.</th><th>ona · fem.</th><th>ono · neut.</th><th>example</th></tr></thead><tbody>' +
+        s.rows.map((r) => "<tr><td>" + adjEnd(r[0]) + "</td><td>" + adjEnd(r[1]) + "</td><td>" + adjEnd(r[2]) + '</td><td style="font-family:var(--f-body);color:var(--muted);font-size:.9rem">' + esc(r[3]) + "</td></tr>").join("") + "</tbody></table></div>";
+    } else if (s.type === "chips") {
+      body = s.groups.map((g) => '<div style="display:grid;gap:6px"><div class="eyebrow">' + esc(g[0]) + '</div><div class="chips">' + g[1].map((w) => '<span class="chip" data-say="' + esc(w) + '">' + esc(w) + "</span>").join("") + "</div></div>").join("");
+      body += '<p class="muted" style="font-size:.88rem">' + (plVoice ? "Tap a word to hear it." : "Read them aloud. Remember the stress on the second-to-last syllable.") + "</p>";
+    }
+    if (s.html) body += '<div class="callout">' + s.html + "</div>";
+    if (s.type === "note") body = '<div class="callout">' + s.html + "</div>";
+    return '<section class="sec"><h3>' + esc(s.title) + (s.en ? " <small>" + esc(s.en) + "</small>" : "") + "</h3>" + body + "</section>";
+  }
+  function sayBtnInline(text) { return plVoice ? sayBtn(text.split(",")[0]).replace('class="say"', 'class="say" style="width:24px;height:24px;vertical-align:middle"') : ""; }
+  function highlightEnding(f) {
+    const m = ["iecie", "iemy", "iesz", "ieją", "ecie", "emy", "esz", "eją", "acie", "amy", "asz", "ają", "ście", "śmy", "em", "am", "ś", "ą", "sz", "m"].find((e) => f.endsWith(e) && f.length > e.length);
+    return m ? esc(f.slice(0, f.length - m.length)) + "<b>" + esc(m) + "</b>" : esc(f);
+  }
+  function adjEnd(w) {
+    const m = ["ie", "y", "a", "e", "i"].find((e) => w.endsWith(e));
+    return m ? esc(w.slice(0, -m.length)) + "<b>" + esc(m) + "</b>" : esc(w);
+  }
+  function renderLessons() {
+    const l = lessonById(currentLesson) || LESSONS[0];
+    const d = parseDate(l.date);
+    const nCards = CARDS.filter((c) => c.lesson === l.id).length;
+    const tagClass = (w) => (w === "Online" ? "online" : w.startsWith("Zeszyt") ? "zeszyt" : "");
+    $("#view-lekcje").innerHTML =
+      '<div class="lessons">' +
+        '<nav class="lnav" aria-label="Lessons">' + LESSONS.map((x) => '<a href="#' + x.id + '" data-lesson="' + x.id + '" aria-current="' + (x.id === l.id) + '"><small>LEKCJA ' + x.n + " · " + shortDate(parseDate(x.date)) + "</small><b>" + esc(x.title) + "</b></a>").join("") + "</nav>" +
+        '<article class="sheet">' +
+          "<header>" +
+            '<div class="eyebrow">Lekcja ' + l.n + " · " + esc(plDate(d, true)) + " " + d.getFullYear() + "</div>" +
+            "<h2>" + esc(l.title) + '</h2><div class="en">' + esc(l.en) + "</div>" +
+            '<div class="topics">' + l.topics.map((t) => "<span>" + esc(t) + "</span>").join("") + "</div>" +
+            '<div class="actions" style="margin-top:10px"><button class="btn primary small" data-study="' + l.id + '">Study these ' + nCards + ' cards</button><button class="btn small" data-cram="' + l.id + '">Quick practice</button></div>' +
+          "</header>" +
+          l.vocab.map((g) => '<section class="sec"><h3>' + esc(g.name) + " <small>" + esc(g.en) + '</small></h3><div class="phrases">' +
+            g.cards.map((c) => '<div class="phrase"><div class="t"><span class="p">' + esc(c[0]) + '</span><span class="e">' + esc(c[1]) + (c[2] ? " <em>· " + esc(c[2]) + "</em>" : "") + "</span></div>" + sayBtn(c[0]) + "</div>").join("") +
+          "</div></section>").join("") +
+          l.sections.map(renderSection).join("") +
+          '<section class="sec"><h3>Na zajęciach <small>Done in class</small></h3><ul class="refs">' + l.inclass.map((r) => '<li><span class="tag ' + tagClass(r[0]) + '">' + esc(r[0]) + "</span><b>" + esc(r[1]) + '</b><span class="muted">' + esc(r[2]) + "</span></li>").join("") + "</ul></section>" +
+          '<section class="sec"><h3>Linki <small>Practise online</small></h3><ul class="refs">' + l.links.map((r) => '<li><span class="tag online">Online</span><a href="' + esc(r[1]) + '" target="_blank" rel="noopener">' + esc(r[0]) + "</a></li>").join("") + "</ul></section>" +
+          '<section class="sec"><h3>Zadanie domowe <small>Homework</small></h3><ul class="refs">' + l.homework.map((h) => '<li><span class="tag ' + tagClass(h.where) + '">' + esc(h.where) + "</span><span>" + esc(h.ref) + "</span>" + (S.hw[h.id] ? '<span class="pill ok">done</span>' : '<span class="pill todo">to do</span>') + "</li>").join("") + '</ul><div><button class="linkbtn" data-go="zadania">Tick off homework</button></div></section>' +
+        "</article>" +
+      "</div>";
+  }
+
+  /* ---------- situations ---------- */
+  function phraseList(rows) {
+    return '<div class="phrases">' + rows.map((c) => '<div class="phrase"><div class="t"><span class="p">' + esc(c[0]) + '</span><span class="e">' + esc(c[1]) + (c[2] ? " <em>· " + esc(c[2]) + "</em>" : "") + "</span></div>" + sayBtn(c[0]) + "</div>").join("") + "</div>";
+  }
+  function renderSituations() {
+    const s = sitById(currentSit) || SITS[0];
+    if (!s) { $("#view-sytuacje").innerHTML = '<div class="empty">No situations yet.</div>'; return; }
+    const idx = SITS.indexOf(s) + 1;
+    const nCards = CARDS.filter((c) => c.lesson === s.id).length;
+    const learned = CARDS.filter((c) => c.lesson === s.id && S.cards[c.id] && S.cards[c.id].s === "review").length;
+    $("#view-sytuacje").innerHTML =
+      '<div class="lessons">' +
+        '<nav class="lnav" aria-label="Situations">' + SITS.map((x, i) => '<a href="#' + x.id + '" data-sit="' + x.id + '" aria-current="' + (x.id === s.id) + '"><small>SYTUACJA ' + (i + 1) + " · " + esc(x.en.toUpperCase()) + "</small><b>" + esc(x.title) + "</b></a>").join("") + "</nav>" +
+        '<article class="sheet">' +
+          "<header>" +
+            '<div class="eyebrow">Sytuacja ' + idx + " z " + SITS.length + "</div>" +
+            "<h2>" + esc(s.title) + '</h2><div class="en">' + esc(s.en) + "</div>" +
+            '<p class="intro">' + esc(s.intro) + "</p>" +
+            '<div class="actions" style="margin-top:10px"><button class="btn primary small" data-study="' + s.id + '">Study these ' + nCards + ' cards</button><button class="btn small" data-cram="' + s.id + '">Quick practice</button><span class="muted" style="font-size:.85rem">' + learned + " of " + nCards + " learned</span></div>" +
+          "</header>" +
+          '<section class="sec"><h3>Dialog <small>Read it aloud, then swap roles</small></h3><div class="dlg">' +
+            s.dialogue.map((d) => '<div class="line' + (d[0] === "Ty" ? " me" : "") + '"><span class="who">' + esc(d[0] === "Ty" ? "Ty · you" : d[0]) + '</span><div class="t"><span class="p">' + esc(d[1]) + '</span><span class="e">' + esc(d[2]) + "</span></div>" + sayBtn(d[1]) + "</div>").join("") +
+          "</div></section>" +
+          (s.groups || []).map((g) => '<section class="sec"><h3>' + esc(g.name) + " <small>" + esc(g.en) + "</small></h3>" + phraseList(g.cards) + "</section>").join("") +
+          (s.say && s.say.length ? '<section class="sec"><h3>Mówisz <small>What you say</small></h3>' + phraseList(s.say) + "</section>" : "") +
+          (s.hear && s.hear.length ? '<section class="sec"><h3>Usłyszysz <small>What you\'ll hear</small></h3>' + phraseList(s.hear) + "</section>" : "") +
+          (s.words && s.words.length ? '<section class="sec"><h3>Słowa <small>Key words</small></h3>' + phraseList(s.words) + "</section>" : "") +
+        "</article>" +
+      "</div>";
+  }
+
+  /* ---------- homework ---------- */
+  function renderHomework() {
+    const groups = LESSONS.slice().reverse().map((l) => {
+      const d = parseDate(l.date), due = new Date(d); due.setDate(due.getDate() + 7);
+      const done = l.homework.filter((h) => S.hw[h.id]).length;
+      return '<div class="hw-group"><div class="hw-head"><div><div class="eyebrow">Lekcja ' + l.n + " · " + esc(plDate(d)) + "</div><h2>" + esc(l.title) + '</h2></div><span class="pill ' + (done === l.homework.length ? "ok" : "todo") + '">' + done + " / " + l.homework.length + " done · for " + esc(DAYS[due.getDay()]) + " " + shortDate(due) + "</span></div>" +
+        l.homework.map((h) => '<div class="hw-item' + (S.hw[h.id] ? " isdone" : "") + '"><input type="checkbox" id="hw-' + h.id + '" data-hw="' + h.id + '"' + (S.hw[h.id] ? " checked" : "") + '><label for="hw-' + h.id + '"><span class="what">' + esc(h.where) + ", " + esc(h.ref) + '</span><span class="meta"><span class="tag ' + (h.where === "Online" ? "online" : h.where.startsWith("Zeszyt") ? "zeszyt" : "") + '">' + esc(h.where === "Podręcznik" ? "Podręcznik studenta · textbook" : h.where === "Zeszyt ćwiczeń" ? "Zeszyt ćwiczeń · workbook" : "Online") + "</span>" + (h.url ? '<a href="' + esc(h.url) + '" target="_blank" rel="noopener">Open the site</a>' : "") + "</span></label></div>").join("") +
+        "</div>";
+    }).join("");
+    $("#view-zadania").innerHTML = '<div class="hw"><div class="hello"><div class="eyebrow">Zadania domowe</div><h1>Homework</h1><p>Tick each task when it\'s done. The 24.10 slides repeated the lekcja 1 tasks, so check whether anything from the first week is still open.</p></div>' + groups + "</div>";
+  }
+
+  /* ---------- words ---------- */
+  let wordFilter = { q: "", deck: "all" };
+  function statusChip(id) {
+    const st = S.cards[id];
+    if (!st) return '<span class="status new">new</span>';
+    if (isLearning(st)) return '<span class="status learn">learning</span>';
+    if (st.due <= Date.now()) return '<span class="status due">due</span>';
+    return '<span class="status review" title="next review">in ' + fmtGap(st.due - Date.now()) + "</span>";
+  }
+  function renderWordList() {
+    const q = wordFilter.q.trim().toLowerCase();
+    const list = CARDS.filter((c) => c.kind === "v" && inDeck(c, wordFilter.deck) && (!q || (c.pl + " " + c.en + " " + c.note).toLowerCase().includes(q)));
+    $("#wordcount").textContent = list.length + " word" + (list.length === 1 ? "" : "s");
+    $("#wordlist").innerHTML = list.length ? list.map((c) => '<div class="word"><span class="p">' + esc(c.pl) + '</span><span class="e">' + esc(c.en) + (c.note ? ' <span style="color:var(--accent);font-size:.84rem">· ' + esc(c.note) + "</span>" : "") + '</span><span class="st">' + statusChip(c.id) + sayBtn(c.pl) + (c.customId ? '<button class="del" data-del="' + esc(c.customId) + '">Delete</button>' : "") + "</span></div>").join("")
+      : '<div class="empty">' + (wordFilter.deck === "mine" && !q ? "No words of your own yet. Add one above." : "No words match “" + esc(wordFilter.q) + "”.") + "</div>";
+  }
+  function renderWords() {
+    $("#view-slowka").innerHTML =
+      '<div class="hello" style="margin-bottom:18px"><div class="eyebrow">Słówka</div><h1>All your words</h1><p>Everything from class, plus any words you add yourself. Your words go into the "My own words" deck and into "Everything".</p></div>' +
+      '<form class="addform" id="addform" autocomplete="off"><b style="font-family:var(--f-display)">Dodaj słówko · add a word</b><div class="row">' +
+        '<div class="field"><label for="add-pl">Polish</label><input type="text" id="add-pl" required placeholder="np. jabłko"></div>' +
+        '<div class="field"><label for="add-en">English</label><input type="text" id="add-en" required placeholder="apple"></div>' +
+        '<div class="field"><label for="add-note">Note (optional)</label><input type="text" id="add-note" placeholder="to · neuter"></div>' +
+        '<button class="btn primary" type="submit">Add</button></div><div id="add-msg" class="muted" style="font-size:.88rem" aria-live="polite"></div></form>' +
+      '<div class="words-tools"><div class="field"><label for="w-q">Search</label><input type="search" id="w-q" placeholder="Search Polish or English" value="' + esc(wordFilter.q) + '"></div>' +
+        '<div class="field"><label for="w-deck">Lesson</label><select id="w-deck">' + deckOptions().filter((o) => o[0] !== "verbs").map((o) => '<option value="' + o[0] + '"' + (o[0] === wordFilter.deck ? " selected" : "") + ">" + esc(o[1]) + "</option>").join("") + "</select></div></div>" +
+      '<div class="listhead"><span class="eyebrow" id="wordcount"></span><span class="muted" style="font-size:.82rem">Status is for Polish → English</span></div>' +
+      '<div class="words" id="wordlist"></div>';
+    renderWordList();
+  }
+
+  /* ---------- events ---------- */
+  document.addEventListener("click", (e) => {
+    const t = e.target.closest("button, a, .chip");
+    if (!t) return;
+    if (t.classList.contains("tab")) return go(t.dataset.view);
+    if (t.dataset.say) { e.preventDefault(); return speak(t.dataset.say); }
+    if (t.dataset.lesson) { e.preventDefault(); return go("lekcje", t.dataset.lesson); }
+    if (t.dataset.sit) { e.preventDefault(); return go("sytuacje", t.dataset.sit); }
+    if (t.dataset.go) { e.preventDefault(); return go(t.dataset.go); }
+    if (t.dataset.study) { S.settings.deck = t.dataset.study; save(); startSession(t.dataset.study); window.scrollTo(0, 0); return; }
+    if (t.dataset.cram) { startCram(t.dataset.cram); window.scrollTo(0, 0); return; }
+    if (t.dataset.rate) return rate(Number(t.dataset.rate));
+    if (t.dataset.del) {
+      if (!t.classList.contains("armed")) { t.classList.add("armed"); t.textContent = "Delete?"; setTimeout(() => { if (t.isConnected) { t.classList.remove("armed"); t.textContent = "Delete"; } }, 3000); return; }
+      S.custom = S.custom.filter((c) => c.id !== t.dataset.del);
+      ["v:my:" + t.dataset.del, "r|v:my:" + t.dataset.del].forEach((k) => delete S.cards[k]);
+      save(); buildCards(); renderWordList(); return;
+    }
+    switch (t.id) {
+      case "go-study": startSession(S.settings.deck); window.scrollTo(0, 0); break;
+      case "go-cram": startCram(S.settings.deck); window.scrollTo(0, 0); break;
+      case "flip": flip(); break;
+      case "end-study": case "end-study2": endSession(); render(); break;
+      case "again-cram": startCram(session.key); break;
+    }
+  });
+  document.addEventListener("change", (e) => {
+    const t = e.target;
+    if (t.id === "opt-deck") { S.settings.deck = t.value; save(); renderHome(); }
+    else if (t.id === "opt-new") { S.settings.newPerDay = Number(t.value); save(); renderHome(); }
+    else if (t.id === "opt-rev") { S.settings.reverse = t.checked; save(); renderHome(); }
+    else if (t.id === "opt-say") { S.settings.autoSpeak = t.checked; save(); }
+    else if (t.id === "opt-voice") { S.settings.voice = t.value; save(); pickVoice(); speak("Dzień dobry! Mam na imię Anna."); }
+    else if (t.dataset.hw) { if (t.checked) S.hw[t.dataset.hw] = Date.now(); else delete S.hw[t.dataset.hw]; save(); renderHomework(); $("#hw-" + t.dataset.hw) && $("#hw-" + t.dataset.hw).focus(); }
+    else if (t.id === "w-deck") { wordFilter.deck = t.value; renderWordList(); }
+  });
+  document.addEventListener("input", (e) => { if (e.target.id === "w-q") { wordFilter.q = e.target.value; renderWordList(); } });
+  document.addEventListener("submit", (e) => {
+    if (e.target.id !== "addform") return;
+    e.preventDefault();
+    const pl = $("#add-pl").value.trim(), en = $("#add-en").value.trim(), note = $("#add-note").value.trim();
+    if (!pl || !en) { $("#add-msg").textContent = "Fill in both the Polish and the English."; return; }
+    if (S.custom.some((c) => c.pl.toLowerCase() === pl.toLowerCase())) { $("#add-msg").textContent = "“" + pl + "” is already in your words."; return; }
+    S.custom.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), pl, en, note, added: Date.now() });
+    save(); buildCards();
+    $("#add-pl").value = ""; $("#add-en").value = ""; $("#add-note").value = "";
+    $("#add-msg").textContent = "Added “" + pl + "”. It will show up as a new card.";
+    $("#add-pl").focus();
+    renderWordList();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (!session || e.target.matches("input, select, textarea")) return;
+    if (e.key === "Escape") { endSession(); render(); return; }
+    if (!session.cur) return;
+    if (!session.flipped && (e.key === " " || e.key === "Enter")) { e.preventDefault(); flip(); return; }
+    if (session.flipped) {
+      if (e.key === " " || e.key === "Enter") { e.preventDefault(); rate(3); return; }
+      if (["1", "2", "3", "4"].includes(e.key)) {
+        const r = Number(e.key);
+        if (session.mode === "cram" && (r === 2 || r === 4)) return;
+        rate(r);
+      }
+    }
+  });
+
+  buildCards();
+  readHash();
+  render();
+  initRemote();
+})();
+</script>
+
+</body>
+</html>
