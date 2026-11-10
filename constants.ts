@@ -835,6 +835,15 @@ export const NOTEBOOK_GUIDES: IGuide[] = [
 // first; each slug must match a file in pages/notebook/.
 export const NOTEBOOK_POSTS: IGuide[] = [
 	{
+		slug: "how-to-fix-a-spaghetti-chart",
+		title: "How Do You Fix a Spaghetti Chart?",
+		description:
+			"A client's revenue chart had 18 lines. The usual fix is a filter, but the right fix depends on the questions the chart has to answer. Five ways to redraw it, and a free Power BI file to try on your own data.",
+		topic: "Data Viz",
+		date: "Nov 2026",
+		meta: "3 min read · 5 fixes · free Power BI file",
+	},
+	{
 		slug: "hidden-trap-of-being-data-driven",
 		title: "The Hidden Trap of Being Data-Driven",
 		description:
