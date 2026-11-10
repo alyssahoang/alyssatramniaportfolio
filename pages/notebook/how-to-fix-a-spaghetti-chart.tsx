@@ -156,7 +156,7 @@ export default function HowToFixASpaghettiChart() {
 								<li
 									key={fix.name}
 									className={`rounded-xl px-4 py-3.5 ${
-										fix.shipped
+										fix.preferred
 											? "border border-[#57C785]/45 bg-[#219190]/10"
 											: "bg-gray-800/60 border border-gray-700/60"
 									}`}
@@ -164,8 +164,8 @@ export default function HowToFixASpaghettiChart() {
 									<div className="flex items-baseline gap-3 mb-1">
 										<span className="font-mono text-sm text-gray-500">{i + 1}</span>
 										<span className="font-bold text-white">{fix.name}</span>
-										{fix.shipped && (
-											<span className="ml-auto text-[10px] uppercase tracking-[0.15em] text-[#57C785]">Shipped</span>
+										{fix.preferred && (
+											<span className="ml-auto text-[10px] uppercase tracking-[0.15em] text-[#57C785]">Preferred</span>
 										)}
 									</div>
 									<p className="text-gray-300 leading-relaxed m-0 pl-7">{fix.insight}</p>
@@ -185,10 +185,6 @@ export default function HowToFixASpaghettiChart() {
 						{/* Live report */}
 						<section id="live-report" className="scroll-mt-28 mt-12">
 							<H2>Explore it live</H2>
-							<P>
-								The real Power BI report: page 1 is the original chart, page 2 the five fixes. Try the Region filter
-								and see how much you can answer one region at a time.
-							</P>
 							<figure className="lg:-mr-48">
 								{/* Tablet and up: the embedded report. Phones get the full-screen link only. */}
 								<div className="hidden md:block relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-gray-800/60">

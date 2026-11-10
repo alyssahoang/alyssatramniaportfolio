@@ -31,8 +31,8 @@ export const SPAGHETTI_QUESTIONS = [
 export interface ISpaghettiFix {
 	name: string;
 	insight: string;
-	/** The two fixes that were shipped. */
-	shipped?: boolean;
+	/** The two fixes the post recommends. */
+	preferred?: boolean;
 }
 
 export const SPAGHETTI_FIXES: ISpaghettiFix[] = [
@@ -54,13 +54,13 @@ export const SPAGHETTI_FIXES: ISpaghettiFix[] = [
 	{
 		name: "Small multiples by channel",
 		insight: "Online, West is clearly ahead. In-store, North and West are both sliding.",
-		shipped: true,
+		preferred: true,
 	},
 	{
 		name: "Small multiples by region",
 		insight:
 			"Every region has its own winner: online leads in North, West and Int'l; in-store still leads in South, East and Central.",
-		shipped: true,
+		preferred: true,
 	},
 ];
 
