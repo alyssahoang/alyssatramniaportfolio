@@ -115,16 +115,6 @@ export default function HowToFixASpaghettiChart() {
 				<div className="section-container">
 					<article className="min-w-0 max-w-3xl pt-4 md:pt-6 pb-12">
 						<figure className="mb-10 lg:-mr-48">
-							{/* Tablet and up: the live Power BI report */}
-							<div className="hidden md:block relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-gray-800/60">
-								<iframe
-									src={SPAGHETTI_META.embedUrl}
-									title={`${SPAGHETTI_META.title} (live Power BI report)`}
-									className="absolute inset-0 w-full h-full"
-									allowFullScreen
-								/>
-							</div>
-							{/* Phones: the animated preview */}
 							{/* eslint-disable-next-line @next/next/no-img-element */}
 							<img
 								src={SPAGHETTI_META.gif}
@@ -132,25 +122,10 @@ export default function HowToFixASpaghettiChart() {
 								width={1440}
 								height={1080}
 								loading="eager"
-								className="md:hidden w-full h-auto rounded-2xl border border-white/10"
+								className="w-full h-auto rounded-2xl border border-white/10"
 							/>
-							<figcaption className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 text-[12.5px] text-gray-500 leading-relaxed mt-3">
-								<span>
-									<span className="hidden md:inline">
-										Live Power BI report: page 1 is the original, page 2 the five fixes. Try the Region filter.{" "}
-									</span>
-									<span className="md:hidden">The same 18 lines, drawn six ways. </span>
-									Sample data; client data stays private.
-								</span>
-								<a
-									href={SPAGHETTI_META.embedUrl}
-									target="_blank"
-									rel="noreferrer"
-									className="link text-[#57C785] hover:text-white whitespace-nowrap"
-									onClick={() => trackEvent("blog_report_fullscreen", { post: SPAGHETTI_META.slug })}
-								>
-									Open the report full screen ↗
-								</a>
+							<figcaption className="text-[12.5px] text-gray-500 leading-relaxed mt-3">
+								The same 18 lines, drawn six ways. Sample data; client data stays private.
 							</figcaption>
 						</figure>
 
@@ -206,6 +181,39 @@ export default function HowToFixASpaghettiChart() {
 							own region? The filter is perfect for that.
 						</P>
 						<Ask>My way: start with the questions, then choose the chart.</Ask>
+
+						{/* Live report */}
+						<section id="live-report" className="scroll-mt-28 mt-12">
+							<H2>Explore it live</H2>
+							<P>
+								The real Power BI report: page 1 is the original chart, page 2 the five fixes. Try the Region filter
+								and see how much you can answer one region at a time.
+							</P>
+							<figure className="lg:-mr-48">
+								{/* Tablet and up: the embedded report. Phones get the full-screen link only. */}
+								<div className="hidden md:block relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-gray-800/60">
+									<iframe
+										src={SPAGHETTI_META.embedUrl}
+										title={`${SPAGHETTI_META.title} (live Power BI report)`}
+										className="absolute inset-0 w-full h-full"
+										loading="lazy"
+										allowFullScreen
+									/>
+								</div>
+								<figcaption className="text-[12.5px] text-gray-500 leading-relaxed mt-3">
+									<span className="md:hidden">The live report works best on a larger screen. </span>
+									<a
+										href={SPAGHETTI_META.embedUrl}
+										target="_blank"
+										rel="noreferrer"
+										className="link text-[#57C785] hover:text-white whitespace-nowrap"
+										onClick={() => trackEvent("blog_report_fullscreen", { post: SPAGHETTI_META.slug })}
+									>
+										Open the report full screen ↗
+									</a>
+								</figcaption>
+							</figure>
+						</section>
 
 						{/* Download */}
 						<section
