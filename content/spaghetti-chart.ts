@@ -15,8 +15,11 @@ export const SPAGHETTI_META = {
 	image: "/notebook/how-to-fix-a-spaghetti-chart.png",
 	imageAlt:
 		"How do you fix a spaghetti chart? An 18-line chart on the left and five ways to redraw it on the right: a filter, top 5 plus others, highlight one, and two small-multiples layouts.",
-	/** The animated version shown in the article. */
+	/** Animated preview: shown on phones, where an embedded report is too cramped. */
 	gif: "/notebook/how-to-fix-a-spaghetti-chart.gif",
+	/** Power BI "Publish to web" link: the live report, embedded from tablet width up. */
+	embedUrl:
+		"https://app.powerbi.com/view?r=eyJrIjoiMzVlYTZkYjAtNjI3NC00NDJjLWIzYTYtZDA3MWI1YzQwZWZkIiwidCI6IjYwNGJiNDE0LTgyYmItNDk5ZS1iMWRkLWNmYTNiYWZkM2E1YyIsImMiOjEwfQ%3D%3D",
 };
 
 export const SPAGHETTI_QUESTIONS = [
