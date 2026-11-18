@@ -1832,16 +1832,20 @@ table.grid td b { color: var(--accent); font-weight: 700; }
       "intro": "Everyday life together: mornings, chores and the shopping. People will ask about the two of you too, so the last lines prepare you for those questions.",
       "dialogue": [
         ["Ty", "Dzień dobry, kochanie! Kawa czy herbata?", "Good morning, darling! Coffee or tea?"],
-        ["Chłopak", "Kawa, poproszę. Co dzisiaj robimy?", "Coffee, please. What are we doing today?"],
+        ["Szymon", "Kawa, poproszę. Co dzisiaj robimy?", "Coffee, please. What are we doing today?"],
         ["Ty", "Rano sprzątamy, a potem robimy zakupy.", "This morning we clean, and then we do the shopping."],
-        ["Chłopak", "Dobrze. Ja odkurzam, a ty zmywasz?", "OK. I'll vacuum and you'll do the dishes?"],
+        ["Szymon", "Dobrze. Ja odkurzam, a ty zmywasz?", "OK. I'll vacuum and you'll do the dishes?"],
         ["Ty", "Zgoda! A kto gotuje obiad?", "Deal! And who's cooking lunch?"],
-        ["Chłopak", "Ja. Mam ochotę na pierogi.", "Me. I feel like pierogi."],
+        ["Szymon", "Ja. Mam ochotę na pierogi.", "Me. I feel like pierogi."],
         ["Ty", "Super. Do zobaczenia w kuchni!", "Great. See you in the kitchen!"]
       ],
       "say": [
         ["Mam chłopaka.", "I have a boyfriend."],
         ["To jest mój chłopak.", "This is my boyfriend."],
+        ["Mój chłopak ma na imię Szymon.", "My boyfriend's name is Szymon."],
+        ["Szymon pracuje w cyberbezpieczeństwie.", "Szymon works in cybersecurity."],
+        ["On pracuje w dziale presales.", "He works in the presales department."],
+        ["On jest specjalistą od cyberbezpieczeństwa.", "He's a cybersecurity specialist.", "jest + narzędnik: specjalista → specjalistą"],
         ["Mój chłopak jest Polakiem.", "My boyfriend is Polish.", "jest + narzędnik: Polak → Polakiem"],
         ["Mieszkamy razem w Warszawie.", "We live together in Warsaw."],
         ["Nie mam dzieci.", "I don't have children."],
@@ -1859,6 +1863,8 @@ table.grid td b { color: var(--accent); font-weight: 700; }
       ],
       "hear": [
         ["Masz dzieci?", "Do you have children?", "answer: Nie, nie mam dzieci."],
+        ["Jak ma na imię twój chłopak?", "What's your boyfriend's name?"],
+        ["Czym zajmuje się twój chłopak?", "What does your boyfriend do?", "answer: Pracuje w cyberbezpieczeństwie."],
         ["Twój chłopak jest Polakiem?", "Is your boyfriend Polish?"],
         ["Jak długo jesteście razem?", "How long have you been together?"],
         ["Gdzie się poznaliście?", "Where did you meet?"],
@@ -1866,7 +1872,8 @@ table.grid td b { color: var(--accent); font-weight: 700; }
         ["Ładnie mówisz po polsku!", "You speak Polish nicely!"]
       ],
       "words": [
-        ["mój chłopak", "my boyfriend"], ["razem", "together"], ["zakupy", "shopping"],
+        ["mój chłopak", "my boyfriend"], ["cyberbezpieczeństwo", "cybersecurity"], ["dział", "department"],
+        ["specjalista / specjalistka", "specialist (man / woman)", "ten specjalista: masculine, ends in -a"], ["razem", "together"], ["zakupy", "shopping"],
         ["odkurzać", "to vacuum"], ["zmywać", "to do the dishes"], ["śmieci", "rubbish"],
         ["pranie", "laundry"], ["mieszkanie", "flat, apartment"], ["pokój", "room"], ["łóżko", "bed"]
       ]
@@ -1876,13 +1883,13 @@ table.grid td b { color: var(--accent); font-weight: 700; }
       "intro": "Everyday lines for the two of you: his day, food, compliments and bedtime. Words about him use the masculine form (głodny, zmęczony, przystojny). Where a word describes you, both forms are given: zmęczony if you're a man, zmęczona if you're a woman.",
       "dialogue": [
         ["Ty", "Cześć, kochanie! Jak było w pracy?", "Hi, darling! How was work?"],
-        ["Partner", "Dobrze, ale dużo pracy. Jestem zmęczony.", "Good, but a lot of work. I'm tired."],
+        ["Szymon", "Dobrze, ale miałem trzy spotkania z klientami. Jestem zmęczony.", "Good, but I had three client meetings. I'm tired."],
         ["Ty", "Biedny! Jesteś głodny?", "Poor thing! Are you hungry?"],
-        ["Partner", "Bardzo! Co na kolację?", "Very! What's for dinner?"],
+        ["Szymon", "Bardzo! Co na kolację?", "Very! What's for dinner?"],
         ["Ty", "Makaron. Za dziesięć minut.", "Pasta. In ten minutes."],
-        ["Partner", "Super. Ładnie dzisiaj wyglądasz!", "Great. You look nice today!"],
+        ["Szymon", "Super. Ładnie dzisiaj wyglądasz!", "Great. You look nice today!"],
         ["Ty", "Dziękuję! … Już późno, idę spać. Dobranoc!", "Thank you! … It's late, I'm going to bed. Good night!"],
-        ["Partner", "Dobranoc, kochanie. Śpij dobrze!", "Good night, darling. Sleep well!"]
+        ["Szymon", "Dobranoc, kochanie. Śpij dobrze!", "Good night, darling. Sleep well!"]
       ],
       "groups": [
         { "name": "Jak minął dzień?", "en": "His day and work", "cards": [
@@ -1894,7 +1901,13 @@ table.grid td b { color: var(--accent); font-weight: 700; }
           ["Jesteś zmęczony?", "Are you tired?", "to a man"],
           ["Opowiadaj!", "Tell me all about it!"],
           ["Biedny!", "Poor thing!", "to a man"],
-          ["Odpocznij.", "Have a rest."]
+          ["Odpocznij.", "Have a rest."],
+          ["Masz dzisiaj spotkanie z klientem?", "Do you have a client meeting today?"],
+          ["Masz dzisiaj prezentację?", "Do you have a presentation today?"],
+          ["Jak poszło spotkanie z klientem?", "How did the client meeting go?"],
+          ["klient", "client, customer"],
+          ["prezentacja", "presentation"],
+          ["spotkanie z klientem", "client meeting"]
         ]},
         { "name": "Jesteś głodny?", "en": "Food and hunger", "cards": [
           ["Jesteś głodny?", "Are you hungry?", "to a man"],
@@ -2049,11 +2062,11 @@ table.grid td b { color: var(--accent); font-weight: 700; }
       "id": "s-kuchnia", "title": "Gotowanie", "en": "Cooking",
       "intro": "You cook every day, so use it: name each thing out loud as you pick it up. It's free daily practice.",
       "dialogue": [
-        ["Partner", "Co dzisiaj gotujemy?", "What are we cooking today?"],
+        ["Szymon", "Co dzisiaj gotujemy?", "What are we cooking today?"],
         ["Ty", "Zupę pomidorową. Potrzebuję pomidorów, cebuli i czosnku.", "Tomato soup. I need tomatoes, onion and garlic."],
-        ["Partner", "Ja kroję cebulę. Gdzie jest nóż?", "I'll cut the onion. Where's the knife?"],
+        ["Szymon", "Ja kroję cebulę. Gdzie jest nóż?", "I'll cut the onion. Where's the knife?"],
         ["Ty", "W szufladzie. Podaj mi garnek, proszę.", "In the drawer. Pass me the pot, please."],
-        ["Partner", "Proszę. Dodać sól?", "Here you go. Shall I add salt?"],
+        ["Szymon", "Proszę. Dodać sól?", "Here you go. Shall I add salt?"],
         ["Ty", "Tak, trochę. … Obiad gotowy! Smacznego!", "Yes, a little. … Dinner's ready! Enjoy!"]
       ],
       "say": [
@@ -2680,7 +2693,7 @@ table.grid td b { color: var(--accent); font-weight: 700; }
   }
 
   /* ---------- practise with AI: copy-ready prompts ---------- */
-  const PROFILE = "I'm an adult A1 learner of Polish (weekend course at the Varia school, textbook Hurra!!! Po polsku 1). I live in Warsaw, work as a data analyst, and have a Polish boyfriend. Write Polish with correct diacritics.";
+  const PROFILE = "I'm an adult A1 learner of Polish (weekend course at the Varia school, textbook Hurra!!! Po polsku 1). I live in Warsaw, work as a data analyst, and have a Polish boyfriend, Szymon, who works in cybersecurity presales. Write Polish with correct diacritics.";
   const AI_KINDS = {
     lesson: [["story", "Opowiadanie · story"], ["roleplay", "Rozmowa · role-play"], ["drill", "Drill"], ["translate", "Tłumaczenie · translate"], ["correct", "Popraw mnie · correct my writing"]],
     sit: [["roleplay", "Rozmowa · role-play"], ["prep", "Przygotuj mnie · prepare me"]]
