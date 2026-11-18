@@ -191,8 +191,12 @@ select, input[type="text"], input[type="search"] { border: 1px solid var(--line)
 .sheet header h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; }
 .sheet header .en { font-family: var(--f-display); font-style: italic; color: var(--muted); font-size: 1.1rem; }
 .topics { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-.topics span { font-size: .82rem; background: var(--accent-soft); color: var(--ink); padding: 3px 10px; border-radius: 99px; }
-.sec { display: grid; gap: 12px; min-width: 0; }
+.topics span, .topics button { font-size: .82rem; background: var(--accent-soft); color: var(--ink); padding: 3px 10px; border-radius: 99px; border: 1px solid transparent; }
+.topics button { cursor: pointer; font-family: inherit; }
+.topics button:hover { border-color: var(--accent); color: var(--accent); }
+.sec { display: grid; gap: 12px; min-width: 0; scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 96px); border-radius: 8px; }
+.sec.flash { animation: flash 1.6s ease-out; }
+@keyframes flash { from { background: var(--accent-soft); box-shadow: 0 0 0 8px var(--accent-soft); } to { background: transparent; box-shadow: 0 0 0 8px transparent; } }
 .sec > h3 { font-size: 1.2rem; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
 .sec > h3 small { font-family: var(--f-mono); font-size: .72rem; color: var(--muted); letter-spacing: .05em; text-transform: uppercase; font-weight: 400; }
 .sec p { margin: 0; max-width: 68ch; }
@@ -347,7 +351,7 @@ table.grid td b { color: var(--accent); font-weight: 700; }
       "title": "Pierwszy kontakt", "en": "First contact",
       "focus": "the present tense of być, mieć, rozumieć, wiedzieć and mieszkać, and informal vs formal questions (ty vs pan / pani)",
       "write": "introducing yourself: your name, where you're from, where you live and which languages you speak",
-      "topics": ["Greetings", "Introducing yourself", "Where you're from & where you live", "Languages", "Classroom phrases & instructions", "More greetings: Dobry wieczór, Pa!, Na zdrowie!", "Alphabet & pronunciation", "być, mieć, rozumieć, wiedzieć, mieszkać", "Formal vs informal (pan / pani)"],
+      "topics": [["Greetings", "Powitania"], ["Introducing yourself", "Przedstawianie się"], ["Where you're from & where you live", "Skąd?"], ["Languages", "Języki"], ["Classroom phrases & instructions", "Na lekcji"], ["More greetings: Dobry wieczór, Pa!, Na zdrowie!", "Więcej powitań"], ["Alphabet & pronunciation", "Wymowa"], ["być, mieć, rozumieć, wiedzieć, mieszkać", "Czasowniki"], ["Formal vs informal (pan / pani)", "Ty czy pan / pani?"]],
       "vocab": [
         { "name": "Powitania", "en": "Greetings & goodbyes", "cards": [
           ["Cześć!", "Hi! / Bye!", "informal"],
@@ -630,7 +634,7 @@ table.grid td b { color: var(--accent); font-weight: 700; }
       "title": "Jaki on jest? Jaka ona jest?", "en": "What is he like? What is she like?",
       "focus": "noun gender (ten / ta / to), adjective endings -y / -a / -e (-i / -a / -ie after k, g), and umieć vs znać vs wiedzieć",
       "write": "your home and your city in Warsaw, describing things with adjectives",
-      "topics": ["Small talk: Co słychać?", "umieć, znać, wiedzieć", "Numbers 0–100", "Phone numbers & addresses", "Co to jest? Kto to jest?", "Noun gender: ten / ta / to", "Adjectives: -y / -a / -e", "Plural-only nouns", "Polish cities & rivers"],
+      "topics": [["Small talk: Co słychać?", "Co słychać?"], ["umieć, znać, wiedzieć", "Umieć, znać, wiedzieć"], ["Numbers 0–100", "Liczebniki 0–10"], ["Phone numbers & addresses", "Telefon i adres"], ["Co to jest? Kto to jest?", "Co to jest? Kto to jest?"], ["Noun gender: ten / ta / to", "Rodzaj rzeczownika"], ["Adjectives: -y / -a / -e", "Jaki? Jaka? Jakie?"], ["Plural-only nouns", "Tylko liczba mnoga"], ["Polish cities & rivers", "Polskie miasta i rzeki"]],
       "vocab": [
         { "name": "Co słychać?", "en": "Small talk", "cards": [
           ["Jak się masz?", "How are you?", "informal"],
@@ -864,7 +868,7 @@ table.grid td b { color: var(--accent); font-weight: 700; }
       "title": "Skąd jest ten produkt?", "en": "Where is this product from?",
       "focus": "z + country (z Polski, ze Szkocji), nationality adjectives (polski / polska / polskie), znam język polski vs mówię po polsku, oni vs one, and describing people with adjectives",
       "write": "your favourite day, dish and city, and what the people in your family are like",
-      "topics": ["Small talk review", "Spelling abbreviations: PKP, UE, ONZ", "Countries: z Japonii, ze Szkocji", "Nationality adjectives: polski, niemiecki…", "Znam język… / Mówię po…", "oni czy one?", "ten / ta / to + jaki? jaka? jakie?", "Describing people", "Personality adjectives", "Days and months", "Mój ulubiony…", "zgadzać się, jeść"],
+      "topics": [["Small talk review", "Sobota rano"], ["Spelling abbreviations: PKP, UE, ONZ", "Skróty"], ["Countries: z Japonii, ze Szkocji", "Skąd jest ten produkt?"], ["Nationality adjectives: polski, niemiecki…", "Narodowości"], ["Znam język… / Mówię po…", "Skąd? Jaki? Jaka? Jakie?"], ["oni czy one?", "Oni czy one?"], ["ten / ta / to + jaki? jaka? jakie?", "Kto to jest? Co to jest?"], ["Describing people", "Jaki on jest? Jaka ona jest?"], ["Personality adjectives", "Charakter"], ["Days and months", "Dni i miesiące"], ["Mój ulubiony…", "Mój ulubiony…"], ["zgadzać się, jeść", "Zgadzać się, jeść"]],
       "vocab": [
         { "name": "Sobota rano", "en": "Warm-up", "cards": [
           ["wcześnie", "early"],
@@ -1125,7 +1129,7 @@ table.grid td b { color: var(--accent); font-weight: 700; }
       "title": "Na co masz ochotę?", "en": "What do you feel like?",
       "focus": "the -ą / -ę ending after lubię, piję, jem, mam and mam ochotę na (mocną kawę), the possessives mój / twój / jego / jej, and koniugacja II verbs (mówić, lubić, robić, uczyć się)",
       "write": "what you eat and drink for breakfast, what you like and what you feel like today",
-      "topics": ["Czy jesteś…? Trudno powiedzieć", "Opposites: miły – niemiły", "Possessives: mój, twój, jego, jej", "Weather: Jaka jest pogoda?", "Food and drink adjectives", "Lubię mocną kawę: -a → -ą, -ę", "Na co masz ochotę?", "Breakfast", "Koniugacja II: -ę, -isz / -ysz", "pić, spać, zapraszać, przepraszać, wybierać"],
+      "topics": [["Czy jesteś…? Trudno powiedzieć", "Czy jesteś…?"], ["Opposites: miły – niemiły", "Przeciwieństwa"], ["Possessives: mój, twój, jego, jej", "Mój, twój, jego, jej"], ["Weather: Jaka jest pogoda?", "Jaka jest pogoda?"], ["Food and drink adjectives", "Jaka kawa? Jakie piwo?"], ["Lubię mocną kawę: -a → -ą, -ę", "Lubię mocną kawę"], ["Na co masz ochotę?", "Lubię mocną kawę"], ["Breakfast", "Śniadanie"], ["Koniugacja II: -ę, -isz / -ysz", "Koniugacja II"], ["pić, spać, zapraszać, przepraszać, wybierać", "Pić, spać i -m, -sz"]],
       "vocab": [
         { "name": "Czy jesteś…?", "en": "Answering questions about yourself", "cards": [
           ["Trudno powiedzieć.", "Hard to say."],
@@ -1365,7 +1369,7 @@ table.grid td b { color: var(--accent); font-weight: 700; }
       "title": "Kim jesteś z zawodu?", "en": "What do you do for a living?",
       "focus": "być + narzędnik (Jestem Polakiem, On jest dobrym lekarzem) vs to + mianownik, nationality nouns (Polak / Polka), and masculine vs feminine job titles",
       "write": "a famous person from your country, or the people in your family and their jobs",
-      "topics": ["Mam ochotę na… / Nie mam ochoty na…", "rz after p, t, k, ch sounds like sz", "Gender endings review", "woleć: Co wolisz? Wolę…", "Nationalities: Polak, Polka…", "Narzędnik: Jestem Polakiem", "jest + narzędnik, to + mianownik", "The seven Polish cases", "Jobs: Kim jesteś z zawodu?", "Czym się interesujesz?"],
+      "topics": [["Mam ochotę na… / Nie mam ochoty na…", "Masz ochotę?"], ["rz after p, t, k, ch sounds like sz", "Rz: [ż] czy [sz]?"], ["Gender endings review", "Jaki? Jaka? Jakie?"], ["woleć: Co wolisz? Wolę…", "Co wolisz?"], ["Nationalities: Polak, Polka…", "Kto to jest? Kim on / ona jest?"], ["Narzędnik: Jestem Polakiem", "Narzędnik"], ["jest + narzędnik, to + mianownik", "Jest + narzędnik"], ["The seven Polish cases", "Siedem przypadków"], ["Jobs: Kim jesteś z zawodu?", "Kim jesteś z zawodu?"], ["Czym się interesujesz?", "Czym się interesujesz?"]],
       "vocab": [
         { "name": "Masz ochotę?", "en": "Do you feel like…?", "cards": [
           ["Czy masz ochotę na kawę?", "Do you feel like a coffee?"],
@@ -2626,7 +2630,7 @@ table.grid td b { color: var(--accent); font-weight: 700; }
     }
     if (s.html) body += '<div class="callout">' + s.html + "</div>";
     if (s.type === "note") body = '<div class="callout">' + s.html + "</div>";
-    return '<section class="sec"><h3>' + esc(s.title) + (s.en ? " <small>" + esc(s.en) + "</small>" : "") + "</h3>" + body + "</section>";
+    return '<section class="sec" data-sec="' + esc(s.title) + '" data-kind="grammar"><h3>' + esc(s.title) + (s.en ? " <small>" + esc(s.en) + "</small>" : "") + "</h3>" + body + "</section>";
   }
   function sayBtnInline(text) { return plVoice ? sayBtn(text.split(",")[0]).replace('class="say"', 'class="say" style="width:24px;height:24px;vertical-align:middle"') : ""; }
   function highlightEnding(f) {
@@ -2649,11 +2653,13 @@ table.grid td b { color: var(--accent); font-weight: 700; }
           "<header>" +
             '<div class="eyebrow">Lekcja ' + l.n + " · " + esc(plDate(d, true)) + " " + d.getFullYear() + "</div>" +
             "<h2>" + esc(l.title) + '</h2><div class="en">' + esc(l.en) + "</div>" +
-            '<div class="topics">' + l.topics.map((t) => "<span>" + esc(t) + "</span>").join("") + "</div>" +
+            '<div class="topics" aria-label="Jump to a topic">' + l.topics.map((t) => Array.isArray(t)
+              ? '<button type="button" data-jump="' + esc(t[1]) + '">' + esc(t[0]) + "</button>"
+              : "<span>" + esc(t) + "</span>").join("") + "</div>" +
             '<div class="actions" style="margin-top:10px"><button class="btn primary small" data-study="' + l.id + '">Study these ' + nCards + ' cards</button><button class="btn small" data-cram="' + l.id + '">Quick practice</button></div>' +
           "</header>" +
           aiBox("lesson", l.id) +
-          l.vocab.map((g) => '<section class="sec"><h3>' + esc(g.name) + " <small>" + esc(g.en) + '</small></h3><div class="phrases">' +
+          l.vocab.map((g) => '<section class="sec" data-sec="' + esc(g.name) + '"><h3>' + esc(g.name) + " <small>" + esc(g.en) + '</small></h3><div class="phrases">' +
             g.cards.map((c) => '<div class="phrase"><div class="t"><span class="p">' + esc(c[0]) + '</span><span class="e">' + esc(c[1]) + (c[2] ? " <em>· " + esc(c[2]) + "</em>" : "") + "</span></div>" + sayBtn(c[0]) + "</div>").join("") +
           "</div></section>").join("") +
           l.sections.map(renderSection).join("") +
@@ -2662,6 +2668,18 @@ table.grid td b { color: var(--accent); font-weight: 700; }
           '<section class="sec"><h3>Zadanie domowe <small>Homework</small></h3><ul class="refs">' + l.homework.map((h) => '<li><span class="tag ' + tagClass(h.where) + '">' + esc(h.where) + "</span><span>" + esc(h.ref) + "</span>" + (S.hw[h.id] ? '<span class="pill ok">done</span>' : '<span class="pill todo">to do</span>') + "</li>").join("") + '</ul><div><button class="linkbtn" data-go="zadania">Tick off homework</button></div></section>' +
         "</article>" +
       "</div>";
+  }
+
+  // topic chips scroll to their section; when a word group and a grammar section share a name, the grammar section wins
+  function jumpTo(name) {
+    const secs = [...document.querySelectorAll("#view-lekcje .sec[data-sec]")].filter((s) => s.dataset.sec === name);
+    const el = secs.find((s) => s.dataset.kind === "grammar") || secs[0];
+    if (!el) return;
+    const smooth = !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    el.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
+    el.classList.remove("flash");
+    void el.offsetWidth;
+    el.classList.add("flash");
   }
 
   /* ---------- practise with AI: copy-ready prompts ---------- */
@@ -2801,6 +2819,7 @@ table.grid td b { color: var(--accent); font-weight: 700; }
     if (t.dataset.lesson) { e.preventDefault(); return go("lekcje", t.dataset.lesson); }
     if (t.dataset.sit) { e.preventDefault(); return go("sytuacje", t.dataset.sit); }
     if (t.dataset.go) { e.preventDefault(); return go(t.dataset.go); }
+    if (t.dataset.jump) return jumpTo(t.dataset.jump);
     if (t.dataset.ai) return runAi(t);
     if (t.dataset.study) { S.settings.deck = t.dataset.study; save(); startSession(t.dataset.study); window.scrollTo(0, 0); return; }
     if (t.dataset.cram) { startCram(t.dataset.cram); window.scrollTo(0, 0); return; }
