@@ -2694,6 +2694,17 @@ table.grid td b { color: var(--accent); font-weight: 700; }
 
   /* ---------- practise with AI: copy-ready prompts ---------- */
   const PROFILE = "I'm an adult A1 learner of Polish (weekend course at the Varia school, textbook Hurra!!! Po polsku 1). I live in Warsaw, work as a data analyst, and have a Polish boyfriend, Szymon, who works in cybersecurity presales. Write Polish with correct diacritics.";
+  // scaffolded role-play: suggested answers first, then recall from English, then free; correct every mistake on the spot
+  const RP_RULES = [
+    "How to run the role-play:",
+    "1. Build it up step by step. Start with the first 2 exchanges only. When I can do them without help, replay them from the start and add the next 2. Keep going until we've done the whole scene.",
+    "2. New exchanges (learn): write your line in Polish with the English in brackets. Then write \"Ty:\" and a suggested answer for me in Polish with the English in brackets. Then stop and wait for me to type my answer.",
+    "3. Replayed exchanges (recall): write your line in Polish only, then give me just the English meaning of what I should say, not the Polish. I answer from memory. If I write \"pomoc\", show me the first two words.",
+    "4. Final run (free): once the whole scene is built, play it once more with small changes (different items, numbers or one small surprise) and no hints.",
+    "5. Correct me every time. If my answer has a mistake (an ending, a word, word order, or missing Polish letters like ą, ę, ł), show ❌ what I wrote → ✅ the correct sentence, and the rule in one short line. Then ask me to type the corrected sentence once before you continue. If it's correct, say \"Dobrze!\" and move on. Accept any correct answer, not only your suggestion.",
+    "6. One exchange per message. Keep your lines short: one sentence at A1 level.",
+    "7. At the end, list every sentence I got wrong next to its correct version, so I can add them to my flashcards."
+  ].join("\n");
   const AI_KINDS = {
     lesson: [["story", "Opowiadanie · story"], ["roleplay", "Rozmowa · role-play"], ["drill", "Drill"], ["translate", "Tłumaczenie · translate"], ["correct", "Popraw mnie · correct my writing"]],
     sit: [["roleplay", "Rozmowa · role-play"], ["prep", "Przygotuj mnie · prepare me"]]
@@ -2701,10 +2712,11 @@ table.grid td b { color: var(--accent); font-weight: 700; }
   // a spread of the lesson's shorter words and phrases, so the prompt stays a sensible length
   function pickWords(rows, max, wordsOnly) {
     const keep = (w) => w.length <= 32 && (!wordsOnly || (!/[?!.…]$/.test(w) && w.split(" ").length <= 3));
-    const all = [...new Set(rows.map((c) => c[0]).filter(keep))];
-    if (all.length <= max) return all.join(", ");
+    const all = [...new Set(rows.map((c) => c[0]).filter(keep).map((w) => w.replace(/\.$/, "")))];
+    const sep = wordsOnly ? ", " : " · ";
+    if (all.length <= max) return all.join(sep);
     const step = all.length / max;
-    return Array.from({ length: max }, (_, i) => all[Math.floor(i * step)]).join(", ");
+    return Array.from({ length: max }, (_, i) => all[Math.floor(i * step)]).join(sep);
   }
   function lessonPrompt(kind, l) {
     const words = pickWords(l.vocab.flatMap((g) => g.cards), 60, true);
@@ -2713,7 +2725,7 @@ table.grid td b { color: var(--accent); font-weight: 700; }
     const earlier = LESSONS.filter((x) => x.n < l.n).map((x) => x.title).join("; ");
     const known = earlier ? "\n- I've also done these earlier lessons, so their words are fine too: " + earlier + "." : "";
     if (kind === "story") return PROFILE + "\n\nWrite a short story in Polish (about 150 words) set in my everyday life in Warsaw, for " + tag + ".\n- Practise this lesson's grammar: " + focus + ".\n- Use mostly words I know. From this lesson: " + words + "." + known + "\n- Present tense only, short sentences.\n- Bold at most 5 new words and gloss them in English at the end.\nThen ask me 3 simple comprehension questions in Polish, one at a time, and correct my answers briefly.";
-    if (kind === "roleplay") return PROFILE + "\n\nLet's do a role-play in Polish at A1 level to practise " + tag + ": " + focus + ".\nPick an everyday situation in Warsaw where this grammar comes up naturally, describe the scene in one English sentence, then start.\n- Speak only Polish, one or two short sentences per turn, and wait for my reply.\n- Use words from this lesson where you can: " + words + "." + known + "\n- Don't correct me during the conversation.\n- After 8 turns, stop and list my 3 most important mistakes: what I wrote → the correct form → the rule in one line.";
+    if (kind === "roleplay") return PROFILE + "\n\nBe my Polish speaking instructor. Run a role-play at A1 level for " + tag + ". Grammar to practise: " + focus + ".\nPick an everyday situation in Warsaw where this grammar comes up naturally. Tell me the scene in one English sentence and who you play, then plan a short script of about 8 exchanges (your line + my answer). Use words I know: " + words + "." + known + "\n\n" + RP_RULES;
     if (kind === "drill") return PROFILE + "\n\nDrill me on " + focus + ". This is " + tag + ".\n- Give me one short task at a time (a word or phrase to transform, or a gap to fill) and wait for my answer.\n- After each answer, reply ✓ or give the correct form and the rule in one line, then the next task.\n- 20 rounds. Mix masculine, feminine and neuter where it matters.\n- Build the tasks mainly from these words: " + words + ".\n- At the end, give my score and list the patterns I got wrong.";
     if (kind === "translate") return PROFILE + "\n\nGive me 10 short English sentences to translate into Polish, one at a time, for " + tag + ".\n- Each sentence should practise: " + focus + ".\n- Use words from: " + words + "." + known + "\n- Make the sentences about my real life (Warsaw, work, family, food).\n- After each answer, show the correct Polish; if mine differs, explain the difference in one line.";
     return PROFILE + "\n\nCorrect my Polish writing. I'm practising " + tag + ": " + focus + ".\n- For each mistake show: what I wrote → the correct form → the rule in one line.\n- Don't rewrite sentences that are already correct.\n- End with one tip about my most frequent mistake.\n\nTopic: 5 sentences about " + (l.write || "my day") + ".\nMy text:\n[write your 5 sentences here]";
@@ -2723,13 +2735,14 @@ table.grid td b { color: var(--accent); font-weight: 700; }
     const hear = pickWords(s.hear || [], 12);
     const roles = [...new Set(s.dialogue.map((d) => d[0]).filter((r) => r !== "Ty"))].join(" / ");
     s = { ...s, en: s.en.replace(/\byour\b/gi, "my") };
-    if (kind === "prep") return PROFILE + "\n\nI'm about to be in this real situation in Warsaw: " + s.en.toLowerCase() + " (" + s.title + "). Prepare me in under 5 minutes:\n1. The 5 most useful things I can say (Polish + English).\n2. The 5 most likely things people will say to me, with a simple reply to each.\n3. One rescue phrase for when I don't understand.\nKeep everything at A1 level. Phrases I already know: " + say + ".";
-    return PROFILE + "\n\nLet's role-play this situation in Polish at A1 level: " + s.en.toLowerCase() + " (" + s.title + ").\n- You play " + (roles || "the other person") + "; I play myself. You start.\n- Speak only Polish, one or two short sentences per turn, and wait for my reply.\n- Phrases I've learned for this: " + say + "." + (hear ? "\n- Things I expect to hear: " + hear + "." : "") + "\n- Don't correct me during the conversation. After 8 turns, list my 3 most important mistakes: what I wrote → the correct form → the rule in one line.\n- Then play it once more with one surprise (something goes wrong), so I practise reacting.";
+    if (kind === "prep") return PROFILE + "\n\nI'm about to be in this real situation in Warsaw: " + s.en.toLowerCase() + " (" + s.title + "). Prepare me in under 5 minutes:\n1. The 5 most useful things I can say (Polish + English).\n2. The 5 most likely things people will say to me, with a simple reply to each.\n3. One rescue phrase for when I don't understand.\nKeep everything at A1 level. Phrases I already know: " + say;
+    const script = s.dialogue.map((d) => "- " + (d[0] === "Ty" ? "Me" : d[0]) + ": " + d[1] + " (" + d[2] + ")").join("\n");
+    return PROFILE + "\n\nBe my Polish speaking instructor. Run a role-play at A1 level: " + s.en.toLowerCase() + " (" + s.title + "). You play " + (roles || "the other person") + "; I play myself.\nBase the scene on this dialogue from my notebook, then extend it to about 8 exchanges (your line + my answer). Lines marked Me are mine:\n" + script + "\nOther phrases I've learned for this: " + say + (hear ? "\nThings people may say to me: " + hear : "") + "\n\n" + RP_RULES;
   }
   function aiBox(type, id) {
     return '<section class="ai" data-ai-box="' + id + '"><div class="ai-head"><b>Ćwicz z AI · practise with AI</b><span class="muted" style="font-size:.85rem">Each button copies a ready-made prompt. Paste it into Claude.</span></div>' +
       '<div class="ai-btns">' + AI_KINDS[type].map((k) => '<button class="btn small" type="button" aria-pressed="false" data-ai="' + k[0] + '" data-ai-type="' + type + '" data-ai-src="' + id + '">' + esc(k[1]) + "</button>").join("") + "</div>" +
-      '<div class="ai-out" hidden><textarea readonly aria-label="Prompt to copy"></textarea><div class="actions" style="margin-top:8px"><span class="ai-status" aria-live="polite"></span><a class="linkbtn" href="https://claude.ai/new" target="_blank" rel="noopener">Open Claude</a></div></div></section>';
+      '<div class="ai-out" hidden><textarea aria-label="Prompt to copy (you can edit it first)"></textarea><div class="actions" style="margin-top:8px"><button class="btn small primary" type="button" data-ai-copy>Kopiuj · Copy</button><a class="linkbtn" href="https://claude.ai/new" target="_blank" rel="noopener">Open Claude</a><span class="ai-status" aria-live="polite"></span></div></div></section>';
   }
   function runAi(btn) {
     const box = btn.closest(".ai");
@@ -2737,11 +2750,18 @@ table.grid td b { color: var(--accent); font-weight: 700; }
     if (!box || !src) return;
     const text = btn.dataset.aiType === "sit" ? sitPrompt(btn.dataset.ai, src) : lessonPrompt(btn.dataset.ai, src);
     box.querySelectorAll("[data-ai]").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
-    const out = box.querySelector(".ai-out"), ta = out.querySelector("textarea"), status = out.querySelector(".ai-status");
+    const out = box.querySelector(".ai-out");
     out.hidden = false;
-    ta.value = text;
-    const fallback = () => { ta.focus(); ta.select(); let ok = false; try { ok = document.execCommand("copy"); } catch (e) { /* ignore */ } status.textContent = ok ? "Copied. Paste it into Claude." : "Select the text above and copy it."; };
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(() => { status.textContent = "Copied. Paste it into Claude."; }, fallback);
+    out.querySelector("textarea").value = text;
+    copyPrompt(box);
+  }
+  // copies whatever is in the box's text area, including the learner's own edits
+  function copyPrompt(box) {
+    const ta = box.querySelector(".ai-out textarea"), status = box.querySelector(".ai-status");
+    const done = (ok) => { status.textContent = ok ? "Copied. Paste it into Claude." : "Select the text above and copy it."; };
+    const fallback = () => { ta.focus(); ta.select(); let ok = false; try { ok = document.execCommand("copy"); } catch (e) { /* ignore */ } done(ok); };
+    status.textContent = "";
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(() => done(true), fallback);
     else fallback();
   }
 
@@ -2830,6 +2850,7 @@ table.grid td b { color: var(--accent); font-weight: 700; }
     if (t.dataset.sit) { e.preventDefault(); return go("sytuacje", t.dataset.sit); }
     if (t.dataset.go) { e.preventDefault(); return go(t.dataset.go); }
     if (t.dataset.jump) return jumpTo(t.dataset.jump);
+    if (t.hasAttribute("data-ai-copy")) return copyPrompt(t.closest(".ai"));
     if (t.dataset.ai) return runAi(t);
     if (t.dataset.study) { S.settings.deck = t.dataset.study; save(); startSession(t.dataset.study); window.scrollTo(0, 0); return; }
     if (t.dataset.cram) { startCram(t.dataset.cram); window.scrollTo(0, 0); return; }
