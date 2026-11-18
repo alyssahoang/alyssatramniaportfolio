@@ -244,6 +244,15 @@ table.grid td b { color: var(--accent); font-weight: 700; }
 .line .p { font-family: var(--f-display); font-weight: 600; display: block; overflow-wrap: anywhere; }
 .line .e { font-size: .9rem; color: var(--muted); display: block; }
 
+/* Ćwicz z AI */
+.ai { border: 1px dashed var(--accent); border-radius: 12px; padding: 14px 16px; display: grid; gap: 10px; background: color-mix(in srgb, var(--accent-soft) 45%, transparent); }
+.ai-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px 16px; flex-wrap: wrap; }
+.ai-head b { font-family: var(--f-display); }
+.ai-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.ai-btns .btn[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.ai textarea { width: 100%; min-height: 190px; resize: vertical; border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; background: var(--card); color: var(--ink); font-family: var(--f-mono); font-size: .8rem; line-height: 1.5; }
+.ai-status { font-size: .88rem; color: var(--good); font-weight: 600; }
+
 /* Zadania */
 .hw { display: grid; gap: 20px; max-width: 820px; }
 .hw-group { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; display: grid; gap: 14px; }
@@ -336,6 +345,8 @@ table.grid td b { color: var(--accent); font-weight: 700; }
     {
       "id": "l1", "n": 1, "date": "2026-10-17",
       "title": "Pierwszy kontakt", "en": "First contact",
+      "focus": "the present tense of być, mieć, rozumieć, wiedzieć and mieszkać, and informal vs formal questions (ty vs pan / pani)",
+      "write": "introducing yourself: your name, where you're from, where you live and which languages you speak",
       "topics": ["Greetings", "Introducing yourself", "Where you're from & where you live", "Languages", "Classroom phrases & instructions", "More greetings: Dobry wieczór, Pa!, Na zdrowie!", "Alphabet & pronunciation", "być, mieć, rozumieć, wiedzieć, mieszkać", "Formal vs informal (pan / pani)"],
       "vocab": [
         { "name": "Powitania", "en": "Greetings & goodbyes", "cards": [
@@ -617,6 +628,8 @@ table.grid td b { color: var(--accent); font-weight: 700; }
     {
       "id": "l2", "n": 2, "date": "2026-10-24",
       "title": "Jaki on jest? Jaka ona jest?", "en": "What is he like? What is she like?",
+      "focus": "noun gender (ten / ta / to), adjective endings -y / -a / -e (-i / -a / -ie after k, g), and umieć vs znać vs wiedzieć",
+      "write": "your home and your city in Warsaw, describing things with adjectives",
       "topics": ["Small talk: Co słychać?", "umieć, znać, wiedzieć", "Numbers 0–100", "Phone numbers & addresses", "Co to jest? Kto to jest?", "Noun gender: ten / ta / to", "Adjectives: -y / -a / -e", "Plural-only nouns", "Polish cities & rivers"],
       "vocab": [
         { "name": "Co słychać?", "en": "Small talk", "cards": [
@@ -844,6 +857,760 @@ table.grid td b { color: var(--accent); font-weight: 700; }
         { "id": "l2-h2", "where": "Zeszyt ćwiczeń", "ref": "str. 12, ćw. 1a, 1b" },
         { "id": "l2-h3", "where": "Zeszyt ćwiczeń", "ref": "str. 13, ćw. 3a" },
         { "id": "l2-h4", "where": "Zeszyt ćwiczeń", "ref": "str. 15, ćw. 9" }
+      ]
+    },
+    {
+      "id": "l3", "n": 3, "date": "2026-10-31",
+      "title": "Skąd jest ten produkt?", "en": "Where is this product from?",
+      "focus": "z + country (z Polski, ze Szkocji), nationality adjectives (polski / polska / polskie), znam język polski vs mówię po polsku, oni vs one, and describing people with adjectives",
+      "write": "your favourite day, dish and city, and what the people in your family are like",
+      "topics": ["Small talk review", "Spelling abbreviations: PKP, UE, ONZ", "Countries: z Japonii, ze Szkocji", "Nationality adjectives: polski, niemiecki…", "Znam język… / Mówię po…", "oni czy one?", "ten / ta / to + jaki? jaka? jakie?", "Describing people", "Personality adjectives", "Days and months", "Mój ulubiony…", "zgadzać się, jeść"],
+      "vocab": [
+        { "name": "Sobota rano", "en": "Warm-up", "cards": [
+          ["wcześnie", "early"],
+          ["pogoda", "weather"],
+          ["Pogoda jest ładna.", "The weather is nice."],
+          ["nowy / nowa / nowe", "new"],
+          ["Komputer jest nowy.", "The computer is new."],
+          ["gorący / gorąca / gorące", "hot"],
+          ["Mleko jest gorące.", "The milk is hot."],
+          ["Piwo jest zimne.", "The beer is cold."],
+          ["Miłego wieczoru!", "Have a nice evening!"]
+        ]},
+        { "name": "Skróty", "en": "Abbreviations, spelled letter by letter", "cards": [
+          ["dworzec", "station"],
+          ["dworzec PKP", "train station", "PKP = Polish State Railways; say pe-ka-pe"],
+          ["dworzec PKS", "coach station", "say pe-ka-es"],
+          ["PZU", "PZU (Polish insurance company)", "say pe-zet-u"],
+          ["MSZ", "Ministry of Foreign Affairs", "say em-es-zet"],
+          ["MNiSW", "Ministry of Science and Higher Education"],
+          ["ONZ", "the UN", "Organizacja Narodów Zjednoczonych; say o-en-zet"],
+          ["UE", "the EU", "Unia Europejska; say u-e"],
+          ["RP", "the Republic of Poland", "Rzeczpospolita Polska; say er-pe"],
+          ["RPA", "South Africa", "say er-pe-a"],
+          ["Jakie to słowo?", "Which word is it?"],
+          ["Proszę podać literę!", "Give me a letter, please!"],
+          ["kompromis", "compromise"]
+        ]},
+        { "name": "Skąd jest ten produkt?", "en": "Where is this product from? (handout)", "cards": [
+          ["Skąd jest ten produkt?", "Where is this product from?"],
+          ["Sushi jest z Japonii.", "Sushi is from Japan."],
+          ["Whisky jest ze Szkocji.", "Whisky is from Scotland.", "ze before sz-: ze Szkocji"],
+          ["McDonald's jest z USA.", "McDonald's is from the USA."],
+          ["Chanel jest z Francji.", "Chanel is from France."],
+          ["Wódka Chopin jest z Polski.", "Chopin vodka is from Poland."],
+          ["Werenyky są z Ukrainy.", "Varenyky are from Ukraine.", "plural: są"],
+          ["Herbata Twinings jest z Anglii.", "Twinings tea is from England."],
+          ["Daktyle są z Iranu.", "Dates are from Iran."],
+          ["Medycyna ajurwedyjska jest z Indii.", "Ayurvedic medicine is from India."],
+          ["To-Beram jest z Czeczenii.", "To-Beram is from Chechnya.", "a Chechen cheese dish"],
+          ["Czekolada Ritter Sport jest z Niemiec.", "Ritter Sport chocolate is from Germany."],
+          ["Pizza jest z Włoch.", "Pizza is from Italy."],
+          ["Herbata jest z Chin.", "Tea is from China."],
+          ["Ser telemea jest z Rumunii.", "Telemea cheese is from Romania."],
+          ["Zupa pho jest z Wietnamu.", "Pho soup is from Vietnam."],
+          ["z Japonii", "from Japan"],
+          ["ze Szkocji", "from Scotland"],
+          ["z Anglii", "from England"],
+          ["z Włoch", "from Italy"],
+          ["z Rosji", "from Russia"],
+          ["z Wietnamu", "from Vietnam"],
+          ["z Czeczenii", "from Chechnya"],
+          ["produkt", "product"],
+          ["potrawa", "dish (food)"],
+          ["daktyle", "dates (fruit)"],
+          ["flaga", "flag"],
+          ["Czy wiesz, skąd jest ta flaga?", "Do you know where this flag is from?"]
+        ]},
+        { "name": "Narodowości", "en": "Nationality adjectives (Podręcznik str. 18)", "cards": [
+          ["niemiecki / niemiecka / niemieckie", "German"],
+          ["francuski / francuska / francuskie", "French"],
+          ["amerykański / amerykańska / amerykańskie", "American"],
+          ["japoński / japońska / japońskie", "Japanese"],
+          ["włoski / włoska / włoskie", "Italian"],
+          ["angielski / angielska / angielskie", "English"],
+          ["hiszpański / hiszpańska / hiszpańskie", "Spanish"],
+          ["rosyjski / rosyjska / rosyjskie", "Russian"],
+          ["chiński", "Chinese"],
+          ["ukraiński", "Ukrainian"],
+          ["rumuński", "Romanian"],
+          ["irański", "Iranian"],
+          ["wietnamski", "Vietnamese"],
+          ["indyjski", "Indian", "the language is hindi"],
+          ["polski samochód", "a Polish car", "ten · jaki?"],
+          ["polska tradycja", "a Polish tradition", "ta · jaka?"],
+          ["polskie imię", "a Polish first name", "to · jakie?"],
+          ["Kowalski to polskie nazwisko.", "Kowalski is a Polish surname."],
+          ["Wisła to polska rzeka.", "The Vistula is a Polish river."],
+          ["Polonez to polski samochód.", "The Polonez is a Polish car."],
+          ["BMW to niemiecki samochód.", "BMW is a German car."],
+          ["Jaki to samochód?", "What kind of car is it?"],
+          ["Jaka to rzeka?", "What river is it?"],
+          ["Jakie to nazwisko?", "What kind of surname is it?"],
+          ["auto", "car", "to · neuter"],
+          ["tradycja", "tradition", "ta · feminine"],
+          ["polityk", "politician", "ten · masculine"],
+          ["język ojczysty", "mother tongue"],
+          ["język obcy", "foreign language"],
+          ["Język polski to mój język ojczysty.", "Polish is my mother tongue."],
+          ["Znam język francuski.", "I know French.", "znać + język + the adjective"],
+          ["Mówię po chińsku.", "I speak Chinese.", "mówić + po + -sku"],
+          ["Jak jest „dzień dobry” po chińsku?", "How do you say 'dzień dobry' in Chinese?"]
+        ]},
+        { "name": "Oni czy one?", "en": "They: oni or one? (Podręcznik str. 14)", "cards": [
+          ["Oni są z Polski.", "They're from Poland. (men, or men and women)", "oni = on + on / on + ona"],
+          ["One są z Polski.", "They're from Poland. (only women)", "one = ona + ona"],
+          ["Oni mają się dobrze.", "They're doing well."],
+          ["Oni mają komputer.", "They have a computer."],
+          ["One mieszkają we Wrocławiu.", "They live in Wrocław.", "we before Wr-: we Wrocławiu"],
+          ["Oni mieszkają w Warszawie.", "They live in Warsaw."]
+        ]},
+        { "name": "Dane i dialogi", "en": "Personal details and textbook dialogues (str. 14, 17)", "cards": [
+          ["stacja benzynowa", "petrol station"],
+          ["NIP", "tax ID number"],
+          ["kod pocztowy", "postal code"],
+          ["numer rejestracyjny", "car registration number"],
+          ["zamiast", "instead of", "01 zamiast 02"],
+          ["policjant", "police officer"],
+          ["bibliotekarka", "librarian (woman)"],
+          ["Jak się pan nazywa?", "What's your name? (formal, to a man)"],
+          ["Skąd pan jest?", "Where are you from? (formal, to a man)"],
+          ["Gdzie pan mieszka?", "Where do you live? (formal, to a man)"],
+          ["Jaki pan ma adres w Krakowie?", "What's your address in Kraków?"],
+          ["Mieszkam w hotelu.", "I'm staying at a hotel."],
+          ["Przepraszam bardzo, gdzie jest literatura francuska?", "Excuse me, where is French literature?"]
+        ]},
+        { "name": "Kto to jest? Co to jest?", "en": "Who / what is it, and what is it like?", "cards": [
+          ["To jest dobra kawa.", "This is good coffee."],
+          ["To jest inteligentny student.", "This is an intelligent student."],
+          ["Co lubisz?", "What do you like?"],
+          ["Lubię kawę.", "I like coffee.", "after lubię, kawa becomes kawę"],
+          ["Ta dziewczyna jest bardzo ładna.", "This girl is very pretty."],
+          ["To krzesło jest bardzo wygodne.", "This chair is very comfortable."],
+          ["wygodny", "comfortable"],
+          ["Ten kościół jest stary.", "This church is old."],
+          ["kościół", "church", "ten · masculine"],
+          ["Ten turysta jest miły.", "This tourist is nice."],
+          ["turysta", "tourist (man)", "ten · masculine, even though it ends in -a"],
+          ["miły = sympatyczny", "nice, pleasant"],
+          ["To miasto jest duże.", "This city is big."],
+          ["Ten telewizor jest drogi.", "This TV is expensive."],
+          ["telewizor", "TV set", "ten · masculine"],
+          ["To dziecko jest małe.", "This child is small."],
+          ["mały", "small"],
+          ["pytanie", "question"],
+          ["odpowiedź", "answer"],
+          ["To jest muzyk i autor tekstów.", "He's a musician and songwriter.", "Dawid Podsiadło"],
+          ["On jest utalentowany i kreatywny.", "He's talented and creative."],
+          ["Jak on się nazywa?", "What's his name?"],
+          ["Skąd on jest?", "Where is he from?"],
+          ["Gdzie on mieszka?", "Where does he live?"],
+          ["Co on lubi?", "What does he like?"],
+          ["On lubi polskie kino.", "He likes Polish cinema."],
+          ["muzyk", "musician"],
+          ["piosenka", "song"]
+        ]},
+        { "name": "Jaki on jest? Jaka ona jest?", "en": "Describing people (Podręcznik str. 19)", "cards": [
+          ["wysoki", "tall"],
+          ["niski", "short"],
+          ["średniego wzrostu", "of medium height"],
+          ["gruby", "fat"],
+          ["szczupły", "slim"],
+          ["młody", "young"],
+          ["w średnim wieku", "middle-aged"],
+          ["chory", "ill, sick"],
+          ["zdrowy", "healthy"],
+          ["wysportowany", "sporty, fit"],
+          ["wesoły", "cheerful"],
+          ["smutny", "sad"],
+          ["przystojny", "handsome"],
+          ["brzydki", "ugly"],
+          ["Jaka jest ta kobieta?", "What is this woman like?"],
+          ["Jaki jest ten mężczyzna?", "What is this man like?"],
+          ["Ona jest szczupła i młoda.", "She's slim and young."],
+          ["On nie jest zdrowy.", "He isn't healthy."],
+          ["nie jestem ani…, ani…", "I'm neither… nor…"]
+        ]},
+        { "name": "Charakter", "en": "Personality (Podręcznik str. 20)", "cards": [
+          ["ambitny", "ambitious"], ["kreatywny", "creative"], ["aktywny", "active"],
+          ["sympatyczny", "nice, friendly"], ["romantyczny", "romantic"], ["spontaniczny", "spontaneous"],
+          ["energiczny", "energetic"], ["zestresowany", "stressed"], ["zrelaksowany", "relaxed"],
+          ["sfrustrowany", "frustrated"], ["utalentowany", "talented"], ["naiwny", "naive"],
+          ["optymistyczny", "optimistic"], ["pesymistyczny", "pessimistic"], ["elegancki", "elegant"],
+          ["arogancki", "arrogant"], ["atrakcyjny", "attractive"], ["oryginalny", "original"],
+          ["tolerancyjny", "tolerant"], ["egoistyczny", "selfish"], ["idealny", "perfect, ideal"],
+          ["Myślę, że on jest…", "I think he is…"],
+          ["Czy to prawda?", "Is that true?"],
+          ["Tak, to prawda.", "Yes, that's true."],
+          ["Nie, to nieprawda.", "No, that's not true."],
+          ["Czy jesteś…?", "Are you…?"],
+          ["Niestety nie.", "Unfortunately not."],
+          ["Oczywiście! Jasne!", "Of course! Sure!"],
+          ["Mam stres.", "I'm stressed."],
+          ["Po prostu jestem idealny!", "I'm simply perfect! (a man speaking)"]
+        ]},
+        { "name": "Dni i miesiące", "en": "Days of the week and months", "cards": [
+          ["poniedziałek", "Monday"], ["wtorek", "Tuesday"], ["środa", "Wednesday"], ["czwartek", "Thursday"],
+          ["piątek", "Friday"], ["sobota", "Saturday"], ["niedziela", "Sunday"],
+          ["styczeń", "January"], ["luty", "February"], ["marzec", "March"], ["kwiecień", "April"],
+          ["maj", "May"], ["czerwiec", "June"], ["lipiec", "July"], ["sierpień", "August"],
+          ["wrzesień", "September"], ["październik", "October"], ["listopad", "November"], ["grudzień", "December"],
+          ["dni tygodnia", "days of the week"], ["miesiące", "months"], ["tydzień", "week"],
+          ["rok", "year"], ["kalendarz", "calendar"], ["weekend", "weekend", "sobota i niedziela"]
+        ]},
+        { "name": "Mój ulubiony…", "en": "My favourite…", "cards": [
+          ["ulubiony / ulubiona / ulubione", "favourite"],
+          ["mój / moja / moje", "my"],
+          ["twój / twoja / twoje", "your"],
+          ["Mój ulubiony dzień to piątek.", "My favourite day is Friday."],
+          ["Jaki jest twój ulubiony dzień?", "What's your favourite day?"],
+          ["Moja ulubiona potrawa to pierogi ruskie.", "My favourite dish is pierogi ruskie."],
+          ["Jaka jest twoja ulubiona potrawa?", "What's your favourite dish?"],
+          ["Moje ulubione miasto to Kraków.", "My favourite city is Kraków."],
+          ["Jakie jest twoje ulubione miasto?", "What's your favourite city?"],
+          ["Polski nie jest skomplikowany.", "Polish isn't complicated."],
+          ["Kraków to turystyczne miasto.", "Kraków is a tourist city."],
+          ["Piłka nożna to popularny sport.", "Football is a popular sport."],
+          ["Czekolada jest dobra na stres.", "Chocolate is good for stress."],
+          ["Bilet do opery jest drogi.", "An opera ticket is expensive."],
+          ["Metro jest praktyczne.", "The metro is practical."],
+          ["Zgadzam się.", "I agree."],
+          ["Nie zgadzam się.", "I disagree."],
+          ["Jem obiad.", "I'm having lunch."],
+          ["ze mną", "with me"],
+          ["z tobą", "with you"]
+        ]}
+      ],
+      "sections": [
+        { "type": "adj", "title": "Skąd? Jaki? Jaka? Jakie?", "en": "Country → nationality adjective (Podręcznik str. 18)", "rows": [
+          ["polski", "polska", "polskie", "z Polski · polski samochód, polska tradycja, polskie imię"],
+          ["niemiecki", "niemiecka", "niemieckie", "z Niemiec · niemiecki bank, niemieckie auto"],
+          ["francuski", "francuska", "francuskie", "z Francji · francuska literatura"],
+          ["amerykański", "amerykańska", "amerykańskie", "z Ameryki · amerykański film"],
+          ["japoński", "japońska", "japońskie", "z Japonii · japoński samochód"],
+          ["włoski", "włoska", "włoskie", "z Włoch · włoska architektura"],
+          ["angielski", "angielska", "angielskie", "z Anglii · angielska herbata"],
+          ["hiszpański", "hiszpańska", "hiszpańskie", "z Hiszpanii · hiszpańskie miasto"],
+          ["rosyjski", "rosyjska", "rosyjskie", "z Rosji"]
+        ], "html": "<p>Language: <b>Znam język polski</b> (the adjective) but <b>Mówię po polsku</b> (po + the -sku form). Hindi stays hindi: <i>znam język hindi, mówię w hindi</i>.</p><p><b>z → ze</b> and <b>w → we</b> before some consonant clusters: <i>ze Szkocji, ze mną, we Wrocławiu</i>.</p>" },
+        { "type": "conj", "title": "Zgadzać się, jeść", "en": "Two more -m, -sz verbs", "verbs": [
+          { "inf": "zgadzać się", "en": "to agree", "forms": ["zgadzam się", "zgadzasz się", "zgadza się", "zgadzamy się", "zgadzacie się", "zgadzają się"] },
+          { "inf": "jeść", "en": "to eat", "forms": ["jem", "jesz", "je", "jemy", "jecie", "jedzą"] }
+        ], "html": "<p><b>Uwaga!</b> jeść is irregular: <i>oni jedzą</i>. <b>Zgadza się?</b> (Is that right?) is the on / ona form of zgadzać się.</p>" },
+        { "type": "chips", "title": "Gdzie jest akcent?", "en": "Stress practice (Podręcznik str. 20, ćw. 7a)", "groups": [
+          ["Przedostatnia sylaba: second-to-last syllable", ["ambitny", "inteligentny", "kreatywny", "agresywny", "aktywny", "sentymentalny", "racjonalny", "emocjonalny", "naturalny", "romantyczny", "sympatyczny", "spontaniczny", "energiczny", "zestresowany", "zrelaksowany", "sfrustrowany", "utalentowany", "naiwny", "systematyczny", "sceptyczny", "optymistyczny", "pesymistyczny", "szarmancki", "elegancki", "arogancki", "idealny", "atrakcyjny", "artystyczny", "subtelny", "oryginalny", "krytyczny", "tolerancyjny", "egoistyczny", "altruistyczny"]]
+        ]}
+      ],
+      "inclass": [
+        ["Zeszyt ćwiczeń", "str. 15, ćw. 9", "checking homework: adjective endings"],
+        ["Podręcznik", "str. 14, ćw. 11e, 12", "oni czy one? · at the petrol station"],
+        ["Podręcznik", "str. 17", "dialogues: the policeman, the library"],
+        ["Handout", "Skąd jest ten produkt?", "matching products to countries"],
+        ["Podręcznik", "str. 18, ćw. 3a–3c", "nationality adjectives"],
+        ["Podręcznik", "str. 19", "Jaki on jest? Jaka ona jest?"],
+        ["Podręcznik", "str. 20, ćw. 7a, 7b", "personality adjectives, word stress"]
+      ],
+      "links": [
+        ["Wordwall: koniugacja -m, -sz (pytania)", "https://wordwall.net/pl/resource/1607065/polski/koniugacja-m-sz-pytania"],
+        ["Dawid Podsiadło (song from class, YouTube)", "https://www.youtube.com/watch?v=zfL1I7WpEdk"]
+      ],
+      "homework": [
+        { "id": "l3-h1", "where": "Podręcznik", "ref": "str. 20, ćw. 6" },
+        { "id": "l3-h2", "where": "Zeszyt ćwiczeń", "ref": "str. 14, ćw. 6a, 6b" },
+        { "id": "l3-h3", "where": "Zeszyt ćwiczeń", "ref": "str. 14, ćw. 7" }
+      ]
+    },
+    {
+      "id": "l4", "n": 4, "date": "2026-11-07",
+      "title": "Na co masz ochotę?", "en": "What do you feel like?",
+      "focus": "the -ą / -ę ending after lubię, piję, jem, mam and mam ochotę na (mocną kawę), the possessives mój / twój / jego / jej, and koniugacja II verbs (mówić, lubić, robić, uczyć się)",
+      "write": "what you eat and drink for breakfast, what you like and what you feel like today",
+      "topics": ["Czy jesteś…? Trudno powiedzieć", "Opposites: miły – niemiły", "Possessives: mój, twój, jego, jej", "Weather: Jaka jest pogoda?", "Food and drink adjectives", "Lubię mocną kawę: -a → -ą, -ę", "Na co masz ochotę?", "Breakfast", "Koniugacja II: -ę, -isz / -ysz", "pić, spać, zapraszać, przepraszać, wybierać"],
+      "vocab": [
+        { "name": "Czy jesteś…?", "en": "Answering questions about yourself", "cards": [
+          ["Trudno powiedzieć.", "Hard to say."],
+          ["raczej tak", "I'd say yes, probably"],
+          ["Myślę, że nie.", "I don't think so."],
+          ["Czy jesteś dzisiaj zmęczony / zmęczona?", "Are you tired today? (to a man / woman)"],
+          ["Czy jesteś wysportowany / wysportowana?", "Are you sporty? (to a man / woman)"],
+          ["systematyczny", "systematic, organised"],
+          ["Jaki jest tytuł filmu?", "What's the title of the film?"],
+          ["Jaki kolor ma samochód?", "What colour is the car?"],
+          ["Nie wiem, czy to jest nowy samochód.", "I don't know if it's a new car."],
+          ["oburzony / oburzona", "outraged (man / woman)"]
+        ]},
+        { "name": "Przeciwieństwa", "en": "Opposites, appearance and character", "cards": [
+          ["szczęśliwy", "happy"],
+          ["nieszczęśliwy", "unhappy"],
+          ["niemiły", "unkind, unpleasant", "nie- makes the opposite: miły → niemiły"],
+          ["niesympatyczny", "unfriendly"],
+          ["niewysportowany", "not sporty"],
+          ["naturalny", "natural"],
+          ["Lubię, kiedy ktoś jest naturalny.", "I like it when someone is natural."],
+          ["Nie lubię, kiedy ktoś jest arogancki.", "I don't like it when someone is arrogant."],
+          ["kiedy", "when"],
+          ["ktoś", "someone"],
+          ["wygląd", "appearance, looks"],
+          ["charakter", "character, personality"],
+          ["narzekać", "to complain"],
+          ["On lubi narzekać.", "He likes to complain."],
+          ["Ile ma lat?", "How old is he / she?"],
+          ["osoba", "person"],
+          ["Wybieram osobę.", "I choose a person."]
+        ]},
+        { "name": "Mój, twój, jego, jej", "en": "My, your, his, her", "cards": [
+          ["brat", "brother"],
+          ["siostra", "sister"],
+          ["mój brat", "my brother"],
+          ["moja siostra", "my sister"],
+          ["moje dziecko", "my child"],
+          ["twój mąż", "your husband"],
+          ["twoja żona", "your wife"],
+          ["jego kolega", "his friend / colleague"],
+          ["jej przyjaciółka", "her close friend"],
+          ["jego / jej", "his / her", "never change: jego brat, jego siostra, jego dziecko"]
+        ]},
+        { "name": "Adresy i firmy", "en": "Businesses and addresses (Podręcznik str. 22)", "cards": [
+          ["biuro projektowe", "design studio"],
+          ["hotel", "hotel"],
+          ["restauracja włoska", "Italian restaurant", "in names the adjective often comes after the noun"],
+          ["szkoła językowa", "language school"],
+          ["bank", "bank"],
+          ["gabinet dentystyczny", "dental surgery"],
+          ["biuro turystyczne", "travel agency"],
+          ["muzeum", "museum", "to · neuter, ends in -um"],
+          ["muzeum narodowe", "national museum"],
+          ["centrum medyczne", "medical centre"],
+          ["fundacja", "foundation"]
+        ]},
+        { "name": "Ci / ć", "en": "Sound practice: ci and ć", "cards": [
+          ["Cicho!", "Quiet!"],
+          ["ciekawy = interesujący", "interesting"],
+          ["Film jest ciekawy.", "The film is interesting."],
+          ["Muzeum jest ciekawe.", "The museum is interesting."],
+          ["Kawa jest ciepła.", "The coffee is warm."],
+          ["To jest dla ciebie!", "This is for you!"],
+          ["szarlotka", "apple pie"],
+          ["To jest pyszne ciasto!", "This is a delicious cake!"],
+          ["ciastko", "biscuit, cookie"],
+          ["słodki / słodka / słodkie", "sweet"],
+          ["Jeszcze nie idę spać!", "I'm not going to bed yet!"],
+          ["Lubię czytać!", "I like reading!"],
+          ["Fajnie, że jesteś!", "So nice that you're here!"]
+        ]},
+        { "name": "Zapraszam, mam, przepraszam", "en": "Invitations and apologies", "cards": [
+          ["Zapraszam na kawę!", "Come for a coffee! (my invitation)"],
+          ["Zapraszam na piwo!", "Come for a beer!"],
+          ["Zapraszam na spotkanie.", "I invite you to a meeting."],
+          ["Zapraszam na lekcję.", "Welcome to the lesson."],
+          ["Teraz mam lekcję.", "I have a lesson now."],
+          ["Czytam książkę.", "I'm reading a book."],
+          ["Mam dobry telefon.", "I have a good phone."],
+          ["Mam problem.", "I have a problem."],
+          ["Mam spóźnienie.", "I'm running late."],
+          ["zapraszać", "to invite"],
+          ["przepraszać", "to apologise"],
+          ["wybierać", "to choose"]
+        ]},
+        { "name": "Jaka jest pogoda?", "en": "The weather", "cards": [
+          ["Jaka jest pogoda?", "What's the weather like?"],
+          ["Pada deszcz.", "It's raining."],
+          ["Nie pada deszcz.", "It isn't raining."],
+          ["Jest zimno.", "It's cold."],
+          ["Jest ciepło.", "It's warm."],
+          ["Jest słonecznie.", "It's sunny."],
+          ["Jest pochmurno.", "It's cloudy."],
+          ["u mnie", "where I am; at my place"],
+          ["u ciebie", "where you are; at your place"]
+        ]},
+        { "name": "Kto to jest?", "en": "Natalia Kukulska", "cards": [
+          ["Ona nazywa się Kukulska.", "Her surname is Kukulska."],
+          ["Ona jest z Warszawy.", "She's from Warsaw."],
+          ["z Warszawy", "from Warsaw"],
+          ["piosenkarka", "singer (woman)"],
+          ["Ona jest bardzo wysportowana.", "She's very sporty."],
+          ["Ona jest ładna, młoda i utalentowana.", "She's pretty, young and talented."]
+        ]},
+        { "name": "Coś słodkiego", "en": "Something sweet (CD 168)", "cards": [
+          ["coś słodkiego", "something sweet"],
+          ["owoc", "fruit (one piece)"],
+          ["malina", "raspberry"],
+          ["truskawka", "strawberry"],
+          ["słodkie naleśniki", "sweet pancakes"],
+          ["szpinak", "spinach"],
+          ["naleśniki ze szpinakiem", "pancakes with spinach"],
+          ["Nie lubię szpinaku!", "I don't like spinach!"],
+          ["śmietana", "sour cream"],
+          ["Chciałabym zjeść coś słodkiego.", "I'd like to eat something sweet. (a woman speaking)"],
+          ["Chciałbym zjeść coś słodkiego.", "I'd like to eat something sweet. (a man speaking)"],
+          ["śniadanie", "breakfast"],
+          ["na śniadanie", "for breakfast"],
+          ["wyśmienity", "excellent, delicious"],
+          ["Naleśniki są wyśmienite!", "The pancakes are excellent!"],
+          ["lody", "ice cream", "always plural: jakie lody?"],
+          ["lody waniliowe", "vanilla ice cream"],
+          ["lody czekoladowe", "chocolate ice cream"]
+        ]},
+        { "name": "Jaka kawa? Jakie piwo?", "en": "Describing food and drink", "cards": [
+          ["biały", "white"], ["czarny", "black"], ["czerwony", "red"], ["pomarańczowy", "orange (colour, flavour)"],
+          ["wytrawny", "dry (wine)"], ["gorzki", "bitter"], ["jasny", "light, pale"], ["ciemny", "dark"],
+          ["słaby", "weak"], ["mocny", "strong"], ["owocowy", "fruity"], ["jabłkowy", "apple (flavour)"],
+          ["czarna kawa", "black coffee"], ["zielona herbata", "green tea"], ["sok pomarańczowy", "orange juice"],
+          ["jasne piwo", "lager"], ["ciemne piwo", "dark beer"], ["czerwone wino", "red wine"],
+          ["białe wino", "white wine"], ["wytrawne wino", "dry wine"]
+        ]},
+        { "name": "Lubię mocną kawę", "en": "After lubię, piję, jem, mam: -a → -ą, -ę", "cards": [
+          ["Na co masz ochotę?", "What do you feel like?"],
+          ["Mam ochotę na…", "I feel like…"],
+          ["Mam ochotę na czarną kawę.", "I feel like a black coffee."],
+          ["Lubię mocną kawę.", "I like strong coffee.", "mocna kawa → mocną kawę"],
+          ["Piję zieloną herbatę.", "I drink green tea.", "zielona herbata → zieloną herbatę"],
+          ["Jem pizzę.", "I'm eating pizza."],
+          ["Lubię zimne piwo.", "I like cold beer.", "neuter: no change"],
+          ["Piję słodki sok.", "I drink sweet juice.", "masculine thing: no change"]
+        ]},
+        { "name": "Śniadanie", "en": "Breakfast", "cards": [
+          ["chleb z dżemem", "bread with jam"],
+          ["tost z dżemem", "toast with jam"],
+          ["pomarańcza", "orange (fruit)"],
+          ["jajko", "egg"],
+          ["jajecznica", "scrambled eggs"],
+          ["jajecznica z bekonem", "scrambled eggs with bacon"],
+          ["jaglanka", "millet porridge"],
+          ["musli", "muesli"],
+          ["sałatka", "salad"],
+          ["Mam ochotę na jajecznicę.", "I feel like scrambled eggs."]
+        ]},
+        { "name": "Ankieta", "en": "The class survey", "cards": [
+          ["ankieta", "survey, questionnaire"],
+          ["Co pijesz rano?", "What do you drink in the morning?"],
+          ["Rano piję herbatę.", "In the morning I drink tea."],
+          ["Jaki jest twój ulubiony kolor?", "What's your favourite colour?"],
+          ["Mój ulubiony kolor to zielony.", "My favourite colour is green."],
+          ["Czy lubisz chodzić do kina?", "Do you like going to the cinema?"],
+          ["Czy lubisz chodzić do kawiarni?", "Do you like going to cafés?"],
+          ["Czy lubisz mówić po polsku?", "Do you like speaking Polish?"],
+          ["Czy umiesz gotować?", "Can you cook?"],
+          ["Umiem gotować.", "I can cook."],
+          ["też", "too, also"],
+          ["Ona też lubi kawę.", "She likes coffee too."],
+          ["Czy jesteś bardzo zajęty / zajęta?", "Are you very busy? (to a man / woman)"],
+          ["Ona pije zdrowy sok ananasowy.", "She drinks healthy pineapple juice."]
+        ]},
+        { "name": "Co robicie?", "en": "Koniugacja II in sentences (Podręcznik str. 40)", "cards": [
+          ["Co robicie?", "What are you doing? (to several people)"],
+          ["Teraz robimy zadanie domowe.", "We're doing our homework now."],
+          ["Tak, bardzo lubię kawę.", "Yes, I really like coffee."],
+          ["Gdzie uczycie się polskiego?", "Where do you learn Polish? (to several people)"],
+          ["Uczymy się polskiego w Varii.", "We learn Polish at Varia."],
+          ["Oni wieczorem tańczą w klubie.", "In the evening they dance at a club."],
+          ["wieczorem", "in the evening"],
+          ["Co o tym myślisz?", "What do you think about it?"]
+        ]},
+        { "name": "Z piosenki", "en": "Words from the song", "cards": [
+          ["serce", "heart"],
+          ["z serca", "from the heart"],
+          ["szczere złoto", "pure gold"],
+          ["dlatego", "that's why"],
+          ["rozmawiać", "to talk, to chat"],
+          ["Lubię rozmawiać z tobą!", "I like talking with you!"],
+          ["każdy", "everyone, each"],
+          ["Każdy myśli to, co myśli.", "Everyone thinks what they think."]
+        ]}
+      ],
+      "sections": [
+        { "type": "adj", "title": "Mój, twój, jego, jej", "en": "Possessives follow the noun's gender", "rows": [
+          ["mój", "moja", "moje", "ja · mój brat, moja siostra, moje dziecko"],
+          ["twój", "twoja", "twoje", "ty · twój mąż, twoja żona, twoje dziecko"],
+          ["jego", "jego", "jego", "on · jego syn, jego córka, jego dziecko"],
+          ["jej", "jej", "jej", "ona · jej szef, jej szefowa, jej dziecko"]
+        ], "html": "<p>Masculine: kolega, przyjaciel, mąż, brat, syn, szef. Feminine: koleżanka, przyjaciółka, żona, siostra, córka, szefowa. Neuter: dziecko.</p>" },
+        { "type": "note", "title": "Lubię mocną kawę", "en": "The -ą, -ę form after lubię, piję, jem, mam, mam ochotę na", "html": "<p>Feminine words in <b>-a</b> change after these verbs: the adjective takes <b>-ą</b> and the noun takes <b>-ę</b>. <i>To jest mocna kawa → Lubię mocną kawę.</i> <i>zielona herbata → Piję zieloną herbatę.</i> <i>pizza → Jem pizzę.</i> <i>lekcja → Mam lekcję.</i></p><p>Masculine things and neuter words stay the same: <i>Piję słodki sok. Lubię zimne piwo. Mam dobry telefon.</i></p>" },
+        { "type": "conj", "title": "Koniugacja II", "en": "-ę, -isz / -ysz (Podręcznik str. 40)", "verbs": [
+          { "inf": "mówić", "en": "to speak", "forms": ["mówię", "mówisz", "mówi", "mówimy", "mówicie", "mówią"] },
+          { "inf": "lubić", "en": "to like", "forms": ["lubię", "lubisz", "lubi", "lubimy", "lubicie", "lubią"] },
+          { "inf": "robić", "en": "to do, to make", "forms": ["robię", "robisz", "robi", "robimy", "robicie", "robią"] },
+          { "inf": "myśleć", "en": "to think", "forms": ["myślę", "myślisz", "myśli", "myślimy", "myślicie", "myślą"] },
+          { "inf": "uczyć się", "en": "to learn", "forms": ["uczę się", "uczysz się", "uczy się", "uczymy się", "uczycie się", "uczą się"] },
+          { "inf": "tańczyć", "en": "to dance", "forms": ["tańczę", "tańczysz", "tańczy", "tańczymy", "tańczycie", "tańczą"] }
+        ], "html": "<p>ja <b>-ę</b>, ty <b>-isz</b>. After cz, sz, rz and ż the vowel is <b>y</b>: tańcz<b>ysz</b>, ucz<b>ysz</b> się.</p>" },
+        { "type": "conj", "title": "Pić, spać i -m, -sz", "en": "More verbs from this class", "verbs": [
+          { "inf": "pić", "en": "to drink", "forms": ["piję", "pijesz", "pije", "pijemy", "pijecie", "piją"] },
+          { "inf": "spać", "en": "to sleep", "forms": ["śpię", "śpisz", "śpi", "śpimy", "śpicie", "śpią"] },
+          { "inf": "zapraszać", "en": "to invite", "forms": ["zapraszam", "zapraszasz", "zaprasza", "zapraszamy", "zapraszacie", "zapraszają"] },
+          { "inf": "przepraszać", "en": "to apologise", "forms": ["przepraszam", "przepraszasz", "przeprasza", "przepraszamy", "przepraszacie", "przepraszają"] },
+          { "inf": "wybierać", "en": "to choose", "forms": ["wybieram", "wybierasz", "wybiera", "wybieramy", "wybieracie", "wybierają"] }
+        ], "html": "<p>Watch the small words: <b>zapraszam na</b> kawę (invite to), <b>przepraszam za</b> spóźnienie (sorry for).</p>" }
+      ],
+      "inclass": [
+        ["Podręcznik", "str. 20", "Lubię, kiedy ktoś jest… · personality"],
+        ["Film", "„Zupa Nic”", "describing a film poster: Jaki jest ten mężczyzna?"],
+        ["Podręcznik", "str. 22, ćw. 9a, 10a", "numbers 11–23 · businesses and addresses"],
+        ["Nagranie", "CD 168", "Coś słodkiego · naleśniki ze szpinakiem"],
+        ["Handout", "Ankieta", "pair work: Co pijesz rano?"],
+        ["Podręcznik", "str. 40", "koniugacja II: -ę, -isz / -ysz"]
+      ],
+      "links": [
+        ["Song from class (YouTube)", "https://www.youtube.com/watch?v=UhyeywiEzKo"],
+        ["School survey (Google Form)", "https://forms.gle/vZWFui5NDx1DkTwv7"]
+      ],
+      "homework": [
+        { "id": "l4-h1", "where": "Podręcznik", "ref": "str. 23, ćw. I, II, III, IV" },
+        { "id": "l4-h2", "where": "Podręcznik", "ref": "str. 31, ćw. 11b" },
+        { "id": "l4-h3", "where": "Zeszyt ćwiczeń", "ref": "str. 20–21, ćw. 6" }
+      ]
+    },
+    {
+      "id": "l5", "n": 5, "date": "2026-11-14",
+      "title": "Kim jesteś z zawodu?", "en": "What do you do for a living?",
+      "focus": "być + narzędnik (Jestem Polakiem, On jest dobrym lekarzem) vs to + mianownik, nationality nouns (Polak / Polka), and masculine vs feminine job titles",
+      "write": "a famous person from your country, or the people in your family and their jobs",
+      "topics": ["Mam ochotę na… / Nie mam ochoty na…", "rz after p, t, k, ch sounds like sz", "Gender endings review", "woleć: Co wolisz? Wolę…", "Nationalities: Polak, Polka…", "Narzędnik: Jestem Polakiem", "jest + narzędnik, to + mianownik", "The seven Polish cases", "Jobs: Kim jesteś z zawodu?", "Czym się interesujesz?"],
+      "vocab": [
+        { "name": "Masz ochotę?", "en": "Do you feel like…?", "cards": [
+          ["Czy masz ochotę na kawę?", "Do you feel like a coffee?"],
+          ["Czy masz ochotę na żurek?", "Do you feel like some żurek?"],
+          ["Tak, mam ochotę na…", "Yes, I feel like…"],
+          ["Nie, nie mam ochoty na…", "No, I don't feel like…", "after nie: ochotę → ochoty"],
+          ["Zawsze mam ochotę na kawę i czekoladę.", "I always feel like coffee and chocolate."],
+          ["zawsze", "always"]
+        ]},
+        { "name": "Rz", "en": "Words from the rz pronunciation slide", "cards": [
+          ["na przykład", "for example"],
+          ["sprzątać", "to clean, to tidy up"],
+          ["drzewo", "tree"],
+          ["drzemka", "nap"],
+          ["skrzyżowanie", "crossroads, junction"],
+          ["grzebień", "comb"],
+          ["chrzan", "horseradish"],
+          ["ujrzeć", "to catch sight of"]
+        ]},
+        { "name": "Jaki? Jaka? Jakie?", "en": "Gender endings review", "cards": [
+          ["drogi sport", "an expensive sport"],
+          ["limit", "limit", "ten · masculine"],
+          ["rabat", "discount", "ten · masculine"],
+          ["klimat", "climate", "ten · masculine"],
+          ["kreatywny poeta", "a creative poet", "ten · masculine, even though it ends in -a"],
+          ["altruista / altruistka", "altruist (man / woman)"],
+          ["egoistka", "selfish woman", "ta · feminine"],
+          ["emocja", "emotion", "ta · feminine"],
+          ["poezja", "poetry", "ta · feminine"],
+          ["religia", "religion", "ta · feminine"],
+          ["nowa organizacja", "a new organisation"],
+          ["zielone auto", "a green car"],
+          ["ranczo", "ranch", "to · neuter"],
+          ["stare muzeum", "an old museum"],
+          ["archiwum", "archive", "to · neuter, ends in -um"]
+        ]},
+        { "name": "Co wolisz?", "en": "Preferences, and koniugacja II in use", "cards": [
+          ["woleć", "to prefer"],
+          ["Co wolisz – kawę czy herbatę?", "What do you prefer, coffee or tea?"],
+          ["Wolę kawę.", "I prefer coffee."],
+          ["Wolę słodką herbatę.", "I prefer sweet tea."],
+          ["herbata bez cukru", "tea without sugar"],
+          ["bez", "without"],
+          ["Tak, mówię trochę po polsku.", "Yes, I speak a little Polish."],
+          ["Co robisz w piątek wieczorem?", "What are you doing on Friday evening?"],
+          ["Robię zadanie domowe.", "I'm doing my homework."],
+          ["Tańczę w klubie.", "I dance at a club."],
+          ["Myślę, że to dobry pomysł.", "I think it's a good idea."],
+          ["pomysł", "idea"]
+        ]},
+        { "name": "Narodowości: kto?", "en": "Nationality nouns (Podręcznik str. 25)", "cards": [
+          ["Polak / Polka", "Pole (man / woman)"],
+          ["Niemiec / Niemka", "German (man / woman)", "Niemiec → Jestem Niemcem"],
+          ["Francuz / Francuzka", "French (man / woman)"],
+          ["Anglik / Angielka", "English (man / woman)"],
+          ["Amerykanin / Amerykanka", "American (man / woman)"],
+          ["Hiszpan / Hiszpanka", "Spaniard (man / woman)"],
+          ["Rosjanin / Rosjanka", "Russian (man / woman)"],
+          ["Włoch / Włoszka", "Italian (man / woman)", "z Włoch = from Italy"],
+          ["Japończyk / Japonka", "Japanese (man / woman)"],
+          ["Chińczyk / Chinka", "Chinese (man / woman)"],
+          ["Ukrainiec / Ukrainka", "Ukrainian (man / woman)", "Ukrainiec → Jestem Ukraińcem"],
+          ["Szwed / Szwedka", "Swede (man / woman)"],
+          ["Irańczyk", "Iranian (man)"],
+          ["Czeczen", "Chechen (man)"],
+          ["Rumun", "Romanian (man)"],
+          ["Hindus", "Indian (man)"],
+          ["Wietnamka", "Vietnamese (woman)"],
+          ["perski", "Persian (language)"]
+        ]},
+        { "name": "Jestem Polakiem", "en": "Saying your nationality: jestem + narzędnik", "cards": [
+          ["Jestem Polakiem.", "I'm Polish. (a man speaking)"],
+          ["Jestem Polką.", "I'm Polish. (a woman speaking)"],
+          ["Jestem Polką, a ty?", "I'm Polish, and you?"],
+          ["Jestem Niemcem.", "I'm German. (a man speaking)"],
+          ["Jestem Włochem.", "I'm Italian. (a man speaking)"],
+          ["Jestem Francuzką.", "I'm French. (a woman speaking)"],
+          ["Jestem Japonką.", "I'm Japanese. (a woman speaking)"],
+          ["Jestem Amerykanką.", "I'm American. (a woman speaking)"],
+          ["Jestem Hindusem.", "I'm Indian. (a man speaking)"],
+          ["On jest Rosjaninem.", "He's Russian."],
+          ["Jestem z Iranu. Jestem Irańczykiem.", "I'm from Iran. I'm Iranian. (a man speaking)"],
+          ["Mój język ojczysty to perski.", "My mother tongue is Persian."],
+          ["Jestem z Chin. Jestem Chinką.", "I'm from China. I'm Chinese. (a woman speaking)"],
+          ["Jej język ojczysty to japoński.", "Her mother tongue is Japanese."],
+          ["Jakimi językami mówi Władimir?", "What languages does Władimir speak?"],
+          ["Jakie języki obce zna Eva?", "What foreign languages does Eva know?"],
+          ["Mówię po polsku i po francusku.", "I speak Polish and French."]
+        ]},
+        { "name": "Kim on jest?", "en": "Famous people: Lewandowski, Tokarczuk, Pawlikowski, Skłodowska-Curie", "cards": [
+          ["Kim on jest?", "Who is he? (what is he)", "kim = narzędnik of kto"],
+          ["Czy wiesz, kim jest Krystyna Janda?", "Do you know who Krystyna Janda is?"],
+          ["Ona jest polską aktorką.", "She's a Polish actress."],
+          ["Nie wiem, kim ona jest.", "I don't know who she is."],
+          ["On jest popularnym Polakiem.", "He's a popular Pole."],
+          ["On jest dobrym piłkarzem.", "He's a good footballer."],
+          ["On jest aktywnym sportowcem.", "He's an active sportsman.", "sportowiec → sportowcem"],
+          ["On jest ojcem.", "He's a father.", "ojciec → ojcem"],
+          ["piłkarz", "footballer"],
+          ["sportowiec", "sportsman, athlete"],
+          ["ojciec", "father"],
+          ["znany / znana / znane", "well-known, famous"],
+          ["Ona jest znaną Polką.", "She's a well-known Polish woman."],
+          ["Ona jest dobrą pisarką.", "She's a good writer."],
+          ["pisarka", "writer (woman)"],
+          ["reżyser", "film director"],
+          ["On jest utalentowanym reżyserem.", "He's a talented director."],
+          ["człowiek", "person, human being"],
+          ["On jest inteligentnym człowiekiem.", "He's an intelligent person.", "człowiek → człowiekiem"],
+          ["wybitny", "outstanding"],
+          ["naukowczyni", "scientist (woman)"],
+          ["Ona jest wybitną naukowczynią.", "She's an outstanding scientist."],
+          ["Kraków jest pięknym miastem.", "Kraków is a beautiful city."],
+          ["Zawsze można na niego liczyć!", "You can always count on him!"],
+          ["Butter chicken to indyjska potrawa.", "Butter chicken is an Indian dish."],
+          ["barszcz", "borscht (beetroot soup)"],
+          ["Barszcz jest z Ukrainy.", "Borscht is from Ukraine."],
+          ["danie", "dish, course"],
+          ["Brad Pitt to amerykański aktor.", "Brad Pitt is an American actor."]
+        ]},
+        { "name": "Jest + narzędnik", "en": "Podręcznik str. 26–27, ćw. 4, 5", "cards": [
+          ["Jędruś jest sympatycznym dzieckiem.", "Jędruś is a nice child."],
+          ["Adam jest wysportowanym mężczyzną.", "Adam is a sporty man.", "mężczyzna → mężczyzną"],
+          ["Ewa jest wysoką kobietą.", "Ewa is a tall woman."],
+          ["Ewa Lipska to dobra poetka.", "Ewa Lipska is a good poet.", "after to: no change"],
+          ["„Żywiec” to polskie piwo.", "Żywiec is a Polish beer."],
+          ["On jest młodym profesorem.", "He's a young professor."],
+          ["Wojtek jest ambitnym studentem.", "Wojtek is an ambitious student."],
+          ["Kaśka jest dobrą studentką.", "Kaśka is a good student."],
+          ["Ten doktor jest dobrym dentystą.", "This doctor is a good dentist.", "dentysta → dentystą"],
+          ["On jest aktywnym biznesmenem.", "He's an active businessman."],
+          ["Cornelia jest dobrą nauczycielką.", "Cornelia is a good teacher."],
+          ["Roman jest energicznym Polakiem.", "Roman is an energetic Pole."]
+        ]},
+        { "name": "Kim jesteś z zawodu?", "en": "Jobs and occupations (Podręcznik str. 28)", "cards": [
+          ["Kim jesteś z zawodu?", "What do you do for a living?"],
+          ["Kim pan / pani jest z zawodu?", "What do you do for a living? (formal)"],
+          ["zawód", "profession, job"],
+          ["inżynier", "engineer"],
+          ["architekt", "architect"],
+          ["lekarz / lekarka", "doctor (man / woman)", "rz : r"],
+          ["urzędnik / urzędniczka", "office clerk (man / woman)", "k : cz"],
+          ["kierownik / kierowniczka", "manager (man / woman)"],
+          ["pracownik / pracownica", "employee, worker (man / woman)"],
+          ["programista / programistka", "programmer (man / woman)"],
+          ["dziennikarz / dziennikarka", "journalist (man / woman)"],
+          ["fotograf / fotografka", "photographer (man / woman)"],
+          ["poeta / poetka", "poet (man / woman)"],
+          ["aktor / aktorka", "actor / actress"],
+          ["rolnik / rolniczka", "farmer (man / woman)"],
+          ["emeryt / emerytka", "pensioner (man / woman)"],
+          ["bezrobotny / bezrobotna", "unemployed (man / woman)"],
+          ["biznesmen", "businessman"],
+          ["kierowca", "driver", "Ona jest kierowcą. On jest kierowcą."],
+          ["Jestem jeszcze studentem.", "I'm still a student. (a man speaking)"],
+          ["Czy jesteś studentką?", "Are you a student? (to a woman)"],
+          ["Czy jesteś studentem?", "Are you a student? (to a man)"],
+          ["Teraz nie pracuję.", "I'm not working at the moment."],
+          ["Już nie pracuję.", "I don't work any more."]
+        ]},
+        { "name": "Czym się interesujesz?", "en": "Paola and Michael's dialogue", "cards": [
+          ["Studiuję medycynę.", "I study medicine."],
+          ["Chcę zostać lekarzem.", "I want to become a doctor."],
+          ["zostać", "to become"],
+          ["Czym się interesujesz?", "What are you interested in?"],
+          ["Interesuję się muzyką.", "I'm interested in music."],
+          ["Interesuję się historią sztuki i literaturą.", "I'm interested in art history and literature."],
+          ["Interesuję się sportem.", "I'm interested in sport."],
+          ["Co lubisz robić w weekendy?", "What do you like doing at weekends?"],
+          ["Lubię spacerować.", "I like going for walks."],
+          ["Lubię słuchać muzyki.", "I like listening to music."],
+          ["Lubię grać w tenisa.", "I like playing tennis."]
+        ]},
+        { "name": "Marta jest Polką", "en": "Hello Polish podcast (extra listening)", "cards": [
+          ["Marta jest Polką. Mieszka w Gdańsku.", "Marta is Polish. She lives in Gdańsk."],
+          ["Roberto jest Włochem. Mieszka w Wenecji.", "Roberto is Italian. He lives in Venice."],
+          ["Sven jest Szwedem. Mieszka w Sztokholmie.", "Sven is Swedish. He lives in Stockholm."],
+          ["Anna jest Ukrainką. Mieszka w Kijowie.", "Anna is Ukrainian. She lives in Kyiv."],
+          ["Cheng jest Chińczykiem. Mieszka w Pekinie.", "Cheng is Chinese. He lives in Beijing."],
+          ["Kate jest Amerykanką. Mieszka w Nowym Jorku.", "Kate is American. She lives in New York."],
+          ["Maksim jest Rosjaninem. Mieszka w Moskwie.", "Maksim is Russian. He lives in Moscow."],
+          ["po szwedzku", "in Swedish"],
+          ["po koreańsku", "in Korean"],
+          ["po turecku", "in Turkish"],
+          ["po portugalsku", "in Portuguese"]
+        ]}
+      ],
+      "sections": [
+        { "type": "note", "title": "Rz: [ż] czy [sz]?", "en": "When rz sounds like sz", "html": "<p>After <b>p, t, k, ch</b>, rz loses its voice and sounds like <b>sz</b>: <i>przyjaciel, na przykład, sprzątać, trzy, krzesło, skrzyżowanie, chrzan</i>.</p><p>Everywhere else it sounds like <b>ż</b>: <i>brzydki, dobrze, drzewo, drzwi, drzemka, grzebień, ujrzeć, wrzesień</i>.</p>" },
+        { "type": "table", "title": "Kto to jest? Kim on / ona jest?", "en": "Nationalities: mianownik vs narzędnik (Podręcznik str. 25)", "rowHead": true, "head": ["To jest… (man)", "To jest… (woman)", "On jest…", "Ona jest…", "Zna język…", "Mówi…"], "rows": [
+          ["Polak", "Polka", "Polakiem", "Polką", "polski", "po polsku"],
+          ["Niemiec", "Niemka", "Niemcem", "Niemką", "niemiecki", "po niemiecku"],
+          ["Francuz", "Francuzka", "Francuzem", "Francuzką", "francuski", "po francusku"],
+          ["Anglik", "Angielka", "Anglikiem", "Angielką", "angielski", "po angielsku"],
+          ["Amerykanin", "Amerykanka", "Amerykaninem", "Amerykanką", "angielski", "po angielsku"],
+          ["Hiszpan", "Hiszpanka", "Hiszpanem", "Hiszpanką", "hiszpański", "po hiszpańsku"],
+          ["Rosjanin", "Rosjanka", "Rosjaninem", "Rosjanką", "rosyjski", "po rosyjsku"],
+          ["Włoch", "Włoszka", "Włochem", "Włoszką", "włoski", "po włosku"],
+          ["Japończyk", "Japonka", "Japończykiem", "Japonką", "japoński", "po japońsku"],
+          ["Chińczyk", "Chinka", "Chińczykiem", "Chinką", "chiński", "po chińsku"],
+          ["Ukrainiec", "Ukrainka", "Ukraińcem", "Ukrainką", "ukraiński", "po ukraińsku"],
+          ["Szwed", "Szwedka", "Szwedem", "Szwedką", "szwedzki", "po szwedzku"]
+        ] },
+        { "type": "note", "title": "Narzędnik", "en": "być + narzędnik: Jestem Polakiem", "html": "<p>After <b>jestem, jesteś, jest…</b> the person or thing takes the <b>narzędnik</b> (instrumental). Masculine and neuter: adjective <b>-ym</b> (<b>-im</b> after k, g), noun <b>-em</b> (<b>-iem</b> after k, g): <i>dobrym aktorem, polskim politykiem, pięknym miastem</i>. Feminine: <b>-ą</b> and <b>-ą</b>: <i>polską aktorką, dobrą pisarką</i>.</p><p>After <b>to</b>, nothing changes: <i>Kraków jest pięknym miastem</i> but <i>Kraków to piękne miasto</i>.</p><p>Watch these: Niemiec → Niemcem, ojciec → ojcem, sportowiec → sportowcem, człowiek → człowiekiem. Masculine nouns in -a take -ą: mężczyzną, dentystą, kierowcą, poetą.</p>" },
+        { "type": "table", "title": "Siedem przypadków", "en": "The seven cases, with examples you already know", "rowHead": true, "head": ["Przypadek", "Pytanie", "Przykład"], "rows": [
+          ["Mianownik", "kto? co?", "To jest kawa."],
+          ["Dopełniacz", "kogo? czego?", "Nie lubię szpinaku. Nie mam ochoty na…"],
+          ["Celownik", "komu? czemu?", "(coming later)"],
+          ["Biernik", "kogo? co?", "Lubię kawę. Mam ochotę na mocną kawę."],
+          ["Narzędnik", "(z) kim? (z) czym?", "Jestem Polką. Jestem Polakiem."],
+          ["Miejscownik", "o kim? o czym?", "Mieszkam w Warszawie."],
+          ["Wołacz", "–", "Mamo! Tato!"]
+        ] },
+        { "type": "table", "title": "Mężczyzna, kobieta", "en": "Jobs: the feminine form", "rowHead": false, "head": ["mężczyzna", "kobieta", "uwaga"], "rows": [
+          ["nauczyciel", "nauczycielka", ""],
+          ["pracownik", "pracownica", ""],
+          ["kelner", "kelnerka", ""],
+          ["dentysta", "dentystka", ""],
+          ["student", "studentka", ""],
+          ["fotograf", "fotografka", ""],
+          ["muzyk", "muzyk", "same word"],
+          ["poeta", "poetka", ""],
+          ["urzędnik", "urzędniczka", "k : cz"],
+          ["kierownik", "kierowniczka", "k : cz"],
+          ["lekarz", "lekarka", "rz : r"],
+          ["programista", "programistka", ""]
+        ] },
+        { "type": "conj", "title": "Woleć, interesować się", "en": "Two verbs from this class", "verbs": [
+          { "inf": "woleć", "en": "to prefer", "forms": ["wolę", "wolisz", "woli", "wolimy", "wolicie", "wolą"] },
+          { "inf": "interesować się", "en": "to be interested in", "forms": ["interesuję się", "interesujesz się", "interesuje się", "interesujemy się", "interesujecie się", "interesują się"] }
+        ], "html": "<p><b>woleć</b> follows koniugacja II (-ę, -isz). <b>interesować się</b> takes the narzędnik: <i>Interesuję się muzyką, sportem, historią sztuki.</i></p>" }
+      ],
+      "inclass": [
+        ["Podręcznik", "str. 24, ćw. 1a, 1b · CD 20", "Kto to mówi? nationalities and languages"],
+        ["Podręcznik", "str. 25, ćw. 2a", "mianownik vs narzędnik · quiz: Kim oni są?"],
+        ["Podręcznik", "str. 26–27, ćw. 4, 5", "jest + narzędnik"],
+        ["Podręcznik", "str. 28", "Zawody i zajęcia (pair work)"],
+        ["Handout", "Marta jest Polką", "Hello Polish podcast: nationalities"]
+      ],
+      "links": [],
+      "homework": [
+        { "id": "l5-h1", "where": "Podręcznik", "ref": "str. 25, ćw. 2b" },
+        { "id": "l5-h2", "where": "Zeszyt ćwiczeń", "ref": "str. 19, ćw. 3, 4" },
+        { "id": "l5-h3", "where": "Zeszyt ćwiczeń", "ref": "str. 20, ćw. 5A" },
+        { "id": "l5-h4", "where": "Prezentacja", "ref": "a popular person from your country (prezentacja popularnej osoby z twojego kraju)" }
       ]
     }
   ],
@@ -1850,6 +2617,9 @@ table.grid td b { color: var(--accent); font-weight: 700; }
     } else if (s.type === "adj") {
       body = '<div class="scroll"><table class="grid"><thead><tr><th>on · masc.</th><th>ona · fem.</th><th>ono · neut.</th><th>example</th></tr></thead><tbody>' +
         s.rows.map((r) => "<tr><td>" + adjEnd(r[0]) + "</td><td>" + adjEnd(r[1]) + "</td><td>" + adjEnd(r[2]) + '</td><td style="font-family:var(--f-body);color:var(--muted);font-size:.9rem">' + esc(r[3]) + "</td></tr>").join("") + "</tbody></table></div>";
+    } else if (s.type === "table") {
+      body = '<div class="scroll"><table class="grid"><thead><tr>' + s.head.map((h) => "<th>" + esc(h) + "</th>").join("") + "</tr></thead><tbody>" +
+        s.rows.map((r) => "<tr>" + r.map((c, i) => (i === 0 && s.rowHead ? "<th>" + esc(c) + "</th>" : "<td>" + esc(c) + "</td>")).join("") + "</tr>").join("") + "</tbody></table></div>";
     } else if (s.type === "chips") {
       body = s.groups.map((g) => '<div style="display:grid;gap:6px"><div class="eyebrow">' + esc(g[0]) + '</div><div class="chips">' + g[1].map((w) => '<span class="chip" data-say="' + esc(w) + '">' + esc(w) + "</span>").join("") + "</div></div>").join("");
       body += '<p class="muted" style="font-size:.88rem">' + (plVoice ? "Tap a word to hear it." : "Read them aloud. Remember the stress on the second-to-last syllable.") + "</p>";
@@ -1882,6 +2652,7 @@ table.grid td b { color: var(--accent); font-weight: 700; }
             '<div class="topics">' + l.topics.map((t) => "<span>" + esc(t) + "</span>").join("") + "</div>" +
             '<div class="actions" style="margin-top:10px"><button class="btn primary small" data-study="' + l.id + '">Study these ' + nCards + ' cards</button><button class="btn small" data-cram="' + l.id + '">Quick practice</button></div>' +
           "</header>" +
+          aiBox("lesson", l.id) +
           l.vocab.map((g) => '<section class="sec"><h3>' + esc(g.name) + " <small>" + esc(g.en) + '</small></h3><div class="phrases">' +
             g.cards.map((c) => '<div class="phrase"><div class="t"><span class="p">' + esc(c[0]) + '</span><span class="e">' + esc(c[1]) + (c[2] ? " <em>· " + esc(c[2]) + "</em>" : "") + "</span></div>" + sayBtn(c[0]) + "</div>").join("") +
           "</div></section>").join("") +
@@ -1891,6 +2662,59 @@ table.grid td b { color: var(--accent); font-weight: 700; }
           '<section class="sec"><h3>Zadanie domowe <small>Homework</small></h3><ul class="refs">' + l.homework.map((h) => '<li><span class="tag ' + tagClass(h.where) + '">' + esc(h.where) + "</span><span>" + esc(h.ref) + "</span>" + (S.hw[h.id] ? '<span class="pill ok">done</span>' : '<span class="pill todo">to do</span>') + "</li>").join("") + '</ul><div><button class="linkbtn" data-go="zadania">Tick off homework</button></div></section>' +
         "</article>" +
       "</div>";
+  }
+
+  /* ---------- practise with AI: copy-ready prompts ---------- */
+  const PROFILE = "I'm an adult A1 learner of Polish (weekend course at the Varia school, textbook Hurra!!! Po polsku 1). I live in Warsaw, work as a data analyst, and have a partner and a child. Write Polish with correct diacritics.";
+  const AI_KINDS = {
+    lesson: [["story", "Opowiadanie · story"], ["roleplay", "Rozmowa · role-play"], ["drill", "Drill"], ["translate", "Tłumaczenie · translate"], ["correct", "Popraw mnie · correct my writing"]],
+    sit: [["roleplay", "Rozmowa · role-play"], ["prep", "Przygotuj mnie · prepare me"]]
+  };
+  // a spread of the lesson's shorter words and phrases, so the prompt stays a sensible length
+  function pickWords(rows, max, wordsOnly) {
+    const keep = (w) => w.length <= 32 && (!wordsOnly || (!/[?!.…]$/.test(w) && w.split(" ").length <= 3));
+    const all = [...new Set(rows.map((c) => c[0]).filter(keep))];
+    if (all.length <= max) return all.join(", ");
+    const step = all.length / max;
+    return Array.from({ length: max }, (_, i) => all[Math.floor(i * step)]).join(", ");
+  }
+  function lessonPrompt(kind, l) {
+    const words = pickWords(l.vocab.flatMap((g) => g.cards), 60, true);
+    const focus = l.focus || l.topics.join(", ");
+    const tag = 'lesson ' + l.n + ' of my course ("' + l.title + '")';
+    const earlier = LESSONS.filter((x) => x.n < l.n).map((x) => x.title).join("; ");
+    const known = earlier ? "\n- I've also done these earlier lessons, so their words are fine too: " + earlier + "." : "";
+    if (kind === "story") return PROFILE + "\n\nWrite a short story in Polish (about 150 words) set in my everyday life in Warsaw, for " + tag + ".\n- Practise this lesson's grammar: " + focus + ".\n- Use mostly words I know. From this lesson: " + words + "." + known + "\n- Present tense only, short sentences.\n- Bold at most 5 new words and gloss them in English at the end.\nThen ask me 3 simple comprehension questions in Polish, one at a time, and correct my answers briefly.";
+    if (kind === "roleplay") return PROFILE + "\n\nLet's do a role-play in Polish at A1 level to practise " + tag + ": " + focus + ".\nPick an everyday situation in Warsaw where this grammar comes up naturally, describe the scene in one English sentence, then start.\n- Speak only Polish, one or two short sentences per turn, and wait for my reply.\n- Use words from this lesson where you can: " + words + "." + known + "\n- Don't correct me during the conversation.\n- After 8 turns, stop and list my 3 most important mistakes: what I wrote → the correct form → the rule in one line.";
+    if (kind === "drill") return PROFILE + "\n\nDrill me on " + focus + ". This is " + tag + ".\n- Give me one short task at a time (a word or phrase to transform, or a gap to fill) and wait for my answer.\n- After each answer, reply ✓ or give the correct form and the rule in one line, then the next task.\n- 20 rounds. Mix masculine, feminine and neuter where it matters.\n- Build the tasks mainly from these words: " + words + ".\n- At the end, give my score and list the patterns I got wrong.";
+    if (kind === "translate") return PROFILE + "\n\nGive me 10 short English sentences to translate into Polish, one at a time, for " + tag + ".\n- Each sentence should practise: " + focus + ".\n- Use words from: " + words + "." + known + "\n- Make the sentences about my real life (Warsaw, work, family, food).\n- After each answer, show the correct Polish; if mine differs, explain the difference in one line.";
+    return PROFILE + "\n\nCorrect my Polish writing. I'm practising " + tag + ": " + focus + ".\n- For each mistake show: what I wrote → the correct form → the rule in one line.\n- Don't rewrite sentences that are already correct.\n- End with one tip about my most frequent mistake.\n\nTopic: 5 sentences about " + (l.write || "my day") + ".\nMy text:\n[write your 5 sentences here]";
+  }
+  function sitPrompt(kind, s) {
+    const say = pickWords((s.groups || []).flatMap((g) => g.cards).concat(s.say || []), 30);
+    const hear = pickWords(s.hear || [], 12);
+    const roles = [...new Set(s.dialogue.map((d) => d[0]).filter((r) => r !== "Ty"))].join(" / ");
+    s = { ...s, en: s.en.replace(/\byour\b/gi, "my") };
+    if (kind === "prep") return PROFILE + "\n\nI'm about to be in this real situation in Warsaw: " + s.en.toLowerCase() + " (" + s.title + "). Prepare me in under 5 minutes:\n1. The 5 most useful things I can say (Polish + English).\n2. The 5 most likely things people will say to me, with a simple reply to each.\n3. One rescue phrase for when I don't understand.\nKeep everything at A1 level. Phrases I already know: " + say + ".";
+    return PROFILE + "\n\nLet's role-play this situation in Polish at A1 level: " + s.en.toLowerCase() + " (" + s.title + ").\n- You play " + (roles || "the other person") + "; I play myself. You start.\n- Speak only Polish, one or two short sentences per turn, and wait for my reply.\n- Phrases I've learned for this: " + say + "." + (hear ? "\n- Things I expect to hear: " + hear + "." : "") + "\n- Don't correct me during the conversation. After 8 turns, list my 3 most important mistakes: what I wrote → the correct form → the rule in one line.\n- Then play it once more with one surprise (something goes wrong), so I practise reacting.";
+  }
+  function aiBox(type, id) {
+    return '<section class="ai" data-ai-box="' + id + '"><div class="ai-head"><b>Ćwicz z AI · practise with AI</b><span class="muted" style="font-size:.85rem">Each button copies a ready-made prompt. Paste it into Claude.</span></div>' +
+      '<div class="ai-btns">' + AI_KINDS[type].map((k) => '<button class="btn small" type="button" aria-pressed="false" data-ai="' + k[0] + '" data-ai-type="' + type + '" data-ai-src="' + id + '">' + esc(k[1]) + "</button>").join("") + "</div>" +
+      '<div class="ai-out" hidden><textarea readonly aria-label="Prompt to copy"></textarea><div class="actions" style="margin-top:8px"><span class="ai-status" aria-live="polite"></span><a class="linkbtn" href="https://claude.ai/new" target="_blank" rel="noopener">Open Claude</a></div></div></section>';
+  }
+  function runAi(btn) {
+    const box = btn.closest(".ai");
+    const src = btn.dataset.aiType === "sit" ? sitById(btn.dataset.aiSrc) : lessonById(btn.dataset.aiSrc);
+    if (!box || !src) return;
+    const text = btn.dataset.aiType === "sit" ? sitPrompt(btn.dataset.ai, src) : lessonPrompt(btn.dataset.ai, src);
+    box.querySelectorAll("[data-ai]").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+    const out = box.querySelector(".ai-out"), ta = out.querySelector("textarea"), status = out.querySelector(".ai-status");
+    out.hidden = false;
+    ta.value = text;
+    const fallback = () => { ta.focus(); ta.select(); let ok = false; try { ok = document.execCommand("copy"); } catch (e) { /* ignore */ } status.textContent = ok ? "Copied. Paste it into Claude." : "Select the text above and copy it."; };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(() => { status.textContent = "Copied. Paste it into Claude."; }, fallback);
+    else fallback();
   }
 
   /* ---------- situations ---------- */
@@ -1913,6 +2737,7 @@ table.grid td b { color: var(--accent); font-weight: 700; }
             '<p class="intro">' + esc(s.intro) + "</p>" +
             '<div class="actions" style="margin-top:10px"><button class="btn primary small" data-study="' + s.id + '">Study these ' + nCards + ' cards</button><button class="btn small" data-cram="' + s.id + '">Quick practice</button><span class="muted" style="font-size:.85rem">' + learned + " of " + nCards + " learned</span></div>" +
           "</header>" +
+          aiBox("sit", s.id) +
           '<section class="sec"><h3>Dialog <small>Read it aloud, then swap roles</small></h3><div class="dlg">' +
             s.dialogue.map((d) => '<div class="line' + (d[0] === "Ty" ? " me" : "") + '"><span class="who">' + esc(d[0] === "Ty" ? "Ty · you" : d[0]) + '</span><div class="t"><span class="p">' + esc(d[1]) + '</span><span class="e">' + esc(d[2]) + "</span></div>" + sayBtn(d[1]) + "</div>").join("") +
           "</div></section>" +
@@ -1976,6 +2801,7 @@ table.grid td b { color: var(--accent); font-weight: 700; }
     if (t.dataset.lesson) { e.preventDefault(); return go("lekcje", t.dataset.lesson); }
     if (t.dataset.sit) { e.preventDefault(); return go("sytuacje", t.dataset.sit); }
     if (t.dataset.go) { e.preventDefault(); return go(t.dataset.go); }
+    if (t.dataset.ai) return runAi(t);
     if (t.dataset.study) { S.settings.deck = t.dataset.study; save(); startSession(t.dataset.study); window.scrollTo(0, 0); return; }
     if (t.dataset.cram) { startCram(t.dataset.cram); window.scrollTo(0, 0); return; }
     if (t.dataset.rate) return rate(Number(t.dataset.rate));
