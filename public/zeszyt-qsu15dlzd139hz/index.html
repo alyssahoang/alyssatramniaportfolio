@@ -1705,25 +1705,25 @@ table.grid td b { color: var(--accent); font-weight: 700; }
     },
     {
       "id": "s-restauracja", "title": "W restauracji", "en": "At a restaurant",
-      "intro": "A table for three, the menu, ordering, the bill. In Poland you usually ask for the bill yourself; the waiter won't bring it until you do.",
+      "intro": "A table for two, the menu, ordering, the bill. In Poland you usually ask for the bill yourself; the waiter won't bring it until you do.",
       "dialogue": [
         ["Kelner", "Dzień dobry! Stolik dla ilu osób?", "Hello! A table for how many?"],
-        ["Ty", "Dla trzech osób. Jest krzesełko dla dziecka?", "For three. Is there a high chair for a child?"],
+        ["Ty", "Dla dwóch osób. Jest stolik przy oknie?", "For two. Is there a table by the window?"],
         ["Kelner", "Oczywiście. Proszę, menu. Coś do picia?", "Of course. Here's the menu. Something to drink?"],
-        ["Ty", "Poproszę wodę gazowaną i sok dla dziecka.", "Sparkling water and a juice for the child, please."],
+        ["Ty", "Poproszę wodę gazowaną i lampkę czerwonego wina.", "Sparkling water and a glass of red wine, please."],
         ["Kelner", "Co podać?", "What can I get you?"],
         ["Ty", "Dla mnie żurek i pierogi ruskie.", "For me, żurek and pierogi ruskie."],
         ["Kelner", "Smacznego!", "Enjoy your meal!"],
         ["Ty", "Dziękuję! … Poproszę rachunek.", "Thank you! … The bill, please."]
       ],
       "say": [
-        ["Stolik dla trzech osób, proszę.", "A table for three, please."],
+        ["Stolik dla dwóch osób, proszę.", "A table for two, please."],
         ["Mam rezerwację na nazwisko…", "I have a reservation under the name…"],
         ["Poproszę menu.", "The menu, please."],
         ["Co pan / pani poleca?", "What do you recommend?"],
         ["Dla mnie…", "For me…"],
-        ["Czy jest menu dla dzieci?", "Is there a children's menu?"],
-        ["Jest krzesełko dla dziecka?", "Is there a high chair for a child?"],
+        ["Czy jest stolik przy oknie?", "Is there a table by the window?"],
+        ["Poproszę lampkę czerwonego wina.", "A glass of red wine, please."],
         ["Czy to jest ostre?", "Is it spicy?"],
         ["Jestem wegetarianinem / wegetarianką.", "I'm vegetarian. (man / woman)"],
         ["Poproszę rachunek.", "The bill, please."],
@@ -1765,7 +1765,7 @@ table.grid td b { color: var(--accent); font-weight: 700; }
         ["Gdzie jest stacja metra?", "Where is the metro station?"],
         ["Gdzie mogę kupić bilet?", "Where can I buy a ticket?"],
         ["Poproszę bilet dwudziestominutowy.", "A 20-minute ticket, please."],
-        ["Bilet ulgowy dla dziecka.", "A reduced-fare ticket for a child."],
+        ["Poproszę bilet dobowy.", "A 24-hour ticket, please."],
         ["Gdzie mam wysiąść?", "Where should I get off?"],
         ["Przepraszam, wysiadam!", "Excuse me, I'm getting off!", "say it to get through a crowd"],
         ["Czy to miejsce jest wolne?", "Is this seat free?"],
@@ -1828,51 +1828,47 @@ table.grid td b { color: var(--accent); font-weight: 700; }
       ]
     },
     {
-      "id": "s-dom", "title": "W domu", "en": "At home with your partner and child",
-      "intro": "Everyday family lines. Children pick up Polish fast, so this is a good set to practise together. Where a word changes for a boy or a girl, both forms are given.",
+      "id": "s-dom", "title": "W domu", "en": "At home with your boyfriend",
+      "intro": "Everyday life together: mornings, chores and the shopping. People will ask about the two of you too, so the last lines prepare you for those questions.",
       "dialogue": [
-        ["Ty", "Dzień dobry, kochanie!", "Good morning, darling!"],
-        ["Dziecko", "Dzień dobry! Jestem głodny / głodna!", "Good morning! I'm hungry!"],
-        ["Ty", "Śniadanie jest gotowe. Umyj ręce!", "Breakfast is ready. Wash your hands!"],
-        ["Partner", "Kawa czy herbata?", "Coffee or tea?"],
-        ["Ty", "Kawa, poproszę. Kto dzisiaj odbiera dziecko?", "Coffee, please. Who's picking up our child today?"],
-        ["Partner", "Ja. A ty robisz zakupy?", "Me. And you're doing the shopping?"],
-        ["Ty", "Tak. Do zobaczenia wieczorem!", "Yes. See you this evening!"]
+        ["Ty", "Dzień dobry, kochanie! Kawa czy herbata?", "Good morning, darling! Coffee or tea?"],
+        ["Chłopak", "Kawa, poproszę. Co dzisiaj robimy?", "Coffee, please. What are we doing today?"],
+        ["Ty", "Rano sprzątamy, a potem robimy zakupy.", "This morning we clean, and then we do the shopping."],
+        ["Chłopak", "Dobrze. Ja odkurzam, a ty zmywasz?", "OK. I'll vacuum and you'll do the dishes?"],
+        ["Ty", "Zgoda! A kto gotuje obiad?", "Deal! And who's cooking lunch?"],
+        ["Chłopak", "Ja. Mam ochotę na pierogi.", "Me. I feel like pierogi."],
+        ["Ty", "Super. Do zobaczenia w kuchni!", "Great. See you in the kitchen!"]
       ],
       "say": [
-        ["Mam jedno dziecko.", "I have one child."],
-        ["Mam syna.", "I have a son."],
-        ["Mam córkę.", "I have a daughter."],
-        ["To jest mój partner.", "This is my partner. (man)"],
-        ["To jest moja partnerka.", "This is my partner. (woman)"],
+        ["Mam chłopaka.", "I have a boyfriend."],
+        ["To jest mój chłopak.", "This is my boyfriend."],
+        ["Mój chłopak jest Polakiem.", "My boyfriend is Polish.", "jest + narzędnik: Polak → Polakiem"],
+        ["Mieszkamy razem w Warszawie.", "We live together in Warsaw."],
+        ["Nie mam dzieci.", "I don't have children."],
         ["Dzień dobry, kochanie!", "Good morning, darling!"],
         ["Śniadanie jest gotowe!", "Breakfast is ready!"],
         ["Obiad jest gotowy!", "Dinner is ready!"],
-        ["Umyj ręce!", "Wash your hands!"],
-        ["Ubierz się!", "Get dressed!"],
+        ["Co dzisiaj robimy?", "What are we doing today?"],
+        ["Kto robi zakupy?", "Who's doing the shopping?"],
+        ["Kto sprząta?", "Who's cleaning?"],
+        ["Ja sprzątam, a ty gotujesz.", "I clean and you cook."],
+        ["Wyniesiesz śmieci?", "Will you take the rubbish out?"],
+        ["Zgoda!", "Deal! / Agreed!"],
         ["Pospiesz się!", "Hurry up!"],
-        ["Jesteś głodny / głodna?", "Are you hungry? (to a boy / girl)"],
-        ["Brawo! Super!", "Well done! Great!"],
-        ["Nie wolno!", "Not allowed! / You mustn't!"],
-        ["Czas spać.", "Time for bed."],
-        ["Dobranoc!", "Good night!"],
-        ["Kocham cię.", "I love you."],
-        ["Kto dzisiaj odbiera dziecko?", "Who's picking up our child today?"],
         ["Do zobaczenia wieczorem!", "See you this evening!"]
       ],
       "hear": [
-        ["Mamo! / Tato!", "Mum! / Dad!", "the form for calling someone"],
-        ["Nie chcę!", "I don't want to!"],
-        ["Jeszcze pięć minut!", "Five more minutes!"],
-        ["Masz dzieci?", "Do you have children?", "other parents"],
-        ["Ile lat ma dziecko?", "How old is your child?"],
-        ["Jak ma na imię?", "What's his / her name?"]
+        ["Masz dzieci?", "Do you have children?", "answer: Nie, nie mam dzieci."],
+        ["Twój chłopak jest Polakiem?", "Is your boyfriend Polish?"],
+        ["Jak długo jesteście razem?", "How long have you been together?"],
+        ["Gdzie się poznaliście?", "Where did you meet?"],
+        ["Mówicie w domu po polsku?", "Do you speak Polish at home?", "answer: Trochę! Uczę się."],
+        ["Ładnie mówisz po polsku!", "You speak Polish nicely!"]
       ],
       "words": [
-        ["rodzina", "family"], ["mama", "mum"], ["tata", "dad"], ["syn", "son"], ["córka", "daughter"],
-        ["mąż", "husband"], ["partner / partnerka", "partner (man / woman)"], ["przedszkole", "kindergarten"],
-        ["szkoła", "school"], ["plac zabaw", "playground"], ["zabawka", "toy"], ["mieszkanie", "flat, apartment"],
-        ["pokój", "room"], ["łóżko", "bed"]
+        ["mój chłopak", "my boyfriend"], ["razem", "together"], ["zakupy", "shopping"],
+        ["odkurzać", "to vacuum"], ["zmywać", "to do the dishes"], ["śmieci", "rubbish"],
+        ["pranie", "laundry"], ["mieszkanie", "flat, apartment"], ["pokój", "room"], ["łóżko", "bed"]
       ]
     },
     {
@@ -1917,7 +1913,7 @@ table.grid td b { color: var(--accent); font-weight: 700; }
           ["Jesteś przystojny.", "You're handsome."],
           ["Pięknie pachniesz.", "You smell lovely."],
           ["Świetnie gotujesz!", "You're a great cook!"],
-          ["Jesteś super tatą.", "You're a great dad.", "tatą: the form after jesteś (instrumental case)"],
+          ["Jesteś najlepszym chłopakiem na świecie!", "You're the best boyfriend in the world!", "jesteś + narzędnik: chłopak → chłopakiem"],
           ["Jesteś najlepszy!", "You're the best!", "to a man"],
           ["Jestem z ciebie dumny / dumna.", "I'm proud of you. (man / woman speaking)"],
           ["Masz rację.", "You're right."],
@@ -2007,8 +2003,8 @@ table.grid td b { color: var(--accent); font-weight: 700; }
       ]
     },
     {
-      "id": "s-wies", "title": "U rodziców na wsi", "en": "Visiting parents in the village",
-      "intro": "Expect a lot of food and the same questions on every visit. Jedz, jedz! means you'll get seconds whether you're hungry or not. If these are your partner's parents, ask them how they'd like you to address them: pan / pani, or mamo / tato.",
+      "id": "s-wies", "title": "U rodziców na wsi", "en": "Visiting his parents in the village",
+      "intro": "Expect a lot of food and the same questions on every visit. Jedz, jedz! means you'll get seconds whether you're hungry or not. With your boyfriend's parents, start with pan / pani and wait for them to suggest something less formal.",
       "dialogue": [
         ["Mama", "Dzień dobry, kochani! Jak podróż?", "Hello, my dears! How was the trip?"],
         ["Ty", "Dzień dobry! Dobrze, ale długo. Ale tu pięknie i cicho!", "Hello! Fine, but long. It's so beautiful and quiet here!"],
@@ -2016,10 +2012,11 @@ table.grid td b { color: var(--accent); font-weight: 700; }
         ["Ty", "Mmm, pyszne! Dziękuję bardzo.", "Mmm, delicious! Thank you very much."],
         ["Mama", "Jedz, jedz! Weź jeszcze!", "Eat, eat! Have some more!"],
         ["Ty", "Dziękuję, już nie mogę. Jestem najedzony / najedzona.", "Thank you, I can't eat any more. I'm full."],
-        ["Tata", "A jak praca? Jak wnuczek / wnuczka?", "And how's work? How's our grandson / granddaughter?"]
+        ["Tata", "A jak praca? I kiedy ślub?", "And how's work? And when's the wedding?"]
       ],
       "say": [
-        ["Jak się macie?", "How are you (both)?"],
+        ["Jak się państwo mają?", "How are you? (formal, to a couple)"],
+        ["Jak się macie?", "How are you (both)?", "informal"],
         ["Jak zdrowie?", "How's your health?"],
         ["Ale tu pięknie!", "It's so beautiful here!"],
         ["Ale tu cicho!", "It's so quiet here!"],
@@ -2037,13 +2034,13 @@ table.grid td b { color: var(--accent); font-weight: 700; }
         ["Jedz, jedz!", "Eat, eat!"],
         ["Weź jeszcze!", "Have some more!"],
         ["Jak praca?", "How's work?"],
-        ["Ale wnuczek urósł! / Ale wnuczka urosła!", "How our grandson / granddaughter has grown!"],
+        ["Kiedy ślub?", "When's the wedding?", "a classic question from Polish parents"],
         ["Kiedy znowu przyjedziecie?", "When will you come again?"]
       ],
       "words": [
         ["wieś", "village, the countryside", "na wsi = in the countryside"], ["rodzice", "parents"],
-        ["teściowie", "parents-in-law"], ["babcia", "grandma"], ["dziadek", "grandpa"],
-        ["wnuczek / wnuczka", "grandson / granddaughter"], ["dom", "house, home"], ["ogród", "garden"],
+        ["teściowie", "parents-in-law", "after the wedding"], ["babcia", "grandma"], ["dziadek", "grandpa"],
+        ["ślub", "wedding"], ["dom", "house, home"], ["ogród", "garden"],
         ["las", "forest"], ["pole", "field"], ["jezioro", "lake"], ["kura", "hen"], ["krowa", "cow"],
         ["kompot", "kompot (fruit drink)"], ["spacer", "walk"]
       ]
@@ -2683,7 +2680,7 @@ table.grid td b { color: var(--accent); font-weight: 700; }
   }
 
   /* ---------- practise with AI: copy-ready prompts ---------- */
-  const PROFILE = "I'm an adult A1 learner of Polish (weekend course at the Varia school, textbook Hurra!!! Po polsku 1). I live in Warsaw, work as a data analyst, and have a partner and a child. Write Polish with correct diacritics.";
+  const PROFILE = "I'm an adult A1 learner of Polish (weekend course at the Varia school, textbook Hurra!!! Po polsku 1). I live in Warsaw, work as a data analyst, and have a Polish boyfriend. Write Polish with correct diacritics.";
   const AI_KINDS = {
     lesson: [["story", "Opowiadanie · story"], ["roleplay", "Rozmowa · role-play"], ["drill", "Drill"], ["translate", "Tłumaczenie · translate"], ["correct", "Popraw mnie · correct my writing"]],
     sit: [["roleplay", "Rozmowa · role-play"], ["prep", "Przygotuj mnie · prepare me"]]
